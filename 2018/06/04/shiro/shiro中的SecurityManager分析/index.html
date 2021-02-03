@@ -1,37 +1,797 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="shiro,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="shiro中的SecurityManager分析SecurityManager接口定义SecurityManager是shiro中的核心管理类，是一个接口，首先看一下SecurityManager的定义： public interface SecurityManager extends Authenticator, Authorizer, SessionManager {     Subject">
+<meta name="keywords" content="shiro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shiro中的SecurityManager分析">
+<meta property="og:url" content="http://yoursite.com/2018/06/04/shiro/shiro中的SecurityManager分析/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="shiro中的SecurityManager分析SecurityManager接口定义SecurityManager是shiro中的核心管理类，是一个接口，首先看一下SecurityManager的定义： public interface SecurityManager extends Authenticator, Authorizer, SessionManager {     Subject">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.203Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shiro中的SecurityManager分析">
+<meta name="twitter:description" content="shiro中的SecurityManager分析SecurityManager接口定义SecurityManager是shiro中的核心管理类，是一个接口，首先看一下SecurityManager的定义： public interface SecurityManager extends Authenticator, Authorizer, SessionManager {     Subject">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/04/shiro/shiro中的SecurityManager分析/">
+
+
+
+
+
+  <title>shiro中的SecurityManager分析 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/shiro/shiro中的SecurityManager分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">shiro中的SecurityManager分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-04T20:33:35+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="shiro中的SecurityManager分析"><a href="#shiro中的SecurityManager分析" class="headerlink" title="shiro中的SecurityManager分析"></a>shiro中的<code>SecurityManager</code>分析</h1><h2 id="SecurityManager接口定义"><a href="#SecurityManager接口定义" class="headerlink" title="SecurityManager接口定义"></a><code>SecurityManager</code>接口定义</h2><p>SecurityManager是shiro中的核心管理类，是一个接口，首先看一下SecurityManager的定义：</p>
+<pre><code>public interface SecurityManager extends Authenticator, Authorizer, SessionManager {
+    Subject login(Subject var1, AuthenticationToken var2) throws AuthenticationException;
+    void logout(Subject var1);
+    Subject createSubject(SubjectContext var1);
+}
+</code></pre><p><code>Authenticator</code>、<code>Authorizer</code>、<code>SessionManager</code>都是shiro中另外几个组件。<code>Authenticator</code>是认证器，负责认证功能；<code>Authorizer</code>是鉴权器，负责权限鉴定功能；<code>SessionManager</code>负责session管理功能。后续分析各个模块的功能。</p>
+<h2 id="CachingSecurityManager实现了-SecurityManager"><a href="#CachingSecurityManager实现了-SecurityManager" class="headerlink" title="CachingSecurityManager实现了 SecurityManager"></a><code>CachingSecurityManager</code>实现了 <code>SecurityManager</code></h2><pre><code>public abstract class CachingSecurityManager implements SecurityManager, Destroyable, CacheManagerAware, EventBusAware{
+    private CacheManager cacheManager;//缓存管理器
+    private EventBus eventBus;
+    ....
+}
+</code></pre><p>该类增加了缓存管理和事件总线功能。</p>
+<h2 id="RealmSecurityManager继承自-CachingSecurityManager"><a href="#RealmSecurityManager继承自-CachingSecurityManager" class="headerlink" title="RealmSecurityManager继承自 CachingSecurityManager"></a><code>RealmSecurityManager</code>继承自 <code>CachingSecurityManager</code></h2><p>该类增加了一个<code>Collection&lt;Realm&gt;</code>类型的域，可以保存多个<code>Realm</code>对象。</p>
+<pre><code>public abstract class RealmSecurityManager extends CachingSecurityManager {
+    private Collection&lt;Realm&gt; realms;
+    .....
+}
+</code></pre><h2 id="AuthenticatingSecurityManager继承自-RealmSecurityManager"><a href="#AuthenticatingSecurityManager继承自-RealmSecurityManager" class="headerlink" title="AuthenticatingSecurityManager继承自 RealmSecurityManager"></a><code>AuthenticatingSecurityManager</code>继承自 <code>RealmSecurityManager</code></h2><p>该类增加了<code>Authenticator</code>域，使用该认证器可以实现认证功能。</p>
+<pre><code>public abstract class AuthenticatingSecurityManager extends RealmSecurityManager {
+    private Authenticator authenticator = new ModularRealmAuthenticator();
+    ....
+}
+</code></pre><p>并且，该类真正实现了Authenticator的AuthenticationInfo方法：</p>
+<pre><code>public AuthenticationInfo authenticate(AuthenticationToken token) throws AuthenticationException {
+    return this.authenticator.authenticate(token);
+}
+</code></pre><h2 id="AuthorizingSecurityManager继承自-AuthenticatingSecurityManager"><a href="#AuthorizingSecurityManager继承自-AuthenticatingSecurityManager" class="headerlink" title="AuthorizingSecurityManager继承自 AuthenticatingSecurityManager"></a><code>AuthorizingSecurityManager</code>继承自 <code>AuthenticatingSecurityManager</code></h2><p>与<code>AuthenticatingSecurityManager</code>该类增加了<code>Authorizer</code>域，使用该鉴权器可以实现权限验证功能。</p>
+<pre><code>public abstract class AuthorizingSecurityManager extends AuthenticatingSecurityManager {
+    private Authorizer authorizer = new ModularRealmAuthorizer();
+    ...
+}
+</code></pre><p>调用域对象<code>authorizer</code>的相应方法实现了<code>Authorizer</code>的所有接口方法。</p>
+<h2 id="SessionsSecurityManager继承自AuthorizingSecurityManager"><a href="#SessionsSecurityManager继承自AuthorizingSecurityManager" class="headerlink" title="SessionsSecurityManager继承自AuthorizingSecurityManager"></a><code>SessionsSecurityManager</code>继承自<code>AuthorizingSecurityManager</code></h2><pre><code>public abstract class SessionsSecurityManager extends AuthorizingSecurityManager {
+    private SessionManager sessionManager = new DefaultSessionManager();
+    ....
+}
+</code></pre><p>跟前两个类一样，通过增加一个<code>SessionManager</code>的域来实现<code>SessionManager</code>接口的功能。</p>
+<h2 id="DefaultSecurityManager继承自SessionsSecurityManager"><a href="#DefaultSecurityManager继承自SessionsSecurityManager" class="headerlink" title="DefaultSecurityManager继承自SessionsSecurityManager"></a><code>DefaultSecurityManager</code>继承自<code>SessionsSecurityManager</code></h2><pre><code>public class DefaultSecurityManager extends SessionsSecurityManager {
+    protected RememberMeManager rememberMeManager;
+    protected SubjectDAO subjectDAO;
+    protected SubjectFactory subjectFactory;
+    ....
+}
+</code></pre><p><code>subjectFactory</code>对象用来生成<code>subject</code>，<code>subjectDAO</code>用来保存<code>subject</code>,<code>rememberMeManager</code>实现rememberMe功能。</p>
+<p>当我们在程序中调用<code>subject.login(token)</code>方法，会调用<code>SecurityManager</code>的<code>login</code>方法：</p>
+<pre><code>public Subject login(Subject subject, AuthenticationToken token) throws AuthenticationException {
+   AuthenticationInfo info;
+   try {
+       info = this.authenticate(token);
+   } catch (AuthenticationException var7) {
+      ........
+   }
+   Subject loggedIn = this.createSubject(token, info, subject);
+   this.onSuccessfulLogin(token, info, loggedIn);
+   return loggedIn;
+</code></pre><p>   }<br>可见会调用<code>authenticate</code>方法，上文分析到，<code>authenticate</code>方法实际上会调用保存的<code>Authenticator</code>的<code>authenticate</code>方法，分析<code>Authenticator</code>会得知，其最终会调用<code>Realm</code>的<code>getAuthenticationInfo</code>方法。由此，将登陆操作和<code>Realm</code>对象关联起来了.并且，认证成功后，会利用认证信息和token及现在subject生成一个新的<code>Subject</code>的已认证对象：</p>
+<pre><code>   Subject loggedIn = this.createSubject(token, info, subject);
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/shiro/" rel="tag"># shiro</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/04/shiro/shiro中的Filter继承层次分析/" rel="next" title="shiro中的Filter继承层次分析">
+                <i class="fa fa-chevron-left"></i> shiro中的Filter继承层次分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/04/shiro/shiro中的FilterChainManager分析/" rel="prev" title="shiro中的FilterChainManager分析">
+                shiro中的FilterChainManager分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shiro中的SecurityManager分析"><span class="nav-number">1.</span> <span class="nav-text">shiro中的SecurityManager分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SecurityManager接口定义"><span class="nav-number">1.1.</span> <span class="nav-text">SecurityManager接口定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CachingSecurityManager实现了-SecurityManager"><span class="nav-number">1.2.</span> <span class="nav-text">CachingSecurityManager实现了 SecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RealmSecurityManager继承自-CachingSecurityManager"><span class="nav-number">1.3.</span> <span class="nav-text">RealmSecurityManager继承自 CachingSecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AuthenticatingSecurityManager继承自-RealmSecurityManager"><span class="nav-number">1.4.</span> <span class="nav-text">AuthenticatingSecurityManager继承自 RealmSecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AuthorizingSecurityManager继承自-AuthenticatingSecurityManager"><span class="nav-number">1.5.</span> <span class="nav-text">AuthorizingSecurityManager继承自 AuthenticatingSecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SessionsSecurityManager继承自AuthorizingSecurityManager"><span class="nav-number">1.6.</span> <span class="nav-text">SessionsSecurityManager继承自AuthorizingSecurityManager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DefaultSecurityManager继承自SessionsSecurityManager"><span class="nav-number">1.7.</span> <span class="nav-text">DefaultSecurityManager继承自SessionsSecurityManager</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

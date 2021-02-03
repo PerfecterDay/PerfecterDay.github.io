@@ -1,37 +1,842 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="web,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Servlet是所有Java Web应用程序的核心类，它是唯一的既可以直接处理和相应用户请求，也可以将处理工作委托给应用中其它部分的类。除非某些过滤器提前终止了客户端的请求，否则所有的请求都将被发送到某些Servlet中。 Java EE 容器会有一个或多个内建的 Servlet，用于处理 JSP、显示目录列表和访问静态资源。 javax.servlet.Servlet 是个接口，只包含了初始化并">
+<meta name="keywords" content="web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaEE基础之Servlet">
+<meta property="og:url" content="http://yoursite.com/2019/04/27/java/javaee/javaEE基础之Servlet/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Servlet是所有Java Web应用程序的核心类，它是唯一的既可以直接处理和相应用户请求，也可以将处理工作委托给应用中其它部分的类。除非某些过滤器提前终止了客户端的请求，否则所有的请求都将被发送到某些Servlet中。 Java EE 容器会有一个或多个内建的 Servlet，用于处理 JSP、显示目录列表和访问静态资源。 javax.servlet.Servlet 是个接口，只包含了初始化并">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/httpservlet方法.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaEE基础之Servlet">
+<meta name="twitter:description" content="Servlet是所有Java Web应用程序的核心类，它是唯一的既可以直接处理和相应用户请求，也可以将处理工作委托给应用中其它部分的类。除非某些过滤器提前终止了客户端的请求，否则所有的请求都将被发送到某些Servlet中。 Java EE 容器会有一个或多个内建的 Servlet，用于处理 JSP、显示目录列表和访问静态资源。 javax.servlet.Servlet 是个接口，只包含了初始化并">
+<meta name="twitter:image" content="http://yoursite.com/pics/httpservlet方法.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/27/java/javaee/javaEE基础之Servlet/">
+
+
+
+
+
+  <title>JavaEE基础之Servlet | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/java/javaee/javaEE基础之Servlet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaEE基础之Servlet</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-27T22:07:35+08:00">
+                2019-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/JavaEE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaEE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Servlet是所有Java Web应用程序的核心类，它是唯一的既可以直接处理和相应用户请求，也可以将处理工作委托给应用中其它部分的类。除非某些过滤器提前终止了客户端的请求，否则所有的请求都将被发送到某些Servlet中。</p>
+<p>Java EE 容器会有一个或多个内建的 Servlet，用于处理 JSP、显示目录列表和访问静态资源。</p>
+<p><code>javax.servlet.Servlet</code> 是个接口，只包含了初始化并销毁 Servlet 和处理请求的方法。不过，无论什么类型的请求，甚至是非HTTP请求（假设容器支持这样的请求），也将会调用 service 方法。目前 Java EE 7支持的唯一 Servlet 协议就是 HTTP。</p>
+<p>大多数情况下，Servlet都会继承自 <code>javax.servlet.http.HttpServlet</code> ，它提供了相应每种 HTTP 方法类型的方法空实现：<br><img src="/pics/httpservlet方法.png" alt="HttpServlet实现的方法"><br><code>HttpServlet</code> 各个方法接收的是 <code>javax.servlet.http.HttpServletRequest</code> 和 <code>javax.servlet.http.HttpServletResponse</code> 参数，而不是 <code>javax.servlet.http.ServletRequest</code> 和 <code>javax.servlet.http.HttpServletResponse</code> ，这样就可以轻松访问 Servlet 服务所处理的请求中的 HTTP 特定的特性。</p>
+<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="init 方法"></a>init 方法</h2><p><code>init()</code> 方法在 Servlet 构造完成之后调用，但在相应第一个请求之前。与构造器不同，调用 <code>init()</code> 方法时， Servlet 中所有的属性都已经设置完成，并提供了对 <code>javax.servlet.ServletConfig</code> 和 <code>javax.servlet.ServletContext</code> 对象的访问。所以，可以使用该方法<em>读取属性文件</em>，或者使用 <em>JDBC连接数据库</em>。</p>
+<p><code>init()</code> 方法将在 Servlet 启动时调用。 Servlet 会在第一次映射到的请求访问它的时候启动，如果配置了在Web应用程序部署和启动时自动启动，那么 <code>init()</code> 方法也会被调用。</p>
+<h2 id="destory-方法"><a href="#destory-方法" class="headerlink" title="destory 方法"></a>destory 方法</h2><p><code>destory()</code> 方法在 Servlet 不再接受请求之后立即调用，这通常发生在 Web 应用程序被停止或卸载，或者 Web 容器关闭时。因为它将在卸载或关闭时立即调用，所以不需要等待垃圾收集器启动垃圾回收就可以清理资源。</p>
+<p>这对于应用程序被卸载了但是服务器仍然运行的环境来说非常重要（服务器还要支持其它应用运行），因为垃圾收集器可能在几分钟或数小时之后运行。如果在垃圾收集时清理资源而不是在 <code>destory()</code> 方法清理资源，则会导致应用程序占用的资源无法释放。</p>
+<p>因此，应当总是使用 <code>destory()</code> 方法清理 Servlet 持有的资源。</p>
+<h2 id="配置可部署的-Servlet"><a href="#配置可部署的-Servlet" class="headerlink" title="配置可部署的 Servlet"></a>配置可部署的 Servlet</h2><p>在编写创建好 Servlet 之后，需要告诉容器如何部署应用程序中的 Servlet。</p>
+<h3 id="部署描述符"><a href="#部署描述符" class="headerlink" title="部署描述符"></a>部署描述符</h3><p>在部署描述符中进行正确的配置：</p>
+<ol>
+<li>在 web.xml 中添加 Servlet<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果没有 load-on-startup 标签， Servlet 会在第一个请求到达的时候被初始化及调用init方法。可能需要很长时间。加上 load-on-startup 标签后，表示在部署时就创建相应的 Servlet。 load-on-startup 标签值的大小表示启动顺序，越小越先启动。相同则按在描述符文件中出现的顺序启动。</p>
+<ol>
+<li>将 Servlet 映射到 URL<br>告诉容器如何启动 Servlet 之后，还需要告诉容器不同的 Servlet 分别处理对应哪些URL的请求。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</span><br><span class="line">    &lt;url-pattern&gt;/hello2&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用了上述标签后，所有访问应用程序相对URL/hello和/hello2 的请求都将由上面配置的helloServlet来处理。此处的 servlet-name要和上面的一样。</p>
+<h3 id="WebServlet注解"><a href="#WebServlet注解" class="headerlink" title="@WebServlet注解"></a>@WebServlet注解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(</span><br><span class="line">    name = &quot;helloServlet&quot;,</span><br><span class="line">    urlPatterns = &#123;&quot;/hello1&quot;,&quot;/hello2&quot;&#125;,</span><br><span class="line">    loadOnStartup = 1</span><br><span class="line">)</span><br><span class="line">public class HelloServlet extends HttpServlet&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编程式配置"><a href="#编程式配置" class="headerlink" title="编程式配置"></a>编程式配置</h3><p>除了上述两种方法，还可以使用编程的方式配置 Servlet.<br><code>ServletContext</code> 接口提供了动态添加 Servlet 的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Dynamic addServlet(String var1, String var2); </span><br><span class="line">2. Dynamic addServlet(String var1, Servlet var2); </span><br><span class="line">3. Dynamic addServlet(String var1, Class&lt;? extends Servlet&gt; var2);</span><br></pre></td></tr></table></figure></p>
+<p>与编程式添加 Listener 和 Filter 一样，这必须要在在 <code>ServletContext</code> 配置完成之前完成，因为容器会根据 <code>ServletContext</code> 配置决定加载哪些 Listener/Filter/Servlet. 所以要在 <code>ServletContextListener</code> 的 <code>contextInitialized()</code> 方法或者 <code>ServletContainerInitializer</code> 中的 <code>onStartup()</code> 中注册 Servlet 。</p>
+<h2 id="使用-HttpServletRequest"><a href="#使用-HttpServletRequest" class="headerlink" title="使用 HttpServletRequest"></a>使用 HttpServletRequest</h2><p><code>HttpServletRequest</code> 是对 <code>ServletRequest</code> 的扩展，可以提供关于收到请求的额外的与 HTTP 协议相关的信息。通过它可以获取 HTTP 请求的详细信息。</p>
+<h3 id="获取请求参数"><a href="#获取请求参数" class="headerlink" title="获取请求参数"></a>获取请求参数</h3><p> <code>HttpServletRequest</code> 最重要的功能就是从客户端发送的请求中获取查询参数。请求参数有两种不同的形式：</p>
+<ol>
+<li>查询参数</li>
+<li>以 <code>application/x-www-form-yrlencoded</code> / <code>multipart/form-data</code>  编码的请求正文。<br>常用方法：<ol>
+<li>String getParameter(String var1)</li>
+<li>String[] getParameterValues(String var1)</li>
+<li>Map<string, string[]> getParameterMap()</string,></li>
+<li>Enumeration<string> getParameterNames()</string></li>
+</ol>
+</li>
+</ol>
+<h3 id="获取与请求内容相关的信息"><a href="#获取与请求内容相关的信息" class="headerlink" title="获取与请求内容相关的信息"></a>获取与请求内容相关的信息</h3><p>与请求内容相关的信息包括：HTTP 请求内容的类型、长度和编码等。</p>
+<ol>
+<li>String getContentType()</li>
+<li>int getContentLength()</li>
+<li>long getContentLengthLong()</li>
+<li>String getCharacterEncoding()</li>
+</ol>
+<h3 id="获取请求内容（请求体中的内容，如上传的附件）"><a href="#获取请求内容（请求体中的内容，如上传的附件）" class="headerlink" title="获取请求内容（请求体中的内容，如上传的附件）"></a>获取请求内容（请求体中的内容，如上传的附件）</h3><ol>
+<li>ServletInputStream getInputStream() throws IOException: 二进制</li>
+<li>BufferedReader getReader() throws IOException：文本<br>请求流只能被读取一次，多次读取会导致 IllegalStateException 异常，如果请求中含有 POST 的请求参数，且使用了获取请求参数的方法获取了POST变量，则不能再次调用上述方法，否则也会导致 IllegalStateException 异常。不要在含有 POST 变量的请求上使用上述方法。</li>
+</ol>
+<h3 id="获取请求特有的数据，如URL、URI和请求头"><a href="#获取请求特有的数据，如URL、URI和请求头" class="headerlink" title="获取请求特有的数据，如URL、URI和请求头"></a>获取请求特有的数据，如URL、URI和请求头</h3><ol>
+<li>StringBuffer getRequestURL()</li>
+<li>String getRequestURI()</li>
+<li>String getServletPath()</li>
+<li>String getHeader(String var1)</li>
+<li>Enumeration<string> getHeaders(String var1)</string></li>
+<li>Enumeration<string> getHeaderNames()</string></li>
+<li>long getDateHeader(String var1)</li>
+<li>int getIntHeader(String var1)</li>
+</ol>
+<h3 id="会话和Cookise"><a href="#会话和Cookise" class="headerlink" title="会话和Cookise"></a>会话和Cookise</h3><ol>
+<li>Cookie[] getCookies()</li>
+<li>HttpSession getSession()/HttpSession getSession(boolean var1)</li>
+</ol>
+<h2 id="使用-HttpServletResponse"><a href="#使用-HttpServletResponse" class="headerlink" title="使用 HttpServletResponse"></a>使用 HttpServletResponse</h2><p>HttpServletResponse 提供了对响应中与HTTP协议相关属性的访问。可以使用 HttpServletResponse 完成响应头设置、编写响应正文、重定向请求、设置 HTTP 状态码、设置 Cookies等任务。</p>
+<h3 id="编写响应正文"><a href="#编写响应正文" class="headerlink" title="编写响应正文"></a>编写响应正文</h3><p>HttpServletResponse 最重要的功能就是向客户端返回数据内容，可以是在浏览器中显示的HTML、浏览器希望获取的图像或客户端下载的文件内容等。</p>
+<ol>
+<li>ServletOutputStream getOutputStream() throws IOException</li>
+<li>PrintWriter getWriter() throws IOException<br>同样，不要对同一个响应对象同时调用上述方法，也不能调用两次其中一个方法。</li>
+</ol>
+<h3 id="设置响应头和其它属性"><a href="#设置响应头和其它属性" class="headerlink" title="设置响应头和其它属性"></a>设置响应头和其它属性</h3><ol>
+<li>void addHeader(String var1, String var2)</li>
+<li>void setHeader(String var1, int var2)</li>
+<li>void setStatus(int var1)</li>
+<li>void sendError(int var1) throws IOException</li>
+<li>void sendRedirect(String var1) throws IOException</li>
+<li>void setDateHeader(String var1, long var2)</li>
+<li>void addDateHeader(String var1, long var2)</li>
+</ol>
+<h2 id="使用初始化参数配置应用程序"><a href="#使用初始化参数配置应用程序" class="headerlink" title="使用初始化参数配置应用程序"></a>使用初始化参数配置应用程序</h2><p>编写 Java Web 应用程序时，不可避免地会需要提供一些配置应用程序和Servlet的方式。通过上下文初始化参数和Servlet初始化参数可对它们进行配置。可以定义数据库连接信息、提供发送订单警告的邮件地址等。这些配置在程序启动时被读取，修改后只有重启应用才会生效。</p>
+<h3 id="上下文初始化参数"><a href="#上下文初始化参数" class="headerlink" title="上下文初始化参数"></a>上下文初始化参数</h3><p>在部署描述符中使用 <context-param> 标签声明上下文初始化参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;settingOne&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;foo&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;settingTwo&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;bar&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure></context-param></p>
+<p>上述参数会被加载到 <code>ServletContext</code> 中，使用 <code>ServletContext</code> 的<br><code>String getInitParameter(String var1)</code> 方法可以获取到初始化参数。 <code>ServletContext</code> 是所有 Servlet 共享的，在任意 Servlet 中都可以获取它的引用，因此，上下文初始化参数是所有 Servlet 共享的。</p>
+<p><code>GenericServlet</code> 中有一个 <code>ServletConfig</code> 类型的成员，使用 <code>ServletConfig</code> 的 <code>getServletContext()</code> 可以获取到 <code>ServletContext</code> 。实际上，<code>GenericServlet</code> 提供了 <code>getServletContext()</code> 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public ServletContext getServletContext() &#123;</span><br><span class="line">    return this.getServletConfig().getServletContext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Servlet初始化参数"><a href="#Servlet初始化参数" class="headerlink" title="Servlet初始化参数"></a>Servlet初始化参数</h3><ol>
+<li>在部署描述符中使用下属代码可以为特定 Servlet 配置初始化参数：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">       &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">       &lt;servlet-class&gt;com.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">       &lt;init-param&gt;</span><br><span class="line">           &lt;param-name&gt;database&lt;/param-name&gt;</span><br><span class="line">           &lt;param-value&gt;db&lt;/param-value&gt;</span><br><span class="line">       &lt;/init-param&gt;</span><br><span class="line">           &lt;init-param&gt;</span><br><span class="line">           &lt;param-name&gt;server&lt;/param-name&gt;</span><br><span class="line">           &lt;param-value&gt;10.1.21.3&lt;/param-value&gt;</span><br><span class="line">       &lt;/init-param&gt;</span><br><span class="line">       &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">   &lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Servlet初始化参数会被加载到各个Servlet的 <code>ServletConfig</code> 中，因此，它们是Servlet专有的。通过 <code>ServletConfig</code> 的 <code>String getInitParameter(String var1)</code> 方法获取参数值。</p>
+<ol>
+<li>使用注解：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(</span><br><span class="line">    name = &quot;helloServlet&quot;,</span><br><span class="line">    urlPatterns = &#123;&quot;/hello1&quot;,&quot;/hello2&quot;&#125;,</span><br><span class="line">    loadOnStartup = 1,</span><br><span class="line">    initParams = &#123;</span><br><span class="line">        @WebInitParam(name = &quot;database&quot;,value = &quot;db&quot;),</span><br><span class="line">        @WebInitParam(name = &quot;server&quot;,value = &quot;10.1.21.3&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line">public class HelloServlet extends HttpServlet&#123;...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用注解的缺点是，修改配置后，需要重新编译程序；而使用部署描述符的方式，修改完后只要重新启动程序即可，无需重新编译。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web/" rel="tag"># web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/26/java/javaee/javaEE基础之Web程序基本结构/" rel="next" title="JavaEE基础之Web程序基本结构">
+                <i class="fa fa-chevron-left"></i> JavaEE基础之Web程序基本结构
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/28/java/javaee/javaEE基础之Listener/" rel="prev" title="JavaEE基础之Listener">
+                JavaEE基础之Listener <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#init-方法"><span class="nav-number">1.</span> <span class="nav-text">init 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destory-方法"><span class="nav-number">2.</span> <span class="nav-text">destory 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置可部署的-Servlet"><span class="nav-number">3.</span> <span class="nav-text">配置可部署的 Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署描述符"><span class="nav-number">3.1.</span> <span class="nav-text">部署描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WebServlet注解"><span class="nav-number">3.2.</span> <span class="nav-text">@WebServlet注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编程式配置"><span class="nav-number">3.3.</span> <span class="nav-text">编程式配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-HttpServletRequest"><span class="nav-number">4.</span> <span class="nav-text">使用 HttpServletRequest</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取请求参数"><span class="nav-number">4.1.</span> <span class="nav-text">获取请求参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取与请求内容相关的信息"><span class="nav-number">4.2.</span> <span class="nav-text">获取与请求内容相关的信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取请求内容（请求体中的内容，如上传的附件）"><span class="nav-number">4.3.</span> <span class="nav-text">获取请求内容（请求体中的内容，如上传的附件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取请求特有的数据，如URL、URI和请求头"><span class="nav-number">4.4.</span> <span class="nav-text">获取请求特有的数据，如URL、URI和请求头</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#会话和Cookise"><span class="nav-number">4.5.</span> <span class="nav-text">会话和Cookise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-HttpServletResponse"><span class="nav-number">5.</span> <span class="nav-text">使用 HttpServletResponse</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写响应正文"><span class="nav-number">5.1.</span> <span class="nav-text">编写响应正文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置响应头和其它属性"><span class="nav-number">5.2.</span> <span class="nav-text">设置响应头和其它属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用初始化参数配置应用程序"><span class="nav-number">6.</span> <span class="nav-text">使用初始化参数配置应用程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文初始化参数"><span class="nav-number">6.1.</span> <span class="nav-text">上下文初始化参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet初始化参数"><span class="nav-number">6.2.</span> <span class="nav-text">Servlet初始化参数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

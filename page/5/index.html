@@ -1,23 +1,4551 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/5/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/sql/msyql/mysql中的文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/10/sql/msyql/mysql中的文件/" itemprop="url">mysql 中的文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-10T22:26:33+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="文件种类"><a href="#文件种类" class="headerlink" title="文件种类"></a>文件种类</h4><ol>
+<li>配置参数文件：告诉mysql在启动时在哪里可以找到数据库文件，并且指定一些初始化参数配置来数据库。</li>
+<li>日志文件：错误日志文件、二进制日志文件、慢查询日志文件、查询日志文件等。</li>
+<li>socket 文件：使用 UNIX 套接字连接时需要的文件</li>
+<li>pid文件：mysql 实例的进程 ID文件</li>
+<li>mysql表结构文件：用来存放 Mysql表结构定义文件。</li>
+<li>存储引擎文件：Mysql支持多种存储引擎，每种存储引擎都会有自己的文件来存储各种数据。</li>
+</ol>
+<h4 id="参数文件"><a href="#参数文件" class="headerlink" title="参数文件"></a>参数文件</h4><p>命令行中输入 <code>mysql --help | grep my.cnf</code> 可以查看 mysql 查找配置文件路径的顺序。<br>mysql 参数有 <strong>静态参数</strong> 和 <strong>动态参数</strong> 之分：</p>
+<ol>
+<li>动态参数意味着在mysql运行过程中能够动态的更改。</li>
+<li>静态参数在实例运行后便不可更改。<br>使用 <strong>set</strong> 命令可以对动态的参数值进行修改：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set [global | session ] system_var_name=expr</span><br><span class="line">set [@@global. | @@session. | @@]system_var_name=expr</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>有些参数只能在会话中修改，有些参数可以在整个生命周期中都会生效，有些参数既可以在会话中生效又可以在整个实例的生命周期内生效。<br>使用 <code>show variables like &#39;xxx&#39;</code> 可以查看参数配置的值。</p>
+<h4 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件"></a>日志文件</h4><ol>
+<li>错误日志<br>错误日志文件对mysql的启动、运行和关闭过程进行记录，其实就是 mysql 运行的日志文件。可以使用命令 <code>show variables like &#39;log_error&#39;</code> 来定位改文件。</li>
+<li>慢查询日志<br> 可以在mysql启动时设定一个阈值，将运行时间超过（大于）该阈值的所有 SQL 语句都记录到慢查询日志文件中。DBA可以对这些语句进行优化。该阈值可以通过 <code>long_query_time</code> (mysql8 中是<code>slow_query_log</code>)参数来设置，默认是10秒。通过 <code>slow_query_log_file</code>设置慢查询日志的位置。<br> 另一个和慢查询有关的参数是 <code>log_queries_not_using_indexes</code>, 如果这个参数为 on 的话，那么没有使用索引的sql语句也会被记录到慢查询日志中。<code>log_throttle_queries_not_using_indexes</code> 用来设置每分钟允许记录到慢查询日志中的未使用索引的sql语句的次数，默认是0表示没有限制。生产环境中建议设置以防止慢查询日志不断快速增加。<br> 慢查询日志变得很大时，可以使用 <code>mysqldumpslow</code> 命令来分析慢查询日志。</li>
+<li>查询日志<br> 查询日志记录了所有的数据库查询请求信息，无论这些查询是否得到了正确的执行。<code>general_log</code>和 <code>general_log_file</code>分别设置是否开启查询日志以及日志文件的存储位置。</li>
+<li><p>二进制日志<br> 二进制日志记录了所有的对数据库更改的操作日志，不包括 Select/Show这类的操作，因为这类操作不会改变数据库中的数据。但是有些 DML（insert、delete、update） 语句即使没有真正的改变数据，可能也会被记录到日志中。二进制日志有以下几种作用：</p>
+<ol>
+<li>恢复:可以通过二进制日志进行 point-in-time 的恢复</li>
+<li>复制：通过复制二进制日志到另一台数据库恢复即可实现复制</li>
+<li><p>审计：通过二进制日志的信息进行审计来判断是否有注入攻击</p>
+<p>参数 <code>log_bin</code> 、 <code>log_bin_basename</code> 和 <code>log_bin_index</code> 分别用来设置是否打开二进制日志、二进制日志的基础文件名和二进制日志索引文件名，以下参数影响二进制日志的行为：</p>
+</li>
+</ol>
+<ul>
+<li><code>max_binlog_size</code>:单个日志文件的最大大小</li>
+<li><code>binlog_cache_size</code>：基于会话的二进制日志缓冲区（每个会话一个缓冲区），未提交的二进制日志直接写入缓冲区，事务提交时将缓冲区内容写入二进制日志，改参数指定缓冲区大小。如果写入日志超出缓冲区大小，会写入一个临时文件。</li>
+<li><code>sync_binlog</code>：表示写缓冲区多少次后写入到磁盘文件，如果为1表示同步写磁盘，这样会损失一定性能但是可以获得最高的可用性。否则写入缓冲区的文件在宕机有可能未刷盘造成丢失。</li>
+<li><p><code>binlog_format</code>：设置二进制日志文件的格式</p>
+<ol>
+<li>statement: 记录的是数据库的逻辑 SQL 语句,执行update一个值=1 1000次，会产生1000条记录。</li>
+<li>row: 记录的是数据库表的行更改情况</li>
+<li>mixed: 默认statement格式，但是某些情况下使用 row 格式。执行update一个值=1 1000次，只会产生1条记录</li>
+</ol>
+<p>二进制日志文件不能用 cat、less等命令查看，必须使用 <code>mysqlbinlog</code> 工具来查看，statement 格式的日志直接能看到逻辑SQL语句，而 row 格式的日志需要加上 <code>-v</code> 或 <code>-vv</code> 参数。遇到<code>mysqlbinlog: [ERROR] unknown variable &#39;default-character-set=utf8&#39;</code>错误时，使用 <code>mysqlbinlog --no-defaults -v binlog.000109</code> 即可。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="套接字文件"><a href="#套接字文件" class="headerlink" title="套接字文件"></a>套接字文件</h3><p>在 UNIX 系统下本地连接 mysql 可以使用 UNIX 域套接字方式，这种方式需要一个套接字文件，使用 <code>show variables like &#39;%socket%&#39;</code> 可以查看配置。</p>
+<h3 id="PID文件"><a href="#PID文件" class="headerlink" title="PID文件"></a>PID文件</h3><p>mysql 启动时会将进程ID写入一个文件，改文件就是 pid 文件。使用 <code>show variables like &#39;pid_file&#39;</code> 查看配置。</p>
+<h3 id="表结构定义文件"><a href="#表结构定义文件" class="headerlink" title="表结构定义文件"></a>表结构定义文件</h3><p>mysql是插件式的存储引擎结构，但无论一张表采取那种存储引擎,Mysql都有一个以frm结尾的后缀名文件，这个文件记录了表结构定义。视图也会有一个frm文件定义视图结构。Mysql8版本删除了 frm 表结构文件，将表结构直接存放在 ibd 文件中。</p>
+<h3 id="innodb存储引擎文件"><a href="#innodb存储引擎文件" class="headerlink" title="innodb存储引擎文件"></a>innodb存储引擎文件</h3><p>主要介绍表空间文件和重做日志文件。</p>
+<h4 id="表空间文件"><a href="#表空间文件" class="headerlink" title="表空间文件"></a>表空间文件</h4><p>Innodb 存储引擎以索引组织表的形式来存储数据，所有的数据都存放在一个空间中，称为表空间。表空间又由段、区、页组成。大致如下图所示：<br><img src="/pics/mysql-tablespace.png" alt="Innodb 数据逻辑存储结构"></p>
+<p>innodb 采用将存储数据按表空间进行存放的设计，默认配置下会有一个初始大小10M的名为 ibdata1 的文件，该文件就是默认的表空间文件。用户可以通过参数 <code>innodb_data_file_path</code> 对默认表空间文件进行设置。设置表空间文件后，所有基于 innodb 存储引擎的表的数据都会保存到该共享表空间中。</p>
+<p>若设置了 <code>innodb_file_per_table = on</code>, mysql 会为每张基于 innodb 引擎的表产生独立的表空间文件，命名规则为：表名.ibd。这些单独的表空间文件仅存储该表的<strong>数据、索引和插入缓冲BITMAP</strong>等信息，其余信息如回滚信息（UNDO）、插入缓冲索引页、系统事务信息、双写缓冲等还是存在共享表空间中。</p>
+<h5 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h5><ul>
+<li><p>查看分区：</p>
+<ol>
+<li><code>show create table REGSAPICallAudit</code></li>
+<li>查看表是否采用了分区:<code>show table status like &#39;regsapicallaudit&#39;\G</code></li>
+<li>查看 <code>information_schema.partitions</code> 表可以查看详细分区信息：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select</span><br><span class="line">partition_name part,  </span><br><span class="line">partition_expression expr,  </span><br><span class="line">partition_description descr,  </span><br><span class="line">table_rows  </span><br><span class="line">from information_schema.partitions  where </span><br><span class="line">table_schema = schema()  </span><br><span class="line">and table_name=&apos;tr&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>添加分区：  <code>ALTER TABLE REGSAPICallAudit ADD PARTITION (PARTITION</code> `p${date}` <code>VALUES LESS THAN (TO_DAYS(&#39;${date}&#39;)));</code></p>
+</li>
+<li>删除分区：  <code>ALTER TABLE REGSAPICallAudit DROP PARTITION</code> `p2019-06-01`,`p2019-06-02`,`p2019-06-03`;</li>
+<li>重新划分分区：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE regsapicallaudit</span><br><span class="line">REORGANIZE PARTITION `p2020-04-28` INTO (</span><br><span class="line">PARTITION `p2020-04-26` VALUES LESS THAN (737906),</span><br><span class="line">PARTITION `p2020-04-27` VALUES LESS THAN (737907),</span><br><span class="line">PARTITION `p2020-04-28` VALUES LESS THAN (737908)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意重新划分分区时， PARTITION 定义的顺序一定是要递增的。</p>
+<h4 id="重做日志文件"><a href="#重做日志文件" class="headerlink" title="重做日志文件"></a>重做日志文件</h4><p> innodb 存储引擎的数据目录下会有两个名为 ib_logfile0、ib_logfile1 的文件，它们是重做日志文件。当实例或者介质失败时（如断电时），重做日志文件就能派上用场，innodb 存储引擎会使用重做日志文件恢复到失败之前的状态，以此来保证数据的完整性和一致性。下面参数会影响重做日志的属性：</p>
+<ol>
+<li>innodb_log_file_size ： 指定每个重做日志文件的大小</li>
+<li>innodb_log_files_in_group： 指定日志文件组中重做日志文件的数量，默认为2</li>
+<li>innodb_log_group_home_dir： 指定日志文件组所在的目录</li>
+</ol>
+<p>重做日志文件与二进制日志文件的区别？ </p>
+<ol>
+<li>二进制日志会记录所有与mysql数据库有关的日志记录，包括 innodb/myisam/heap 等其他存储引擎的日志，而innodb存储引擎的重做日志文件只记录innodb存储引擎本身的事务日志。</li>
+<li>二进制日志记录的是一个事务的具体操作内容，是对应的SQL语句，是逻辑日志。而重做日志文件记录的是关于每个页更改的物理情况。</li>
+<li>写入时间不同。二进制日志文件仅在事务提交前进行提交，即只写磁盘一次，无论该事务多大。而在事务进行的过程中，却不断有重做日志条目被写入到重做日志文件中。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/18/sql/msyql/Innodb存储引擎/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/18/sql/msyql/Innodb存储引擎/" itemprop="url">mysql innodb 存储引擎</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-18T21:11:23+08:00">
+                2019-09-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Innodb-体系架构"><a href="#Innodb-体系架构" class="headerlink" title="Innodb 体系架构"></a>Innodb 体系架构</h3><h4 id="后台线程"><a href="#后台线程" class="headerlink" title="后台线程"></a>后台线程</h4><ol>
+<li><p>Master Thread<br>Master Thread 是核心线程，主要负责将缓冲池中的缓存异步刷新到磁盘，保证数据的一致性，包括脏页的刷新、合并插入缓冲、undo 页的回收等。</p>
+</li>
+<li><p>IO Thread<br>Innodb 存储引擎大量使用异步 AIO 来处理 IO请求，这样做可以提高数据库的性能。在 1.0 版本之前，有4个IO 线程，分别是 read、write、insert buffer 和 log IO thread 。从1.0.x 版本开始 read 和 write 的线程数增大到4个，并且可以通过 <code>innodb_read_io_threads</code> 和 <code>innodb_write_io_threads</code> 参数进行设置。可以通过 <code>show engine innodb status</code> 来查看 innodb 引擎的运行状态。</p>
+</li>
+<li><p>Purge Thread<br>Purge Thread 用来回收已经提交的事务的 undo log页。 可以在配置文件中配置 <code>innodb_purge_threads=4</code> 来配置回收线程的数量。</p>
+</li>
+<li><p>Page Cleaner Thread<br>该线程的主要作用是将脏页的刷新操作放入到本线程中来，减轻 Master thread 的工作，提高系统性能。</p>
+</li>
+</ol>
+<h4 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h4><ol>
+<li><p>缓冲池<br> 为了弥补CPU和磁盘之间的速度差距，基于磁盘的数据库系统普遍使用缓冲池技术来提高数据库整体性能。</p>
+<p> 缓冲池就是一块内存区域，数据库读取页时，首先判断磁盘页是否在内存池中，如果在，就直接读取内存中的页，否则从磁盘读取该页并将页加载到缓冲池中。<br> 对于页的修改操作，也是首先修改缓存池中的页，然后以一定的频率刷新回磁盘。注意刷新到磁盘的操做不是每次修改页时都会发生的，而是通过 Checkpoint 的机制来刷新的。<br> <img src="/pics/innodb-memory-pool.jpg" alt="Innodb 内存数据对象"></p>
+<p> 缓冲池的大小设置参数： <code>innoodb_buffer_pool_size</code> 。从 Innodb 1.0.x 开始，允许有多个缓冲池实例，通过 <code>innodb_buffer_pool_instances</code> 参数设置缓冲池个数。这样做的好处是减少数据库内部的资源竞争，提高数据库的并发能力。</p>
+</li>
+<li><p>LRU List、Free List和 Flush List<br> 数据库中的缓冲池是通过 LRU （Latest Recent Used,最近最少使用）算法来管理的。最频繁使用的页存储在LRU列表的前段，最少使用的存放在尾端。缓冲池内存不够时，首先释放尾端的页。Innodb对传统LRU算法作了一些优化，使用了 midpoint insertion strategy 。新读取到的页不是存放在 LRU 列表的首部，而是放入到列表的 midpoint 位置。 midpoint 位置由参数 <code>innodb_old_blocks_pct</code> 设置，设置的是从列表尾端开始的一个百分比。例如， <code>innodb_old_blocks_pct=37</code> 代表新读取的页插入到列表尾端的37%的位置。 midpoint 之后的列表称为 old 列表，之前的称为 new 列表。<code>innodb_old_blocks_time</code> 是管理 LRU 列表的另一个参数，用来表示页被读取到 midpoint 位置后需要等待多久才能被加载到 new 列表。</p>
+<p> LRU 列表管理的是已经读取的页，其实就是已经分配的内存。缓冲池中的空闲内存由 Free 列表管理。当数据库刚刚启动时，LRU 列表是空的，即还没任何页被读取到缓冲池。当需要从缓冲池中分配页时，首先从 Free 列表中查看是否有可用的空闲页，如果有就将该页从Free 列表删除，添加到 LRU 列表中，否则根据 LRU 算法淘汰 LRU 列表末尾的页。一般来说，LRU 列表大小+Free 列表大小 &lt; 缓存池大小，因为缓冲池中的页还会被分配给自适应索引、Lock信息、Insert Buffer等页，这部分页不在LRU列表中维护。</p>
+<p> LRU 列表中的页被修改后，称为脏页，FLUSH 列表用来管理脏页。脏页既存在于 LRU 列表也存在于 FLUSH 列表。LRU 列表用来管理缓冲池中页的可用性，FLUSH 列表用来管理页的刷新操作。</p>
+<p> 页从 old 列表移到 new 列表的操作称为：page made young 。而因为 <code>innodb_old_blocks_time</code> 的设置而没有完成移动的操作称为：page not made young。使用 <code>show engine innodb status</code> 查看 innodb 状态时一些参数代表的含义如下：</p>
+<ul>
+<li>Buffer pool size : 指示缓冲池一共有多少页，（默认一页为 16KB）</li>
+<li>Free buffers： Free 列表中页的数量</li>
+<li>Database pages： LRU 列表中页的数量</li>
+<li>Buffer pool hit rate: 缓冲池的命中率（缓存命中率），通常该值不小于95%。</li>
+<li>LRU len: LRU 列表中页的数量包含 unzip_LRU 列表中页数量，unzip_LRU len: 压缩页（非16KB页）列表中页的数量，</li>
+<li>Modified db pages：脏页数量</li>
+</ul>
+</li>
+<li><p>重做日志缓冲区<br> Innodb重做日志缓冲用来缓存重做日志信息，然后按照一定频率将其刷新到重做日志文件。重做日志缓冲区的大小由 <code>innodb_log_buffer_size</code> 设置。重做日志缓冲区一般不需要设置很大，因为以下三种情况会将日志刷新到重做日志文件中：</p>
+<ol>
+<li>Master Thread 每秒刷新一次重做日志到重做日志文件</li>
+<li>每个事务提交时</li>
+<li>当重做日志缓冲区剩余空间小于一半时</li>
+</ol>
+</li>
+</ol>
+<h3 id="Checkpoint技术"><a href="#Checkpoint技术" class="headerlink" title="Checkpoint技术"></a>Checkpoint技术</h3><p>缓冲池的设计目的是为了缓解CPU速度与磁盘速度的鸿沟，因此页的操作首先都是在缓冲池中完成的。如果一条DML语句如 update 或 delete 改变了页中的记录，那么此时缓冲池中页的版本比磁盘中的新，此时该页称为脏页。数据库需要将脏页写回磁盘（刷盘）。</p>
+<p>如果将脏页刷新到磁盘之前，数据库发生了宕机，那么数据将会丢失。为了防止这种情况，当前的事务数据库普遍使用了 Write Ahead Log 策略，即当事务提交时，在修改数据页之前，先在重做日志中记录相关信息。这样如果修改数据失败时，利用重做日志就可以完成数据库恢复。注意到，如果事务写完重做日志，然后修改内存缓冲区中对应页都成功，且脏页刷盘也成功了，事务执行就算是成功了，那么这部分重做日志实际上就已经没用了，此时可以记一个 checkpoint，checkpoint 之前的日志是可以被覆盖。</p>
+<p>Checkpoint 技术主要用来解决以下几个问题：</p>
+<ol>
+<li>缩短数据库恢复时间<br>假如没有 checkpoint ，那么就要应用所有重做日志，这可能需要大量时间。有了 checkpoint 的话，只要用某个 checkpoint 之后的重做日志来恢复即可。</li>
+<li>缓冲池不够用时，将脏页刷新到磁盘<br>当缓冲池不够用时，我们可以将脏页刷新到磁盘并且释放这些脏页所占的内存，checkpoint 可以标识脏页。</li>
+<li>重做日志不可用时，刷新脏页<br>重做日志不可用是指，日志已经到达指定大小，但是重做日志中的内容仍然不能被覆盖，此时，必须强制将脏页刷新到磁盘，并产生新的 checkpoint ，释放重做日志。</li>
+</ol>
+<p>对于 Innodb 存储引擎来说，其是通过 LSN（Log Sequence Number)来标记版本的。LSN 是一个8字节大小的数字，记录的单位是字节。每个页有LSN，重做日志中也有LSN， Checkpoint 也有 LSN 。Checkpoint 所做的事情就是将缓冲池中的脏页刷新到磁盘。不同之处在于每次刷新多少页到磁盘，每次从哪里取脏页，以及什么时间触发 Checkpoint 。在 Innodb 内部有两种 Checkpoint，分别为：</p>
+<ol>
+<li>Sharp Checkpoint<br>默认情况下（参数 <code>innodb_fast_shutdown=1</code>），发生在数据库关闭时，将所有的脏页刷新到磁盘。</li>
+<li>Fuzzy Checkpoint<br>这种情况下只会刷新部分脏页到磁盘。通常在如下几种情况下发生：<ul>
+<li>Master Thread Checkpoint<br>  Master Thread 会以每秒或每十秒的速度从缓冲池的脏页列表中刷新一定比例的脏页回磁盘。</li>
+<li>FLUSH_LRU_LIST Checkpoint<br>  当从LRU List 末尾移除页时，如果是脏页，需要进行Checkpoint。</li>
+<li>Async/Sync Flush Checkpoint<br>  当重做日志不可用时，需要从脏页列表中将一些脏页刷新回磁盘。这操作自 1.2.x之后放入到 Page Cleaner Thread 中完成。</li>
+<li>Dirty Page too much Checkpoint<br>  当缓冲池中脏页数量达到一定比例时（<code>innodb_max_dirty_page_pct</code> 参数设置），innodb 存储引擎会强制 Checkpoint，释放缓冲池内存. </li>
+</ul>
+</li>
+</ol>
+<h3 id="Innodb-关键特性"><a href="#Innodb-关键特性" class="headerlink" title="Innodb 关键特性"></a>Innodb 关键特性</h3><ol>
+<li>插入缓冲</li>
+<li><p>两次写<br> 考虑这样一种情况，当对一个 16KB 的页进行写入时，写入 4KB 时，发生了宕机，这种情况称为部分写失效。这时能通过重做日志恢复吗？重做日志记录的是对页的物理操作，如偏移量800写’aaa’记录，如果这个页（这个页是内存中的页，重做日志记录的也是基于内存页来说的而不是磁盘页，因为内存页是最新的而磁盘页不是，如在刷盘前，连续对一个页进行两次或多次更新操作，重做日志只能是基于内存页）本身已经损坏，再对其进行重做是没有意义的。也就是说，应用重做日志之前，用户需要一个副本，当写入失效发生，先用副本还原该页，然后再应用重做日志重做。</p>
+<p> 因此，innodb在刷盘时，并不是直接将脏页写入到磁盘页中，而是先将脏页写到一个2MB大小的双写缓冲区，然后将其写入到共享表空间中的2M双写区，这是顺序写入，开销不是很大。写到双写区后，在将双写缓冲区中的页写入到磁盘页中，这是离散写的。<br> <img src="/pics/innodb-double-write.png" alt="双写"><br> 如果，将脏页刷新到磁盘的过程中出现错误，可以先用双写区中的副本还原磁盘上的页，然后用重做日志对其进行重做。<br> 使用<code>show global status like &#39;%innodb_dbwr%&#39;\G</code> 可以观察数据库双写的运行情况。</p>
+</li>
+<li><p>自适应哈希索引</p>
+</li>
+<li>异步 IO</li>
+<li>刷新邻接页</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/mybatis/mybatis 知识点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/23/mybatis/mybatis 知识点/" itemprop="url">mybatis 细节总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T22:03:00+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="xml文件中的特殊字符"><a href="#xml文件中的特殊字符" class="headerlink" title="xml文件中的特殊字符"></a>xml文件中的特殊字符</h3><p>当我们需要通过xml格式处理sql语句时，经常会用到&lt; ，&lt;=，&gt;，&gt;=等符号，但是很容易引起xml格式的错误，这样会导致后台将xml字符串转换为xml文档时报错，从而导致程序错误。</p>
+<p>这样的问题在 mybatis 中或者自定义的xml处理sql的程序中经常需要我们来处理。其实很简单，我们只需作如下替换即可避免上述的错误：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">原符号</th>
+<th style="text-align:left">&lt;</th>
+<th style="text-align:left">&lt;=</th>
+<th style="text-align:left">&gt;</th>
+<th style="text-align:left">&gt;=</th>
+<th style="text-align:left">&amp;</th>
+<th style="text-align:left">‘</th>
+<th style="text-align:left">“</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">替换符号</td>
+<td style="text-align:left">\&lt;</td>
+<td style="text-align:left">\&lt;=</td>
+<td style="text-align:left">\&gt;</td>
+<td style="text-align:left">\&gt;=</td>
+<td style="text-align:left">\&amp;</td>
+<td style="text-align:left">\&apos;</td>
+<td style="text-align:left">\&quot;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>或者我们也可以使用 \&lt;![CDATA[   ]]&gt; 将特殊字符包含起来。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/16/mybatis/mybatis——基本配置（1）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/16/mybatis/mybatis——基本配置（1）/" itemprop="url">mybatis 基本配置(1)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-16T15:30:13+08:00">
+                2018-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>mybatis 的配置文件的顶层结构如下：</p>
+<ul>
+<li>configuration 配置<ul>
+<li><a href="#properties">properties 属性</a></li>
+<li><a href="#settings">settings 设置</a></li>
+<li><a href="#typeAliases">typeAliases 类型别名</a></li>
+<li><a href="#typeHandlers">typeHandlers 类型处理器</a></li>
+<li><a href="#objectFactory">objectFactory 对象工厂</a></li>
+<li><a href="#plugins">plugins 插件</a></li>
+<li><a href="#environments">environments 环境</a><ul>
+<li><a href="#environment">environment 环境变量</a><ul>
+<li><a href="#transactionManager">transactionManager 事务管理器</a></li>
+<li><a href="#dataSource">dataSource 数据源</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#databaseIdProvider">databaseIdProvider 数据库厂商标识</a></li>
+<li><a href="#mappers">mappers 映射器</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="properties"><a href="#properties" class="headerlink" title="properties"></a><span id="properties">properties</span></h2><p>这些属性都是可外部配置且可动态替换的，既可以在典型的 Java 属性文件中配置，亦可通过 properties 元素的子元素来传递。例如：</p>
+<pre><code>&lt;properties resource=&quot;org/mybatis/example/config.properties&quot;&gt;
+  &lt;property name=&quot;username&quot; value=&quot;dev_user&quot;/&gt;
+  &lt;property name=&quot;password&quot; value=&quot;F2Fa3!33TYyg&quot;/&gt;
+&lt;/properties&gt;
+</code></pre><p>这个例子中的 username 和 password 将会由 properties 元素中设置的相应值来替换。 driver 和 url 属性将会由 config.properties 文件中对应的值来替换。这样就为配置提供了诸多灵活选择。</p>
+<p>属性也可以被传递到 SqlSessionFactoryBuilder.build()方法中。例如：</p>
+<pre><code>SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, props);
+// ... or ...
+SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(reader, environment, props);
+</code></pre><p>如果属性在不只一个地方进行了配置，那么 MyBatis 将按照下面的顺序来加载：</p>
+<ul>
+<li>在 properties 元素体内指定的属性首先被读取。</li>
+<li>然后根据 properties 元素中的 resource 属性读取类路径下属性文件或根据 url 属性指定的路径读取属性文件，并覆盖已读取的同名属性。</li>
+<li>最后读取作为方法参数传递的属性，并覆盖已读取的同名属性。</li>
+</ul>
+<p>因此，通过方法参数传递的属性具有最高优先级，resource/url 属性中指定的配置文件次之，最低优先级的是 properties 属性中指定的属性。</p>
+<h2 id="settings"><a href="#settings" class="headerlink" title="settings"></a><span id="settings">settings</span></h2><h2 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a><span id="typeAliases">typeAliases</span></h2><p>类型别名是为 Java 类型设置一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。例如:</p>
+<pre><code>&lt;typeAliases&gt;
+  &lt;typeAlias alias=&quot;Author&quot; type=&quot;domain.blog.Author&quot;/&gt;
+  &lt;typeAlias alias=&quot;Blog&quot; type=&quot;domain.blog.Blog&quot;/&gt;
+  &lt;typeAlias alias=&quot;Comment&quot; type=&quot;domain.blog.Comment&quot;/&gt;
+  &lt;typeAlias alias=&quot;Post&quot; type=&quot;domain.blog.Post&quot;/&gt;
+  &lt;typeAlias alias=&quot;Section&quot; type=&quot;domain.blog.Section&quot;/&gt;
+  &lt;typeAlias alias=&quot;Tag&quot; type=&quot;domain.blog.Tag&quot;/&gt;
+&lt;/typeAliases&gt;
+当这样配置时，Blog可以用在任何使用domain.blog.Blog的地方。
+</code></pre><p>也可以指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean，比如:</p>
+<pre><code>&lt;typeAliases&gt;
+  &lt;package name=&quot;domain.blog&quot;/&gt;
+&lt;/typeAliases&gt;
+</code></pre><p>每一个在包 domain.blog 中的 Java Bean，在没有注解的情况下，会使用 Bean 的首字母小写的非限定类名来作为它的别名。 比如 domain.blog.Author 的别名为 author；若有注解，则别名为其注解值。看下面的例子：</p>
+<pre><code>@Alias(&quot;author&quot;)
+public class Author {
+    ...
+}
+</code></pre><h2 id="typeHandlers"><a href="#typeHandlers" class="headerlink" title="typeHandlers"></a><span id="typeHandlers">typeHandlers</span></h2><p>无论是 MyBatis 在预处理语句（PreparedStatement）中设置一个参数时，还是从结果集中取出一个值时，都会用类型处理器将获取的值以合适的方式转换成 Java 类型。</p>
+<p>你可以重写类型处理器或创建你自己的类型处理器来处理不支持的或非标准的类型。 具体做法为：实现 <code>org.apache.ibatis.type.TypeHandler</code> 接口， 或继承一个很便利的类 <code>org.apache.ibatis.type.BaseTypeHandler</code>， 然后可以选择性地将它映射到一个 JDBC 类型。比如：</p>
+<pre><code>// ExampleTypeHandler.java
+@MappedJdbcTypes(JdbcType.VARCHAR)
+public class ExampleTypeHandler extends BaseTypeHandler&lt;String&gt; {
+
+  @Override
+  public void setNonNullParameter(PreparedStatement ps, int i, String parameter, JdbcType jdbcType) throws SQLException {
+    ps.setString(i, parameter);
+  }
+  @Override
+  public String getNullableResult(ResultSet rs, String columnName) throws SQLException {
+    return rs.getString(columnName);
+  }
+  @Override
+  public String getNullableResult(ResultSet rs, int columnIndex) throws SQLException {
+    return rs.getString(columnIndex);
+  }
+  @Override
+  public String getNullableResult(CallableStatement cs, int columnIndex) throws SQLException {
+    return cs.getString(columnIndex);
+  }
+}
+
+&lt;!-- mybatis-config.xml --&gt;
+&lt;typeHandlers&gt;
+  &lt;typeHandler handler=&quot;org.mybatis.example.ExampleTypeHandler&quot;/&gt;
+&lt;/typeHandlers&gt;
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析——SqlSession查询分析（5）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/13/mybatis/mybatis 原理分析——SqlSession查询分析（5）/" itemprop="url">mybatis 原理分析(5) —— SqlSession 查询分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T16:26:53+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在前面的博文中，我们分析了 mybatis 使用接口编程时，用到了动态代理技术，实际上在代理对象中还是使用了 SqlSession 的相应方法去执行数据库操作，与直接使用 SqlSession 执行 sql 语句一样。所以，此文我们分析一下 SqlSession 执行 sql 的过程。</p>
+<h2 id="SqlSession-的-selectList"><a href="#SqlSession-的-selectList" class="headerlink" title="SqlSession 的 selectList"></a>SqlSession 的 selectList</h2><pre><code>public &lt;E&gt; List&lt;E&gt; selectList(String statement, Object parameter, RowBounds rowBounds) {
+    try {
+      MappedStatement ms = configuration.getMappedStatement(statement);
+      return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
+    } catch (Exception e) {
+      throw ExceptionFactory.wrapException(&quot;Error querying database.  Cause: &quot; + e, e);
+    } finally {
+      ErrorContext.instance().reset();
+    }
+  }
+</code></pre><p>首先，从 Configuration 实例中获取了一个 MappedStatement 对象，然后使用 Executor 执行 query 方法操作数据库查询。</p>
+<h2 id="Executor-的-query"><a href="#Executor-的-query" class="headerlink" title="Executor 的 query"></a>Executor 的 query</h2><p>BaseExecutor 实现了 Executor 的一些基本方法。 SimpleExecutor 、 BatchExecutor 、 ReuseExecutor 都继承了 BaseExecutor 。</p>
+<pre><code> public &lt;E&gt; List&lt;E&gt; query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+   BoundSql boundSql = ms.getBoundSql(parameter);
+   CacheKey key = createCacheKey(ms, parameter, rowBounds, boundSql);
+   return query(ms, parameter, rowBounds, resultHandler, key, boundSql);
+}
+
+ public &lt;E&gt; List&lt;E&gt; query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
+   ErrorContext.instance().resource(ms.getResource()).activity(&quot;executing a query&quot;).object(ms.getId());
+   if (closed) {
+     throw new ExecutorException(&quot;Executor was closed.&quot;);
+   }
+   if (queryStack == 0 &amp;&amp; ms.isFlushCacheRequired()) {
+     clearLocalCache();
+   }
+   List&lt;E&gt; list;
+   try {
+     queryStack++;
+     list = resultHandler == null ? (List&lt;E&gt;) localCache.getObject(key) : null;
+     if (list != null) {
+       handleLocallyCachedOutputParameters(ms, key, parameter, boundSql);
+     } else {
+       list = queryFromDatabase(ms, parameter, rowBounds, resultHandler, key, boundSql);
+     }
+   } finally {
+     queryStack--;
+   }
+   if (queryStack == 0) {
+     for (DeferredLoad deferredLoad : deferredLoads) {
+       deferredLoad.load();
+     }
+     // issue #601
+     deferredLoads.clear();
+     if (configuration.getLocalCacheScope() == LocalCacheScope.STATEMENT) {
+       // issue #482
+       clearLocalCache();
+     }
+   }
+   return list;
+ }
+
+ private &lt;E&gt; List&lt;E&gt; queryFromDatabase(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
+     List&lt;E&gt; list;
+     localCache.putObject(key, EXECUTION_PLACEHOLDER);
+     try {
+       list = doQuery(ms, parameter, rowBounds, resultHandler, boundSql);
+     } finally {
+       localCache.removeObject(key);
+     }
+     localCache.putObject(key, list);
+     if (ms.getStatementType() == StatementType.CALLABLE) {
+       localOutputParameterCache.putObject(key, parameter);
+     }
+     return list;
+   }
+
+    protected abstract &lt;E&gt; List&lt;E&gt; doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)
+          throws SQLException;
+</code></pre><p>跟踪上述代码可以看出 BaseExecutor 中的 query 方法， 最终会调用<strong>抽象方法</strong> doQuery ,子类会重写 doQuery 方法。我们看看 SimpleExecutor 中如何重写 doQuery 方法的。</p>
+<h2 id="SimpleExecutor-中的-doQuery"><a href="#SimpleExecutor-中的-doQuery" class="headerlink" title="SimpleExecutor 中的 doQuery"></a>SimpleExecutor 中的 doQuery</h2><pre><code>public &lt;E&gt; List&lt;E&gt; doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
+    Statement stmt = null;
+    try {
+      Configuration configuration = ms.getConfiguration();
+      StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
+      stmt = prepareStatement(handler, ms.getStatementLog());
+      return handler.&lt;E&gt;query(stmt, resultHandler);
+    } finally {
+      closeStatement(stmt);
+    }
+  }   
+</code></pre><p>SimpleExecutor 的 doQuery 方法中，首先获取 Configuration 实例，然后调用 Configuration 的 newStatementHandler 方法获取了一个 StatementHandler 对象。接着调用了 prepareStatement 方法： </p>
+<pre><code>  private Statement prepareStatement(StatementHandler handler, Log statementLog) throws SQLException {
+      Statement stmt;
+      Connection connection = getConnection(statementLog);
+      stmt = handler.prepare(connection);
+      handler.parameterize(stmt);
+      return stmt;
+    } 
+</code></pre><p>在 prepareStatement 方法中首先获取 Connection 对象， 然后调用 StatementHandler 的 prepare 方法获得了 Statement 对象，接着使用 StatementHandler 的 parameterize 方法，从名字可以看出 parameterize 是为 sql 语句参数赋值的，其中还调用了 ParameterHandler 的 setParameters 方法，而且，ParameterHandler 又用到了 TypeHandler ， 此处，我们先不做分析。</p>
+<p>接着上面的 doQuery 方法，获取到 Statement 后，接着调用了 StatementHandler 的 query 方法，看一下 PreparedStatementHandler 的 query 方法：</p>
+<pre><code>public &lt;E&gt; List&lt;E&gt; query(Statement statement, ResultHandler resultHandler) throws SQLException {
+    PreparedStatement ps = (PreparedStatement) statement;
+    ps.execute();
+    return resultSetHandler.&lt;E&gt; handleResultSets(ps);
+  }
+</code></pre><p>直接使用了 JDBC 中的 PreparedStatement 对象执行数据库操作了，所以 ORM框架底层还是使用的 JDBC 。执行完后，使用 ResultSetHandler 的 handleResultSets 方法处理结果集。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>SqlSession 下的四大对象：</p>
+<ul>
+<li>Executor ：执行器，由它统一调度其他三个对象来执行对应的SQL；</li>
+<li>StatementHandler ：使用数据库的Statement执行操作；</li>
+<li>ParameterHandler ：用于SQL对参数的处理；</li>
+<li>ResultHandler ：进行最后数据集的封装返回处理；</li>
+</ul>
+<p>SqlSession 的查询方法实际上是靠 Executor 来实现的， Executor 在查询过程中使用了 StatementHandler 获取 JDBC 中的 Statement 对象，并为其置参数。 接着使用 Statement 对象执行查询。 在这期间，使用了 ParameterHandler 、 TypeHandler 来设置参数，使用 ResultSetHandler 来处理结果集， ResultSetHandler 内部使用了 ResultHandler 来处理结果集。</p>
+<p><img src="/pics/sqlSession运行图.png" alt="sqlSession运行图"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析 —— MapperProxy（4）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/13/mybatis/mybatis 原理分析 —— MapperProxy（4）/" itemprop="url">mybatis 原理分析(4) —— MapperProxy</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T09:45:12+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="MapperProxy"><a href="#MapperProxy" class="headerlink" title="MapperProxy"></a>MapperProxy</h2><p>前文分析到了使用 SqlSession 获取到一个接口的<strong>动态代理</strong>的过程。由此，我们终于知道了：<br>mybatis 只要声明一个接口，不用实现，就可以进行数据库操作的大致原理了，实际上执行数据库操作的肯定是这个动态代理对象。</p>
+<p>接下来看看到底是如何做到的：</p>
+<pre><code>public class MapperProxy&lt;T&gt; implements InvocationHandler, Serializable {
+  private static final long serialVersionUID = -6424540398559729838L;
+  private final SqlSession sqlSession;
+  private final Class&lt;T&gt; mapperInterface;
+  private final Map&lt;Method, MapperMethod&gt; methodCache;
+
+  public MapperProxy(SqlSession sqlSession, Class&lt;T&gt; mapperInterface, Map&lt;Method, MapperMethod&gt; methodCache) {
+    this.sqlSession = sqlSession;
+    this.mapperInterface = mapperInterface;
+    this.methodCache = methodCache;
+  }
+
+  @Override
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    if (Object.class.equals(method.getDeclaringClass())) {
+      try {
+        return method.invoke(this, args);
+      } catch (Throwable t) {
+        throw ExceptionUtil.unwrapThrowable(t);
+      }
+    }
+    final MapperMethod mapperMethod = cachedMapperMethod(method);
+    return mapperMethod.execute(sqlSession, args);
+  }
+
+  private MapperMethod cachedMapperMethod(Method method) {
+    MapperMethod mapperMethod = methodCache.get(method);
+    if (mapperMethod == null) {
+      mapperMethod = new MapperMethod(mapperInterface, method, sqlSession.getConfiguration());
+      methodCache.put(method, mapperMethod);
+    }
+    return mapperMethod;
+  }
+}
+</code></pre><p>分析 invoke 方法的代码可知：</p>
+<ol>
+<li>如果 method 是个对象，则直接调用该方法</li>
+<li>否则生成一个 MapperMethod 对象，并缓存起来</li>
+<li>调用 MapperMethod 的 execute 方法。</li>
+</ol>
+<h2 id="MapperMethod-的-execute"><a href="#MapperMethod-的-execute" class="headerlink" title="MapperMethod 的 execute"></a>MapperMethod 的 execute</h2><pre><code>public Object execute(SqlSession sqlSession, Object[] args) {
+    Object result;
+    if (SqlCommandType.INSERT == command.getType()) {
+      Object param = method.convertArgsToSqlCommandParam(args);
+      result = rowCountResult(sqlSession.insert(command.getName(), param));
+    } else if (SqlCommandType.UPDATE == command.getType()) {
+      Object param = method.convertArgsToSqlCommandParam(args);
+      result = rowCountResult(sqlSession.update(command.getName(), param));
+    } else if (SqlCommandType.DELETE == command.getType()) {
+      Object param = method.convertArgsToSqlCommandParam(args);
+      result = rowCountResult(sqlSession.delete(command.getName(), param));
+    } else if (SqlCommandType.SELECT == command.getType()) {
+      if (method.returnsVoid() &amp;&amp; method.hasResultHandler()) {
+        executeWithResultHandler(sqlSession, args);
+        result = null;
+      } else if (method.returnsMany()) {
+        result = executeForMany(sqlSession, args);
+      } else if (method.returnsMap()) {
+        result = executeForMap(sqlSession, args);
+      } else {
+        Object param = method.convertArgsToSqlCommandParam(args);
+        result = sqlSession.selectOne(command.getName(), param);
+      }
+    } else if (SqlCommandType.FLUSH == command.getType()) {
+        result = sqlSession.flushStatements();
+    } else {
+      throw new BindingException(&quot;Unknown execution method for: &quot; + command.getName());
+    }
+    if (result == null &amp;&amp; method.getReturnType().isPrimitive() &amp;&amp; !method.returnsVoid()) {
+      throw new BindingException(&quot;Mapper method &#39;&quot; + command.getName() 
+          + &quot; attempted to return null from a method with a primitive return type (&quot; + method.getReturnType() + &quot;).&quot;);
+    }
+    return result;
+  }
+</code></pre><p>execute 方法根据命令类型调用 sqlSession 相应的方法，回忆入门篇中，我们可以使用 sqlSession 的 相应方法直接执行查询，也可以使用接口编程的方法，即获取 mapper 的方法。通过上面的分析，面向接口的方法实际上还是调用了 sqlSession 的相应方法，殊途同归。所以接下来，我们直接分析 sqlSession 中如何执行数据库操作的即可，详见后文。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，我们从了解了 SqlSessionFactoyBuilder 构建 SqlSessionFactory , 从 SqlSessionFactory 中获取 SqlSession 实例，使用 SqlSession 获取 Mapper 接口的动态代理对象的过程，并且也知道了，动态代理对象实际上也是调用了 SqlSession 的数据库查询方法执行的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析 —— DefaultSqlSession（3）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/13/mybatis/mybatis 原理分析 —— DefaultSqlSession（3）/" itemprop="url">mybatis 原理分析(3) —— DefaultSqlSession</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T10:00:02+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="DefaultSqlSession-的域"><a href="#DefaultSqlSession-的域" class="headerlink" title="DefaultSqlSession 的域"></a>DefaultSqlSession 的域</h2><pre><code>public class DefaultSqlSession implements SqlSession {
+  private Configuration configuration;
+  private Executor executor;
+  private boolean autoCommit;
+  private boolean dirty;
+  .......
+}
+</code></pre><h2 id="运行跟踪"><a href="#运行跟踪" class="headerlink" title="运行跟踪"></a>运行跟踪</h2><p>在上一篇博文中，我们简要分析了构建一个 SqlSession 的过程，在实际使用中，我们获取 SqlSession 实例后，一般使用它的 selectOne 或者 getMapper 方法继续操作。因为推荐使用 getMapper 方法，所以我们就沿着 getMapper 方法往后看。</p>
+<pre><code>public &lt;T&gt; T getMapper(Class&lt;T&gt; type) {
+    return configuration.&lt;T&gt;getMapper(type, this);
+  }
+</code></pre><p>getMapper 方法调用了 configuration.getMapper ，继续跟：</p>
+<pre><code>public &lt;T&gt; T getMapper(Class&lt;T&gt; type, SqlSession sqlSession) {
+    return mapperRegistry.getMapper(type, sqlSession);
+  }
+</code></pre><p>Configuration 类中 getMapper 方法调用了 mapperRegistry.getMapper 方法。所以要分析一下 MapperRegistry 类。</p>
+<h3 id="MapperRegistry-类"><a href="#MapperRegistry-类" class="headerlink" title="MapperRegistry 类"></a>MapperRegistry 类</h3><p>直接上源码：</p>
+<pre><code>public class MapperRegistry {
+    private final Configuration config;
+    private final Map&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt; knownMappers = new HashMap&lt;Class&lt;?&gt;, MapperProxyFactory&lt;?&gt;&gt;();
+    ........
+}
+</code></pre><p>可见 MapperRegistry 类保存了 Configuration 的引用，还有一个 Map 对象 knownMappers ，从命名上看是已知的 mappers 的意思，所以 Mapper 映射器应该就保存在这个 Map 类型的 knownMappers 中。</p>
+<p>看一下这个 Map 的定义：是一个以 Class 对象为键， MapperProxyFactory 为值的 Map 。回忆一下，我们调用 SqlSession 的 getMapper 时，会传入一个 Class 的对象。</p>
+<pre><code>public &lt;T&gt; T getMapper(Class&lt;T&gt; type, SqlSession sqlSession) {
+    final MapperProxyFactory&lt;T&gt; mapperProxyFactory = (MapperProxyFactory&lt;T&gt;) knownMappers.get(type);
+    if (mapperProxyFactory == null) {
+      throw new BindingException(&quot;Type &quot; + type + &quot; is not known to the MapperRegistry.&quot;);
+    }
+    try {
+      return mapperProxyFactory.newInstance(sqlSession);
+    } catch (Exception e) {
+      throw new BindingException(&quot;Error getting mapper instance. Cause: &quot; + e, e);
+    }
+  }
+</code></pre><p>首先使用传入的 Class 在 knownMappers 中检索出对应的 MapperProxyFactory 对象，然后调用 mapperProxyFactory.newInstance 方法返回一个对象。接着看 MapperProxyFactory 类吧。</p>
+<h3 id="MapperProxyFactory-类"><a href="#MapperProxyFactory-类" class="headerlink" title="MapperProxyFactory 类"></a>MapperProxyFactory 类</h3><p>MapperProxyFactory 类代码并不多，我们看一下所有代码：</p>
+<pre><code>public class MapperProxyFactory&lt;T&gt; {
+
+  private final Class&lt;T&gt; mapperInterface;
+  private final Map&lt;Method, MapperMethod&gt; methodCache = new ConcurrentHashMap&lt;Method, MapperMethod&gt;();
+
+  public MapperProxyFactory(Class&lt;T&gt; mapperInterface) {
+    this.mapperInterface = mapperInterface;
+  }
+
+  public Class&lt;T&gt; getMapperInterface() {
+    return mapperInterface;
+  }
+
+  public Map&lt;Method, MapperMethod&gt; getMethodCache() {
+    return methodCache;
+  }
+
+  @SuppressWarnings(&quot;unchecked&quot;)
+  protected T newInstance(MapperProxy&lt;T&gt; mapperProxy) {
+    return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] { mapperInterface }, mapperProxy);
+  }
+
+  public T newInstance(SqlSession sqlSession) {
+    final MapperProxy&lt;T&gt; mapperProxy = new MapperProxy&lt;T&gt;(sqlSession, mapperInterface, methodCache);
+    return newInstance(mapperProxy);
+  }
+}
+</code></pre><p>可以看出该类是用了 JDK 的动态代理， 为 mapperInterface 域创建了一个代理对象，动态代理使用 MapperProxy 类对象作为其处理器。猜想一下 MapperProxy 肯定实现了 InvocationHandler 接口。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>到此为止，我们可以做出如下结论：<br>sqlSession.getMapper 方法实际上返回的是一个<strong>动态代理对象</strong>。</p>
+<p>整个运行流程：<br>sqlSession.getMapper —&gt; configuration.getMapper —&gt; mapperRegistry.getMapper —&gt; mapperProxyFactory.newInstance —&gt; return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] { mapperInterface }, mapperProxy);</p>
+<p>上述分析中，我们有两点还没有做详细分析：  </p>
+<ol>
+<li>Configuration 中的 mapperRegistry 是如何初始化的，后续博文分析。</li>
+<li>可知动态代理对象会调用 MapperProxy 里边的方法，后续博文分析。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析 —— SqlSession 的构建（2）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/13/mybatis/mybatis 原理分析 —— SqlSession 的构建（2）/" itemprop="url">mybatis 原理分析(2) —— SqlSession 的构建</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T09:45:12+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="SqlSessionFactoryBuilder-构造-SqlSessionFactory-过程"><a href="#SqlSessionFactoryBuilder-构造-SqlSessionFactory-过程" class="headerlink" title="SqlSessionFactoryBuilder 构造 SqlSessionFactory 过程"></a>SqlSessionFactoryBuilder 构造 SqlSessionFactory 过程</h2><p>在mybatis入门里介绍过，每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为中心的。 SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。</p>
+<pre><code>public SqlSessionFactory build(Reader reader, String environment, Properties properties) {
+    try {
+      XMLConfigBuilder parser = new XMLConfigBuilder(reader, environment, properties);
+      return build(parser.parse());
+    } catch (Exception e) {
+      throw ExceptionFactory.wrapException(&quot;Error building SqlSession.&quot;, e);
+    } finally {
+      ErrorContext.instance().reset();
+      try {
+        reader.close();
+      } catch (IOException e) {
+        // Intentionally ignore. Prefer previous error.
+      }
+    }
+  }
+
+  public SqlSessionFactory build(Configuration config) {
+      return new DefaultSqlSessionFactory(config);
+    }
+</code></pre><p>看上述 SqlSessionFactoryBuilder 源码， build 方法首先 new 一个 XMLConfigBuilder 对象 parser ，然后使用它的 parser.parse 方法构造一个 Configuration 对象，并调用 build 方法构造 SqlSessionFactory 实例。</p>
+<h2 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h2><p>SqlSessionFactory 类本身只有一个 Configuration 类的域， SqlSessionFactory  使用 Configuration 中的信息构建 SqlSession。</p>
+<pre><code>public SqlSession openSession(ExecutorType execType, boolean autoCommit) {
+    return openSessionFromDataSource(execType, null, autoCommit);
+  }
+
+private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
+    Transaction tx = null;
+    try {
+      final Environment environment = configuration.getEnvironment();
+      final TransactionFactory transactionFactory = getTransactionFactoryFromEnvironment(environment);
+      tx = transactionFactory.newTransaction(environment.getDataSource(), level, autoCommit);
+      final Executor  executor = configuration.newExecutor(tx, execType);
+      return new DefaultSqlSession(configuration, executor, autoCommit);
+    } catch (Exception e) {
+      closeTransaction(tx); // may have fetched a connection so lets call close()
+      throw ExceptionFactory.wrapException(&quot;Error opening session.  Cause: &quot; + e, e);
+    } finally {
+      ErrorContext.instance().reset();
+    }
+  }
+</code></pre><p>从上述源码中可知， SqlSessionFactory 在构建 SqlSession 的过程中， 借助 Configuration 对象的信息构建了 TransactionFactory 、 Executor ，并使用这些信息构建了一个 DefaultSqlSession 对象实例。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/mybatis/mybatis 原理分析—— 正面跟踪/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/25/mybatis/mybatis 原理分析—— 正面跟踪/" itemprop="url">mybatis 原理分析 —— 正面入手</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-25T10:12:30+08:00">
+                2019-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天我们从正面入手，来一探 Mybatis 的究竟。话不多说，看下图：<br><img src="/pics/spring-mapper-bean.png" alt="注册到Spring的 Mapper"></p>
+<p>注意到：我们写的 <code>@Mapper</code> 接口，在 Spring 中注册的 bean 的实际类型是 <code>MapperFactoryBean</code> .这是如何做到的呢？有个疑问：</p>
+<ul>
+<li>如何实现自定义注解的（<code>@Mapper</code>） bean 注册 ？（ <code>ClassPathMapperScanner</code> ）<br>这个疑问后续可以研究，今天暂时忽略。</li>
+</ul>
+<p><code>MapperFactoryBean</code> 实现了 <code>FactoryBean</code> 接口，因此，我们在使用 <code>@Mapper</code> 接口时，实际上获取的是 <code>MapperFactoryBean</code> 对象的 <code>getObject()</code> 方法返回的对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">MapperFactoryBean 类：</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line">* &#123;@inheritDoc&#125;</span><br><span class="line">*/</span><br><span class="line">@Override</span><br><span class="line">public T getObject() throws Exception &#123;</span><br><span class="line">return getSqlSession().getMapper(this.mapperInterface);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">——&gt;</span><br><span class="line"></span><br><span class="line">MapperRegistry类：</span><br><span class="line"></span><br><span class="line">public &lt;T&gt; T getMapper(Class&lt;T&gt; type, SqlSession sqlSession) &#123;</span><br><span class="line">final MapperProxyFactory&lt;T&gt; mapperProxyFactory = (MapperProxyFactory&lt;T&gt;) knownMappers.get(type);</span><br><span class="line">if (mapperProxyFactory == null) &#123;</span><br><span class="line">    throw new BindingException(&quot;Type &quot; + type + &quot; is not known to the MapperRegistry.&quot;);</span><br><span class="line">&#125;</span><br><span class="line">try &#123;</span><br><span class="line">    return mapperProxyFactory.newInstance(sqlSession);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">    throw new BindingException(&quot;Error getting mapper instance. Cause: &quot; + e, e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">——&gt;</span><br><span class="line"></span><br><span class="line">MapperProxyFactory 类：</span><br><span class="line"></span><br><span class="line">@SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">protected T newInstance(MapperProxy&lt;T&gt; mapperProxy) &#123;</span><br><span class="line">return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] &#123; mapperInterface &#125;, mapperProxy);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public T newInstance(SqlSession sqlSession) &#123;</span><br><span class="line">final MapperProxy&lt;T&gt; mapperProxy = new MapperProxy&lt;T&gt;(sqlSession, mapperInterface, methodCache);</span><br><span class="line">return newInstance(mapperProxy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从上述代码中终于可以看出：我们使用 <code>@Mapper</code> 接口时，实际上获取的是个动态代理对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析 —— Configuration中MapperRegistry初始化（6）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/13/mybatis/mybatis 原理分析 —— Configuration中MapperRegistry初始化（6）/" itemprop="url">mybatis 原理分析 —— Configuration中MapperRegistry初始化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T10:30:38+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/27/mybatis/mybatis——入门（0）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/27/mybatis/mybatis——入门（0）/" itemprop="url">mybatis 入门(0)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-27T10:35:28+08:00">
+                2018-06-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>要使用 MyBatis， 只需将 mybatis-x.x.x.jar 文件置于 classpath 中即可。</p>
+<p>如果使用 Maven 来构建项目，则需将下面的 dependency 代码置于 pom.xml 文件中：</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+  &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+  &lt;version&gt;x.x.x&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h2 id="构建-SqlSessionFactory"><a href="#构建-SqlSessionFactory" class="headerlink" title="构建 SqlSessionFactory"></a>构建 SqlSessionFactory</h2><p>每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为中心的。</p>
+<p>SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。而 SqlSessionFactoryBuilder 则可以从 XML 配置文件或一个预先定制的 Configuration 的实例构建出 SqlSessionFactory 的实例。实际上使用 XML 配置文件构建时，内部也会使用 XML 解析类构建一个 Configuration 实例，然后利用该 Configuration 实例构建 SqlSessionFactory。</p>
+<h3 id="从-XML-中构建-SqlSessionFactory"><a href="#从-XML-中构建-SqlSessionFactory" class="headerlink" title="从 XML 中构建 SqlSessionFactory"></a>从 XML 中构建 SqlSessionFactory</h3><p>从 XML 文件中构建 SqlSessionFactory 的实例非常简单，建议使用类路径下的资源文件进行配置。但是也可以使用任意的输入流(InputStream)实例，包括字符串形式的文件路径或者 file:// 的 URL 形式的文件路径来配置。 MyBatis 包含一个名叫 Resources 的工具类，它包含一些实用方法，可使从 classpath 或其他位置加载资源文件更加容易。</p>
+<pre><code>String resource = &quot;org/mybatis/example/mybatis-config.xml&quot;;
+InputStream inputStream = Resources.getResourceAsStream(resource);
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+</code></pre><p>XML 配置文件（ configuration XML ）中包含了对 MyBatis 系统的核心设置，包含获取数据库连接实例的数据源（DataSource）和决定事务作用域和控制方式的事务管理器（TransactionManager）。XML 配置文件的详细内容后面再探讨，这里先给出一个简单的示例：</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE configuration
+  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;
+&lt;configuration&gt;
+  &lt;environments default=&quot;development&quot;&gt;
+    &lt;environment id=&quot;development&quot;&gt;
+      &lt;transactionManager type=&quot;JDBC&quot;/&gt;
+      &lt;dataSource type=&quot;POOLED&quot;&gt;
+        &lt;property name=&quot;driver&quot; value=&quot;${driver}&quot;/&gt;
+        &lt;property name=&quot;url&quot; value=&quot;${url}&quot;/&gt;
+        &lt;property name=&quot;username&quot; value=&quot;${username}&quot;/&gt;
+        &lt;property name=&quot;password&quot; value=&quot;${password}&quot;/&gt;
+      &lt;/dataSource&gt;
+    &lt;/environment&gt;
+  &lt;/environments&gt;
+  &lt;mappers&gt;
+    &lt;mapper resource=&quot;org/mybatis/example/BlogMapper.xml&quot;/&gt;
+  &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre><p>当然，还有很多可以在 XML 文件中进行配置，上面的示例指出的则是最关键的部分。要注意 XML 头部的声明，用来验证 XML 文档正确性。environment 元素体中包含了事务管理和连接池的配置。 mappers 元素则是包含一组 mapper 映射器（这些 mapper 的 XML 文件包含了 SQL 代码和映射定义信息）。</p>
+<h2 id="使用-Configuration-构建-SqlSessionFactory"><a href="#使用-Configuration-构建-SqlSessionFactory" class="headerlink" title="使用 Configuration 构建 SqlSessionFactory"></a>使用 Configuration 构建 SqlSessionFactory</h2><p>如果你更愿意直接从 Java 程序而不是 XML 文件中创建 configuration，或者创建你自己的 configuration 构建器，MyBatis 也提供了完整的配置类，提供所有和 XML 文件相同功能的配置项。</p>
+<pre><code>DataSource dataSource = BlogDataSourceFactory.getBlogDataSource();
+TransactionFactory transactionFactory = new JdbcTransactionFactory();
+Environment environment = new Environment(&quot;development&quot;, transactionFactory, dataSource);
+Configuration configuration = new Configuration(environment);
+configuration.addMapper(BlogMapper.class);
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
+</code></pre><p>注意该例中，configuration 添加了一个映射器类（mapper class）。映射器类是 Java 类，它们包含 SQL 映射语句的注解从而避免了 XML 文件的依赖。不过，由于 Java 注解的一些限制加之某些 MyBatis 映射的复杂性，XML 映射对于大多数高级映射（比如：嵌套 Join 映射）来说仍然是必须的。有鉴于此，如果存在一个对等的 XML 配置文件的话，MyBatis 会自动查找并加载它（这种情况下， BlogMapper.xml 将会基于类路径和 BlogMapper.class 的类名被加载进来）。具体细节稍后讨论。</p>
+<h2 id="从-SqlSessionFactory-中获取-SqlSession"><a href="#从-SqlSessionFactory-中获取-SqlSession" class="headerlink" title="从 SqlSessionFactory 中获取 SqlSession"></a>从 SqlSessionFactory 中获取 SqlSession</h2><p>既然有了 SqlSessionFactory ，顾名思义，我们就可以从中获得 SqlSession 的实例了。SqlSession 完全包含了面向数据库执行 SQL 命令所需的所有方法。你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。例如：</p>
+<pre><code>SqlSession session = sqlSessionFactory.openSession();
+try {
+  Blog blog = (Blog) session.selectOne(&quot;org.mybatis.example.BlogMapper.selectBlog&quot;, 101);
+} finally {
+  session.close();
+}
+</code></pre><p>诚然这种方式能够正常工作，并且对于使用旧版本 MyBatis 的用户来说也比较熟悉，不过现在有了一种更直白的方式。使用对于给定语句能够合理描述参数和返回值的接口（比如说BlogMapper.class），你现在不但可以执行更清晰和类型安全的代码，而且还不用担心易错的字符串字面值以及强制类型转换。</p>
+<p>例如：</p>
+<pre><code>SqlSession session = sqlSessionFactory.openSession();
+try {
+  BlogMapper mapper = session.getMapper(BlogMapper.class);
+  Blog blog = mapper.selectBlog(101);
+} finally {
+  session.close();
+}
+</code></pre><p>现在我们来探究一下这里到底是怎么执行的。</p>
+<h2 id="探究已映射的-SQL-语句"><a href="#探究已映射的-SQL-语句" class="headerlink" title="探究已映射的 SQL 语句"></a>探究已映射的 SQL 语句</h2><p>现在，或许你很想知道 SqlSession 和 Mapper 到底执行了什么操作，而 SQL 语句映射是个相当大的话题，可能会占去文档的大部分篇幅。不过为了让你能够了解个大概，这里会给出几个例子。</p>
+<p>在上面提到的两个例子中，一个语句应该是通过 XML 定义，而另外一个则是通过注解定义。先看 XML 定义这个，事实上 MyBatis 提供的全部特性可以利用基于 XML 的映射语言来实现，这使得 MyBatis 在过去的数年间得以流行。如果你以前用过 MyBatis，这个概念应该会比较熟悉。不过 XML 映射文件已经有了很多的改进，随着文档的进行会愈发清晰。这里给出一个基于 XML 映射语句的示例，它应该可以满足上述示例中 SqlSession 的调用。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;!DOCTYPE mapper
+  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;
+  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;
+&lt;mapper namespace=&quot;org.mybatis.example.BlogMapper&quot;&gt;
+  &lt;select id=&quot;selectBlog&quot; resultType=&quot;Blog&quot;&gt;
+    select * from Blog where id = #{id}
+  &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre><p>对于这个简单的例子来说似乎有点小题大做了，但实际上它是非常轻量级的。在一个 XML 映射文件中，你想定义多少个映射语句都是可以的，这样下来，XML 头部和文档类型声明占去的部分就显得微不足道了。文件的剩余部分具有很好的自解释性。在命名空间 “org.mybatis.example.BlogMapper” 中定义了一个名为 “selectBlog” 的映射语句，这样它就允许你使用指定的完全限定名 “org.mybatis.example.BlogMapper.selectBlog” 来调用映射语句，就像上面的例子中做的那样：</p>
+<pre><code>Blog blog = (Blog) session.selectOne(&quot;org.mybatis.example.BlogMapper.selectBlog&quot;, 101);
+</code></pre><p>你可能注意到这和使用完全限定名调用 Java 对象的方法是相似的，之所以这样做是有原因的。这个命名可以直接映射到在命名空间中同名的 Mapper 类，并将已映射的 select 语句中的名字、参数和返回类型匹配成方法。这样你就可以像上面那样很容易地调用这个对应 Mapper 接口的方法。不过让我们再看一遍下面的例子：</p>
+<pre><code>BlogMapper mapper = session.getMapper(BlogMapper.class);
+Blog blog = mapper.selectBlog(101);
+</code></pre><p>第二种方法有很多优势，首先它不是基于字符串常量的，就会更安全；其次，如果你的 IDE 有代码补全功能，那么你可以在有了已映射 SQL 语句的基础之上利用这个功能。</p>
+<hr>
+<p><code>命名空间的一点注释</code></p>
+<p><strong>命名空间(Namespaces)</strong>： 在之前版本的 MyBatis 中是可选的，这样容易引起混淆因此毫无益处。现在命名空间则是必须的，且意于简单地用更长的完全限定名来隔离语句。</p>
+<p>命名空间使得你所见到的接口绑定成为可能，尽管你觉得这些东西未必用得上，你还是应该遵循这里的规定以防哪天你改变了主意。出于长远考虑，使用命名空间，并将它置于合适的 Java 包命名空间之下，你将拥有一份更加整洁的代码并提高了 MyBatis 的可用性。</p>
+<p><strong>命名解析</strong> ：为了减少输入量，MyBatis 对所有的命名配置元素（包括语句，结果映射，缓存等）使用了如下的命名解析规则。</p>
+<ul>
+<li>完全限定名（比如“com.mypackage.MyMapper.selectAllThings”）将被直接查找并且找到即用。</li>
+<li>短名称（比如“selectAllThings”）如果全局唯一也可以作为一个单独的引用。如果不唯一，有两个或两个以上的相同名称（比如“com.foo.selectAllThings ”和“com.bar.selectAllThings”），那么使用时就会收到错误报告说短名称是不唯一的，这种情况下就必须使用完全限定名。</li>
+</ul>
+<hr>
+<p>对于像 BlogMapper 这样的映射器类（Mapper class）来说，还有另一招来处理。它们的映射的语句可以不需要用 XML 来做，取而代之的是可以使用 Java 注解。比如，上面的 XML 示例可被替换如下：</p>
+<pre><code>package org.mybatis.example;
+public interface BlogMapper {
+  @Select(&quot;SELECT * FROM blog WHERE id = #{id}&quot;)
+  Blog selectBlog(int id);
+}
+</code></pre><p>对于简单语句来说，注解使代码显得更加简洁，然而 Java 注解对于稍微复杂的语句就会力不从心并且会显得更加混乱。因此，如果你需要做很复杂的事情，那么最好使用 XML 来映射语句。</p>
+<p>选择何种方式以及映射语句的定义的一致性对你来说有多重要这些完全取决于你和你的团队。换句话说，永远不要拘泥于一种方式，你可以很轻松的在基于注解和 XML 的语句映射方式间自由移植和切换。</p>
+<h2 id="作用域（Scope）和生命周期"><a href="#作用域（Scope）和生命周期" class="headerlink" title="作用域（Scope）和生命周期"></a>作用域（Scope）和生命周期</h2><p>理解我们目前已经讨论过的不同作用域和生命周期类是至关重要的，因为错误的使用会导致非常严重的并发问题。</p>
+<hr>
+<p><code>对象生命周期和依赖注入框架</code></p>
+<p>依赖注入框架可以创建线程安全的、基于事务的 SqlSession 和映射器（mapper）并将它们直接注入到你的 bean 中，因此可以直接忽略它们的生命周期。如果对如何通过依赖注入框架来使用 MyBatis 感兴趣可以研究一下 MyBatis-Spring 或 MyBatis-Guice 两个子项目。</p>
+<hr>
+<h3 id="SqlSessionFactoryBuilder"><a href="#SqlSessionFactoryBuilder" class="headerlink" title="SqlSessionFactoryBuilder"></a>SqlSessionFactoryBuilder</h3><p>这个类可以被实例化、使用和丢弃，一旦创建了 SqlSessionFactory，就不再需要它了。因此 SqlSessionFactoryBuilder 实例的最佳作用域是方法作用域（也就是局部方法变量）。你可以重用 SqlSessionFactoryBuilder 来创建多个 SqlSessionFactory 实例，但是最好还是不要让其一直存在以保证所有的 XML 解析资源开放给更重要的事情。</p>
+<h3 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h3><p>SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，没有任何理由对它进行清除或重建。使用 SqlSessionFactory 的最佳实践是在应用运行期间不要重复创建多次，多次重建 SqlSessionFactory 被视为一种代码“坏味道（bad smell）”。因此 SqlSessionFactory 的最佳作用域是应用作用域。有很多方法可以做到，最简单的就是使用单例模式或者静态单例模式。</p>
+<h3 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h3><p>每个线程都应该有它自己的 SqlSession 实例。SqlSession 的实例不是线程安全的，因此是不能被共享的，所以它的最佳的作用域是请求或方法作用域。绝对不能将 SqlSession 实例的引用放在一个类的静态域，甚至一个类的实例变量也不行。也绝不能将 SqlSession 实例的引用放在任何类型的管理作用域中，比如 Servlet 架构中的 HttpSession。如果你现在正在使用一种 Web 框架，要考虑 SqlSession 放在一个和 HTTP 请求对象相似的作用域中。换句话说，每次收到的 HTTP 请求，就可以打开一个 SqlSession，返回一个响应，就关闭它。这个关闭操作是很重要的，你应该把这个关闭操作放到 finally 块中以确保每次都能执行关闭。下面的示例就是一个确保 SqlSession 关闭的标准模式：</p>
+<pre><code>SqlSession session = sqlSessionFactory.openSession();
+try {
+  // do work
+} finally {
+  session.close();
+}
+</code></pre><p>在你的所有的代码中一致性地使用这种模式来保证所有数据库资源都能被正确地关闭。</p>
+<h3 id="映射器实例（Mapper-Instances）"><a href="#映射器实例（Mapper-Instances）" class="headerlink" title="映射器实例（Mapper Instances）"></a>映射器实例（Mapper Instances）</h3><p>映射器是一个你创建来绑定你映射的语句的接口。映射器接口的实例是从 SqlSession 中获得的。因此从技术层面讲，任何映射器实例的最大作用域是和请求它们的 SqlSession 相同的。尽管如此，映射器实例的最佳作用域是方法作用域。也就是说，映射器实例应该在调用它们的方法中被请求，用过之后即可废弃。并不需要显式地关闭映射器实例，尽管在整个请求作用域（request scope）保持映射器实例也不会有什么问题，但是很快你会发现，像 SqlSession 一样，在这个作用域上管理太多的资源的话会难于控制。所以要保持简单，最好把映射器放在方法作用域（method scope）内。下面的示例就展示了这个实践：</p>
+<pre><code>SqlSession session = sqlSessionFactory.openSession();
+try {
+  BlogMapper mapper = session.getMapper(BlogMapper.class);
+  // do work
+} finally {
+  session.close();
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/maven/maven总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/24/maven/maven总结/" itemprop="url">maven 总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T10:33:28+08:00">
+                2019-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index">
+                    <span itemprop="name">maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Maven 约定项目的主代码位于 src/main/java 目录，测试代码位于 src/test/java 目录；测试代码只会在运行测试时才会用到，打包时不会打包。</p>
+<h3 id="Maven-坐标与依赖配置"><a href="#Maven-坐标与依赖配置" class="headerlink" title="Maven 坐标与依赖配置"></a>Maven 坐标与依赖配置</h3><p>Maven定义了一组规则：任何一个构件都可以使用Maven坐标唯一标识，Maven坐标的元素包括：（groupId、artifactId、version，必须定义）、packaging（可选）、classifier（不能直接定义，由插件帮助生成）。</p>
+<h4 id="依赖范围"><a href="#依赖范围" class="headerlink" title="依赖范围"></a>依赖范围</h4><p>Maven 在编译主代码时会使用一套 classpath1 ，在编译和运行测试代码时，会用到另外一套 classpath2 ，最后，打包（运行）Maven 项目时又是另外一套classpath3 。 实际上 Maven 依赖的 scope 就是用来控制 Maven 依赖与这三种 classpath 的关系的，Scope可以取如下值：</p>
+<ul>
+<li>compile : 默认值，会把依赖加入到上述三种 classpath 中</li>
+<li>test : 只在编译、执行测试代码时有效，即上述第二种 classpath2</li>
+<li>provided : 对于编译和测试时有效，但是运行时无效（不会打包），即会加到 classpath1/classpath2 中</li>
+<li>runtime : 对于测试和运行 classpath 有效，编译主代码时无效</li>
+<li>system : 系统依赖范围，与 provided 依赖范围完全一致<br><img src="/pics/maven-scope.png" alt></li>
+</ul>
+<h4 id="依赖范围与传递性依赖"><a href="#依赖范围与传递性依赖" class="headerlink" title="依赖范围与传递性依赖"></a>依赖范围与传递性依赖</h4><p>A依赖B，B依赖C，则A依赖C；我们称 A与B是第一直接依赖，B与C是第二直接依赖， A与C是传递性依赖；下表中最左第一列是第一直接依赖范围，表头是第二直接依赖范围，表格中代表结果的传递性依赖范围。<br><img src="/pics/maven-dep-propogation.png" alt></p>
+<h4 id="依赖调解"><a href="#依赖调解" class="headerlink" title="依赖调解"></a>依赖调解</h4><p>当依赖冲突时，例如：<br>A-&gt;B-&gt;C-&gt;X(1.0)/A-&gt;D-&gt;X(2.0)<br>依赖调解第一原则：路径最近者优先。上例中 X(1.0) 路径长为3，而X(2.0)长为2，所以X(2.0)会被解析引用。<br>A-B-&gt;Y(1.0)/A-&gt;C-&gt;Y(2.0)<br>依赖路径长途相同时，要靠依赖调解第二原则：第一声明优先。B先声明，则用Y(1.0)；C先声明的话就用Y(2.0)。</p>
+<h4 id="可选依赖"><a href="#可选依赖" class="headerlink" title="可选依赖"></a>可选依赖</h4><p>A-&gt;B/B-&gt;X(optional)/B-&gt;Y(optional): A不会依赖 X和Y。</p>
+<h4 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h4><p>当我们想去掉某些传递性依赖时，可以使用 exclusions :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.ebayinc.platform.mayfly&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mayfly-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;uKernelCore&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;com.ebay.kernel&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;netty-common&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;io.netty&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>exclusion 中只需要指出 groupId 和 artifactId 。</p>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p><img src="/pics/maven-repo.png" alt><br>在 settings 文件中，使用 repository 元素配置远程仓库，id为 central 是中央仓库；如果仓库需要认证，使用 server 元素配置认证信息，repository 与 server 之间通过id关联，即 server 配置的是 id 相同的 repository 的认证信息。</p>
+<h4 id="从仓库解析依赖的机制"><a href="#从仓库解析依赖的机制" class="headerlink" title="从仓库解析依赖的机制"></a>从仓库解析依赖的机制</h4><ol>
+<li>当依赖范围是 system 的时候， Maven 直接从本地文件系统解析构件</li>
+<li>根据依赖坐标计算仓库路径后，尝试直接从本地仓库寻找构件，如果发现相应构件，则解析成功</li>
+<li>在在本地仓库不存在相应构件的情况下，如果依赖的版本是显示的发布版本（非SNAPSHOT/RELEASE/LATEST）构件，则遍历所有的远程仓库，发现后，下载并解析使用。</li>
+<li>如果依赖的版本是 RELEASE 或者 LATEST，则基于更新策略读取所有远程仓库的元数据 <code>groupid/artifactid/maven-metadata.xml</code>，将其与本地仓库的对应元数据合并后，计算出 RELEASE 或者 LATEST 真实的值，然后基于这个真实的值检查本地和远程仓库。</li>
+<li>如果依赖版本是 SNAPSHOT ，则基于更新策略读取所有远程仓库的元数据 <code>groupid/artifactid/maven-metadata.xml</code>，将其与本地仓库的对应元数据合并后，得到最新快照版本的值，然后基于该值检查本地仓库，或者从远程仓库下载。</li>
+<li>如果解析得到的构件版本是时间戳格式的快照，如1.4.1-20201103.132350-123，则复制其时间戳格式的文件至非时间戳格式，如 SNAPSHOT，并使用该非时间戳格式的构件。</li>
+</ol>
+<h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><p>如果仓库X可以提供仓库Y存储的所有内容，那么就可以认为X是Y的一个镜像。如果在 seetings 中用 mirror 配置X是Y的镜像，那么所有到Y的请求都会转至该镜像仓库。镜像仓库会完全屏蔽被镜像的仓库，如果镜像仓库停止服务，Maven仍然无法访问被镜像仓库。</p>
+<h3 id="生命周期和插件"><a href="#生命周期和插件" class="headerlink" title="生命周期和插件"></a>生命周期和插件</h3><p>三套相互独立的生命周期： </p>
+<ul>
+<li>clean: 清理项目，包含 pre-calen 、 clean 、 post-clean 三个阶段</li>
+<li>default: 构建项目，阶段很多</li>
+<li>site: 建立项目站点，pre-site 、 site 、 post-site 、 site-deploy 四个阶段<br>每个生命周期包含一些阶段，这些阶段是有顺序的，并且后边的阶段会依赖前边的阶段，因此执行后边的阶段，前边依赖的阶段也会执行，用户和Maven最直接的交互方式就是调用这些生命周期的阶段。<br>三套生命周期之间是相互独立的，也就是说调用不同生命周期中的阶段不会对其它生命周期有影响，更不会执行其它生命周期内的阶段。</li>
+</ul>
+<h4 id="插件目标"><a href="#插件目标" class="headerlink" title="插件目标"></a>插件目标</h4><p><img src="/pics/mvn-goal.png" alt><br>可以在 pom 的 build&gt;plugins&gt;plugin&gt;executions&gt;execution 下为某个插件目标绑定到特定的生命周期阶段上。当多个目标绑定到同一个阶段时，插件的声明顺序会决定目标执行的先后顺序。<br>mvn [options] <plugin:goal> <phase><br>Maven不仅可以执行生命周期的阶段，进而执行绑定在这些阶段上的目标，而且可以直接执行某些插件目标。</phase></plugin:goal></p>
+<h3 id="聚合与继承"><a href="#聚合与继承" class="headerlink" title="聚合与继承"></a>聚合与继承</h3><h4 id="聚合-多模块"><a href="#聚合-多模块" class="headerlink" title="聚合(多模块)"></a>聚合(多模块)</h4><p>当我们的两个Maven项目是相关的，共同作用以构成一个更大的项目，我们可以把他们称为更大项目的模块。如 regs-api/regs-serve/regs-ft。一个简单的需求就是：我们想要一次构建两个模块而不是分别进入到不同模块目录下执行 mvn 命令。Maven 聚合就是为这一需求服务的。<br>首先，需要创建另一个模块，并且 packaging 类型必须是 POM ，然后，在 pom 文件中配置 modules，每个 module 的值都是一个相对于当前 pom 的<strong>目录</strong>。聚合模块通常只包含一个 pom.xml 文件，没有源码资源等目录。</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>当多个模块之间有许多重复的配置时，可以将他们抽取出来作为一个父模块供这些模块继承共享。父模块的打包类型也必须是 pom，而且不需要源代码之类的目录。子模块继承时，使用 parent 元素指定父模块， parent下的 groupId、artifactId、version 制定了父模块的坐标， relativePath 指定父模块 pom 文件相对与本 pom 的路径，默认值是 ../pom.xml，即上层目录中的 pom.xml ，maven 会首先根据 relativePath 查找父 POM， 如果找不到，再从本地仓库查找 。</p>
+<p>父 pom 中一些配置元素是可以被继承的，下边是一个完整的列表：</p>
+<ul>
+<li>groupId ：项目组 ID ，项目坐标的核心元素；  </li>
+<li>version ：项目版本，项目坐标的核心元素；  </li>
+<li>description ：项目的描述信息；  </li>
+<li>organization ：项目的组织信息；  </li>
+<li>inceptionYear ：项目的创始年份；  </li>
+<li>url ：项目的 url 地址  </li>
+<li>develoers ：项目的开发者信息；  </li>
+<li>contributors ：项目的贡献者信息；  </li>
+<li>distributionManagerment ：项目的部署信息；  </li>
+<li>issueManagement ：缺陷跟踪系统信息；  </li>
+<li>ciManagement ：项目的持续继承信息；  </li>
+<li>scm ：项目的版本控制信息；  </li>
+<li>mailingListserv ：项目的邮件列表信息；  </li>
+<li>properties ：自定义的 Maven 属性；  </li>
+<li>dependencies ：项目的依赖配置；  </li>
+<li>dependencyManagement ：项目的依赖管理配置；  </li>
+<li>repositories ：项目的仓库配置；  </li>
+<li>build ：包括项目的源码目录配置、输出目录配置、插件配置、插件管理配置等；  </li>
+<li>reporting ：包括项目的报告输出目录配置、报告插件配置等。 </li>
+</ul>
+<h5 id="继承下的依赖"><a href="#继承下的依赖" class="headerlink" title="继承下的依赖"></a>继承下的依赖</h5><p>当模块A和B都依赖了一些共同的 jar，可以将这些共同的依赖放到父模块的依赖配置下，这样子模块就不用添加这些配置直接继承即可。但是，这样的话，以后新加的子模块C都会依赖这些A和B的依赖，有可能对C是没用的。<br>可以使用 dependencyManagement 统一管理这些共同依赖， dependencyManagement 下的依赖不会引入实际的依赖（打包不打），但是可以为一些依赖项配置好版本，这样子元素要使用某一项依赖时，只需要直接添加 groupId、artifactId 的 dependency，版本就是父模块中的版本，当然也可以写上 version ，这样会使用子模块中的版本（类似覆盖）。与 dependencyManagement 还有 pluginManagement 。</p>
+<h4 id="聚合与继承的关系"><a href="#聚合与继承的关系" class="headerlink" title="聚合与继承的关系"></a>聚合与继承的关系</h4><p>聚合与继承的目的是完全不同的，聚合是为了方便快速的构建多个项目，后者主要是为了消除重复的配置。两者其实没有什么关系，如果非要说两者的共同点，那就是两者的 packaging 类型都必须是 pom ,同时，聚合模块与父模块中除了 pom.xml 文件没有其他内容。<br>但是实际使用中，大多数 POM 可以既是父 POM 又是聚合 POM 。</p>
+<h3 id="Maven-测试"><a href="#Maven-测试" class="headerlink" title="Maven 测试"></a>Maven 测试</h3><p>Maven 测试主要是通过 maven-surefire-plugin 插件来完成，它能很好的支持 Junit 和 TestNG 测试框架。Maven test 阶段被定义为“使用测试框架完成测试”，默认情况下，正是与 maven-surefire-plugin 的 test 目标相绑定的。默认情况下，maven-surefire-plugin test 目标会自动执行测试源码路径下（src/test/java/）下所有符合下述命名模式的类：</p>
+<ol>
+<li><em>*/Test\</em>.java :任何子目录下以Test开头的Java类</li>
+<li><em>*/</em>Test.java :任何子目录下以Test结尾的Java类</li>
+<li><em>*/\</em>TestCase.java :任何子目录下以TestCase结尾的Java类<br>只要以上述模式命名测试类，Maven 就能自动运行它们。<br>Maven 也支持通过命令行动态指定要运行的某个或某几个测试用例：通过 test 参数指定。</li>
+</ol>
+<ul>
+<li>mvn test -Dtest=RandomGeneratorTest</li>
+<li>mvn test -Dtest=Random*Test</li>
+<li>mvn test -Dtest=Random*Test,OnceTest</li>
+</ul>
+<p>符合上述命名模式的Java测试用例会被自动执行，另外，还可以通过配置来包含或者排除某些测试用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6&lt;/version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;useFile&gt;false&lt;/useFile&gt;</span><br><span class="line">        &lt;includes&gt;</span><br><span class="line">            &lt;!-- This is not a mistake. Has to be .java even though its a groovy file. Without it, tests won&apos;t run.--&gt;</span><br><span class="line">            &lt;include&gt;**/*Spec.java&lt;/include&gt;</span><br><span class="line">            &lt;include&gt;**/*Tests.java&lt;/include&gt;</span><br><span class="line">        &lt;/includes&gt;</span><br><span class="line">        &lt;excludes&gt;</span><br><span class="line">            &lt;exclude&gt;RandomGeneratorTest&lt;/exclude&gt;</span><br><span class="line">        &lt;/excludes&gt;</span><br><span class="line">        &lt;skipTests&gt;true/false&lt;/skipTests&gt;</span><br><span class="line">        &lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果是 TestNG 测试，则可以在目录下创建一个称为 suite 的 xml 文件来配置测试用例的运行，具体配置要看 TestNG 的文档。另外，还需要在 maven-surefire-plugin 插件中配置使用该 suite 文件来运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6&lt;/version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">      &lt;suiteXmlFile&gt;testng.xml&lt;/suiteXmlFile&gt;</span><br><span class="line">      &lt;groups&gt;group1,group2&lt;groups&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure></p>
+<p>也可以用 mvn test -DsuiteXmlFile=testng.xml 参数在命令行中指定 suite 配置文件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/15/maven/maven常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/maven/maven常用命令/" itemprop="url">maven 常用命令参数和配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T22:14:26+08:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index">
+                    <span itemprop="name">maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="maven-常用命令"><a href="#maven-常用命令" class="headerlink" title="maven 常用命令"></a>maven 常用命令</h4><ol>
+<li><code>mvn -B archetype:generate  -DgroupId=com.my -DartifactId=simple-weather -DpackageName=com.baicy -Dversion=1.0</code>: 以batch模式创建新项目，会选择 Archetype ，可能需要删除 settings配置文件中 archetypeRepository 和 archetypeCatalog 配置。</li>
+<li><code>mvn archetype:generate  -DarchetypegroupId=com.my -DarchetypeArtifactId=simple-archetype -DarchetypeVersion=1.0</code>:使用指定的 Archetype 生成项目。</li>
+<li><code>mvn dependency:list</code> ：输出依赖所有依赖的包</li>
+<li><code>mvn dependency:tree -Dverbose</code> ：输出依赖树，解决依赖冲突时有用</li>
+<li><code>mvn dependency:analyze</code> ：分析依赖树</li>
+<li><code>-U</code> :强制更新本地库</li>
+<li><code>mvn clean cobertura:cobertura -Dcobertura.report.format=html</code>:生成html格式的测试覆盖率报告</li>
+<li><code>mvn help:effective-pom</code>：生成完整的 POM 文件，包含 super pom</li>
+<li><code>mvn help:effective-settings</code>: 查看当前 maven 生效的设置</li>
+<li>安装本地JAR包到本地仓库：<code>mvn install:install-file -Dfile= -DgroupId=org.codehaus.mojo -DartifactId=tmaven-versions-plugin -Dversion=2.2 -Dpackaging=jar</code></li>
+<li><code>mvn package -DskipTests</code>: 跳过测试运行</li>
+<li><code>mvn package -Dmvn.test.skip=true</code>：跳过测试代码编译同时跳过测试运行</li>
+<li><code>mvn test -Dtest=testClass1,testClass2|Random*Test</code>：运行指定的测试类（|代表或）</li>
+</ol>
+<h4 id="maven-常用配置"><a href="#maven-常用配置" class="headerlink" title="maven 常用配置"></a>maven 常用配置</h4><p>最佳实践是将 maven 安装目录下的 <code>conf/settings.xml</code> 文件复制到用户目录下的 <code>.m2</code> 文件夹中，并修改其中的配置。</p>
+<ol>
+<li>修改本地仓库路径: <code>&lt;localRepository&gt;D:/repository&lt;/localRepository&gt;</code></li>
+<li>修改远程仓库镜像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">&lt;id&gt;aliyun&lt;/id&gt;</span><br><span class="line">&lt;name&gt;aliyun Maven&lt;/name&gt;</span><br><span class="line">&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;!-- &lt;url&gt;http://maven.oschina.net/content/groups/public&lt;/url&gt; --&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/maven/maven插件开发和archetype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/14/maven/maven插件开发和archetype/" itemprop="url">maven plugin 开发和 archetype</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-14T20:45:23+08:00">
+                2020-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index">
+                    <span itemprop="name">maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Maven-插件开发"><a href="#Maven-插件开发" class="headerlink" title="Maven 插件开发"></a>Maven 插件开发</h3><h4 id="Maven-插件开发的一般步骤"><a href="#Maven-插件开发的一般步骤" class="headerlink" title="Maven 插件开发的一般步骤"></a>Maven 插件开发的一般步骤</h4><ol>
+<li>创建一个 maven-plugin项目：使用 <code>maven archetype:generate</code> ，然后选择 maven-archetype-plugin 快速创建一个插件项目</li>
+<li>为插件编写目标：每个插件必须包含一个或多个目标，Maven称之为 Mojo，继承自 AbstractMojo 类。</li>
+<li>为目标提供配置点：在编写Mojo时，提供可配置的参数</li>
+<li>编写代码实现目标行为：根据实际需求实现Mojo</li>
+<li>错误处理及日志</li>
+<li>测试插件：编写自动化的测试代码测试插件。</li>
+</ol>
+<p>Maven插件的 pom 有两个特殊的地方：</p>
+<ol>
+<li>packaging 类型必须是 maven-plugin</li>
+<li>必须依赖一个 maven-plugin-api 的 artifact。<br>创建好插件项目之后，我们要创建一个Mojo：继承 AbstractMojo 、实现 execute() 方法、提供 @goal 注解。</li>
+</ol>
+<h4 id="调试自己开发的-Maven-插件"><a href="#调试自己开发的-Maven-插件" class="headerlink" title="调试自己开发的 Maven 插件"></a>调试自己开发的 Maven 插件</h4><ol>
+<li>将自己开发的插件 mvn install 到本地</li>
+<li>在一个项目X中使用开发的插件，然后，在该项目路径下执行<code>mvnDebug com.ebay.raptor.build:assembler-maven-plugin:3.0.25-RELEASE:package</code>，注意插件的版本要一致，不然代码无法匹配，代码断点会失效；执行后会打开一个端口等待 debugger 连接 </li>
+<li>在插件开发的IDEA项目中，新建一个 remote 的 debug/run configuration，port修改为上面的port，然后在项目代码中打上断点，然后debug执行即可</li>
+</ol>
+<h3 id="Maven-Archetype-开发"><a href="#Maven-Archetype-开发" class="headerlink" title="Maven Archetype 开发"></a>Maven Archetype 开发</h3><p>一个典型的 Maven Archetype 项目主要包括以下几个部分：</p>
+<ul>
+<li>pom.xml: Archetype 项目自身的 pom</li>
+<li>src/main/resources/archetype-resources/pom.xml : 基于该Archetype生成的项目的 pom 文件</li>
+<li>src/main/resources/META-INF/maven/archetype-metadata.xml : Archetype 的描述符文件</li>
+<li>src/main/resources/archetype-resources/** : 其它需要包含在 Archetype 中的内容。</li>
+</ul>
+<p>一个 Archetype 最核心的是 archetype-metadata.xml 描述符文件，它主要用来控制两个事情：</p>
+<ol>
+<li>声明哪些文件和目录应该包含在 Archetype 中</li>
+<li>这个 Archetype 使用哪些属性参数</li>
+</ol>
+<p>一个示例描述符文件文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;&gt;&lt;/xml&gt;</span><br><span class="line">&lt;archetype-descriptor name=&quot;springboot-archetype-quickstart&quot;&gt;</span><br><span class="line">    &lt;fileSets&gt;</span><br><span class="line">        &lt;fileSet filtered=&quot;true&quot; packaged=&quot;true&quot;&gt;</span><br><span class="line">            &lt;directory&gt;src/main/java&lt;/directory&gt;</span><br><span class="line">            &lt;includes&gt;</span><br><span class="line">                &lt;include&gt;**/*.java&lt;/include&gt;</span><br><span class="line">            &lt;/includes&gt;</span><br><span class="line">        &lt;/fileSet&gt;</span><br><span class="line">        &lt;fileSet filtered=&quot;true&quot; packaged=&quot;true&quot;&gt;</span><br><span class="line">            &lt;directory&gt;src/test/java&lt;/directory&gt;</span><br><span class="line">            &lt;includes&gt;</span><br><span class="line">                &lt;include&gt;**/*.java&lt;/include&gt;</span><br><span class="line">            &lt;/includes&gt;</span><br><span class="line">        &lt;/fileSet&gt;</span><br><span class="line">        &lt;fileSet filtered=&quot;true&quot; packaged=&quot;false&quot;&gt;</span><br><span class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</span><br><span class="line">            &lt;includes&gt;</span><br><span class="line">                &lt;include&gt;**/*.properties&lt;/include&gt;</span><br><span class="line">            &lt;/includes&gt;</span><br><span class="line">        &lt;/fileSet&gt;</span><br><span class="line">    &lt;/fileSets&gt;</span><br><span class="line">    &lt;requiredProperties&gt;</span><br><span class="line">        &lt;requiredProperty key=&quot;port&quot;&gt;&lt;/requiredProperty&gt;</span><br><span class="line">        &lt;requiredProperty key=&quot;groupId&quot;&gt;</span><br><span class="line">            &lt;defaultValue&gt;com.baicy.wang&lt;/defaultValue&gt;</span><br><span class="line">        &lt;/requiredProperty&gt;</span><br><span class="line">    &lt;/requiredProperties&gt;</span><br><span class="line">&lt;/archetype-descriptor&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上述描述符中定义了名称为 quickstart 的 Archetype ，主要包含 fileSets 和 requiredProperties 两个元素。</p>
+<ol>
+<li><p><code>&lt;fileSets&gt;</code><br> 包含一个或多个 fileset，每个 fileset 定义一个目录及与该目录相关的包含或排除规则。上述代码段中第一个 fileSet 指向的是 src/main/java ，该目录对应的是该Archetype项目的 archetype-resources/src/main/java 子资源目录， filtered 表示是否对该文件集合应用属性替换（${x}这样的值是否替换为命令行输入的 x 参数的值）； packaged 表示是否将该目录下的内容放到生成项目的包路径下。<br> include 子元素声明哪些内容将会被包含，<em>* 表示匹配任意目录，</em> 表示匹配处路径分隔符之外的任意字符。<br> <img src="/pics/archetype-resource.png" alt></p>
+</li>
+<li><p><code>&lt;requiredProperties&gt;</code><br>一般在生成 maven 项目时默认需要四个参数：groupId、artifactId、version和package，requiredProperties 用来配置要求额外参数，比如上面要求port参数</p>
+</li>
+</ol>
+<p>项目编写完成后，使用 <code>mvn clean install</code> 安装到本地库，就可以通过该 Archtype 的项目坐标来生成项目了：<br><code>mvn archetype:generate  -DarchetypeGroupId=com.baicy.wang -DarchetypeArtifactId=springboot-archetype-quickstart -DarchetypeVersion=1.0-SNAPSHOT</code>。</p>
+<h4 id="Archetype-Catalog"><a href="#Archetype-Catalog" class="headerlink" title="Archetype Catalog"></a>Archetype Catalog</h4><p>当用户以不指定 Archetype 坐标的方式使用 maven-archetype-plugin 的时候，会得到一个 Archetype 的列表供选择，这个列表来源于一个 archetype-catlog.xml 的文件。 maven-archetype-plugin 可以从下面几个地方获取这个文件：</p>
+<ul>
+<li>internal : maven-archetype-plugin 内置的 Archetype Catalog ，大约包含了 58 个 archetype</li>
+<li>local : 从用户本地的 ～/.m2/archetype-catlog.xml 加载，该文件默认不存在。</li>
+<li>remote : 指向了 Maven 中央仓库的 Archetype Catalog。</li>
+<li>file://… : 用户可以指定本机任意路径下的 archetype-catlog.xml 文件</li>
+<li>http://… : 用户可以使用HTTP协议指定远程的 archetype-catlog.xml 文件</li>
+</ul>
+<p>执行<code>mvn archetype:generate</code> 时，使用 <code>archetypeCatalog</code> 参数指定插件使用的 catalog ，多个 catalog 源之间使用逗号分隔。该参数默认值是“remote,local“，所以 maven-archetype-plugin 默认使用中央仓库加本机的 catalog 信息。</p>
+<h4 id="生成本地仓库的-Archetype-Catalog"><a href="#生成本地仓库的-Archetype-Catalog" class="headerlink" title="生成本地仓库的 Archetype Catalog"></a>生成本地仓库的 Archetype Catalog</h4><p>当我们构建了一个 Archetype 项目并且安装到本地后，我们可以将其添加到本地 archetype-catlog.xml 文件中，这样在生成项目时，就会出现在供选择的列表中了。还有一种方法就是执行 <code>mvn archetype:crawl</code> 目标，它会遍历本地的 Maven 仓库的内容，并自动生成 archetype-catlog.xml 文件。</p>
+<h4 id="IDEA-添加-删除自定义的-archetype"><a href="#IDEA-添加-删除自定义的-archetype" class="headerlink" title="IDEA 添加/删除自定义的 archetype"></a>IDEA 添加/删除自定义的 archetype</h4><p>创建一个项目以后，每次新建项目想以此项目为模板建立新项目，可以将该项目添加到IDEA的 archetype 中。</p>
+<ol>
+<li><code>mvn archetype:create-from-project</code> ： 生成archetype</li>
+<li>到 target/generated-sources/archetype 目录下执行 <code>mvn install</code></li>
+<li>在IDEA新建项目或module的时候，添加 archetype</li>
+<li>删除：C:\Users\BaIcy.IdeaIC2019.2\system\Maven\Indices\UserArchetypes.xml 文件中删除添加的自定义的 archetype</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/11/docker/k8s-hello world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/11/docker/k8s-hello world/" itemprop="url">k8s hello world</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-11T21:17:23+08:00">
+                2020-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/pics/k8s-components.jpg" alt="k8s组件"></p>
+<h3 id="Node-组件"><a href="#Node-组件" class="headerlink" title="Node 组件"></a>Node 组件</h3><h4 id="kubelet"><a href="#kubelet" class="headerlink" title="kubelet"></a>kubelet</h4><p>一个在集群中每个节点上运行的代理。它保证容器都运行在 Pod 中。</p>
+<p>kubelet 接收一组通过各类机制提供给它的 PodSpecs，确保这些 PodSpecs 中描述的容器处于运行状态且健康。kubelet 不会管理不是由 Kubernetes 创建的容器。</p>
+<h4 id="kube-proxy"><a href="#kube-proxy" class="headerlink" title="kube-proxy"></a>kube-proxy</h4><p>kube-proxy 是集群中每个节点上运行的网络代理,实现 Kubernetes Service 概念的一部分。</p>
+<p>kube-proxy 维护节点上的网络规则。这些网络规则允许从集群内部或外部的网络会话与 Pod 进行网络通信。</p>
+<p>如果有 kube-proxy 可用，它将使用操作系统数据包过滤层。否则，kube-proxy 会转发流量本身。</p>
+<h4 id="容器运行环境-Container-Runtime"><a href="#容器运行环境-Container-Runtime" class="headerlink" title="容器运行环境(Container Runtime)"></a>容器运行环境(Container Runtime)</h4><p>容器运行环境是负责运行容器的软件。</p>
+<p>Kubernetes 支持多个容器运行环境: Docker、 containerd、cri-o、 rktlet 以及任何实现 Kubernetes CRI (容器运行环境接口)。</p>
+<ol>
+<li>安装 Kubectl: <code>brew install kubectl</code></li>
+<li>安装 Minikube: <code>brew install minikube</code></li>
+<li>执行下列语句以使用本地docker镜像：<code>eval $(minikube docker-env)</code></li>
+<li>启动 Minikube 并创建一个集群：<code>minikube start --driver=docker</code></li>
+<li>查看集群信息： <code>kubectl cluster-info</code>、<code>kubectl get nodes</code> 。</li>
+<li>使用名为 echoserver 的镜像创建一个 Kubernetes Deployment: <code>kubectl create deployment hello-nginx --image=nginx</code>,删除的话使用：<code>kubectl delete deployment hello-nginx</code></li>
+<li>查看集群的 deployments信息：<code>kubectl get deployments</code></li>
+<li>查看集群的pods及日志信息： <code>kubectl get pods</code>,<code>kubectl describe pods [pod名]</code>，<code>kubectl log [pod名字]</code></li>
+<li>将其作为 Service 公开: <code>kubectl expose deployment hello-nginx --type=NodePort --port=8080</code></li>
+<li>获取暴露 Service 的 URL 以查看 Service 的详细信息: <code>kubectl describe services hello-nginx</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/java/java基础-集合类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/01/java/java基础-集合类/" itemprop="url">java基础-集合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-01T20:30:34+08:00">
+                2019-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Java 集合大致可分为 Set 、List 、 Queue 和 Map 四种体系，其中</p>
+<ul>
+<li>Set 代表 <strong>无序的、不可重复的集合</strong>；</li>
+<li>List 代表有序、可重复的集合</li>
+<li>Map 代表具有映射关系的集合</li>
+<li>Queue 代表队列集合的实现，是 Java 5 新增的</li>
+</ul>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Java 集合主要由两个接口派生而出： <code>Collection</code> 和 <code>Map</code> ，它们是整个集合框架的根接口。<br><img src="/pics/java-collection.jpg" alt="Collection继承树"><br><img src="/pics/java-map.jpg" alt="Map体系的继承树"><br>图中以灰色背景覆盖的，分别是 <code>HashSet</code> 、 <code>TreeSet</code> 、 <code>ArrayList</code> 、 <code>ArrayDeque</code> 、 <code>LinkedList</code> 和 <code>HashMap</code> 、 <code>TreeMap</code> 等常用实现类。</p>
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><h3 id="Collection的常用方法"><a href="#Collection的常用方法" class="headerlink" title="Collection的常用方法"></a>Collection的常用方法</h3><ul>
+<li>boolean add(Object o)：添加对象到集合，添加成功返回 true</li>
+<li>boolean addAll(Collection&lt;? extends E&gt; c):把集合c里所有的元素都添加到集合里，如果集合被改变了则返回 true</li>
+<li>void clear()：清空集合里的元素，将集合长度变为0</li>
+<li>boolean contains(Object o)：查找集合中是否有指定的对象</li>
+<li>boolean containsAll(Collection c)：查找集合中是否有集合c中的所有元素</li>
+<li>boolean isEmpty()：判断集合是否为空</li>
+<li>Iterator<e> iterator()：返回一个 Iterator 迭代器用于便利元素</e></li>
+<li>boolean remove(Object o)：删除指定的对象</li>
+<li>boolean removeAll(Collection c)：从集合中删除c集合中也有的元素，如果有一个或多个元素被删除，返回 true</li>
+<li>void retainAll(Collection c)：从集合中删除集合c中不包含的元素</li>
+<li>int size()：返回当前集合中元素的数量</li>
+<li>Object[] toArray()：把集合转换成一个数组，所有元素成为数组的元素。</li>
+<li><t> T[] toArray(T[] a)：把集合转换成一个<strong>指定类型</strong>数组，所有元素成为数组的元素。</t></li>
+</ul>
+<h3 id="遍历操作-Collection-的三种方法"><a href="#遍历操作-Collection-的三种方法" class="headerlink" title="遍历操作 Collection 的三种方法"></a>遍历操作 Collection 的三种方法</h3><h4 id="使用-Iterable-接口"><a href="#使用-Iterable-接口" class="headerlink" title="使用 Iterable 接口"></a>使用 Iterable 接口</h4><p>使用 <code>Iterable</code> 的 <code>void forEach(Consumer&lt;? super T&gt; action)</code> 方法， <code>Iterable</code> 是 <code>Collection</code> 的父接口，因此可以直接调用此方法。</p>
+<h4 id="使用-Iterator-迭代器遍历元素"><a href="#使用-Iterator-迭代器遍历元素" class="headerlink" title="使用 Iterator 迭代器遍历元素"></a>使用 Iterator 迭代器遍历元素</h4><p><code>Iterator</code> 必须依附于某个 <code>Collection</code> 对象,<code>Iterator</code> 接口定义了如下4个方法：</p>
+<ul>
+<li>boolean hasNext()：如果被迭代的集合元素没有遍历完则返回 true</li>
+<li>E next()：返回集合里的下一个元素</li>
+<li>void remove()：删除集合中上一次 next 方法返回的元素</li>
+<li>void forEachRemaining(Consumer&lt;? super E&gt; action)：Java 8 新增方法，可以使用 Lambda 表达式来遍历集合</li>
+</ul>
+<p>当使用 <code>Iterator</code> 遍历集合元素时，需要注意：<br><code>Collection</code> 集合里的元素不能被改变，只有通过 <code>Iterator</code> 的 <code>remove()</code> 方法删除集合元素才可以；否则将会引发 <code>ConcurrentModificationException</code> 异常。</p>
+<h4 id="使用-foreach-循环遍历集合元素"><a href="#使用-foreach-循环遍历集合元素" class="headerlink" title="使用 foreach 循环遍历集合元素"></a>使用 foreach 循环遍历集合元素</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List list = new ArrayList():</span><br><span class="line">list.add(&quot;adass&quot;):</span><br><span class="line">for (Object o : list) &#123;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同样，使用此方法遍历元素时，<code>Collection</code> 集合里的元素也不能被改变，否则将会引发 <code>ConcurrentModificationException</code> 异常。</p>
+<h3 id="Java-8-新增的-Predicate操作集合"><a href="#Java-8-新增的-Predicate操作集合" class="headerlink" title="Java 8 新增的 Predicate操作集合"></a>Java 8 新增的 Predicate操作集合</h3><h3 id="Java-8-新增的-Stream-操作集合"><a href="#Java-8-新增的-Stream-操作集合" class="headerlink" title="Java 8 新增的 Stream 操作集合"></a>Java 8 新增的 Stream 操作集合</h3><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set 不允许包含相同的元素，如果试图把两个相同的元素加入到同一个 Set 集合，则添加操作失败， add() 方法返回 false，且新元素也不会被加入。但是，对不同的实现类对相同元素的定义略有不同。</p>
+<h3 id="HashSet类"><a href="#HashSet类" class="headerlink" title="HashSet类"></a>HashSet类</h3><p>HashSet 使用哈希算法来存储集合元素，因此具有良好的存储和查找性能，具有以下特点：</p>
+<ul>
+<li>不能保证元素的排列顺序，顺序可能与添加顺序不同，而且可能发生变化</li>
+<li>不是线程安全的</li>
+<li>元素值可以为 null</li>
+</ul>
+<p>当向 Hashset 中存入一个元素时， HashSet 首先会调用该对象的 hashCode() 方法计算 hashCode 值，然后根据该 hashCode 值决定对象的存储位置。如果两个元素的 equals() 方法返回 true，但是 hashCode() 方法返回值不相等，HashSet 会将它们视为不同的元素存储在不同的位置。</p>
+<p>也就是说， HashSet 判断两个元素相同的标准是： equals() 方法返回 true 且 hashCode() 方法返回值相等。</p>
+<h4 id="equals-与-hashCode-方法"><a href="#equals-与-hashCode-方法" class="headerlink" title="equals() 与 hashCode() 方法"></a>equals() 与 hashCode() 方法</h4><p>如果需要重写类的 equals() 方法，则也应该重写其 hashCode() 方法。规则是：如果两个对象通过 equals() 方法返回 true，则 hashCode() 方法返回值也应该相等。看以下反例：</p>
+<h5 id="equals-返回true，hashCode-返回值不等"><a href="#equals-返回true，hashCode-返回值不等" class="headerlink" title="equals()返回true，hashCode()返回值不等"></a>equals()返回true，hashCode()返回值不等</h5><p>这将导致两个元素存储到不同的位置，从而使两个相同的（equals() 为true）的元素都可以保存到同一个 Set，与Set集合的规则冲突了。</p>
+<h5 id="equals-返回false-hashCode-返回相等"><a href="#equals-返回false-hashCode-返回相等" class="headerlink" title="equals()返回false, hashCode()返回相等"></a>equals()返回false, hashCode()返回相等</h5><p>这将导致不同的对象将存储在同一个位置（hashCode()相等），实际上 HashSet 以链表保存这些元素，这会导致性能的下降。</p>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>LinkedHashSet 是 HashSet 的子类，它也是根据元素的 hashCode()值来决定元素的存储位置，但是它同时使用链表维护元素的次序，使得元素看起来是以插入的顺序保存的的。也就是说，当遍历 LinkedHashSet 集合里的元素时，会按照元素添加的顺序来访问集合里的元素。</p>
+<p>LinkedHashSet 需要维护元素的插入顺序，因此性能略低于 HashSet 的性能，但是在迭代访问集合中的全部元素时将有很好的性能，因为它以链表来维护内部顺序。</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet 是 SortedSet 接口的实现类，它可以确保集合元素处于排序状态。TreeSet 提供了如下额外方法：</p>
+<ul>
+<li>Comparator&lt;? super E&gt; comparator()：如果 TreeSet 使用了定制排序，则返回定制的 Comparator, 如果 TreeSet 使用了自然排序，则返回 null</li>
+<li>E first()：返回集合中第一个元素</li>
+<li>E last()：返回集合中最后一个元素</li>
+<li>E lower(E e)：返回集合中位于指定元素e的前一个元素，e不需要是 TreeSet中的元素</li>
+<li>E higher(E e)：返回集合中位于指定元素e的后一个元素，e不需要是 TreeSet中的元素</li>
+<li>SortedSet<e> subSet(E fromElement, E toElement)：返回子集合Set，范围是[fromElement,toElement)</e></li>
+<li>SortedSet<e> headSet(E toElement)：返回小于 toElement 元素组成的子集合</e></li>
+<li>SortedSet<e> tailSet(E fromElement)：返回大于或等于 fromElement 的元素组成的子集合</e></li>
+</ul>
+<p>TreeSet 底层使用红黑树结构来存储集合元素。</p>
+<h4 id="TreeSet-排序规则"><a href="#TreeSet-排序规则" class="headerlink" title="TreeSet 排序规则"></a>TreeSet 排序规则</h4><p>TreeSet 支持两种排序方法：自然排序和定制排序，默认使用自然排序。</p>
+<ol>
+<li><p>自然排序</p>
+<p> TreeSet 会调用集合元素的 <code>int compareTo(T o)</code> 方法来比较元素之间的大小关系，然后将集合元素按升序排列。因此待插入的元素必须实现 <code>Comparable</code> 接口，否则会引发<code>ClassCastException</code> 。<br> 当调用 obj1.compareTo(obj2) 时，如果返回值大于0，代表 obj1 大于 obj2，等于0代表两者相等，小于0代表 obj1 小于 obj2 。<br> 在这种情况下，对于 TreeSet 集合而言，判断两个对象是否相等的唯一标准是：两个对象通过 compareTo() 方法比较是否返回0。即使 equals() 方法返回true，而 compareTo() 方法返回不为0， TreeSet 也将两者视为不相元素。因此，如果要把对象插入到 TreeSet，且重写了 equals 方法，则应该保证 equals() 相等的两个对象在调用 compareTo() 方法时返回0。</p>
+</li>
+<li><p>定制排序<br> 自然排序默认使用升序排列，如果想要实现如降序排列等其它特性，则可以通过 Comparator 接口的帮助来实现。该接口里包含一个 int compare(T o1, T o2) 方法用于比较 o1 和 o2 的大小： </p>
+<ul>
+<li>如果该方法返回正整数，则表明 o1 大于 o2；</li>
+<li>如果该方法返回负整数，则表明 o1 小于 o2；</li>
+<li><p>如果该方法返回0，则表明 o1 等于 o2；<br>如果需要实现定制排序，则要在创建 TreeSet 集合时，提供一个 Comparator 对象与该 TreeSet 集合关联，由该 Comparator 负责元素的排序逻辑。</p>
+<p>在这种情况下，对于 TreeSet 集合而言，判断两个对象是否相等的唯一标准是：两个对象通过 compare() 方法比较是否返回0。即使 equals() 方法返回true，而 compare() 方法返回不为0， TreeSet 也将两者视为不相元素。因此，如果要把对象插入到 TreeSet，且重写了 equals 方法，则应该保证 equals() 相等的两个对象在调用 compare() 方法时返回0。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="EnumSet"><a href="#EnumSet" class="headerlink" title="EnumSet"></a>EnumSet</h3><h3 id="各个-Set-实现类的性能分析"><a href="#各个-Set-实现类的性能分析" class="headerlink" title="各个 Set 实现类的性能分析"></a>各个 Set 实现类的性能分析</h3><p>HashSet 和 TreeSet 是 Set 的两个典型实现， HashSet 总是比 TreeSet 的性能好，因为 TreeSet 需要额外的红黑树来维护集合元素次序，只有当需要保持排序的 Set 时，才应该考虑使用 TreeSet。<br>LinkedHashSet 的插入、删除操作要比 HashSet 略慢，这是由于要维护链表所带来的额外开销所致，但是由于有了链表，在遍历集合元素时会更快。<br>EnumSet 是所有 Set 中性能最好的，但它只能保存同一个枚举类的枚举值作为集合元素。</p>
+<h2 id="List-集合"><a href="#List-集合" class="headerlink" title="List 集合"></a>List 集合</h2><p>List 集合代表一个元素有序、可重复的集合，集合中每个元素都有其对应的顺序索引。</p>
+<h3 id="List-接口"><a href="#List-接口" class="headerlink" title="List 接口"></a>List 接口</h3><p>List 作为 Collection 接口的子接口，当然可以使用 Collection 接口里的全部方法。而且因为 List 是有序集合，因此 List 里增加了一些根据索引来操作集合的方法：</p>
+<ul>
+<li>void add(int index, E element)：将 element 添加到 index 处</li>
+<li>boolean addAll(Collection&lt;? extends E&gt; c)：将集合c所包含的所有元素都插入到 List 集合的 index 处</li>
+<li>E get(int index):返回集合 index 处的元素</li>
+<li>int indexOf(Object o)：返回对象o在List集合中第一次出现的位置索引</li>
+<li>int lastIndexOf(Object o)：返回对象o在List集合中最后次出现的位置索引</li>
+<li>E remove(int index)：删除并返回 index 索引处的元素</li>
+<li>E set(int index, E element)：将 index 索引处的元素替换成 element 对象，并返回被替换的旧元素</li>
+<li>List<e> subList(int fromIndex, int toIndex)：返回从索引 [fromIndex,toIndex)处所有元素组成的子集合。</e></li>
+<li>void replaceAll(UnaryOperator<e> operator)：根据 operator 指定的计算规则重新设置List集合所有元素</e></li>
+<li>void sort(Comparator&lt;? super E&gt; c)：根据 Comparator 参数对 List 排序。</li>
+</ul>
+<p>List 判断两个对象相等的依据是：只要equals() 方法返回 true ，两者就视为相等。</p>
+<h3 id="ListIterator-接口"><a href="#ListIterator-接口" class="headerlink" title="ListIterator 接口"></a>ListIterator 接口</h3><p>List除了可以使用 iterator() 来获取 Iterator 迭代器以外，还提供了一个 ListIterator listIterator() 方法获取一个 ListIterator 接口，ListIterator 继承了 Iterator ，并增加了如下方法：</p>
+<ul>
+<li>boolean hasPrevious()：返回该迭代器关联的集合是否还有上一个元素</li>
+<li>E previous()：返回上一个元素</li>
+<li>void add(E e)：在指定位置插入一个元素</li>
+</ul>
+<h3 id="ArrayList-和-Vector"><a href="#ArrayList-和-Vector" class="headerlink" title="ArrayList 和 Vector"></a>ArrayList 和 Vector</h3><p>ArrayList 和 Vector 都是基于数组实现的 List 类，底层封装了一个动态的、允许再分配的 Object[]数组（或泛型数组）。</p>
+<p>如果创建 ArrayList 或者 Vector 时，没有指定数组长度，则默认大小是10，如果List长度增长到数组最大长度时，再添加元素就要重新分配数组并将原数组中的元素拷贝到新数组中，会有很大开销。所以，如果开始就知道List的大小，可以在创建时就指定，这样能避免数组重分配，提高性能。</p>
+<p>此外，两者还提供了如下方法来重新分配数组：</p>
+<ul>
+<li>void ensureCapacity(int minCapacity)：增加数组长度，数组长度+= minCapacity</li>
+<li>void trimToSize()：调整数组长度为当前元素个数，释放空间</li>
+</ul>
+<p>两者有一个显著的区别就是：ArrayList 是线程不安全的，而 Vector 是线程安全的。即使如此，也不推荐使用 Vector 类，如果想要线程安全可以使用 Collections 工具类，它可以将 ArrayList 变成线程安全的类。</p>
+<h3 id="Arrays-ArrayList"><a href="#Arrays-ArrayList" class="headerlink" title="Arrays.ArrayList"></a>Arrays.ArrayList</h3><p>Arrays 工具类的 asList(Object… os) 方法可以把一个数组或指定个数的对象转换成一个 List 集合，这个 List 实际上是 Arrays.ArrayList 的实例。</p>
+<p>Arrays.ArrayList 是一个固定长度的 List 集合，程序只能遍历访问该集合里的元素，不可增加、删除其中的元素。任何添加、删除操作将在运行时引发 UnsupportedOperationException 异常。</p>
+<h2 id="Queue-和-Deque"><a href="#Queue-和-Deque" class="headerlink" title="Queue 和 Deque"></a>Queue 和 Deque</h2><p>Queue 用于模拟队列这种数据结构，队列通常是先进先出（FIFO）的容器。队列的头部保存存放时间最长的元素，队尾保存存放时间最短的元素。新入元素放到队尾，访问元素从队列头部出队。通常，队列不允许随机访问队列中的元素。</p>
+<p>Queue 提供了如下常用方法:</p>
+<ul>
+<li>boolean add(E e)：将指定元素添加到队列的尾部</li>
+<li>E element()：获取队列头部的元素，但是不删除该元素（不出队）</li>
+<li>boolean offer(E e)：将制定元素加入到队尾（入队），此方法通常比 add 更好</li>
+<li>E peek()：获取队列头部的元素，但是不删除该元素，如果队列为空，返回null</li>
+<li>E poll()：获取队列头部的元素，并删除该元素（出队），如果队列为空返回 null</li>
+<li>E remove()：获取队列的头部元素，并删除该元素。</li>
+</ul>
+<p>Queue 还有一个 Deque 子接口， Deque 代表一个 <em>双端队列</em> ，双端队列可以同时从两端来添加、删除元素。因此 Deque 的实现类既可以当成队列使用，也可以当成栈使用。JDK为 Deque 提供了 ArrayDeque 和 LinkedList 两个实现类。</p>
+<h3 id="PriorityQueue-实现类"><a href="#PriorityQueue-实现类" class="headerlink" title="PriorityQueue 实现类"></a>PriorityQueue 实现类</h3><p>PriorityQueue 保存队列的顺序不是按元素加入的顺序，而是按照队列元素的大小进行重新排序的。出队时，取的不是最先进入队列的元素，而是队列中最小的元素（队尾到队头降序排列）。</p>
+<p>因为涉及到排序，因此也有自然排序和定制排序两种方式，与前文所述相同。</p>
+<h3 id="Deque-接口与-ArrayDeque-实现类"><a href="#Deque-接口与-ArrayDeque-实现类" class="headerlink" title="Deque 接口与 ArrayDeque 实现类"></a>Deque 接口与 ArrayDeque 实现类</h3><ul>
+<li>void addFirst(E e):将指定元素插入双端队列的队头</li>
+<li>void addLast(E e):将指定元素插入到双端队列的队尾</li>
+<li>boolean offerFirst(E e):将指定元素插入该双端队列的队头</li>
+<li>boolean offerLast(E e):将指定元素插入该双端队列的队尾</li>
+<li>E removeFirst():获取并删除队头元素</li>
+<li>E removeLast():获取并删除队尾元素</li>
+<li>E pollFirst():获取并删除队头元素，如果队列为空，返回 null</li>
+<li>E pollLast():获取并删除队尾元素，如果队列为空，返回 nul</li>
+<li>E getFirst():获取但并不删除队头元素</li>
+<li>E getLast():获取但并不删除队尾元素</li>
+<li>E peekFirst():获取但并不删除队头元素，如果队列为空，返回 nul</li>
+<li>E peekLast():获取但并不删除队尾元素，如果队列为空，返回 nul</li>
+<li>boolean removeFirstOccurrence(Object o):删除第一次出现的元素o</li>
+<li>boolean removeLastOccurrence(Object o):删除最后一次出现的元素o</li>
+<li>void push(E e):将元素e入栈</li>
+<li>E pop():pop处栈顶元素</li>
+<li>public int size():获取队列大小</li>
+<li>Iterator<e> iterator():获取队列迭代器</e></li>
+</ul>
+<p>Deque 不仅可以当成双端队列来使用，而且可以被当成栈来使用，因为含有 push() 、 pop() 方法。</p>
+<p>Deque 接口有一个典型实现类 ArrayDeque，基于数组实现的双端队列，可以在初始化时指定数组大小，如果不指定，则默认大小是 16。</p>
+<h3 id="LinkedList-实现类"><a href="#LinkedList-实现类" class="headerlink" title="LinkedList 实现类"></a>LinkedList 实现类</h3><p>LinkedList 既实现了 List 接口，同时也实现了 Deque 接口。因此，其功能非常强大，可以用来做 List , 也可以作为队列、栈、双端队列等数据结构使用。</p>
+<h3 id="各种线性表的性能分析"><a href="#各种线性表的性能分析" class="headerlink" title="各种线性表的性能分析"></a>各种线性表的性能分析</h3><p>一般来说，由于数组以一块连续内存来保存数据，所以数组的随机访问性能最好，所有内部以数组作为底层实现的集合类在随机访问时都有较好的性能；内部以链表实现的集合在执行插入、删除操作的集合有较好的性能。但总体上说，ArrayList 的性能要优于 LinkedList，大部分时候应该考虑使用 ArrayList。</p>
+<p>关于 List 集合的使用有如下建议：</p>
+<ol>
+<li>如果需要遍历 List 集合元素：对于数组类（ArrayList、ArrayDeque、Vector等）List应该使用随机访问形式(get(index))来遍历；对于链表类（LinkedList)，则应该采用迭代器（Iterator)来遍历集合元素</li>
+<li>如果需要经常执行插入、删除操作来改变包含大量数据的List集合，应该优先考虑链表类的LinkedList。使用ArrayList可能需要经常重新分配内存数组</li>
+<li>如果有多个线程需要同时访问List集合，应该使用 Collections 工具类将集合包装成线程安全的类。</li>
+</ol>
+<h2 id="HashMap-和-Hashtable-的区别"><a href="#HashMap-和-Hashtable-的区别" class="headerlink" title="HashMap 和 Hashtable 的区别"></a>HashMap 和 Hashtable 的区别</h2><ol>
+<li>Hashtable 是一个线程安全的 Map 实现，但 HashMap不是线程安全的，所以 HashMap 性能会更好点</li>
+<li>Hashtable 不允许使用 null 作为 key 和 value。如果试图把 null 放入 Hashtable 将会引发 NPE，但 HashMap 可以使用 null 作为 key 或 value。<br>与 HashSet 类似， HashMap 、 Hashtable 判断两个 key 相等的标准也是： 两个 key 通过 equals() 方法返回 true ，且 hashCode() 返回值也相同。<br>另外， HashMap 、 Hashtable 中还有一个 containsValue() 方法，用于判断是否包含指定 value。此时，判断是否与 value 相等的标准更简单：只需要 equals 方法返回 true 即可。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/04/java/java基础-范型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/04/java/java基础-范型/" itemprop="url">java基础-范型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T22:08:24+08:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="范型类"><a href="#范型类" class="headerlink" title="范型类"></a>范型类</h2><p>Java 集合有个缺点：当我们把一个对象放入集合中时，集合就会忘记这个对象的数据类型，当再次取出对象时，对象的编译类型就变成了Object类型，必须进行强制类型转换才能转换成需要的编译类型。 </p>
+<p>所谓范型：就是允许在定义类、接口时指定类型参数(在类名后边加上一对尖括号，类型形参放在尖括号内，多个形参用逗号分隔)，这些类型形参将在声明变量、创建对象时确定（即传入实际的类型参数），类型形参在在整个类内部可用，几乎所有可以使用普通类型的地方都可以使用这种类型形参。JDK1.5之后改写了所有集合类支持范型。</p>
+<p>使用范型类时，可以传入不同的类型实参创建对象，如 List<object>、List<string>、List<integer>…，效果上，相当于创建了集合类的一个子类，子类只能存放特定的类型，但是系统并没有为这些声明生成新的 class 文件，更不会把他们当成新类来处理，它们是同样的 List 类。List 类的静态变量和方法会在所有实例之间共享，所以在静态方法、静态初始化块或者静态成员变量的声明和初始化块中不允许使用类型形参。自然，这些效果上的子类之间更不会存在继承关系，也就是说 List<string>、List<integer> 不是 List<object> 的子类。所以下述代码会出现编译错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void test(List&lt;Object&gt; list)&#123;...&#125;//严格要求传入 List&lt;Object&gt; 范型</span><br><span class="line">List&lt;String&gt; sList = new ArrayList();</span><br><span class="line">test(sList);</span><br></pre></td></tr></table></figure></object></integer></string></integer></string></object></p>
+<p>当创建了带范型声明的接口、父类之后，可以创建接口的实现类，或者从父类来派生子类，如果实现类或者派生子类不是范型类，那么当使用这些接口、父类时，不能再包含类型形参，必须指定具体的类型实参；如果实现类或者派生子类是范型类，则可以为父类指定相同的类型参数。如下面的代码是错误的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class Creatrue&lt;T&gt;&#123;&#125;</span><br><span class="line">class Man extends Creatrue&lt;T&gt;&#123;&#125; //编译错误</span><br><span class="line">class Man extends Creatrue&lt;String&gt;&#123;&#125; //可以正确编译</span><br><span class="line">class Man&lt;T&gt; extends Creatrue&lt;T&gt;&#123;&#125; //可以正确编译</span><br><span class="line">class Man&lt;T&gt; extends Creatrue&lt;String&gt;&#123;&#125; //可以正确编译</span><br></pre></td></tr></table></figure></p>
+<h2 id="范型通配符"><a href="#范型通配符" class="headerlink" title="范型通配符"></a>范型通配符</h2><p>将 ? 作为类型实参传递范型类，表示匹配任何类型实参类型。上面的代码改成下面这样可以编译通过：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void test(List&lt;?&gt; list)&#123;...&#125;//可以</span><br><span class="line">List&lt;String&gt; sList = new ArrayList();</span><br><span class="line">test(sList);</span><br></pre></td></tr></table></figure></p>
+<p><code>List&lt;? extends Shape&gt;</code> 表示匹配所有Shape及其子类类型实参的范型。<br><code>List&lt;? super Shape&gt;</code> 表示匹配所有Shape及其父类类型实参的范型。</p>
+<h2 id="范型方法"><a href="#范型方法" class="headerlink" title="范型方法"></a>范型方法</h2><p>即使在定义类、接口时没有使用范型，但是在定义方法时想定义类型形参，这也是可以的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">修饰符 &lt;T,S&gt; 返回值类型 方法名（形参列表）&#123;</span><br><span class="line">    //方法体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>类型参数 T,S只能在该方法中使用。与类型范型不同的是，在调用范型方法时，无需显示的传入类型实参，系统可以直接推断出类型形参的类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; void arrayToCollection(T[] arr, Collection c)&#123;</span><br><span class="line">    for(T v:arr)&#123;</span><br><span class="line">        c.add(v);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Integer[] arr3 = new Integer[10];</span><br><span class="line">List&lt;Integer&gt; list2 = new ArrayList&lt;&gt;();</span><br><span class="line">arrayToCollection(arr3,list2);</span><br></pre></td></tr></table></figure></p>
+<p>范型方法允许类型参数被用来表示方法的多个参数之间的类型依赖关系，或者方法返回值和参数之间的类型依赖关系。如果没有这样的依赖关系，不应该使用范型方法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/25/java/IO/java基础-网络编程基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/25/java/IO/java基础-网络编程基础/" itemprop="url">java基础-网络编程基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-25T10:15:33+08:00">
+                2019-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/IO/" itemprop="url" rel="index">
+                    <span itemprop="name">IO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Java的基本网络支持"><a href="#Java的基本网络支持" class="headerlink" title="Java的基本网络支持"></a>Java的基本网络支持</h3><h4 id="IP地址：InetAddress"><a href="#IP地址：InetAddress" class="headerlink" title="IP地址：InetAddress"></a>IP地址：InetAddress</h4><p>Java 使用 <code>InetAddress</code> 来代表 IP 地址， <code>InetAddress</code> 有两个子类： <code>Inet4Address</code> 和 <code>Inet6Address</code> 。分别代表 IPv4 和 IPv6 地址。</p>
+<p><code>InetAddress</code> 没有提供构造器，而是提供了如下两个静态方法来获取 <code>InetAddress</code> 对象：</p>
+<ul>
+<li>getByName(String name) ：根据主机域名获取对应 InetAddress 对象；</li>
+<li>getByAdress(byte[] addr): 根据原始 IP 地址获取InetAddress对象；</li>
+<li>getLocalHost(): 获取本机IP地址对应的 <code>InetAddress</code> 对象;<br>当获取了一个 InetAddress 对象后，可以使用下述方法获取该 InetAddress 对象的相关信息：</li>
+<li>getCanonicalHostName(): 获取IP地址的全限定域名</li>
+<li>getHostAddress(): 返回地址实例对应的 IP 地址字符串</li>
+<li>getHostName(): 返回该 InetAddress 实例的主机名</li>
+<li>isReachable(int timeout): 测试该地址的主机是否可达</li>
+</ul>
+<h4 id="URLEncoder-和-URLDecoder"><a href="#URLEncoder-和-URLDecoder" class="headerlink" title="URLEncoder 和 URLDecoder"></a>URLEncoder 和 URLDecoder</h4><p>URLEncoder 和 URLDecoder 提供了静态的工具方法 encode 和 decode 来进行 URL 的编码和解码。</p>
+<h4 id="URL、URLConnection-和-URLPermission"><a href="#URL、URLConnection-和-URLPermission" class="headerlink" title="URL、URLConnection 和 URLPermission"></a>URL、URLConnection 和 URLPermission</h4><p>URL 对象代表统一资源定位器，通常而言URL由协议名、主机、端口、路径和查询参数组成：<br>protocol://host:port/resource?queryParam1=value1&amp;queryParam2=value2…</p>
+<p>URL类提供了多个构造器用于创建URL对象，一旦构建一个URL对象，可以使用它提供的方法来获取资源：</p>
+<ol>
+<li>String getFile(): 获取URL的资源名</li>
+<li>String getHost(): 获取URL的主机名</li>
+<li>String getPath(): 获取URL的路径</li>
+<li>int getPort(): 获取URL的端口号</li>
+<li>String getQuery(): 获取URL的查询参数</li>
+<li>URLConnection openConnection(): 打开一个到 URL 远程资源的连接，返回一个 URLConnection 对象</li>
+<li>InputStream openStream(): 打开一个到 URL 远程资源的连接，并返回一个读取 URL 资源的 InputStream 对象</li>
+</ol>
+<h3 id="基于TCP的网络编程"><a href="#基于TCP的网络编程" class="headerlink" title="基于TCP的网络编程"></a>基于TCP的网络编程</h3><h3 id="使用ServerSocker创建TCP服务器端"><a href="#使用ServerSocker创建TCP服务器端" class="headerlink" title="使用ServerSocker创建TCP服务器端"></a>使用ServerSocker创建TCP服务器端</h3><p>Java使用 ServerSocket 来创建服务端用于监听客户端连接的套接字。有如下构造方法：</p>
+<ul>
+<li>ServerSocket(int port)：使用指定端口创建一个 ServerSocket，端口应该在 0～65535之间。</li>
+<li>ServerSocket(int port, int backlog):除了端口，增加一个指定连接队列长度的backlog参数</li>
+<li>ServerSocket(int port, int backlog,InetAddress localAddress):当主机有多个IP地址时，可以指定ServerSocket绑定到的IP地址。<br>一旦构造了 ServerSocket 对象后，该对象会在指定端口监听连接请求，使用 <code>accept()</code> 方法接受来自客户端的请求，如果接收到了客户端请求，方法将会返回一个与客户端 Socket 连接的 Socket 对象；如果没有没有客户端请求，该方法将会阻塞线程。当 ServerSocket 对象使用完毕，应该使用 <code>close()</code> 方法关闭 ServerSocket 。</li>
+</ul>
+<h4 id="使用Socket进行通信"><a href="#使用Socket进行通信" class="headerlink" title="使用Socket进行通信"></a>使用Socket进行通信</h4><p>客户端通常可以使用 Socket 来连接指定服务器， Socket 通常有以下两个构造器：</p>
+<ol>
+<li>Socket(InetAddress/String remoteAddress, int port): 创建连接到指定的主机和端口的 Socket，默认使用本地主机的默认IP和随机分配的端口</li>
+<li>Socket(InetAddress/String remoteAddress, int port, InetAddress localAddr, int localPort):额外指定本地的IP和端口，适用于本地主机有多个IP的情况。</li>
+<li>Socket(Proxy proxy)：使用指定代理服务器创建一个没有连接的Socket对象</li>
+</ol>
+<p>当客户端和服务器端创建了对应的Socket之后，可以使用 Socket 提供的下述两个方法来获取输入/输出流从而进行通信：</p>
+<ol>
+<li>InputStream getInputStream(): 获取输入流，用于读取数据</li>
+<li>OuputStream getOutputStream(): 获取输出流，用于发送数据</li>
+<li>setSoTimeout(int timeouut):设置socket 读写数据的超时时间，读写数据超过该时长将会抛出 SocketTimeoutException.</li>
+<li>如果要设置连接的超时时长，则必须新建一个无连接的 Socket，然后调用 <code>connect(InetSocketAddress remoteAddress,int timeout)</code>来指定连接超时时间：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Socket socket = new Socket(); </span><br><span class="line">socket.connect(new InetSocketAddress(&quot;testHost&quot;,8080),1000)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="基于UDP的网络编程"><a href="#基于UDP的网络编程" class="headerlink" title="基于UDP的网络编程"></a>基于UDP的网络编程</h3><h4 id="使用-DatagramSocket-发送、接收-UDP-数据"><a href="#使用-DatagramSocket-发送、接收-UDP-数据" class="headerlink" title="使用 DatagramSocket 发送、接收 UDP 数据"></a>使用 DatagramSocket 发送、接收 UDP 数据</h4><h4 id="使用-MulticastSocket-实现多点广播"><a href="#使用-MulticastSocket-实现多点广播" class="headerlink" title="使用 MulticastSocket 实现多点广播"></a>使用 MulticastSocket 实现多点广播</h4><h3 id="使用代理服务器"><a href="#使用代理服务器" class="headerlink" title="使用代理服务器"></a>使用代理服务器</h3><p>JDK1.5 开始，提供了 Proxy 和 ProxySelector 两个类，其中 Proxy 代表一个代理服务器，可以在打开 URLConnection 连接时指定所用的 Proxy 实例，也可以在创建 Socket 连接时指定Proxy 实例。而 ProxySelector 代表一个代理选择器，它提供了对代理服务器更加灵活的控制，可以对不同协议如 HTTP、HTTPS、FTP、SOCKS等分别设置代理，还以为某些地址设置不走代理。</p>
+<h4 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h4><p>Proxy 有一个构造器： Proxy(Proxy.Type type, SocketAddress sa)，sa指定代理服务器的地址，type指定代理服务器的类型，类型有如下三种：</p>
+<ol>
+<li>Proxy.Type.DIRECT： 表示直连</li>
+<li>Proxy.Type.HTTP： 表示高级协议的代理，如HTTP或FTP</li>
+<li>Proxy.Type.SOCKS： 表示 SOCKS（V4或V5)代理</li>
+</ol>
+<p>一旦创建了 Proxy 对象，就可以在打开 URLConnection 或者创建 Socket 时使用了：</p>
+<ul>
+<li>URL的 <code>URLConnection openConnection(Proxy proxy)</code>方法</li>
+<li>Socket 的构造方法： <code>Socket(Proxy proxy)</code></li>
+</ul>
+<h4 id="ProxySelector"><a href="#ProxySelector" class="headerlink" title="ProxySelector"></a>ProxySelector</h4><p>基于 Proxy 的代理，需要在每次打开 URLConnection 或者 Socket 时指定代理服务器，如果想让系统在每次打开连接时都是用相关的代理服务器，而不用显示的为每个连接指定，则可以使用 ProxySelector ，它可以为不同的连接指定不同的代理服务器。</p>
+<p>系统提供了默认的 ProxySelector 子类作为代理选择器，默认的 ProxySelector 会检测各种系统属性和URL协议，然后决定是否使用指定的代理服务器，程序可以使用 System 类来设置系统的代理服务器属性，关于代理服务器常用的属性有以下几个：</p>
+<ol>
+<li>http.proxyHost: 设置 HTTP 访问时的代理服务器主机地址，HTTP前缀可以更改为HTTPS/FTPHTTPS/FTP等，下同</li>
+<li>http.proxyPort: 设置 HTTP 访问时的代理服务器连接端口</li>
+<li>http.nonProxyHosts: 设置不需要代理的主机地址，连接这些地址时不需要代理，多个主机地址使用 | 分隔，可以使用通配符 * 。</li>
+</ol>
+<p>通过系统属性来配置代理服务器适用于简单的代理配置，如果有更加灵活的配置需求，如连接指定主机时适用指定代理，通过系统属性无法完成这一需求。因此，开发者可以通过继承 ProxySelector 子类实现自己的代理选择器，需要重写两个方法：</p>
+<ol>
+<li>List<proxy> select(URI uri) ： 该方法让代理选择器根据不同的 URI 自定义的选择代理服务器；</proxy></li>
+<li>void connectFailed(URI uri, SocketAddress sa, IOException ioe) : 当连接代理服务器失败时，会调用此方法</li>
+</ol>
+<p>实现了自定义的 ProxySelector 后，还需要将其设置为默认的代理选择器才会生效， ProxySelector 提供了下述静态方法来获取和设置默认的 ProxySelector：</p>
+<ul>
+<li>static ProxySelector getDefault(): 获取默认的 ProxySelector</li>
+<li>static void setDefault(ProxySelector ps)： 设置默认的 ProxySelector</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/java/jvm/java基础-经典的垃圾收集器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/15/java/jvm/java基础-经典的垃圾收集器/" itemprop="url">java基础-经典的垃圾收集器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-15T08:17:20+08:00">
+                2020-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/pics/gc-collector.png" alt width="60%" height="60%"><br>图3-6展示了七种作用于不同分代的收集器，如果两个收集器之间存在连线，就说明它们可以搭配使用，图中收集器所处的区域，则表示它是属于新生代收集器抑或是老年代收集。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/java/jvm/java基础-类和对象的初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/01/java/jvm/java基础-类和对象的初始化/" itemprop="url">java基础-类和对象的初始化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-01T20:46:20+08:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>主要转自：<a href="https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html</a></p>
+<p>类是 Java 中的一等公民，一个 Java 类中可以有：成员方法、成员变量、初始化块。</p>
+<h2 id="类初始化"><a href="#类初始化" class="headerlink" title="类初始化"></a>类初始化</h2><h1 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h1><p><img src="/pics/class lifecycle.png" alt="类的生命周期"></p>
+<h1 id="类初始化-1"><a href="#类初始化-1" class="headerlink" title="类初始化"></a>类初始化</h1><p>类”初始化”阶段，它是一个类或接口被首次使用的前阶段中的最后一项工作，本阶段负责为类变量赋予正确的初始值。</p>
+<p>Java 编译器把所有的类变量初始化语句和类型的静态初始化器通通收集到 <code>&lt;clinit&gt;</code> 方法内，该方法只能被 Jvm 调用，专门承担初始化工作。初始化顺序和语句出现的先后顺序保持一致。</p>
+<p>除接口以外，初始化一个类之前必须保证其直接超类已被初始化，并且该初始化过程是由 Jvm 保证线程安全的。另外，并非所有的类都会拥有一个 <code>&lt;clinit&gt;()</code> 方法，在以下条件中该类不会拥有 <code>&lt;clinit&gt;()</code> 方法：</p>
+<ul>
+<li>该类既没有声明任何类变量，也没有静态初始化语句；</li>
+<li>该类声明了类变量，但没有明确使用类变量初始化语句或静态初始化语句初始化；</li>
+<li>该类仅包含静态 final 变量的类变量初始化语句，并且类变量初始化语句是编译时常量表达式。</li>
+</ul>
+<ol>
+<li>类加载的时候如果发现其有父类，则先加载父类。</li>
+<li>类加载时候，会先初始化类变量（如果定义类变量时初始化了的话）和静态初始化块中的初始化语句，两者的顺序以出现的先后次序为准。因为原因1，所以总是先执行父类的初始化（一直追溯到Object）然后才执行子类的初始化。类初始化只会在类加载过程中初始化一次，后续驻留在内存中，不再初始化。</li>
+</ol>
+<h1 id="对象初始化"><a href="#对象初始化" class="headerlink" title="对象初始化"></a>对象初始化</h1><p>在类被装载、连接和初始化，这个类就随时都可能使用了。对象实例化和初始化是就是对象生命的起始阶段的活动，在这里我们主要讨论对象的初始化工作的相关特点。</p>
+<ol>
+<li>实例化对象时，系统首先会为对象分配内存，然后初始化整块内存为0、null、false。</li>
+<li>然后，执行初始化代码和成员变量声明语句中的初始化，两者顺序以出现先后顺序为准。最后，调用相应的构造器执行初始化。</li>
+<li>第2步只是在没有父类情况下的初始化，如果有父类，则会从根类开始执行上述步骤直到执行初始化的类。</li>
+</ol>
+<p>Java 编译器在编译每个类时都会为该类至少生成一个实例初始化方法—即 <code>&lt;init&gt;()</code> 方法。此方法与源代码中的每个构造方法相对应，如果类没有明确地声明任何构造方法，编译器则为该类生成一个默认的无参构造方法，这个默认的构造器仅仅调用父类的无参构造器，与此同时也会生成一个与默认构造方法对应的 <code>&lt;init&gt;()</code> 方法.</p>
+<p>通常来说，<code>&lt;init&gt;()</code> 方法内包括的代码内容大概为：调用另一个 <code>&lt;init&gt;()</code> 方法；对实例变量初始化；与其对应的构造方法内的代码。</p>
+<p>如果构造方法是明确地从调用同一个类中的另一个构造方法开始，那它对应的 <code>&lt;init&gt;()</code> 方法体内包括的内容为：一个对本类的 <code>&lt;init&gt;()</code> 方法的调用；对应构造方法内的所有字节码。</p>
+<p>如果构造方法不是通过调用自身类的其它构造方法开始，并且该对象不是 Object 对象，那 <code>&lt;init&gt;()</code> 法内则包括的内容为：一个对父类 <code>&lt;init&gt;()</code> 方法的调用；对实例变量初始化方法的字节码；最后是对应构造方法的方法体字节码。</p>
+<p>如果这个类是 Object，那么它的 <code>&lt;init&gt;()</code> 方法则不包括对父类 <code>&lt;init&gt;()</code> 方法的调用。</p>
+<h1 id="类的初始化时机"><a href="#类的初始化时机" class="headerlink" title="类的初始化时机"></a>类的初始化时机</h1><p>本文到目前为止，我们已经大概有了解到了类生命周期中都经历了哪些阶段，但这个类的生命周期的开始阶段—类装载又是在什么时候被触发呢？类又是何时被初始化的呢？让我们带着这三个疑问继续去寻找答案。</p>
+<p>Java 虚拟机规范为类的初始化时机做了严格定义：”initialize on first active use”—“ 在首次主动使用时初始化”。这个规则直接影响着类装载、连接和初始化类的机制—因为在类型被初始化之前它必须已经被连接，然而在连接之前又必须保证它已经被装载了。</p>
+<p>在与初始化时机相关的类装载时机问题上，Java 虚拟机规范并没有对其做严格的定义，这就使得 JVM 在实现上可以根据自己的特点提供采用不同的装载策略。我们可以思考一下 Jboss AOP 框架的实现原理，它就是在对你的 class 文件装载环节做了手脚—插入了 AOP 的相关拦截字节码，这使得它可以对程序员做到完全透明化，哪怕你用 new 操作符创建出的对象实例也一样能被 AOP 框架拦截—与之相对应的 Spring AOP，你必须通过他的 BeanFactory 获得被 AOP 代理过的受管对象，当然 Jboss AOP 的缺点也很明显—他是和 JBOSS 服务器绑定很紧密的，你不能很轻松的移植到其它服务器上。嗯~……，说到这里有些跑题了，要知道 AOP 实现策略足可以写一本厚厚的书了，嘿嘿，就此打住。</p>
+<p>说了这么多，类的初始化时机就是在”在首次主动使用时”，那么，哪些情形下才符合首次主动使用的要求呢？</p>
+<p>首次主动使用的情形：</p>
+<ul>
+<li>创建某个类的新实例时—new、反射、克隆或反序列化；</li>
+<li>调用某个类的静态方法时；</li>
+<li>使用某个类或接口的静态字段或对该字段赋值时（final字段除外）；</li>
+<li>调用Java的某些反射方法时</li>
+<li>初始化某个类的子类时</li>
+<li>在虚拟机启动时某个含有main()方法的那个启动类。<br>除了以上几种情形以外，所有其它使用JAVA类型的方式都是被动使用的，他们不会导致类的初始化。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

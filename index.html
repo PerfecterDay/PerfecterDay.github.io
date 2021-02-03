@@ -1,23 +1,4148 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx静态内容配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx静态内容配置/" itemprop="url">配置nginx处理静态内容请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="配置nginx处理静态内容请求"><a href="#配置nginx处理静态内容请求" class="headerlink" title="配置nginx处理静态内容请求"></a>配置nginx处理静态内容请求</h1><hr>
+<p>通常来说，nginx配置文件包含若干个server上下文，不同的server上下文通过监听的端口和名字来区分。一旦nginx决定了用哪个server上下文来处理请求，nginx就会用请求URI与server块指令中配置的location指令的参数相比较，一旦匹配到某个location的参数，URI就会被添加到location块内的root指令参数后边，构成请求的静态内容的访问路径。如果有多个location匹配，nginx选取最长的匹配。<br>假设有配置文件如下：</p>
+<pre><code>server {
+    location / {
+        root /data/www;
+    }
+
+    location /images/ {
+        root /data;
+    }
+}
+</code></pre><p>则所有/images/的URI将会匹配到第二个location块，nginx将请求发送到/data/images目录中，如果有个请求是这样：<a href="http://localhost/images/example.png，" target="_blank" rel="noopener">http://localhost/images/example.png，</a> nginx将返回/data/images/example.png的文件，如果文件不存在则报404错误。</p>
+<p>其他的请求将会被映射到/data/www目录下。如<a href="http://localhost/some/example.html的请求，nginx将返回/data/www/some/example.html文件。" target="_blank" rel="noopener">http://localhost/some/example.html的请求，nginx将返回/data/www/some/example.html文件。</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/数据结构与算法/排序/选择和插入排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/26/数据结构与算法/排序/选择和插入排序/" itemprop="url">选择和插入排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-26T21:46:18+08:00">
+                2019-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-and-dataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm_and_dataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">package com.my;</span><br><span class="line"></span><br><span class="line">public class Sort &#123;</span><br><span class="line"></span><br><span class="line">    //插入排序</span><br><span class="line">    public void insertSort(int[] arr)&#123;</span><br><span class="line">        int i,j,len=arr.length;</span><br><span class="line">        for (i = 1; i &lt; len; ++ i)&#123;</span><br><span class="line">            int key = arr[i];</span><br><span class="line">            j = i-1;</span><br><span class="line">            while (key &lt; arr[j] &amp;&amp; j&gt;=0)&#123;</span><br><span class="line">                arr[j+1] = arr[j];</span><br><span class="line">                j--;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[j+1] = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void selectSort(int[] arr)&#123;</span><br><span class="line">        int i,j,min,len=arr.length;</span><br><span class="line">        for (i=0; i&lt;len-1;++i)&#123;</span><br><span class="line">            min = i;</span><br><span class="line">            for (j=i+1; j&lt;len;++j)&#123;</span><br><span class="line">                if (arr[j] &lt; arr[min])&#123;</span><br><span class="line">                    min = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if (min != i)&#123;</span><br><span class="line">                int tmp = arr[i];</span><br><span class="line">                arr[i] = arr[min];</span><br><span class="line">                arr[min] = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = &#123;1,3,8,2,80,1,2,34&#125;;</span><br><span class="line">        Sort sort = new Sort();</span><br><span class="line">        int[] arr1 = arr.clone();</span><br><span class="line">        int[] arr2 = arr.clone();</span><br><span class="line">        sort.insertSort(arr1);</span><br><span class="line">        for (int i : arr1) &#123;</span><br><span class="line">            System.out.print(i+&quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        sort.selectSort(arr2);</span><br><span class="line">        for (int i : arr2) &#123;</span><br><span class="line">            System.out.print(i+&quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/linux/软链接和硬链接/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/28/linux/软链接和硬链接/" itemprop="url">软链接和硬链接</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-28T11:10:33+08:00">
+                2018-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转载自：<a href="https://www.jb51.net/LINUXjishu/513216_all.html" target="_blank" rel="noopener">https://www.jb51.net/LINUXjishu/513216_all.html</a></p>
+<p>一句话总结两者之间的区别：<br>软链接是一个文件，文件内容链接到被链接的文件。（软链接和被链接文件是两个文件，inode不同）<br>硬链接是被链接文件的另一个目录项入口，相当于是同一份文件的另一个入口。<br>所以，如果被链接的文件被删除，那么符号链接就会找不到被链接的文件报错，但是硬链接文件可以。因为删除的被链接文件只是删除了目录项。实际文件数据还保存在系统中。</p>
+<h2 id="链接文件"><a href="#链接文件" class="headerlink" title="链接文件"></a>链接文件</h2><p>链接文件是Linux文件系统的一个优势。如果需要在系统上维护同一个文件的两份或多份副本，除了保存多份单独的物理文件副本之外，还可以采用保存一份物理文件副本和多个虚拟副本的方法。这种虚拟的副本称为链接。</p>
+<p>链接是目录中指向文件真实位置的占位符，在Linux中有两种不同类型的文件链接：</p>
+<ul>
+<li>符号链接(软链接)</li>
+<li>硬链接</li>
+</ul>
+<p>符号链接就是一个实实在在的文件，它指向存放在虚拟目录结构中某个地方的另一个文件。这两个通过符号链接在一起的文件，彼此的内容并不相同。</p>
+<p>要为一个文件创建符号链接，原始文件必须事先存在。然后可以使用 <code>ln -s</code>命令选项创建符号链接。</p>
+<h2 id="inode"><a href="#inode" class="headerlink" title="inode"></a>inode</h2><p>文件除了纯数据本身之外，还必须包含有对这些纯数据的管理信息，如文件名、访问权限、文件的属主以及该文件的数据所对应的磁盘块等等，这些管理信息称之为元数据（mata data），保存在文件的inode节点之中。我们可以通过stat命令查看一个文件的inode信息：</p>
+<pre><code>$ stat /etc/passwd
+  File: &quot;/etc/passwd&quot;
+  Size: 936             Blocks: 8          IO Block: 4096   普通文件
+Device: fd00h/64768d    Inode: 137143      Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2016-08-05 23:01:39.905999995 +0800
+Modify: 2016-07-15 16:36:12.802999997 +0800
+Change: 2016-07-15 16:36:12.809000014 +0800
+
+$ ls -l /etc/passwd
+-rw-r--r-- 1 root root 936 7月  15 16:36 /etc/passwd
+</code></pre><p>这里我们查看了/etc/passwd文件的元数据信息。ls -l命令也会列出一些文件的元数据信息（由左至右分别为：权限、硬链接数、属主、属组、文件大小、最近更改时间、文件名），但相比之下，stat命令输出的信息更加完整。我们注意到，stat输出的信息中，文件有三个时间戳：最近访问、最近更改和最近改动，对应于英文分别为Access、Modify和Change。 Access time比较好理解，当每次访问这个文件的数据（注意，不是元数据），这个时间就会更新。比如用cat或者more命令读取文件内容时，会更新access time，而用ls或者stat命令，由于只是访问了文件的inode，所以不会更新access time值。Modify time是文件数据最后一次被修改时间，比如用vim编辑文件后保存文件，此时就会更新该文件modify time。Change time是文件元数据（即inode）最后一次被修改的时间，比如用chown命令修改文件的属主，此时就会更新文件的change time。</p>
+<p>其实最初当我们创建分区并用mkfs.ext4等命令创建文系统的时候，就已经在文件系统的固定区域保留了inode节点区。我们可以通过df -i命令查看某文件系统inode节点区域的大小及使用情况：</p>
+<pre><code># df -ih /dev/mapper/pdc_bcfaffjfaj2
+文件系统              Inode 已用(I) 可用(I) 已用(I)% 挂载点
+
+/dev/mapper/pdc_bcfaffjfaj2   18M    127K     18M       1% /home   
+</code></pre><p>可以看到，在笔者的Linux Mint17.3系统中，分区/dev/mapper/pdc_bcfaffjfaj2共保留了18M的inode区域，这个区域目前已经使用了127K。有没有可能出现某分区尚有空间而inode区域已用完的情况呢？有的。当小文件特别多的时候就会出现这种情况！这个时候即使文件系统还有空间可用，但我们仍然无法继续在这个文件系统内创建新的文件了。那假如在我的应用环境中真的小文件非常多该怎么办？其实我们在建立ext4文件系统时候是可以手动指定inode区域所占的比例大小的，可以man mkfs.ext4查看相关的参数和选项，这里不再详述。</p>
+<p>刚才用stat查看文件的inode信息时，我们看到输出的信息中有一行Inode: 137143，这个是/etc/passwd文件的inode号。每个inode都有一个全文件系统唯一的inode号，操作系统内核正是通过inode号而非文件名来识别不同的文件。文件名仅仅是为了方便用户使用而已，内核是通过文件名找到inode，然后通过inode访问实际文件数据的。有没有可能有多个文件名对应于同一个inode呢？有的，这样就产生了所谓硬链接文件。</p>
+<h2 id="dentry"><a href="#dentry" class="headerlink" title="dentry"></a>dentry</h2><p>虽然每个文件对应了唯一的inode号，但inode号是杂乱而毫无意义的，不方面用户记忆和使用，我们希望对每个文件取一个有意义的文件名。现代文件系统提供的一个基本功能是按名存取，所以我们还需要建立文件名到inode号的对应，这就引出了目录项（directory entry即dentry）的概念。在Linux文件系统中有一类特殊的文件称为“目录”，目录就保存了该目录下所有文件的文件名到inode号的对应关系，这里的每个对应关系就称为一个dentry。而Linux把所有的文件和目录构建成了一个倒立的树状结构，这样，我们只要确定了根目录的inode号，就可以对整个文件系统进行按名存取了。</p>
+<h2 id="hard-link"><a href="#hard-link" class="headerlink" title="hard link"></a>hard link</h2><p>硬链接的实质是现有文件在目录树中的另一个入口。也就是说，硬链接与原文件是分居于不同或相同目录下的的dentry而已，它们指向同一个inode，对应于相同的磁盘数据块（data block），具有相同的访问权限、属性等。简而言之，硬链接其实就是给现有的文件起了一个别名。如果把文件系统比喻成一本书的话，硬链接就是在书本的目录中，有两个目录项指向了同一页码的同一章节。</p>
+<p>硬链接的优点是几乎不占磁盘空间（因为仅仅是增加了一个目录项而已），但是这一优点相对于软链接其实并不明显（因为软链接占用的磁盘空间也很少）。另外，硬链接有以下一些局限：1、不能跨文件系统创建硬链接。原因很简单，inode号只有在一个文件系统内才能保证是唯一的，如果跨越文件系统则inode号就可能重复。2、不能对目录创建硬链接。原因我在稍后解释。正因为硬链接的这些局限，加之软链接更加易于管理，所以软链接更加常用。这一点在本文中举的例子也可以看出，几乎都是软链接的例子。</p>
+<h2 id="soft-link"><a href="#soft-link" class="headerlink" title="soft link"></a>soft link</h2><p>软链接又称为符号链接（symbolic link），简写为“symlink”。与硬链接仅仅是一个目录项不同，软连接本身也是文件，不过这个文件的内容是另一个文件名的指针。当Linux访问软链接时，它会循着指针找出含有实际数据的目标文件。我们还以书本来打比方，软链接是书本里的某一章节，不过这一章节什么内容都没有，只有一行字“转某某章某某页”。</p>
+<p>软链接可以跨越文件系统指向另一个分区的文件，甚至可以跨越主机指向远程主机的一个文件，也可以指向目录。在ls -l输出的文件列表中，第一个字段有“l”字样者表示该文件是符号链接。</p>
+<pre><code>$ ls -l
+total 0
+lrwxrwxrwx 1 wjm wjm 11 Aug 10 00:51 hh -&gt; /etc/passwd
+</code></pre><p>我们看到，软链接的权限为777，即所有权限都是开放的，实际上你也无法使用chmod命令修改其权限，但是实际文件的保护权限仍然起作用。</p>
+<p>另外，符号链接可以指向不存在的文件（可能是原来指向的文件被删除了，或者指向的文件系统尚未挂载，或者最初建立该符号链接的时候就指向了一个不存在的文件等等），我们称这种状态为“断裂”（broken）。与之相对的是，硬链接是不能指向一个不存在的文件的。</p>
+<h2 id="使用链接有何好处？"><a href="#使用链接有何好处？" class="headerlink" title="使用链接有何好处？"></a>使用链接有何好处？</h2><p>我们在此总结使用链接文件的以下几个的好处：</p>
+<h3 id="保持软件的兼容性"><a href="#保持软件的兼容性" class="headerlink" title="保持软件的兼容性"></a>保持软件的兼容性</h3><p>例如，在RHEL6中我们看下面这条命令的输出：</p>
+<pre><code>$ ls -l /bin/sh
+lrwxrwxrwx. 1 root root 4 Jul 15 11:41 /bin/sh -&gt; bash
+</code></pre><p>我们看到，/bin/sh文件其实是一个指向/bin/bash的符号链接。为什么要这样设计？因为几乎所有的shell script的第一行都是下面这样：</p>
+<pre><code>\#!/bin/sh
+</code></pre><p>“#！”符号表示该行指定该脚本所用的解释器。#！/bin/sh表示使用Bourne Shell作为解释器，这是一个早期的Shell。在现代的Linux发行版中通常采用Bourne Again Shell即bash，bash是对sh的改进和增强，而早期的Bourne Shell在系统的中根本不存在。为了能够顺利的运行脚本而不必修改shell script，我们只需要创建一个软链接/bin/sh让其指向/bin/bash。如此一来，就可以让bash来解释原本针对Bourne Shell编写的脚本了。</p>
+<h3 id="方便软件的使用"><a href="#方便软件的使用" class="headerlink" title="方便软件的使用"></a>方便软件的使用</h3><p>比如我们安装了一个大型软件Matlab，它可能默认安装在/usr/opt/Matlab目录下，它的可执行文件位置在/usr/opt/Matlab/bin目录下，除非你在这个路径加入到PATH环境变量里，否则每次运行这个软件你都需要输入一长串的路径很不方便。你还可以这样做：</p>
+<pre><code>$ ln -s /usr/opt/Matlab/bin/matlab ~/bin/matlab
+</code></pre><p>通过在你的~/bin下创建一个符号链接（~/bin系统默认已经包含在PATH环境变量里的），今后在命令行下无需输入完整路径，只需输入matlab即可。</p>
+<h3 id="维持旧的操作习惯"><a href="#维持旧的操作习惯" class="headerlink" title="维持旧的操作习惯"></a>维持旧的操作习惯</h3><p>比如在SuSE中，启动脚本的位置是放在/etc/init.d目录下，而在RedHat的发行版中，是放在/etc/init.d/rc.d目录下。为了避免因为从SuSE转换到RedHat系统而导致管理员找不到位置的情况，我们可以创建一个符号链接/etc/init.d使其指向/etc/init.d/rc.d即可。事实上，RedHat发行版也正是这样做的：</p>
+<pre><code>$ ls -ld /etc/init.d/
+lrwxrwxrwx. 1 root root 11 Jul 15 11:41 init.d -&gt; rc.d/init.d
+</code></pre><h3 id="方便系统管理"><a href="#方便系统管理" class="headerlink" title="方便系统管理"></a>方便系统管理</h3><p>最让人印象深刻的一个例子应该是/etc/rc.d/rcX.d目录下的符号链接了（X为0~7数字）。</p>
+<pre><code>$ ls -l /etc/rc.d/
+total 60
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 init.d
+-rwxr-xr-x. 1 root root  2617 Nov 23  2013 rc
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc0.d
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc1.d
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc2.d
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc3.d
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc4.d
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc5.d
+drwxr-xr-x. 2 root root  4096 Jul 15 16:36 rc6.d
+-rwxr-xr-x. 1 root root   220 Nov 23  2013 rc.local
+-rwxr-xr-x. 1 root root 19688 Nov 23  2013 rc.sysinit
+</code></pre><p>在init.d/目录下有许多用于启动、停止系统服务的脚本，如sshd、crond等。这些脚本可以接受一个参数，代表要启动（start）或停止（stop）服务。为了决定在某个运行级别运行哪些脚本及传递给这些脚本哪些参数，RedHat设计了一个额外的目录机制，即rc0.d到rc6.d的7个目录，每个目录对应一个运行级别。如果在某运行级别下需要启动某服务或者需要停止某服务，就在对应的rcX.d目录下建立一个符号链接，指向init.d/目录下的脚本。如：</p>
+<pre><code>$ ls -l /etc/rc.d/rc3.d
+total 0
+lrwxrwxrwx. 1 root root 19 Jul 15 11:42 K10saslauthd -&gt; ../init.d/saslauthd
+lrwxrwxrwx. 1 root root 20 Jul 15 11:42 K50netconsole -&gt; ../init.d/netconsole
+lrwxrwxrwx. 1 root root 21 Jul 15 11:42 K87restorecond -&gt; ../init.d/restorecond
+lrwxrwxrwx. 1 root root 15 Jul 15 11:42 K89rdisc -&gt; ../init.d/rdisc
+lrwxrwxrwx. 1 root root 22 Jul 15 11:44 S02lvm2-monitor -&gt; ../init.d/lvm2-monitor
+lrwxrwxrwx. 1 root root 19 Jul 15 11:42 S08ip6tables -&gt; ../init.d/ip6tables
+lrwxrwxrwx. 1 root root 18 Jul 15 11:42 S08iptables -&gt; ../init.d/iptables
+lrwxrwxrwx. 1 root root 17 Jul 15 11:42 S10network -&gt; ../init.d/network
+lrwxrwxrwx. 1 root root 16 Jul 15 11:44 S11auditd -&gt; ../init.d/auditd
+lrwxrwxrwx. 1 root root 17 Jul 15 11:42 S12rsyslog -&gt; ../init.d/rsyslog
+... ....
+</code></pre><p>这里列出了在运行级3下需要运行的服务脚本及对应的参数，其中符号链接的第一个字母S和K分别表示传递参数start和stop，后面跟着的两位数字表示脚本运行的先后顺序。这样一来，只要在rcX.d目录下新增或者移除链接，就可以控制各个runlevel需要运行哪些服务脚本；而如果需要修改某个服务脚本，只需要编辑init.d/目录下的文件（“本尊”），而它可以影响所有rcX.d目录下的软链接（“分身”）。这是多么简洁而巧妙的设计!</p>
+<h2 id="ln命令"><a href="#ln命令" class="headerlink" title="ln命令"></a>ln命令</h2><p>我们用ln命令创建硬链接或者软链接。其语法为：</p>
+<pre><code>ln [options] file link
+</code></pre><p>此命令的第一种形式会创建一个指向file的新的链接，其中options选项，我们只记住一个就行，-s表示创建软链接，而默认会创建硬链接。例如：</p>
+<pre><code># ln -s /usr/src/linux-2.6.32 /usr/src/linux
+</code></pre><p>这里，我们创建了一个符号链接/usr/src/linux，指向真实的Linux源代码目录/usr/src/linux-2.6.32。</p>
+<p>我们再举一个例子，演示一下软链接与硬链接的区别，我们创建一个myfile文件，然后再创建一个指向该文件的软链接myslink和硬链接myhlink：</p>
+<pre><code>$ $ echo &quot;an example.&quot; &gt; myfile
+$ ln -s myfile myslink
+$ ls myfile myhlink
+</code></pre><p>使用stat检查前述文件：</p>
+<pre><code>$ stat my*
+  File: `myfile&#39;
+  Size: 12          Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 11552       Links: 2
+Access: (0664/-rw-rw-r--)  Uid: (  500/     wjm)   Gid: (  500/     wjm)
+Access: 2016-08-10 03:59:54.421017669 +0800
+Modify: 2016-08-10 03:59:54.421017669 +0800
+Change: 2016-08-10 04:00:08.689000105 +0800
+  File: `myhlink&#39;
+  Size: 12          Blocks: 8          IO Block: 4096   regular file
+Device: fd00h/64768d    Inode: 11552       Links: 2
+Access: (0664/-rw-rw-r--)  Uid: (  500/     wjm)   Gid: (  500/     wjm)
+Access: 2016-08-10 03:59:54.421017669 +0800
+Modify: 2016-08-10 03:59:54.421017669 +0800
+Change: 2016-08-10 04:00:08.689000105 +0800
+  File: `myslink&#39; -&gt; `myfile&#39;
+  Size: 6           Blocks: 0          IO Block: 4096   symbolic link
+Device: fd00h/64768d    Inode: 11553       Links: 1
+Access: (0777/lrwxrwxrwx)  Uid: (  500/     wjm)   Gid: (  500/     wjm)
+Access: 2016-08-10 04:00:03.784997923 +0800
+Modify: 2016-08-10 04:00:03.784997923 +0800
+Change: 2016-08-10 04:00:03.784997923 +0800
+</code></pre><p>仔细观察myfile和myhlink，发现它们指向同一个inode（inode号同为11552）。硬链接数（Links字段）同为2，这表示有两个目录项指向该inode，每增加一个硬链接Links字段值就会增加1。而myslink文件，我们发现它的inode号与前两个不同，其访问权限为0777。我们删除myhlink这个硬链接，看看会出现什么变化？这次我们用ls -il命令来查看：</p>
+<pre><code>$ rm myfile
+$ ll -li
+total 4
+11552 -rw-rw-r-- 1 wjm wjm 12 Aug 10 03:59 myhlink
+11553 lrwxrwxrwx 1 wjm wjm  6 Aug 10 04:00 myslink -&gt; myfile
+$ cat myhlink
+an example.
+$ cat myslink
+cat: myslink: No such file or directory
+</code></pre><p>ls命令的-i选项也可以输出文件的inode号。输出信息的第三列为硬链接数，我们发现删除了 myfile 文件后，myhlink的硬链接数已经由2变为1了,但是原myfile文件的数据依然可以通过 myhlink 这个硬链接访问，因为硬链接是通过文件的 inode 号来访问文件数据的。然而通过 myslink 软链接却无法再访问原myfile文件的数据了，因为软链接实质上是一个指向目标文件的全路径，这个路径中任何一个环节断裂，都会使这个软链接失效。</p>
+<h2 id="追随链接"><a href="#追随链接" class="headerlink" title="追随链接"></a>追随链接</h2><p>自从了软连接，当你要备份、复制或者移动目录或者文件时候，会出现是否要“追随链接”的问题。如果是，则会复制链接所指向的对象；如果不是，则仅仅操作链接本身。</p>
+<p>通常如tar或cp之类的命令工具会给出是否追随链接的选项。如cp，你可以使用-L选项表示追随链接（复制链接所指向的目标），或者用-P表示不追随链接（复制链接本身）。如下例：</p>
+<pre><code>$ mkdir dir1
+$ ln -s /tmp/a.txt dir1/slink
+$ cp -rL dir1 dir2
+$ ls -l dir2
+total 0
+-rw-rw-r-- 1 wjm wjm 0 Aug  6 17:02 slink
+</code></pre><p>这里我们在dir1目录下创建了一个软链接，当用-L选项将其复制到dir2目录下时，我们看到dir2目录下的slink现在成为一个普通文件。如果使用-P选项（保存链接）复制，则复制后的文件依然是一个软链接：</p>
+<pre><code>$ cp -rP dir1 dir3
+$ ls -l dir3
+total 0
+lrwxrwxrwx 1 wjm wjm 10 Aug  6 17:07 slink -&gt; /tmp/a.txt
+</code></pre><p>假如没有明确指定-L或者-P选项，则cp的默认行为将随版本而定。</p>
+<h2 id="目录的硬链接"><a href="#目录的硬链接" class="headerlink" title="目录的硬链接"></a>目录的硬链接</h2><p>前文提到过，无法对一个目录创建硬链接。但其实目录是存在硬链接的，只是这个硬链接是系统自动创建的，而我们不能手动创建。当我们用mkdir创建一个空目录时，会发现这个目录的硬链接数为2，例如：</p>
+<pre><code>$ ls -dl ~
+drwx------. 6 wjm wjm 4096 Aug 10 04:25 /home/wjm
+$ cd ~
+$ mkdir mydir
+$ ls -dli ~
+8605 drwx------. 7 wjm wjm 4096 Aug 10 04:25 /home/wjm
+$ ls -dli mydir
+11556 drwxrwxr-x 2 wjm wjm 4096 Aug 10 04:25 mydir
+</code></pre><p>原先/home/wjm目录的硬链接数量为6，当在/home/wjm下创建了一个空目录mydir后，它的硬链接数量变成了7，而这个空目录mydir的硬链接数为2。这是为什么呢？原因是任何一个目录下，都有两个隐藏的硬链接：</p>
+<pre><code>ls -ali mydir
+total 8
+11556 drwxrwxr-x  2 wjm wjm 4096 Aug 10 04:25 .
+ 8605 drwx------. 7 wjm wjm 4096 Aug 10 04:25 ..
+</code></pre><p>我们看到mydir目录下有两个隐藏的硬链接，使用ls的-a选项才能使其列出来。其中一个硬链接是“.”，指向的inode号为11556，就是mydir这个目录本身的inode号；另一个是“..”，通过inode号我们发现它指向了其父目录/home/wjm。因此，当创建了空目录mydir后，mydir的硬链接数为2，而其父目录的硬链接数加1。所以一个目录的硬链接数=其子目录数+2。</p>
+<p>这种硬链接是系统自动为我们创建的，而当你试图手动创建一个指向目录的硬链接时，系统一定会报错阻止你这样做。为什么呢？</p>
+<p>其实在UNIX操作系统的历史上，对目录创建硬链接曾经是允许的。但人们发现，这样做会出现很多问题，尤其是一些对目录树进行遍历操作的如fsck、find等命令无法正确执行。在《Unix高级环境编程》中提到作者Steven在自己的系统上做过实验，结果是：创建目录硬链接后，文件系统变得错误百出。因为这样做会破坏文件系统的树形结构，可能会使目录之间出现环。例如：</p>
+<pre><code>$ ln ~ ~/mydir/myhdir_link
+ln: `/home/wjm&#39;: hard link not allowed for directory
+$ ln -s ~ ~/mydir/myhdir_link
+</code></pre><p>这里第一条命令我们试图在mydir目录下创建一个硬链接指向其父目录，然而失败了。因为这使得 /home/wjm 和 /home/wjm/mydir 两个目录之间形成一个环，我们无法再区分这两者谁是父目录谁是子目录了。然而第二条命令创建一个指向其父目录的软链接却可以成功，难道这样不是同样形成了一个环吗？</p>
+<p>为什么软链接可以指向目录而硬链接不行呢？根本原因在于软链接实质上是一个文件，而硬链接实质上是一个目录项（dentry）。在linux系统中，每个文件(目录也是文件，软链接也是文件)都对应着一个inode结构，其中inode数据结构中包含了文件类型(目录，普通文件，符号连接文件等等)的信息，也就是说操作系统在遍历目录时可以判断出符号连接。既然可以判断出符号连接当然就可以采取一些措施来防范进入死循环了，系统在连续遇到8个符号连接后就停止遍历，这就是为什么对目录符号连接不会进入死循环的原因了。而“硬链接”本质上是“目录项”的同义词。当一个目标第一次被创建，就会为它创建一个目录项，这其实就是硬链接。大多数人常常把“硬链接”联想成为一个已有的对象创建一个额外的目录项，但其实是原来的目录项没有任何特殊，所有的硬链接都是平等的，所以Linux内核没有方法能识别出哪个是“原文件”哪个是“硬链接”。这样对于由于目录硬链接而形成的环就无法进行合适的处理。</p>
+<p>但是根目录是一个特例。我们观察：</p>
+<pre><code>$ ls -dli /
+2 dr-xr-xr-x. 22 root root 4096 Aug 10 00:50 /
+$ ls -ali /
+total 102
+     2 dr-xr-xr-x. 22 root root  4096 Aug 10 00:50 .
+     2 dr-xr-xr-x. 22 root root  4096 Aug 10 00:50 ..
+... ...
+</code></pre><p>可见这里根目录的inode号为2，而且根目录下的指向其父目录的隐藏硬链接（..）也指向了自身。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/19/sql/msyql/读懂mysql执行计划/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/19/sql/msyql/读懂mysql执行计划/" itemprop="url">读懂mysql执行计划</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-19T15:22:28+08:00">
+                2018-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain-join-types" target="_blank" rel="noopener">https://dev.mysql.com/doc/refman/8.0/en/explain-output.html#explain-join-types</a></p>
+<hr>
+<p>在MySQL使用 <strong>explain</strong> 关键字来查看SQL的执行计划，如下所示：<br><img src="/pics/mysql-explain1.png" alt="mysql执行计划"></p>
+<h4 id="id"><a href="#id" class="headerlink" title="id"></a>id</h4><p>有一组数字组成。表示一个查询中各个子查询的执行顺序：</p>
+<ul>
+<li>id相同执行顺序由上至下</li>
+<li>id不同，id值越大优先级越高，越先被执行。</li>
+<li>id为null时表示一个结果集，不需要使用它查询，常出现在包含union等查询语句中。</li>
+</ul>
+<h4 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h4><p>每个子查询的查询类型，一些常见的查询类型。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>select_type</th>
+<th style="text-align:center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIMPLE</td>
+<td style="text-align:center">不包含任何子查询或union等查询的查寻</td>
+<td></td>
+</tr>
+<tr>
+<td>PRIMARY</td>
+<td style="text-align:center">最外层查询就显示为 PRIMARY</td>
+<td></td>
+</tr>
+<tr>
+<td>UNION</td>
+<td style="text-align:center">Second or later SELECT statement in a UNION</td>
+<td></td>
+</tr>
+<tr>
+<td>DEPENDENT UNION</td>
+<td style="text-align:center">Second or later SELECT statement in a UNION, dependent on outer query</td>
+<td></td>
+</tr>
+<tr>
+<td>UNION RESULT</td>
+<td style="text-align:center">从UNION中获取结果集</td>
+<td></td>
+</tr>
+<tr>
+<td>SUBQUERY</td>
+<td style="text-align:center">First SELECT in subquery</td>
+<td></td>
+</tr>
+<tr>
+<td>DEPENDENT SUBQUERY</td>
+<td style="text-align:center">First SELECT in subquery, dependent on outer query</td>
+<td></td>
+</tr>
+<tr>
+<td>DERIVED</td>
+<td style="text-align:center">Derived table</td>
+<td></td>
+</tr>
+<tr>
+<td>DEPENDENT DERIVED</td>
+<td style="text-align:center">Derived table dependent on another table</td>
+<td></td>
+</tr>
+<tr>
+<td>MATERIALIZED</td>
+<td style="text-align:center">Materialized subquery</td>
+<td></td>
+</tr>
+<tr>
+<td>UNCACHEABLE SUBQUERY</td>
+<td style="text-align:center">A subquery for which the result cannot be cached and must be re-evaluated for each row of the outer query</td>
+<td></td>
+</tr>
+<tr>
+<td>UNCACHEABLE UNION</td>
+<td style="text-align:center">The second or later select in a UNION that belongs to an uncacheable subquery (see UNCACHEABLE SUBQUERY)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="table"><a href="#table" class="headerlink" title="table"></a>table</h4><p>查询的数据表，当从衍生表中查数据时会显示 <code>&lt;derivedx&gt; x</code> 表示对应的执行计划id。</p>
+<h4 id="partitions"><a href="#partitions" class="headerlink" title="partitions"></a>partitions</h4><p>表分区、表创建的时候可以指定通过那个列进行表分区。partitions这列表示查询将会匹配哪几个分区的行。</p>
+<h4 id="type"><a href="#type" class="headerlink" title="type"></a>type</h4><p>The type column of EXPLAIN output describes how tables are joined. In JSON-formatted output, these are found as values of the access_type property. The following list describes the join types, ordered from the best type to the worst:</p>
+<h5 id="1-system"><a href="#1-system" class="headerlink" title="1. system"></a>1. system</h5><p>The table has only one row (= system table). This is a special case of the const join type.<br>表中只有一行。这是 const 类型的特殊情况</p>
+<h5 id="2-const"><a href="#2-const" class="headerlink" title="2. const"></a>2. const</h5><p>The table has at most one matching row, which is read at the start of the query. Because there is only one row, values from the column in this row can be regarded as constants by the rest of the optimizer. const tables are very fast because they are read only once.</p>
+<p>const is used when you compare all parts of a PRIMARY KEY or UNIQUE index to constant values. </p>
+<p>表中最多只有一条匹配的行（元组），一旦读取到，后续的行就不用了再去读取。<br>当用常量值去匹配所有主键列或唯一索引时（一个主键或唯一索引可以有多个列），就是 const 类型。</p>
+<h5 id="3-eq-ref"><a href="#3-eq-ref" class="headerlink" title="3. eq_ref"></a>3. eq_ref</h5><p>从这张表中读取一行，用于前面表格的每行组合。 除了 system and const，这是最好的连接类型。 它在连接使用索引的所有部分时使用，索引是PRIMARY KEY或UNIQUE NOT NULL索引。</p>
+<p>eq_ref可用于使用=运算符进行比较的索引列。 比较值可以是一个常量，也可以是一个表达式，该表达式使用在此表之前读取的表中的列。 在以下示例中，MySQL可以使用eq_ref连接来处理ref_table.</p>
+<p>One row is read from this table for each combination of rows from the previous tables. Other than the system and const types, this is the best possible join type. It is used when all parts of an index are used by the join and the index is a PRIMARY KEY or UNIQUE NOT NULL index.</p>
+<p>eq_ref can be used for indexed columns that are compared using the = operator. The comparison value can be a constant or an expression that uses columns from tables that are read before this table. In the following examples, MySQL can use an eq_ref join to process ref_table:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM ref_table,other_table</span><br><span class="line">  WHERE ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line">SELECT * FROM ref_table,other_table</span><br><span class="line">  WHERE ref_table.key_column_part1=other_table.column</span><br><span class="line">  AND ref_table.key_column_part2=1;</span><br></pre></td></tr></table></figure></p>
+<h5 id="4-ref"><a href="#4-ref" class="headerlink" title="4. ref"></a>4. ref</h5><p>All rows with matching index values are read from this table for each combination of rows from the previous tables. ref is used if the join uses only a leftmost prefix of the key or if the key is not a PRIMARY KEY or UNIQUE index (in other words, if the join cannot select a single row based on the key value). If the key that is used matches only a few rows, this is a good join type.</p>
+<p>ref can be used for indexed columns that are compared using the = or &lt;=&gt; operator. In the following examples, MySQL can use a ref join to process ref_table:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM ref_table WHERE key_column=expr;</span><br><span class="line"></span><br><span class="line">SELECT * FROM ref_table,other_table</span><br><span class="line">  WHERE ref_table.key_column=other_table.column;</span><br><span class="line"></span><br><span class="line">SELECT * FROM ref_table,other_table</span><br><span class="line">  WHERE ref_table.key_column_part1=other_table.column</span><br><span class="line">  AND ref_table.key_column_part2=1;</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-fulltext"><a href="#5-fulltext" class="headerlink" title="5. fulltext"></a>5. fulltext</h5><p>全文索引</p>
+<h5 id="6-ref-or-null"><a href="#6-ref-or-null" class="headerlink" title="6. ref_or_null"></a>6. ref_or_null</h5><p>This join type is like ref, but with the addition that MySQL does an extra search for rows that contain NULL values. This join type optimization is used most often in resolving subqueries. In the following examples, MySQL can use a ref_or_null join to process ref_table:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM ref_table</span><br><span class="line">  WHERE key_column=expr OR key_column IS NULL;</span><br></pre></td></tr></table></figure></p>
+<h5 id="7-index-merge"><a href="#7-index-merge" class="headerlink" title="7. index_merge"></a>7. index_merge</h5><p>This join type indicates that the Index Merge optimization is used. In this case, the key column in the output row contains a list of indexes used, and key_len contains a list of the longest key parts for the indexes used. For more information, see Section 8.2.1.3, “Index Merge Optimization”.</p>
+<h5 id="8-unique-subquery"><a href="#8-unique-subquery" class="headerlink" title="8. unique_subquery"></a>8. unique_subquery</h5><p>This type replaces eq_ref for some IN subqueries of the following form:<br><code>value IN (SELECT primary_key FROM single_table WHERE some_expr)</code><br>unique_subquery is just an index lookup function that replaces the subquery completely for better efficiency.</p>
+<h5 id="9-index-subquery"><a href="#9-index-subquery" class="headerlink" title="9. index_subquery"></a>9. index_subquery</h5><p>This join type is similar to unique_subquery. It replaces IN subqueries, but it works for nonunique indexes in subqueries of the following form:<br><code>value IN (SELECT key_column FROM single_table WHERE some_expr)</code></p>
+<h5 id="10-range"><a href="#10-range" class="headerlink" title="10. range"></a>10. range</h5><p>Only rows that are in a given range are retrieved, using an index to select the rows. The key column in the output row indicates which index is used. The key_len contains the longest key part that was used. The ref column is NULL for this type.</p>
+<p>range can be used when a key column is compared to a constant using any of the =, &lt;&gt;, &gt;, &gt;=, &lt;, &lt;=, IS NULL, &lt;=&gt;, BETWEEN, LIKE, or IN() operators:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM tbl_name</span><br><span class="line">  WHERE key_column = 10;</span><br><span class="line"></span><br><span class="line">SELECT * FROM tbl_name</span><br><span class="line">  WHERE key_column BETWEEN 10 and 20;</span><br><span class="line"></span><br><span class="line">SELECT * FROM tbl_name</span><br><span class="line">  WHERE key_column IN (10,20,30);</span><br><span class="line"></span><br><span class="line">SELECT * FROM tbl_name</span><br><span class="line">  WHERE key_part1 = 10 AND key_part2 IN (10,20,30);</span><br></pre></td></tr></table></figure>
+<h5 id="11-index"><a href="#11-index" class="headerlink" title="11. index"></a>11. index</h5><p>The index join type is the same as ALL, except that the index tree is scanned. This occurs two ways:</p>
+<ul>
+<li><p>If the index is a covering index for the queries and can be used to satisfy all data required from the table, only the index tree is scanned. In this case, the Extra column says Using index. An index-only scan usually is faster than ALL because the size of the index usually is smaller than the table data.</p>
+</li>
+<li><p>A full table scan is performed using reads from the index to look up data rows in index order. Uses index does not appear in the Extra column.</p>
+</li>
+</ul>
+<p>MySQL can use this join type when the query uses only columns that are part of a single index.</p>
+<h5 id="12-ALL"><a href="#12-ALL" class="headerlink" title="12. ALL"></a>12. ALL</h5><p>A full table scan is done for each combination of rows from the previous tables. This is normally not good if the table is the first table not marked const, and usually very bad in all other cases. Normally, you can avoid ALL by adding indexes that enable row retrieval from the table based on constant values or column values from earlier tables.</p>
+<h4 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h4><p>可能选择的索引,如果该列为 null 表示没有可用的索引。这通常是需要优化的。</p>
+<h4 id="key"><a href="#key" class="headerlink" title="key"></a>key</h4><p>实际使用的索引</p>
+<h4 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h4><p>索引的长度</p>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>与使用的</p>
+<h4 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h4><p>数据库预估的此次查询需要检索多少行数据。对于 InnoDB 来说，是个预估值，不代表最终真实扫描的行数。</p>
+<h4 id="filtered"><a href="#filtered" class="headerlink" title="filtered"></a>filtered</h4><p>按表条件过滤的行的百分比</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/03/os/计算机启动过程及汇编总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/03/os/计算机启动过程及汇编总结/" itemprop="url">计算机启动过程及汇编总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T22:51:40+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/os/" itemprop="url" rel="index">
+                    <span itemprop="name">os</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="计算机启动过程"><a href="#计算机启动过程" class="headerlink" title="计算机启动过程"></a>计算机启动过程</h3><ol>
+<li>计算机加电启动后，CPU的 <code>CS:IP</code> 寄存器被强制初始化为 0xF000:0xFFF0 。CPU 在开机时处于实模式，因此实际的执行入口是 0xF000*16+0xFFF0 -&gt; 0xFFFF0 。这个地址会被映射到 BIOS 程序所在的 ROM 中，因此 BIOS 是计算机启动后第一个执行的程序。BIOS 会检测内存、显卡等硬件信息，并初始化它们，还会建立起中断向量表（IVT）并填写中断例程。</li>
+<li>BIOS 最后一项工作是校验启动盘中位于0盘0道1扇区处的内容，如果此扇区末尾的两个字节分别是0x55和0xaa，BIOS 就会将该扇区的内容加载到物理地址 0x7c00 处，并跳转到改地址执行。此扇区中的指令被称为主引导记录（MBR）。</li>
+</ol>
+<h3 id="什么是地址"><a href="#什么是地址" class="headerlink" title="什么是地址"></a>什么是地址</h3><p>地址只是数字，描述各种符号在源程序中的位置，它是源代码文件中各符号偏移文件开头的距离。由于指令和变量所占内存大小不同，故它们相对于文件开头的偏移量参差不齐。源文件就像旅店一样，里面的符号(指令、变量等)就像旅店里的房间，有单人间、双人间，虽然大小不同，但它们也需要被旅店管理员编号，也就是每个房间都有房间号，这样房客通过房间号便能找到自己的住所。房间由旅店管理员给编址，那源代码文件中各符号地址又是由谁来规划的呢?<br>编译器的工作就是给各符号编址。编译器根据所在硬件平台的特性，将源代码中的每一个符号(指令和数据)都按照本硬件平台的特性分配空间，在不考虑对齐的情况下，这些符号在空间上都彼此相邻，连续分布，它们在程序中距第一个符号的距离便是它们在程序中的地址。<br>编译器给程序中各符号(变量名或函数名等)分配的地址，就是各符号相对于文件开头的偏移量。</p>
+<h3 id="什么是Section"><a href="#什么是Section" class="headerlink" title="什么是Section"></a>什么是Section</h3><p>关键字 section 并没有对程序中的地址产生任何影响，即在默 认情况下，有没有 section 都一个样，section 中数据的地址依然是相对于整个文件的顺延，仅仅是在逻辑 上让开发人员梳理程序之用。<br>section.节名.start，这里是获得名为 data 的 section 在本文件中的<strong>真实偏移</strong>，即起始地址，是 nasm 提供的伪指令</p>
+<h3 id="什么是-vstart"><a href="#什么是-vstart" class="headerlink" title="什么是 vstart"></a>什么是 vstart</h3><p>section 用 vstart=来修饰后，可以被赋予一个虚拟起始地址 virtual start address(强调了这 个是虚拟的地址，不过要注意，这与 x86 CPU 中开启分页后的虚拟地址是两码事，不能混为一谈)，它被 用来计算在该 section 内的所有内存引用地址。它们的功能是告诉编译器:“嘿，老兄，你帮我把后面所有数据(指令和变量)的地址（引用地址） 以 xxxx 为起始开始编吧，但是编译球不会将变量定义到距离开头的该地址处，在文件中依然按顺序存放对应二进制码”。<br>用 vstart 的时机是:我预先知道我的程 序将来被加载到某地址处。</p>
+<p>$$ 表示的是所在的section的<strong>虚拟起始地址</strong><br>$ 表示的是虚拟地址+偏移量，在文件中的真实地址是 0x9，经编译后变成了 0x7c09，类似于重定位:新的地址+在文件中的地 址(也相对于整个文件的偏移量)，即 0x7c00+9。</p>
+<h4 id="nasm-汇编语法"><a href="#nasm-汇编语法" class="headerlink" title="nasm 汇编语法"></a>nasm 汇编语法</h4><ol>
+<li>equ 是 nasm 提供的伪指令，意为 equal，即等于，用于给表达式起个意义更明确的符号名，其指令格式是:<br> 符号名称 equ 表达式<br> 如：<br> <code>RPL0 equ 00b</code></li>
+<li>times 循环次数表达式 : <code>times 60 dq 0</code></li>
+<li>in/out : </li>
+</ol>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ol>
+<li>写文件到img镜像：<code>dd if=mbr.bin of=hd60M.img bs=512 count=1 seek=2 conv=notrunc</code></li>
+<li>汇编文件编译：<code>nasm -f &lt;format&gt; &lt;filename&gt; [-o &lt;output&gt;]</code></li>
+</ol>
+<h3 id="bochs调试命令"><a href="#bochs调试命令" class="headerlink" title="bochs调试命令"></a>bochs调试命令</h3><p>-<em>- Debugger control -</em>- 调试控制：<br>    help, q|quit|exit, set, instrument, show, trace, trace-reg,<br>    trace-mem, u|disasm, ldsym, slist</p>
+<p>-<em>- Execution control -</em>- 执行控制：<br>    c|cont|continue, s|step, p|n|next, modebp, vmexitbp</p>
+<p>-<em>- Breakpoint management -</em>- 断点管理：<br>    vb|vbreak, lb|lbreak, pb|pbreak|b|break, sb, sba, blist,<br>    bpe, bpd, d|del|delete, watch, unwatch</p>
+<p>-<em>- CPU and memory contents -</em>- CPU及内存查看：<br>    x, xp, setpmem, writemem, crc, info,<br>    r|reg|regs|registers, fp|fpu, mmx, sse, sreg, dreg, creg,<br>    page, set, ptime, print-stack, ?|calc</p>
+<p>-<em>- Working with bochs param tree -</em>-<br>    show “param”, restore</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/17/vue/计算属性和侦听器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/17/vue/计算属性和侦听器/" itemprop="url">计算属性和侦听器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-17T15:17:20+08:00">
+                2018-11-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/计算机/补码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/计算机/补码/" itemprop="url">补码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T14:30:15+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/computer/" itemprop="url" rel="index">
+                    <span itemprop="name">computer</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注：转载自阮一峰老师的博客：<a href="http://www.ruanyifeng.com/blog/2009/08/twos_complement.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2009/08/twos_complement.html</a></p>
+<p>补码的含义：假设用<code>n</code>比特位来表示有符号整数，最高位代表符号位。</p>
+<p>想想一下，<code>n</code>比特位可以表示<code>2&lt;sup&gt;n&lt;/sup&gt;</code>个数，把这些数刻在一个有<code>2&lt;sup&gt;n&lt;/sup&gt;</code>个刻度的钟表上，实际上，</p>
+<p>问一个基本的问题。</p>
+<h2 id="负数在计算机中如何表示？"><a href="#负数在计算机中如何表示？" class="headerlink" title="负数在计算机中如何表示？"></a>负数在计算机中如何表示？</h2><p>举例来说，+8在计算机中表示为二进制的1000，那么-8怎么表示呢？</p>
+<p>很容易想到，可以将一个二进制位（bit）专门规定为符号位，它等于0时就表示正数，等于1时就表示负数。比如，在8位机中，规定每个字节的最高位为符号位。那么，+8就是00001000，而-8则是10001000。</p>
+<p>但是，随便找一本《计算机原理》，都会告诉你，实际上，计算机内部采用2的补码（Two’s Complement）表示负数。</p>
+<h2 id="什么是2的补码？"><a href="#什么是2的补码？" class="headerlink" title="什么是2的补码？"></a>什么是2的补码？</h2><p>它是一种数值的转换方法，要分二步完成：</p>
+<ol>
+<li><p>第一步，每一个二进制位都取相反值，0变成1，1变成0。比如，00001000的相反值就是11110111。</p>
+</li>
+<li><p>第二步，将上一步得到的值加1。11110111就变成11111000。</p>
+</li>
+</ol>
+<p>所以，00001000的2的补码就是11111000。也就是说，-8在计算机（8位机）中就是用11111000表示。</p>
+<p>不知道你怎么看，反正我觉得很奇怪，为什么要采用这么麻烦的方式表示负数，更直觉的方式难道不好吗？</p>
+<p>昨天，我在一本书里又看到了这个问题，然后就花了一点时间到网上找资料，现在总算彻底搞明白了。</p>
+<h2 id="2的补码的好处"><a href="#2的补码的好处" class="headerlink" title="2的补码的好处"></a>2的补码的好处</h2><p>首先，要明确一点。计算机内部用什么方式表示负数，其实是无所谓的。只要能够保持一一对应的关系，就可以用任意方式表示负数。所以，既然可以任意选择，那么理应选择一种最方便的方式。</p>
+<p>2的补码就是最方便的方式。它的便利体现在，所有的加法运算可以使用同一种电路完成。</p>
+<p>还是以-8作为例子。</p>
+<p>假定有两种表示方法。一种是直觉表示法，即10001000；另一种是2的补码表示法，即11111000。请问哪一种表示法在加法运算中更方便？</p>
+<p>随便写一个计算式，16 + (-8) = ?</p>
+<p>16的二进制表示是 00010000，所以用直觉表示法，加法就要写成：</p>
+<p>　０００１００００<br>＋１０００１０００<br>－－－－－－－－－<br>　１００１１０００</p>
+<p>可以看到，如果按照正常的加法规则，就会得到10011000的结果，转成十进制就是-24。显然，这是错误的答案。也就是说，在这种情况下，正常的加法规则不适用于正数与负数的加法，因此必须制定两套运算规则，一套用于正数加正数，还有一套用于正数加负数。从电路上说，就是必须为加法运算做两种电路。</p>
+<p>现在，再来看2的补码表示法。</p>
+<p>　０００１００００<br>＋１１１１１０００<br>－－－－－－－－－<br>１００００１０００</p>
+<p>可以看到，按照正常的加法规则，得到的结果是100001000。注意，这是一个9位的二进制数。我们已经假定这是一台8位机，因此最高的第9位是一个溢出位，会被自动舍去。所以，结果就变成了00001000，转成十进制正好是8，也就是16 + (-8) 的正确答案。这说明了，2的补码表示法可以将加法运算规则，扩展到整个整数集，从而用一套电路就可以实现全部整数的加法。</p>
+<h2 id="2的补码的本质"><a href="#2的补码的本质" class="headerlink" title="2的补码的本质"></a>2的补码的本质</h2><p>在回答2的补码为什么能正确实现加法运算之前，我们先看看它的本质，也就是那两个步骤的转换方法是怎么来的。</p>
+<p>要将正数转成对应的负数，其实只要用0减去这个数就可以了。比如，-8其实就是0-8。</p>
+<p>已知8的二进制是00001000，-8就可以用下面的式子求出：</p>
+<p>　００００００００<br>－００００１０００<br>－－－－－－－－－</p>
+<p>因为00000000（被减数）小于0000100（减数），所以不够减。请回忆一下小学算术，如果被减数的某一位小于减数，我们怎么办？很简单，问上一位借1就可以了。</p>
+<p>所以，0000000也问上一位借了1，也就是说，被减数其实是100000000，算式也就改写成：</p>
+<p>１００００００００<br>－００００１０００<br>－－－－－－－－－<br>　１１１１１０００</p>
+<p>进一步观察，可以发现100000000 = 11111111 + 1，所以上面的式子可以拆成两个：</p>
+<p>　１１１１１１１１<br>－００００１０００<br>－－－－－－－－－<br>　１１１１０１１１<br>＋０００００００１<br>－－－－－－－－－<br>　１１１１１０００</p>
+<p>2的补码的两个转换步骤就是这么来的。</p>
+<h2 id="为什么正数加法适用于2的补码？"><a href="#为什么正数加法适用于2的补码？" class="headerlink" title="为什么正数加法适用于2的补码？"></a>为什么正数加法适用于2的补码？</h2><p>实际上，我们要证明的是，X-Y或X+(-Y)可以用X加上Y的2的补码完成。</p>
+<p>Y的2的补码等于(11111111-Y)+1。所以，X加上Y的2的补码，就等于：</p>
+<p>X + (11111111-Y) + 1</p>
+<p>我们假定这个算式的结果等于Z，即 Z = X + (11111111-Y) + 1</p>
+<p>接下来，分成两种情况讨论。</p>
+<ol>
+<li>第一种情况，如果X小于Y，那么Z是一个负数。这时，我们就对Z采用2的补码的逆运算，求出它对应的正数绝对值，再在前面加上负号就行了。所以，</li>
+</ol>
+<p>Z = -[11111111-(Z-1)] = -[11111111-(X + (11111111-Y) + 1-1)] = X - Y</p>
+<ol>
+<li>第二种情况，如果X大于Y，这意味着Z肯定大于11111111，但是我们规定了这是8位机，最高的第9位是溢出位，必须被舍去，这相当于减去100000000。所以，</li>
+</ol>
+<p>Z = Z - 100000000 = X + (11111111-Y) + 1 - 100000000 = X - Y</p>
+<p>这就证明了，在正常的加法规则下，可以利用2的补码得到正数与负数相加的正确结果。换言之，计算机只要部署加法电路和补码电路，就可以完成所有整数的加法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/TCP-IP/密码学常识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/06/TCP-IP/密码学常识/" itemprop="url">网络协议中的密码学常识</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-06T20:58:30+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络协议/" itemprop="url" rel="index">
+                    <span itemprop="name">网络协议</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>引自：<a href="https://www.cnblogs.com/hanganglin/archive/2017/03/12/6538291.html" target="_blank" rel="noopener">https://www.cnblogs.com/hanganglin/archive/2017/03/12/6538291.html</a></p>
+<p>常见的加密算法可以分为对称加密算法、非对称加密算法和摘要算法，数字签名使用了非对称加密算法和摘要算法来保证数据传输的完整性和安全性。数字证书由权威的CA机构颁发，用于互联网通信时验证通信实体的身份。</p>
+<h2 id="一、对称加密"><a href="#一、对称加密" class="headerlink" title="一、对称加密"></a>一、对称加密</h2><p>对称加密指加密和解密使用相同密钥的加密算法，也称为单密钥加密。他的特点是算法公开、计算量少、加密速度快，对于同样大小的传输对象，对称加密效率通常为非对称加密的千倍左右，因此通常被广泛应用于很多加密协议的核心工作（如https在真正数据通信时就使用的对称加密算法）。对称加密算法的缺点是加解密使用同一把密钥，一旦一方密钥泄露，传输的数据就存在安全风险。此外，与多方的通信需要使用不同的密钥，通信双方需要管理大量的密钥。</p>
+<p>常见的对称加密算法有：DES、3DES、AES、RC4、IDEA等。</p>
+<h2 id="二、非对称加密"><a href="#二、非对称加密" class="headerlink" title="二、非对称加密"></a>二、非对称加密</h2><p>非对称加密使用一对公钥和私钥来加密通信数据，也称为双密钥加密。公钥和私钥是成对出现的，通信数据使用公钥加密后，只能通过对应私钥来解密，同样使用私钥加密后也只能通过公钥来解密查看。公钥是对外公开的，外界通信方可以很容易获取到，而私钥是不公开的，只存在于己方。服务器使用私钥加密数据往外传输时，可以被持有公钥的客户端解密查看，但客户端使用公钥加密数据传输给服务端时，数据是严格安全的，只有服务器使用私钥才能解密查看。因此非对称密钥数据通信是单向安全的，客户端使用服务端的公钥加密数据传向服务端是严格加密安全的。</p>
+<p>非对称加密的主要用途：</p>
+<ol>
+<li>单向传输加密数据，防止中间人攻击。使用公钥加密数据并传输给接受者，可以确保只有接受者才能获得明文信息，一般用于交换对称密钥；</li>
+<li>身份验证和数据校验。发送方使用私钥加密明文数据的hash值，并将明文、加密后的数据和公钥一起发送给接收方，接收方只需要通过公钥解密密文，然后与相同hash算法获取明文的hash值进行比较，一致则说明明文数据没有被篡改，一般用于数字签名。</li>
+</ol>
+<p>常见的非对称加密算法有：RSA、DSA、Diffie-Hellman、ECC等。</p>
+<h2 id="三、摘要算法"><a href="#三、摘要算法" class="headerlink" title="三、摘要算法"></a>三、摘要算法</h2><p>摘要算法也称为哈希算法、散列算法，可以将任意长度的数据转换成一个定长的、不可逆的数字。只要原文本不同，计算的结果必然不同（几乎不用考虑重复的情况）。摘要算法用于对比信息源是否一致，因为只要数据源发生变化，得到的摘要信息必然不同，通常用于签名校验。</p>
+<p>常见的摘要算法有：MD5、SHA-1、MAC、CRC等；</p>
+<h2 id="四、数字签名"><a href="#四、数字签名" class="headerlink" title="四、数字签名"></a>四、数字签名</h2><p>数字签名是非对称加密算法和摘要算法的一种应用，能够保证信息在传输过程中不被篡改，也能保证数据不能被伪造。使用时，发送方使用摘要算法获得发布内容的摘要，然后使用私钥对摘要进行加密（加密后的数据就是数字签名），然后将发布内容、数字签名和公钥一起发送给接收方即可。接收方接收到内容后，首选取出公钥解密数字签名，获得正文的摘要数据，然后使用相同的摘要算法计算摘要数据，将计算的摘要与解密的摘要进行比较，若一致，则说明发布内容没有被篡改。 </p>
+<p>实际上，单一的数字签名应用，可能会存在安全风险。假设发送方为A，接收方为B，出现的一个不安全分子为M，原本A将发布内容、数字签名和A的公钥发送给B，结果半道被M截获了，M修改了发布内容，用自己的私钥生成了数字签名，然后将修改的发布内容、M的数字签名、M的公钥发送给了B，B接收时验证一样可通过，但实际上接收的已经是被篡改的数据（见下图）实际上，只有下发公钥过程中才会有此问题，如果B已经有了A的公钥没有此问题，可以直接用A的公钥验签。实际使用中，数字签名常常同数字证书一同出现。</p>
+<p><img src="/pics/crypt-mid-attac.jpg" alt="单一数字签名被中间人攻击示意图"></p>
+<h2 id="五、数字证书"><a href="#五、数字证书" class="headerlink" title="五、数字证书"></a>五、数字证书</h2><p>数字证书是由权威的CA机构颁发的无法被伪造的证书，用于校验发送方实体身份的认证。解决如上问题，只需要发送方A找一家权威的CA机构申请颁发数字证书，证书内包含A的相关资料信息以及A的公钥，然后将正文A、数字证书以及A生成的数字签名发送给B，此时中间人M是无法篡改正文内容而转发给B的，因为M不可能拥有这家CA的私钥，无法随机制作数字证书。当然，如果M也申请了同一家CA的数字证书并替换发送修改后的正文、M的数字证书和M的数字签名，此时B接收到数据时，会校验数字证书M中的信息与当前通信方是否一致，发现数字证书中的个人信息为M并非A，说明证书存在替换风险，可以选择中断通信。</p>
+<p>为什么CA制作的证书是无法被伪造的？其实CA制作的数字证书内还包含CA对证书的数字签名，接收方可以使用CA公开的公钥解密数字签名，并使用相同的摘要算法验证当前数字证书是否合法。制作证书需要使用对应CA机构的私钥，因此CA颁发的证书是无法被非法伪造的（CA的私钥泄露不在考虑讨论与考虑范围内）。</p>
+<p>数字证书签名的基础就是非对称加密算法和数字签名，其无法伪造的特性使得其应用面较广，HTTPS中就使用了数字证书来保证握手阶段服务端传输的公钥的可靠性。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/13/分布式/缓存相关问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/13/分布式/缓存相关问题/" itemprop="url">缓存相关问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-13T20:17:23+08:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/缓存/" itemprop="url" rel="index">
+                    <span itemprop="name">缓存</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><p>缓存穿透，是指查询一个数据库一定不存在的数据。正常的使用缓存流程大致是，数据查询先进行缓存查询，如果key不存在或者key已经过期，再对数据库进行查询，并把查询到的对象，放进缓存。如果数据库查询对象为空，则不放进缓存。</p>
+<p>想象一下这个情况，如果传入的参数为-1，会是怎么样？这个-1，就是一定不存在的对象。就会每次都去查询数据库，而每次查询都是空，每次又都不会进行缓存。假如有恶意攻击，就可以利用这个漏洞，对数据库造成压力，甚至压垮数据库。即便是采用UUID，也是很容易找到一个不存在的KEY，进行攻击。</p>
+<p>解决方案：<br>采用缓存空值的方式，如果从数据库查询的对象为空，也放入缓存，只是设定的缓存过期时间较短，比如设置为60秒。</p>
+<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><p>缓存雪崩，是指在某一个时间段，缓存集中过期失效。</p>
+<p>产生雪崩的原因之一，比如在写本文的时候，马上就要到双十二零点，很快就会迎来一波抢购，这波商品时间比较集中的放入了缓存，假设缓存一个小时。那么到了凌晨一点钟的时候，这批商品的缓存就都过期了。而对这批商品的访问查询，都落到了数据库上，对于数据库而言，就会产生周期性的压力波峰。</p>
+<p>解决方案：<br>一般是采取不同分类商品，缓存不同周期。在同一分类中的商品，加上一个随机因子。这样能尽可能分散缓存过期时间，而且，热门类目的商品缓存时间长一些，冷门类目的商品缓存时间短一些，也能节省缓存服务的资源。</p>
+<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><p>缓存击穿，是指一个key非常热点，在不停的扛着大并发，大并发集中对这一个点进行访问，当这个key在失效的瞬间，持续的大并发就穿破缓存，直接请求数据库，就像在一个屏障上凿开了一个洞。</p>
+<p>做电商项目的时候，把这货就称为“爆款”。</p>
+<p>其实，大多数情况下这种爆款很难对数据库服务器造成压垮性的压力。达到这个级别的公司没有几家的。所以，务实主义的小编，对主打商品都是早早的做好了准备，让缓存永不过期。即便某些商品自己发酵成了爆款，也是直接设为永不过期就好了。</p>
+<p>大道至简，mutex key互斥锁真心用不上。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/11/sql/索引与散列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/11/sql/索引与散列/" itemprop="url">索引与散列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-11T15:18:20+08:00">
+                2018-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>超码：是一个或多个属性的集合，超码中属性的组合可以使我们在这个关系中唯一的标识一个元组。<br>候选码：如果K是一个超码，那么任何K的超集也是超码。如果一个超码的任意真子集都不能成为超码，这样的最小超码称为候选码。<br>主码：选定用来唯一标识关系中一个元组的候选码。<br>外码：一个关系（r1）可能在它的属性中包含另一个关系模式（r2)的主码。这个属性在r1上称作参照r2的外码。r1称作外码的参照关系，r2称作外码的被参照关系。</p>
+<p>顺序索引：基于值的顺序索引。<br>散列索引：基于将值通过散列函数平均分布到若干散列桶中。<br>搜索码：用于在文件中查找记录的属性或属性集合称为搜索码。</p>
+<h2 id="顺序索引"><a href="#顺序索引" class="headerlink" title="顺序索引"></a>顺序索引</h2><p>每个索引结构与一个特定的搜索码相关联。正如书中的索引或者图书馆目录一样，顺序索引按照顺序存储搜索码的值，并将每个搜索码与包含该搜索码的记录关联起来。</p>
+<p>被索引文件中的记录自身也可以按照某种排序顺序存储，正如图书馆的书按某些属性顺序排放一样。一个文件可以有多个索引，分别基于不同的搜索码。如果包含记录的文件按照某个搜索码索引指定的顺序将记录排序，那么该搜索码对应的索引成为<strong>聚集索引</strong>，也称为<strong>主索引</strong>。搜索码指定的顺序与文件中记录的物理顺序不同的索引称为<strong>非聚集索引</strong>或<strong>辅助索引</strong>。</p>
+<p>在搜索码上有聚集索引的文件称为<strong>索引顺序文件</strong>。</p>
+<h3 id="稠密索引和稀疏索引"><a href="#稠密索引和稀疏索引" class="headerlink" title="稠密索引和稀疏索引"></a>稠密索引和稀疏索引</h3><p><strong>索引项</strong>或<strong>索引记录</strong>由一个搜索码值和指向具有该搜索码值的一条或多条记录的指针构成。指向记录的指针包括磁盘块的标识和标识磁盘块内记录的块内偏移量。</p>
+<p>可以使用的顺序索引有两类：</p>
+<ul>
+<li><p>稠密索引：在稠密索引中，文件中的每个搜索码值都有一个索引项。在稠密聚集索引中，索引项包括搜索码值以及指向具有该搜索码值第一条数据记录的指针。具有相同搜索码值的其余记录顺序地存储在第一条数据记录之后，由于该索引是聚集索引，因此记录根据相同的搜索码值排序。<br>在稠密非聚集索引中，索引必须存储指向所有相同搜索码值的记录的指针列表。</p>
+</li>
+<li><p>稀疏索引：在稀疏索引中，只为搜索码的某些值建立索引项。只有当关系按搜索码排列顺序存储记录时才能使用稀疏索引，换句话说，只有索引是<strong>聚集索引</strong>时才能使用稀疏索引。为了使用索引查找一条记录，首先找到小于或等于待查搜索码值的索引项，然后从该索引项指向的记录开始，沿着文件中的记录指针查找知道找到所需记录为止。<br><img src="/pics/index.jpg" alt="稀疏索引和稠密索引"></p>
+</li>
+</ul>
+<p>因为，稠密索引为每个不同的搜索码都建立了索引项，利用稠密索引通常可以更快地定位一条记录。但是，稀疏索引也有优越的地方：它所占的存储空间较小，并且插入和删除时所需的维护开销也较小。</p>
+<p>系统设计者必须在存取时间和空间开销之间进行权衡，尽管这一权衡的决定依赖于具体的应用，但是为每个块建立一个索引项的稀疏索引是一个较好的折中。利用稀疏索引快速定位到块后，将块读取到内存，在内存中扫描整个块的时间与定位磁盘块的时间相比可以忽略。只要记录不在溢出块中，就能使块访问次数最小，同时保持索引尽可能的小。</p>
+<p><strong>文件中的记录按照A搜索码有序组织排列，没有按B搜索码有序排列。那么，A搜索码上的索引称为聚集索引（可以是稠密也可以是稀疏的），在B搜索码的上的为辅助索引（稠密索引）。<br>如为每个记录搜索码建立索引项就是稠密索引，反之就是稀疏索引。</strong></p>
+<h3 id="辅助索引"><a href="#辅助索引" class="headerlink" title="辅助索引"></a>辅助索引</h3><p>辅助索引必须是稠密索引，对每个搜索码值都要有一个索引项，而且对文件中的每条记录都有一个指针。而聚集索引可以是稀疏索引，只要找到一个合适的记录，然后顺序扫描部分文件即可找到指定记录。但是，非聚集索引不能是稀疏的，因为搜索码乱序排放，所以有可能造成整个文件扫描才能找到指定记录。</p>
+<h2 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+ 树索引"></a>B+ 树索引</h2><p>B+树是一种多级索引，但是其结构不同于多级索引顺序文件。典型的B+树结点结构如下图所示。它最多包含 n-1 个搜索码值 <script type="math/tex">K_1,K_2,....K_(n-1)</script> ，以及 n 个指针 $P_1,P_2,….,P_n$。每个结点中的搜索码值按序排放，因此如果 $i&lt;j$ ,则 $K_i&lt;K_j$。<br><img src="/pics/b+tree-node.jpg" alt="B+树结点"></p>
+<ul>
+<li>叶节点结构<br>对于i=1,2,3….n-1,指针 $Pi$ 指向具有搜索码值 $K_i$ 的一条<strong>文件记录</strong>。指针 $P_n$ 指向下一个有序的<strong>叶结点</strong>。叶结点最多包含 n-1 个搜索码值，最少包含 $\lceil (n-1)/2\rceil$ 个结点。 如果 $L_i，L_j$是两个叶结点，且 i&lt;j，那么$L_i$中的所有搜索码值小于等于$L_j$中的所有搜索码值。这种排序好且依次链接起来的叶结点实际上直接可以作为索引使用（叶结点链表顺序索引文件）。</li>
+<li>非叶结点<br>B+树的非叶结点形成叶结点上的一个多级（稀疏）索引。非叶结点结构和叶结点结构相同，只不过非叶结点中所有指针都指向树中的结点，而不是文件记录。非叶结点最多容纳n个指针，同时必须至少容纳$\lceil n/2\rceil$个指针，结点的指针数称为该结点的扇出。<br><img src="/pics/b+tree.png" alt="B+树索引结构"><br><strong>上图中有一点需要指出的是：叶子结点通常通过双向指针来构成一个双向循环链表</strong>。</li>
+</ul>
+<h3 id="B-树文件组织"><a href="#B-树文件组织" class="headerlink" title="B+树文件组织"></a>B+树文件组织</h3><p>不仅可以把B+树作为索引来使用，而且可以把它作为一个文件中记录的组织者，称为 B+树文件组织。树的叶节点存储的是记录而不是指向记录的指针。<br>Mysql的 Innodb 引擎中，表数据都是根据主键顺序组织的一张索引组织表，就是按B+树组织的。每张表都要有主键，如果创建表时没有显式创建主键，会按如下方式创建主键：</p>
+<ul>
+<li>判断是否有定义非空的唯一索引，如果有，索引列就是主键</li>
+<li>如果不符合上述条件， Innodb 会自动创建一个6字节大小的主键。</li>
+</ul>
+<h3 id="辅助索引和记录重定位"><a href="#辅助索引和记录重定位" class="headerlink" title="辅助索引和记录重定位"></a>辅助索引和记录重定位</h3><p>一些文件组织（如B+树文件组织）可能会改变记录的位置，即使记录并没有更新。举例来说，当B+树文件组织中的一个叶节点分裂，一些记录会移动到新的节点中去。在这种情况下，所有存储了那些指向重定位过的记录的指针的辅助索引都必须更新，即使记录中的值没有更新。每个叶节点可能包含相当多的记录，而其中每条记录都可能在每个辅助索引中的不同位置。因此一个叶节点的分裂可能需要几十甚至上百次IO操作来更新所有影响到的辅助索引，这个代价极其高昂。</p>
+<p>为了解决这个问题，<strong>可以在辅助索引中不存储指向记录的指针，而是存储主索引搜索码属性的值（主键值）</strong>。于是，由于叶节点分裂导致的记录重定位就不需要对辅助索引进行更新了。</p>
+<p>但是，用辅助索引定位一条记录需要两步：</p>
+<ol>
+<li>用辅助索引找到主索引码的值</li>
+<li>用主索引码去主索引中找到对应记录</li>
+</ol>
+<h3 id="前缀压缩"><a href="#前缀压缩" class="headerlink" title="前缀压缩"></a>前缀压缩</h3><p>使用<strong>前缀压缩技术可以增加节点的扇出（出度），从而降低树的高度，提高查找性能</strong>。不用在非叶节点存储整个搜索码值。只需存储每个搜索码的一个前缀，使得这个前缀足以将由该搜索码值分开的两棵子树中的码值区分开。</p>
+<p>例如，假设有一个名字上的索引，非叶节点的码值可以使用名字的一个前缀；如果搜索码分开的两棵子树中跟”Siberdsfsd”最相近的码值分别是”Silas”和”Silver”，则在非叶节点中存储”Silb”前缀就可以了，而不用存储整个”Siberdsfsd”。</p>
+<h3 id="批量加载技术"><a href="#批量加载技术" class="headerlink" title="批量加载技术"></a>批量加载技术</h3><p>考虑这样一种情况：要在一个超大关系表中的某个搜索码上建立非聚集索引，也就是说文件记录并没有按照该搜索码有序组织。</p>
+<p>在这种情况下，当往B+树中添加项时，首先要查找需要将该项插入到哪个叶结点中，要访问的每个叶结点通常不在缓冲区中，因为项没有特定的排序，需要IO读取叶结点的块。每次项的插入都需要这样一次随机的读和写操作。假设一个关系有1亿条记录，每次IO需要10ms，那么建立这个非聚集索引至少需要100万秒的时间，这仅仅是读取叶结点的时间。</p>
+<p><strong>将大量记录一次插入到索引中称为索引的批量加载。通常发生在数据库表已经存在大量数据且需要创建索引，或者将大量记录一次插入到数据库表中时（需要更新索引）。</strong></p>
+<p>一种有效执行批量加载的方式如下：</p>
+<ol>
+<li>首先，创建一个含有关系索引项的临时文件</li>
+<li>然后，根据构建好的索引（如果已经构建好）的搜索码来排序文件</li>
+<li>最后，扫描排序好的文件并且将项插入到索引中。</li>
+</ol>
+<p>将项插入到B+树之前先进性排序具有明显的好处。排序后，可以顺序地将一批项插入到叶结点中（而不是一项一次IO地去查找叶结点）。如果是新建索引，即初始B+树为空，批量加载时就不需要从磁盘中加载叶结点。如果连续叶结点也分配到连续磁盘块中，那么就可以顺序IO操作叶结点。相比于随机IO操作的每块10ms，大部分顺序IO操作只需要1ms。从零开始构建B+树索引时，可以采用<strong>自底向上B+树构建</strong>。而不是使用常规的插入过程。</p>
+<p><strong>自底向上B+树构建</strong>中，通过扫描将项排序后的临时文件，将排序好的项分解到块中，并保证每个快中有尽可能多的项，由此产生的块形成B+树的叶级。每个块中的最小值及指向块中的指针用来构建下一级B+树的项，并且指向叶块。更深一级的树结点可以类似的使用下层结点中的最小值来构建，直到跟结点。</p>
+<p>大多数数据库系统使用基于项排序和<strong>自底向上B+树构建</strong>的有效技术。如果一次插入大量数据记录到已经存在的关系中，一些数据库会建议先删除索引（除了主码上的索引），然后重新构建该索引。</p>
+<h3 id="多码访问"><a href="#多码访问" class="headerlink" title="多码访问"></a>多码访问</h3><h4 id="使用多个单码索引"><a href="#使用多个单码索引" class="headerlink" title="使用多个单码索引"></a>使用多个单码索引</h4><p>假设关系 instructor 的 dept_name 和 salary 上分别都建立了索引。考虑下面的查询：<br><code>select * from instructor where dept_name=&#39;Finace&#39; and salary = 8000</code><br>有三种策略：</p>
+<ol>
+<li>利用dept_name索引，找出属于金融系的所有记录，检查每条记录是否满足 salary = 8000；</li>
+<li>利用 salary 索引，找出所有 salary &lt; 8000 的记录，检查每条记录是否满足 dept_name=’Finace’；</li>
+<li>分别利用 salary 索引和 dept_name 索引检索出满足条件的两个指针集合，计算两个集合的交集。</li>
+</ol>
+<p>只有第三种方法利用了存在多个索引的优势。但是这种策略在下面这种情况下也是很糟糕的选择：</p>
+<ul>
+<li>属于金融系的记录很多</li>
+<li>salary = 8000的记录很多</li>
+<li>金融系中 salary = 8000的记录很少</li>
+</ul>
+<h4 id="使用多码索引-联合索引"><a href="#使用多码索引-联合索引" class="headerlink" title="使用多码索引(联合索引)"></a>使用多码索引(联合索引)</h4><p>另一种可选的策略是在复合搜索码（dept_name,salary)上建立索引。下图是一个多码索引的结构：<br><img src="/pics/multi-index.jpg" alt="多码索引B+树结构"><br>可以看出，叶子节点是按照多个搜索码的排序的，多码索引会先对第一个搜索码排序，然后对第二个..。也就是说如果多个记录第一个搜索码相同，会按照第二个搜索码的顺序排列，依此类推。所以，多码索引和第一个搜索码上的单码索引等价，整个索引是按照第一搜索码有序排列的。但是，后续搜索码在二叉查找树中不是有序的。</p>
+<p>判断某搜索能不能使用一个某个索引的方法：搜索条件中的搜索码在该索引中是否是有序的（即是否能按二叉查找树排序规则排序）。</p>
+<p>因此，使用多码索引时，有最左前缀原则：只有搜索条件中是多码索引的最左前缀时，才可以利用多码索引。<br> (col1, col2, col3，col4)这个联合索引的所有前缀就是(col1), (col1, col2), (col1, col2, col3), (col1, col2, col3，col4)。(col2), (col3), (col2, col3) 都不会使用该索引。但是，（col1，col3）会使用col1部分索引，（col1,col2,col4)会使用（col1,col2）的索引。总结来说就是：搜索条件中的搜索码必须可以匹配到多码索引前缀的一个或多个，最终匹配最长的部分会使用多码索引。</p>
+<h3 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h3><p><strong>覆盖索引存储一些属性（但不是搜索码属性）的值以及指向记录的指针</strong>。存储附加的属性值对于辅助索引是非常有用的，因为它们使得仅用索引就能回答在附加属性的的一些查询，甚至不需要找到实际的记录。</p>
+<h3 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h3><p><img src="/pics/reverse-index.png" alt="倒排索引"></p>
+<h2 id="索引操作SQL"><a href="#索引操作SQL" class="headerlink" title="索引操作SQL"></a>索引操作SQL</h2><ol>
+<li>创建索引<ul>
+<li><code>create [unique] index &lt;index_name&gt; on &lt;table_name&gt;(column_list)</code></li>
+<li><code>alter table &lt;table_name&gt; add [index|key] &lt;index_name&gt;(column_list)</code>: <code>alter table t add key idx_b(b(5))</code>-&gt;只对b列的前5个数据进行索引，假如b列是字符串，就只索引前5个字符</li>
+</ul>
+</li>
+<li>删除索引<ul>
+<li><code>drop index &lt;index_name&gt; on &lt;table_name&gt;</code></li>
+<li><code>alter table &lt;table_name&gt; drop primary key| drop [index|key] &lt;index_name&gt;</code></li>
+</ul>
+</li>
+<li>查看索引<br><code>show index from &lt;table_name&gt;</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/02/sql/数据库设计范式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/02/sql/数据库设计范式/" itemprop="url">数据库设计范式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-02T09:42:02+08:00">
+                2018-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="第一范式"><a href="#第一范式" class="headerlink" title="第一范式"></a>第一范式</h2><p>一个域是原子的，如果该域的元素被认为是不可分的单元。我们称一个关系模式R属于第一范式，如果该域的所有属性都是原子的。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/11/sql/数据库事务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/11/sql/数据库事务/" itemprop="url">数据库事务</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-11T21:56:30+08:00">
+                2018-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="事务的概念"><a href="#事务的概念" class="headerlink" title="事务的概念"></a>事务的概念</h2><p><strong>事务</strong>是访问并可能更新各种数据项的一个程序执行单元。这些步骤集合必须作为一个单一的、不可分割的单元出现。</p>
+<h2 id="事务的特性"><a href="#事务的特性" class="headerlink" title="事务的特性"></a>事务的特性</h2><ol>
+<li><strong>原子性(Atomicity)</strong>：事务的所有操作在数据库中要么全部正确反映出来，要么完全不反映(全或无)。</li>
+<li><strong>一致性(Consistency)</strong>：隔离执行事务时(换言之，在没有其它数据库事务并发执行的情况下)保持数据库的一致性。</li>
+<li><strong>隔离性(Isolation)</strong>：尽管多个事务可以并发执行，但系统保证，对于任何一对事务T<sub>i</sub>和T<sub>j</sub>,在T<sub>i</sub>看来，T<sub>j</sub>或者在T<sub>i</sub>开始之前完成，或者在T<sub>i</sub>完成之后开始执行。因此，每个事务都感觉不到系统中有其它事务在并发地执行。</li>
+<li><strong>持久性(Durability)</strong>：一个事务完成之后，它对数据库的改变是永久性的，即使出现系统故障。</li>
+</ol>
+<h2 id="实例分析"><a href="#实例分析" class="headerlink" title="实例分析"></a>实例分析</h2><p>下边是一个从账户A转账$50到账户B的事务：<br>read(x):代表把数据库项x读取到内存缓冲区中一个叫x的变量操作；<br>write(x):代表把内存缓冲区中一个叫x的变量写入到数据库项x中；</p>
+<p><img src="/pics/transaction.jpg" alt="事务"></p>
+<ul>
+<li>一致性：在这里要求事务的执行不改变A、B账户金额之和。如果没有一致性要求，金额可能被事务凭空创造或销毁。如果数据库在事务执行前是一致的，那么在事务执行后仍将保持一致。确保单个事务的一致性是编写该事务的应用程序员的职责。</li>
+<li>原子性：假设事务执行前，A、B分别有$1000和$2000。假设T<sub>i</sub>执行时系统出现故障，在Write(A)之后、Write(B)之前，这样的话，数据库反映出来的转态是A有$950而B有$2000。这样，数据库反映的状态不再是本应描述的现实世界的真实状态。这种状态称为不一致状态。我们必须保证这种不一致状态在数据库中是不可见的。但是请注意，系统必然在某一时刻处于这种不一致状态。即使T<sub>i</sub>不出现故障，在执行过程中，也存在瞬时不一致状态。这样，如果一个事务或者不开始，或者保证完成，那么这个不一致状态除了在事务执行当中以外，其它时刻是不可见的。这就是需要保证原子性的原因。保证数据库原子性是数据库系统本身的责任，由恢复系统组件来完成。</li>
+<li><p>持久性：持久性意味着一旦事务执行成功，在系统中产生的所有变化将是永久的。应该存在一些检查点防止在系统失败时丢失信息。甚至硬件本身失败，系统的状态仍能通过在日志中记录事务完成的任务进行重建。我们可以通过确保下面两条中的任何一条来保证持久性：</p>
+<ol>
+<li>事务做的更新在事务结束期已经更新到磁盘上。</li>
+<li><p>有关事务已执行的更新信息已写到磁盘上，并且信息必须充分，能让数据库系统在重启时重新构造更新。可以把相关更新信息保存到日志中。</p>
+<p>这项任务也是由恢复系统来保证的。</p>
+</li>
+</ol>
+</li>
+<li><p>隔离性：如果几个事务并发的执行，即使每个事务都能确保一致性和原子性，如果他们的操作会以人们不希望的某种方式交叉执行，也会导致不一致的状态。假如在上述事务执行到不一致状态的瞬时，另一个事务读取A、B账户余额的值并计算A+B，得到的将是不一致的值。一种可行的方案是使事务一个接一个的执行，而不采用并发执行的方式。事务的隔离性保证保证事务的并发执行后的状态与这些事务一个接一个执行后的状态等价。这是有数据库系统的并发控制系统保证的。</p>
+</li>
+</ul>
+<h2 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h2><p>在标准SQL规范中定义了四种隔离级别：</p>
+<ul>
+<li>未提交读（Read Uncommitted）：最低隔离级别，一个事务能读取到别的事务未提交的更<br>新数据，很不安全，可能出现丢失更新、脏读、不可重复读、幻读；</li>
+<li>提交读(Read Committed)：一个事务能读取到别的事务提交的更新数据，不能看到未提交<br>的更新数据，不可能可能出现丢失更新、脏读，但可能出现不可重复读、幻读。例如：当一个事务两次读取一个数据项期间，另一个事务更新了该数据项并提交。</li>
+<li>可重复读（Repeatable Read）：只允许读取已提交数据，而且在一个事务两次读取一个数据项期间，其他事务不允许更新该数据。但该事务不要求与其他事务可串行化。例如：当一个事务在查询满足条件的数据时，可能找到一个已提交的事务插入的一些数据，但可能找不到该事务插入的其他数据。</li>
+<li>序列化(Serializable)：最高隔离级别，保证可串行化执行，最安全，不可能出现丢失更新、脏读、不可重复读、幻读。</li>
+</ul>
+<p>隔离级别越高，数据库事务并发执行性能越差，能处理的操作越少。因此在实际项目开发中为了考虑并发性能一般使用提交读隔离级别，它能避免丢失更新和脏读，尽管不可重复读和幻读不能避免，但可以在可能出现的场合使用<strong>悲观锁</strong>或<strong>乐观锁</strong>来解决这些问题。</p>
+<p>可重复读和幻读的区别：<br>不可重复读是指一个事务在两次读取一个数据项时，返回的结果不同。在两次读取期间，该数据项被另一个事务修改了。（update)<br>幻读是指一个事务在两次查询符合某个条件的数据时，返回的结果集不同。在两次查询期间，另一个事务插入或删除了符合条件的新数据。（insert、delete）<br>注意上述中的两次是指系统中事务的两次随机执行，而不是一个事务中的两次查询，因为事务并发顺序不同，两次事务执行结果可能不同。</p>
+<h2 id="查看并设置隔离级别"><a href="#查看并设置隔离级别" class="headerlink" title="查看并设置隔离级别"></a>查看并设置隔离级别</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-- 查看事务隔离级别</span><br><span class="line">SHOW VARIABLES LIKE &apos;transaction_isolation&apos;;</span><br><span class="line">SELECT @@GLOBAL.transaction_isolation, @@GLOBAL.transaction_read_only;</span><br><span class="line">SELECT @@SESSION.transaction_isolation, @@SESSION.transaction_read_only;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">    设置事务隔离级别</span><br><span class="line">*/</span><br><span class="line">SET [GLOBAL | SESSION] TRANSACTION</span><br><span class="line">    transaction_characteristic [, transaction_characteristic] ...</span><br><span class="line"></span><br><span class="line">transaction_characteristic: &#123;</span><br><span class="line">    ISOLATION LEVEL level</span><br><span class="line">  | access_mode</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">level: &#123;</span><br><span class="line">     REPEATABLE READ</span><br><span class="line">   | READ COMMITTED</span><br><span class="line">   | READ UNCOMMITTED</span><br><span class="line">   | SERIALIZABLE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">access_mode: &#123;</span><br><span class="line">     READ WRITE</span><br><span class="line">   | READ ONLY</span><br><span class="line">&#125;</span><br><span class="line">set session TRANSACTION ISOLATION LEVEL READ COMMITTED</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Syntax</th>
+<th style="text-align:center">Affected Characteristic Scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">SET GLOBAL TRANSACTION transaction_characteristic</td>
+<td style="text-align:center">Global</td>
+</tr>
+<tr>
+<td style="text-align:center">SET SESSION TRANSACTION transaction_characteristic</td>
+<td style="text-align:center">Session</td>
+</tr>
+<tr>
+<td style="text-align:center">SET TRANSACTION transaction_characteristic</td>
+<td style="text-align:center">Next transaction only</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="开启一个事务"><a href="#开启一个事务" class="headerlink" title="开启一个事务"></a>开启一个事务</h2><p>大多数数据库引擎都是支持事务的.<br>InnoDB具有事务，支持4个事务隔离级别，回滚，崩溃修复能力和多版本并发的事务安全，包括ACID。如果应用中需要执行大量的INSERT或UPDATE操作，则应该使用InnoDB，这样可以提高多用户并发操作的性能</p>
+<p>MyISAM管理非事务表。它提供高速存储和检索，以及全文搜索能力。如果应用中需要执行大量的SELECT查询，那么MyISAM是更好的选择。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">--设置自动提交值</span><br><span class="line">SET autocommit = &#123;0 | 1&#125;</span><br><span class="line"></span><br><span class="line">--开启一个事务</span><br><span class="line">START TRANSACTION</span><br><span class="line">    [transaction_characteristic [, transaction_characteristic] ...]</span><br><span class="line"></span><br><span class="line">transaction_characteristic: &#123;</span><br><span class="line">    WITH CONSISTENT SNAPSHOT</span><br><span class="line">  | READ WRITE</span><br><span class="line">  | READ ONLY</span><br><span class="line">&#125;</span><br><span class="line">BEGIN [WORK]</span><br><span class="line">COMMIT [WORK] [AND [NO] CHAIN] [[NO] RELEASE]</span><br><span class="line">ROLLBACK [WORK] [AND [NO] CHAIN] [[NO] RELEASE]</span><br></pre></td></tr></table></figure>
+<p>使用 autocommit 可以开启或关闭自动提交，默认是开启的。所以我们执行一条 update 或 insert 语句，不用 commit 就可以立即生效了。如果关闭了 autocommit 则必须手动 commit 才会生效。 START TRANSACTION 或 BEGIN 语句会关闭 autocommit 直到 commit 或 rollback后， autocommit 才会恢复到之前的状态（如果之前是开启）。autocommit 是与 session绑定的，必须为每个 session 设置。</p>
+<p>START TRANSACTION 与 BEGIN 语句是一样的，前者是 SQL 标准语法，推荐使用，后者是 MySql 自家语法。</p>
+<h3 id="Innodb-的事务实现原理"><a href="#Innodb-的事务实现原理" class="headerlink" title="Innodb 的事务实现原理"></a>Innodb 的事务实现原理</h3><p>事务的隔离性通常由并发控制策略来实现，原子性、一致性和持久性一般由恢复系统来实现。Mysql 的恢复系统使用了 redo log 和 undo log 来完成，它们称为重做日志。 redo log 用来保证事务的原子性和持久性， undo log 用来保证一致性。</p>
+<h4 id="Redo"><a href="#Redo" class="headerlink" title="Redo"></a>Redo</h4><p>当事务提交时，必须先将该事务的所有日志写入到重做日志文件中进行持久化，如果每次事务提交都要写入磁盘日志文件势必会影响数据库性能。因此，重做日志可以在内存中缓冲，然后周期性的写入磁盘。</p>
+<p>参数 <code>innodb_flush_log_at_trx_commit</code> 用来控制重做日志刷新到磁盘的策略。默认值为1，表示提交时必须写入重做日志到磁盘，这能保证事务的修改完全不会丢失。设为0时表示，写入重做日志缓冲区即可，然后由 master thread 周期性的将其刷入磁盘，假如在 master thread 刷盘之前，数据库系统宕机，则事务会丢失。设为2时，代表不仅要把日志写入到缓冲区，还要写入操作系统的文件系统的缓冲区中，这样数据库宕机但是操作系统没有宕机时，事务是不会丢失的。</p>
+<p>在 Innodb 中， redo log 都是以 512 字节进行存储的，这意味着重做日志缓存、重做日志文件都是以块的方式存储，称为重做日志块。在下述条件下，会将重做日志缓存中的日志块刷新到日志文件中：</p>
+<ol>
+<li>事务提交时</li>
+<li>当 log buffer 中有一半的内存空间被使用时</li>
+<li>log checkpoint 时。</li>
+</ol>
+<p><img src="/pics/redo-buffer-block.png" alt="redo log块"><br><img src="/pics/redo-log-file.png" alt="redo 日志文件"></p>
+<p>LSN表示的含义有：</p>
+<ol>
+<li>重做日志写入的总量</li>
+<li>checkpoint 的位置</li>
+<li>页的版本<br>LSN 不仅记录在重做日志中，还记录在每个页中。每个页的头部有一个 FIL_PAGE_LSN 的值，记录的就是该页的 LSN。它表示的是该页最后刷新时 LSN 的大小，用来判断页是否需要恢复（用重做日志中的数据覆盖该页）。假如， P1 页的 LSN 为1000，而数据库启动时，发现重做日志中 LSN 为 1300，并且该事务已经提交，那么数据库需要恢复该页，将重做日志应用到该页中。</li>
+</ol>
+<p><strong>思考：LSN实际上表示的是一种版本号，因为数据库的页同时存在在磁盘和内存缓冲池中，有可能出现不一致的情况，所以要用版本号来记录数据的版本。初始时，数据从磁盘页加载到缓冲池，磁盘和内存中的数据是一致的，有一个初始的相同的LSN。然后事务会对内存中的数据页进行操作，在这些页未刷盘之前，都是脏页，和磁盘上的数据不一致。所以，只要对内存数据页（某一页）进行操作，就会记录重做日志，产生新的 LSN，该 LSN 可以代表内存中数据的一个最新状态（数据页中最大的LSN代表最新状态）；未刷盘之前，该LSN大于磁盘中的LSN，假如此时数据库宕机，重启时，磁盘页上的LSN就会小于重做日志内的LSN，那么就会应用重做日志进行恢复。Sharp Checkpoint 会将所有脏页刷新到磁盘，并记录内存页中的最大LSN（最新转态）到 checkpoint ，这样磁盘LSN就会和缓冲池中的LSN一致了。</strong></p>
+<p><strong>但是，考虑一下 Fuzzy Checkpoint，由于不是刷新所有脏页到磁盘，所以情况比较复杂。假如内存页中最大LSN是600，Fuzzy Checkpoint 时，恰好刷新了 LSN 为600的页，但是其它页并未刷新到磁盘，此时内存和磁盘数据并不是一致的，此时记下600没有意义。只有刷新全部脏页时，记录下最大LSN才能表示一致。</strong></p>
+<p>Innodb 存储引擎不管上次关闭时是否时正常关闭，在启动时总会尝试恢复操作。因为重做日志记录的是物理日志，所以恢复速度比逻辑日志的恢复快很多，而且重做日志的顺序读和并行应用进一步优化了恢复速度。<br><img src="/pics/redo-recover.png" alt="恢复"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/11/work/接口幂等性设计方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/11/work/接口幂等性设计方案/" itemprop="url">接口幂等性设计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-11T19:25:30+08:00">
+                2018-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/interview/" itemprop="url" rel="index">
+                    <span itemprop="name">interview</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在微服务架构下，我们在完成一个订单流程时经常遇到下面的场景：</p>
+<ol>
+<li>一个订单创建接口，第一次调用超时了，然后调用方重试了一次</li>
+<li>在订单创建时，我们需要去扣减库存，这时接口发生了超时，调用方重试了一次</li>
+<li>当这笔订单开始支付，在支付请求发出之后，在服务端发生了扣钱操作，接口响应超时了，调用方重试了一次</li>
+<li>一个订单状态更新接口，调用方连续发送了两个消息，一个是已创建，一个是已付款。但是你先接收到已付款，然后又接收到了已创建</li>
+<li>在支付完成订单之后，需要发送一条短信，当一台机器接收到短信发送的消息之后，处理较慢。消息中间件又把消息投递给另外一台机器处理<br>以上问题，就是在单体架构转成微服务架构之后，带来的问题。当然不是说单体架构下没有这些问题，在单体架构下同样要避免重复请求。但是出现的问题要比这少得多。</li>
+</ol>
+<p>为了解决以上问题，就需要保证接口的幂等性，接口的幂等性实际上就是接口可重复调用，在调用方多次调用的情况下，接口最终得到的结果是一致的。有些接口可以天然的实现幂等性，比如查询接口，对于查询来说，你查询一次和两次，对于系统来说，没有任何影响，查出的结果也是一样。</p>
+<p>除了查询功能具有天然的幂等性之外，增加、更新、删除都要保证幂等性。那么如何来保证幂等性呢？</p>
+<h2 id="全局唯一ID"><a href="#全局唯一ID" class="headerlink" title="全局唯一ID"></a>全局唯一ID</h2><p>如果使用全局唯一ID，就是根据业务的操作和内容生成一个全局ID，在执行操作前先根据这个全局唯一ID是否存在，来判断这个操作是否已经执行。如果不存在则把全局ID，存储到存储系统中，比如数据库、redis等。如果存在则表示该方法已经执行。</p>
+<p>从工程的角度来说，使用全局ID做幂等可以作为一个业务的基础的微服务存在，在很多的微服务中都会用到这样的服务，在每个微服务中都完成这样的功能，会存在工作量重复。另外打造一个高可靠的幂等服务还需要考虑很多问题，比如一台机器虽然把全局ID先写入了存储，但是在写入之后挂了，这就需要引入全局ID的超时机制。</p>
+<p>使用全局唯一ID是一个通用方案，可以支持插入、更新、删除业务操作。但是这个方案看起来很美但是实现起来比较麻烦，下面的方案适用于特定的场景，但是实现起来比较简单。</p>
+<h2 id="去重表"><a href="#去重表" class="headerlink" title="去重表"></a>去重表</h2><p>这种方法适用于在业务中有唯一标识的插入场景中，比如在以上的支付场景中，如果一个订单只会支付一次，所以订单ID可以作为唯一标识。这时，我们就可以建一张去重表，并且把唯一标识作为唯一索引，在我们实现时，把创建支付单据和写入去重表，放在一个事务中，如果重复创建，数据库会抛出唯一约束异常，操作就会回滚。</p>
+<h2 id="插入或更新"><a href="#插入或更新" class="headerlink" title="插入或更新"></a>插入或更新</h2><p>这种方法插入并且有唯一索引的情况，比如我们要关联商品品类，其中商品的ID和品类的ID可以构成唯一索引，并且在数据表中也增加了唯一索引。这时就可以使用InsertOrUpdate操作。在mysql数据库中如下：</p>
+<pre><code>insert into goods_category (goods_id,category_id,create_time,update_time)
+values(#{goodsId},#{categoryId},now(),now())
+on DUPLICATE KEY UPDATE
+update_time=now()
+</code></pre><h2 id="多版本控制"><a href="#多版本控制" class="headerlink" title="多版本控制"></a>多版本控制</h2><p>这种方法适合在更新的场景中，比如我们要更新商品的名字，这时我们就可以在更新的接口中增加一个版本号，来做幂等：</p>
+<pre><code>boolean updateGoodsName(int id,String newName,int version);
+</code></pre><p>在实现时可以如下</p>
+<pre><code>update goods set name=#{newName},version=#{version} where id=#{id} and version&lt;${version}
+</code></pre><h2 id="状态机控制"><a href="#状态机控制" class="headerlink" title="状态机控制"></a>状态机控制</h2><p>这种方法适合在有状态机流转的情况下，比如就会订单的创建和付款，订单的付款肯定是在之前，这时我们可以通过在设计状态字段时，使用int类型，并且通过值类型的大小来做幂等，比如订单的创建为0，付款成功为100。付款失败为99。</p>
+<p>在做状态机更新时，我们就这可以这样控制</p>
+<pre><code>update `order` set status=#{status} where id=#{id} and status&lt;#{status}
+</code></pre><p>以上就是保证接口幂等性的一些方法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/数据结构与算法/排序/快速排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/26/数据结构与算法/排序/快速排序/" itemprop="url">快速排序算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-26T21:35:12+08:00">
+                2019-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-and-dataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm_and_dataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">public class QuickSort &#123;</span><br><span class="line"></span><br><span class="line">    private void sort(int[] arr, int start, int end)&#123;</span><br><span class="line">        if (start &lt; end) &#123;</span><br><span class="line">            int k = partion(arr, start, end);</span><br><span class="line">            sort(arr, start, k - 1);</span><br><span class="line">            sort(arr, k+1, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private int partion(int[] arr ,int start, int end)&#123;</span><br><span class="line">        int pivot = arr[start];</span><br><span class="line">        while (start &lt; end)&#123;</span><br><span class="line">            while (start&lt;end  &amp;&amp; arr[end] &gt;= pivot)&#123;</span><br><span class="line">                end --;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[start] = arr[end];</span><br><span class="line">            while (start&lt;end &amp;&amp; arr[start] &lt;= pivot)&#123;</span><br><span class="line">                start++;</span><br><span class="line">            &#125;</span><br><span class="line">            arr[end] = arr[start];</span><br><span class="line">        &#125;</span><br><span class="line">        arr[start] = pivot;</span><br><span class="line">        return start;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void topK(int[] arr, int k)&#123;</span><br><span class="line">        int x = partion(arr,0,arr.length-1);</span><br><span class="line">        while (x != k-1)&#123;</span><br><span class="line">            if (x &gt; k-1)&#123;</span><br><span class="line">                x = partion(arr,0,x-1);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                x = partion(arr,x+1,arr.length-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i = 0; i &lt; k; ++ i)&#123;</span><br><span class="line">            System.out.print(arr[i] + &quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = new int[100];</span><br><span class="line">        for (int i = 0; i &lt; 100; i++) &#123;</span><br><span class="line">            arr[i] = (int)(Math.random()*100+1);</span><br><span class="line">            System.out.print(arr[i]+&quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        QuickSort quickSort = new QuickSort();</span><br><span class="line">        quickSort.sort(arr,0 ,arr.length-1);</span><br><span class="line">        for (int i : arr) &#123;</span><br><span class="line">            System.out.print(i+&quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        quickSort.topK(arr,10);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/18/数据结构与算法/循环队列/循环队列/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/18/数据结构与算法/循环队列/循环队列/" itemprop="url">循环队列</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-18T20:43:40+08:00">
+                2019-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-and-dataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm_and_dataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">package com.example.datastructure;</span><br><span class="line">/**</span><br><span class="line"> * 使用顺序表（数组）实现循环队列</span><br><span class="line"> * 初始化：head = tail = 0;</span><br><span class="line"> * 入队： tail = (tail+1)%N</span><br><span class="line"> * 出队： head = (head+1)%N</span><br><span class="line"> * 判断队列空： head== tail</span><br><span class="line"> * 判断队列满： (tail+1)%N == head</span><br><span class="line"> * 队列长度： (N+tail-head)%N</span><br><span class="line"> * */</span><br><span class="line">public class LoopQueue &#123;</span><br><span class="line"></span><br><span class="line">    Object[] queue;</span><br><span class="line">    int len;</span><br><span class="line">    int head = 0 , tail = 0;</span><br><span class="line"></span><br><span class="line">    public LoopQueue(int len) &#123;</span><br><span class="line">        this.queue = new Object[len];</span><br><span class="line">        this.len = len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 入队</span><br><span class="line">     * 队列满的条件：(tail+1)%len == head</span><br><span class="line">    * */</span><br><span class="line">    public Object enQueue(Object o)&#123;</span><br><span class="line">        if ((tail+1)%len == head)&#123;</span><br><span class="line">            System.out.println(&quot;queue is full&quot;);</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        queue[tail] = o;</span><br><span class="line">        tail = (tail+1)%len; // tail 回卷++,</span><br><span class="line">        return o;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 出队</span><br><span class="line">     * 队列空的条件： head == tail</span><br><span class="line">     * */</span><br><span class="line">    public Object deQueue()&#123;</span><br><span class="line">        if (head == tail)&#123;</span><br><span class="line">            System.out.println(&quot;Queue is empty&quot;);</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        Object o = queue[head];</span><br><span class="line">        head = (head+1) % len;</span><br><span class="line">        return o;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int size()&#123;</span><br><span class="line">        return (this.len+tail-head)%this.len;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        LoopQueue queue = new LoopQueue(100);</span><br><span class="line">        for (int i = 0; i &lt; 7; i++) &#123;</span><br><span class="line">            queue.enQueue(i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(queue.size());</span><br><span class="line">        for (int i = 0; i &lt; 7; i++) &#123;</span><br><span class="line">            System.out.println(queue.deQueue());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(queue.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/数据结构与算法/排序/归并排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/27/数据结构与算法/排序/归并排序/" itemprop="url">归并排序</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-27T21:46:18+08:00">
+                2019-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-and-dataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm_and_dataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/linux/常用命令速记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/05/linux/常用命令速记/" itemprop="url">常用命令速记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-05T21:05:38+08:00">
+                2018-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="su-和-sudo"><a href="#su-和-sudo" class="headerlink" title="su 和 sudo"></a>su 和 sudo</h3><p>su [user]: 切换到 [user] 用户，需要输入切换到的用户的密码，省略 user 的话默认切换到 root 用户。执行完 命令后，使用 exit 切换到原用户。</p>
+<p>su - 与 su 的区别：两者都是切换到root 用户，但是前者会连shell 环境一起切换。</p>
+<p><code>sudo [command]</code>: 以 root 权限执行命令，需要输入当前用户的密码，一般成功后15分钟内 sudo 无需再输入密码。但是这些都是由配置文件<code>/etc/sudoers</code>来进行授权的，就是说如果用户没有sudo权限，也是无法执行该命令的。 可以使用 visudo 命令修改其中的配置。</p>
+<p>示例配置：<code>root  ALL=(ALL)  ALL -&gt; 用户  允许登陆的主机位置=（可以切换的账户） 可以执行的命令</code>: 该配置表示root用户在任意位置切换到任意账户执行任意命令。</p>
+<p><code>%admin     ALL = (ALL) ALL -&gt;  用户组 允许登陆的主机位置=（可以切换的账户） 可以执行的命令</code>:  admin用户组在任意位置切换到任意账户执行任意命令。</p>
+<h3 id="系统状态查看"><a href="#系统状态查看" class="headerlink" title="系统状态查看"></a>系统状态查看</h3><ol>
+<li><code>pgrep</code>：查看进程</li>
+<li><code>arch</code>:显示架构</li>
+<li><code>uname -a</code>:查看Linux系统版本</li>
+<li><p>查看某个时间点的进程信息-<code>ps</code>:<code>ps -lef</code></p>
+<ul>
+<li>UID：启动这些进程的用户。</li>
+<li>PID：进程的进程ID。 </li>
+<li>PPID：父进程的进程号（如果该进程是由另一个进程启动的）。</li>
+<li>C：进程生命周期中的CPU利用率。</li>
+<li>STIME：进程启动时的系统时间。</li>
+<li>TTY：进程启动时的终端设备。</li>
+<li>TIME：运行进程需要的累计CPU时间。</li>
+<li>CMD：启动的程序名称。</li>
+<li>F：内核分配给进程的系统标记。</li>
+<li>S：进程的状态（ O代表正在运行； S代表在休眠； R代表可运行，正等待运行； Z代表僵化，进程已结束但父进程已不存在； T代表停止）。</li>
+<li>PRI：进程的优先级（越大的数字代表越低的优先级）。</li>
+<li>NI：谦让度值用来参与决定优先级。</li>
+<li>ADDR：进程的内存地址。</li>
+<li>SZ：假如进程被换出，所需交换空间的大致大小。</li>
+<li>WCHAN：进程休眠的内核函数的地址。  </li>
+</ul>
+</li>
+<li><p>实时信息-<code>top</code></p>
+<p> top命令跟ps命令相似，能够显示进程信息，但它是实时显示的。</p>
+<p> 输出的第一部分显示的是系统的概况：<br> 第一行显示了当前时间、系统的运行时间、登录的用户数以及系统的平均负载（1分钟、5分钟和15分钟的平均负载）。</p>
+<p> 下一行显示了CPU的概要信息。 top根据进程的属主（用户还是系统）和进程的状态（运行、<br> 空闲还是等待）将CPU利用率分成几类输出。</p>
+<p> 紧跟其后的两行说明了系统内存的状态。第一行说的是系统的物理内存：总共有多少内存，<br> 当前用了多少，还有多少空闲。后一行说的是同样的信息，不过是针对系统交换空间（如果分配<br> 了的话）的状态而言的。</p>
+<p> 最后一部分显示了当前运行中的进程的详细列表，有些列跟ps命令的输出类似</p>
+<ul>
+<li>PID：进程的ID。</li>
+<li>USER：进程属主的名字。</li>
+<li>PR：进程的优先级。</li>
+<li>NI：进程的谦让度值。</li>
+<li>VIRT：进程占用的虚拟内存总量。</li>
+<li>RES：进程占用的物理内存总量。</li>
+<li>SHR：进程和其他进程共享的内存总量。</li>
+<li>S：进程的状态（ D代表可中断的休眠状态， R代表在运行状态， S代表休眠状态， T代表跟踪状态或停止状态， Z代表僵化状态）。</li>
+<li>%CPU：进程使用的CPU时间比例。</li>
+<li>%MEM：进程使用的内存占可用内存的比例。72 第 4 章 更多的 bash shell 命令</li>
+<li>%id：空闲CPU时间百分比，如果这个值过低，表明系统CPU存在瓶颈；</li>
+<li>%wa：等待I/O的CPU时间百分比，如果这个值过高，表明IO存在瓶颈；</li>
+<li>TIME+：自进程启动到目前为止的CPU时间总量。</li>
+<li><p>COMMAND：进程所对应的命令行名称，也就是启动的程序名</p>
+<p>进入top交互界面后，可以使用下面的键进行操作：</p>
+</li>
+</ul>
+<ol>
+<li>按E键可以切换上面概况的内存单位（KB/MB/GB），下边进程的详细信息按e键切换。  </li>
+<li>-p [pid]：可以显示指定进程的信息  </li>
+<li>P：根据CPU使用百分比大小进行排序。</li>
+<li>M：根据驻留内存大小进行排序。</li>
+<li>i：使top不显示任何闲置或者僵死进程。</li>
+</ol>
+</li>
+<li><p>结束进程-<code>kill/killall</code></p>
+<p> 在Linux中，进程之间通过信号来通信。进程的信号就是预定义好的一个消息，进程能识别<br> 它并决定忽略还是作出反应。进程如何处理信号是由开发人员通过编程来决定的。大多数编写完<br> 善的程序都能接收和处理标准Unix进程信号。<br> |信号|名称|描述|<br> |—|:—:|—|<br> |1 |HUP| 挂起<br> |2 |INT| 中断<br> |3 |QUIT| 结束运行<br> |9 |KILL| 无条件终止<br> |11 |SEGV| 段错误<br> |15 |TERM|尽可能终止<br> |17 |STOP| 无条件停止运行，但不终止<br> |18 |TSTP| 停止或暂停，但继续在后台运行<br> |19 |CONT| 在STOP或TSTP之后恢复执行</p>
+<p> <code>kill -9 pid</code><br> killall 不仅支持pid参数，还支持通配符：<code>killall http*</code></p>
+</li>
+<li><p>磁盘/文件管理/内存</p>
+<ol>
+<li>查看磁盘空间使用情况: <code>df -h</code></li>
+<li>查看当前目录所占空间大小: <code>du -sh</code></li>
+<li>打包：<code>tar -cvf etc.tar /etc &lt;==仅打包，不压缩！</code> -c :打包选项, -v :显示打包进度, -f :使用档案文件</li>
+<li>解包：<code>tar -xvf demo.tar</code>  -x:解包选项  -z:解压gz文件  -j:解压bz2文件  -J:解压xz文件</li>
+<li>压缩文件：<code>gzip demo.txt</code></li>
+<li>解压缩文件：<code>gunzip demo.tar.gz</code></li>
+<li>iostat工具<ol>
+<li>-C 显示CPU使用情况</li>
+<li>-d 显示磁盘使用情况</li>
+<li>-k 以 KB 为单位显示</li>
+<li>-m 以 M 为单位显示</li>
+<li>-N 显示磁盘阵列(LVM) 信息</li>
+<li>-n 显示NFS 使用情况</li>
+<li>-p[磁盘] 显示磁盘和分区的情况</li>
+<li>-x 显示详细信息</li>
+</ol>
+<ul>
+<li>如果%iowait的值过高，表示硬盘存在I/O瓶颈。</li>
+<li>如果 %util 接近 100%，说明产生的I/O请求太多，I/O系统已经满负荷，该磁盘可能存在瓶颈。</li>
+<li>如果 svctm 比较接近 await，说明 I/O 几乎没有等待时间；</li>
+<li>如果 await 远大于 svctm，说明I/O 队列太长，io响应太慢，则需要进行必要优化。</li>
+<li>如果avgqu-sz比较大，也表示有大量io在等待。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>性能监控</p>
+<ol>
+<li>top</li>
+<li>CPU使用率： <code>sar [-u|-r|-q] 1 2</code> 每秒采样一次，总共采样2次; -r:显示内存; -q:查看运行队列中的进程数、系统上的进程大小、平均负载等</li>
+<li>查看内存用量：<code>free -m</code> MB为单位显示</li>
+<li>查看cpu、内存、使用情况：<code>vmstat n m</code> （n 为监控频率、m为监控次数）</li>
+</ol>
+</li>
+<li><p>网络监控</p>
+<ol>
+<li><code>netstat [-atlp]</code> : -a：所有端口；-t:tcp；-l:监听的状态；-p:pid信息</li>
+<li><code>lsof</code> :列出当前系统打开文件的工具; <code>-i [tcp|udp:端口]</code>查看某个tcp/udp端口被哪个进程占用；<code>-p pid</code>查看pid进程打开的文件和端口</li>
+<li><code>route -n</code> :查看路由状态</li>
+<li><code>traceroute IP</code> :探测前往地址IP的路由路径</li>
+<li><code>host domain</code> :DNS查询,寻找域名domain对应的IP；也可以使用 nslookup</li>
+<li><code>host ip</code> :查看IP对应的域名</li>
+<li><code>scp localpath ID@host:path</code> :将本地localpath指向的文件上传到远程主机的path路径</li>
+<li><code>scp -r ID@site:path localpath</code> :遍历下载path路径下的整个文件系统，到本地的localpath</li>
+</ol>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/27/数据结构与算法/排序/堆排序/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/27/数据结构与算法/排序/堆排序/" itemprop="url">堆排序算法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T21:04:20+08:00">
+                2019-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-and-dataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm_and_dataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line">public class HeapSort &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     *  将arr数组看成是完全二叉树，arr[0]不保存数据</span><br><span class="line">     *  建立初始大根堆</span><br><span class="line">     * */</span><br><span class="line">    private void buildMaxheap(int[] arr)&#123;</span><br><span class="line">        int len = arr.length-1;</span><br><span class="line">        /**</span><br><span class="line">         * 最后一个节点的父节点是 i/2，从这个节点开始根节点，</span><br><span class="line">         * 将调整以arr[j]为根的子树调整为堆</span><br><span class="line">        * */</span><br><span class="line">        for (int j = len/2; j &gt; 0; j--) &#123;</span><br><span class="line">            adjustDown(arr,j,len);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * k 指向树的节点</span><br><span class="line">     * */</span><br><span class="line">    private void adjustDown(int[] arr,int k, int len)&#123;</span><br><span class="line">        arr[0] = arr[k];</span><br><span class="line">        /**</span><br><span class="line">         * arr[k]的左孩子是arr[2*k]，右孩子是arr[2*k+1]</span><br><span class="line">         * 沿着孩子方向往下找</span><br><span class="line">         * */</span><br><span class="line">        for (int i = 2*k; i &lt;= len; i = 2*i) &#123;</span><br><span class="line">            /**</span><br><span class="line">             * 比较左右孩子的大小，i指向其中较大者</span><br><span class="line">             * */</span><br><span class="line">            if (i &lt; len &amp;&amp; arr[i] &lt; arr[i+1])&#123;</span><br><span class="line">                i++; //右孩子大，i指向右孩子</span><br><span class="line">            &#125;</span><br><span class="line">            if (arr[0] &gt;= arr[i])&#123;</span><br><span class="line">                break; //根节点大于两个孩子，不用调整</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                //调换根节点和子树中较大的节点,调换后，k指向新的子树根节点或叶子节点</span><br><span class="line">                arr[k] = arr[i];</span><br><span class="line">                k = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        arr[k] = arr[0]; // k指向的节点是root的存放位置</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 堆排序算法，首先交换堆顶和堆底元素，然后将剩下的元素调整为大根堆，然后再交换堆顶和堆底...</span><br><span class="line">     * */</span><br><span class="line"></span><br><span class="line">    private void sort(int[] arr)&#123;</span><br><span class="line">        buildMaxheap(arr);</span><br><span class="line">        for (int i = arr.length-1; i &gt; 1 ; i--) &#123;</span><br><span class="line">            int tmp = arr[i];</span><br><span class="line">            arr[i] =  arr[1];</span><br><span class="line">            arr[1] = tmp;</span><br><span class="line"></span><br><span class="line">            adjustDown(arr,1,i-1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr = new int[100];</span><br><span class="line">        for (int i = 1; i &lt; 100; i++) &#123;</span><br><span class="line">            arr[i] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        for (int i : arr) &#123;</span><br><span class="line">            System.out.print(i+&quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        HeapSort heapSort = new HeapSort();</span><br><span class="line">        heapSort.sort(arr);</span><br><span class="line">        for (int i : arr) &#123;</span><br><span class="line">            System.out.print(i+&quot;,&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/sql/数据库并发控制-基于锁的协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/12/sql/数据库并发控制-基于锁的协议/" itemprop="url">基于锁的协议</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T14:46:11+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="锁的种类"><a href="#锁的种类" class="headerlink" title="锁的种类"></a>锁的种类</h2><p>给数据项加锁的方式有多种，我们只考虑两种：</p>
+<ol>
+<li><strong>共享的(shared)</strong>：如果事务T<sub>i</sub>获得了数据项Q上的共享型锁(shared-mode-lock)(记为S),则T<sub>i</sub>可读但不能写Q</li>
+<li><strong>排它的(exclusive)</strong>：如果事务T<sub>i</sub>获得了数据项Q上的排它型锁(exclusive-mode-lock)(记为X),则T<sub>i</sub>可读但不能写Q。<br>这两种类型的锁可以让并发的多个事务读取同一个数据项Q，但是同时只能有一个事务进行写操作。</li>
+</ol>
+<p>我们要求每个事务都要根据自己将对数据项Q执行的操作申请适当的锁。这个申请发送给并发控制管理器，事务只有在并发控制管理器授予所需锁后才能继续其操作。</p>
+<h2 id="锁的相容性"><a href="#锁的相容性" class="headerlink" title="锁的相容性"></a>锁的相容性</h2><p>对于给定的一个锁类型集合，我们可以在此集合之上定义一个<strong>相容函数</strong>：令A与B是集合中任意的两个锁类型，假设事务T<sub>i</sub>请求对数据项Q加A类锁，而事务T<sub>j</sub>(T<sub>i</sub> &ne;T<sub>j</sub>)当前在数据项Q上拥有B类型的锁。如果此时T<sub>i</sub>可以立即获得数据项Q上的A类锁，我们说A类型锁与B类型锁是<strong>相容的</strong>。</p>
+<p>根据上述定义，共享锁和排它锁的相容性关系如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">S</th>
+<th style="text-align:right">X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td style="text-align:center">true</td>
+<td style="text-align:right">false</td>
+</tr>
+<tr>
+<td>X</td>
+<td style="text-align:center">false</td>
+<td style="text-align:right">false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>要访问一个数据项，事务T<sub>i</sub>必须先给该数据项加锁。如果该数据项已经被另一个事务加上了一个<strong>不相容</strong>的锁，则在所有其它事务持有的不相容锁释放之前，并发管理器不会授予该事物锁。因此T<sub>i</sub>必须等待所有其它事务持有的不相容类型锁被释放。</p>
+<h2 id="锁释放的时机"><a href="#锁释放的时机" class="headerlink" title="锁释放的时机"></a>锁释放的时机</h2><p>下边是一个从账户B转账$50到账户A的事务：<br><img src="/pics/transaction-demo.png" alt="事务"><br>下边是一个调度：<br><img src="/pics/scheldue-1.png" alt="事务"><br>因为T<sub>1</sub>过早的释放了锁，从而导致T<sub>2</sub>看到了不一致的转态。所以锁释放的时机是一个需要考虑的问题。</p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>假定事务结束后才释放锁。<br><img src="/pics/transaction-demo2.png" alt="事务"><br><img src="/pics/transaction-demo3.png" alt="事务"><br>下边这个调度：<br><img src="/pics/scheldue-2.png" alt="事务"><br>上边这个调度会导致死锁。</p>
+<h2 id="封锁协议"><a href="#封锁协议" class="headerlink" title="封锁协议"></a>封锁协议</h2><p>一方面，如果我们不使用锁，或者使用锁时，在不恰当的时间释放锁，可能会进入数据<strong>不一致</strong>的状态。另一方面，如果在持有某数据项的锁时申请另一个数据项的锁，则可能会发生<strong>死锁</strong>。一般来说，产生死锁比进入不一致状态要好，因为可以通过回滚事务解决死锁，而不一致状态可能会引起现实应用中的问题，不一致状态是与业务相关的，是程序员负责的，是数据库不能处理的。</p>
+<p>因此，我们必须要求系统中的每一个事务遵循称为<strong>封锁协议</strong>的一组规则，这些规则规定事务何时对数据项进行加锁、解锁。封锁协议限制了可能的调度数目。意思是说这组规则过滤了一些可能会产生死锁或不一致状态的调度，比如一个好的调度会杜绝上述产生死锁的调度。</p>
+<p>我们给出下面几个定义：</p>
+<ol>
+<li>令{T<sub>0</sub>,T<sub>1</sub>,…..T<sub>n</sub>}是参与调度S的一个事务集合，如果存在数据项Q，使得T<sub>i</sub>在Q上持有A类锁，后来，T<sub>j</sub>在Q上持有B类锁，且A、B不相容，则我们称为T<sub>i</sub><strong>先于</strong>T<sub>j</sub>，记为T<sub>i</sub>&rarr;T<sub>j</sub>。<br>这一<strong>居先</strong>意味着，在任何等价的串行调度中，T<sub>i</sub>一定先于T<sub>j</sub>。</li>
+<li>如果调度S是这些遵从封锁协议规则的事务集合的可能调度之一，我们称S调度在给定的封锁协议下是合法的。</li>
+<li>当且仅当所有的合法调度都是冲突可串行化的时候，我们称这个封锁协议<strong>保证</strong>了冲突可串行化；换句话说，对于任何合法的调度，其关联的先于关系&rarr;是无环的。</li>
+</ol>
+<p>定义了这么多的概念，无非是想找到一种<strong>封锁协议</strong>，使得在这种协议的规则之下，所有的合法事务调度都能成为冲突可串行化的，找到这种协议，我们就解决了死锁问题了。</p>
+<h2 id="锁的授予"><a href="#锁的授予" class="headerlink" title="锁的授予"></a>锁的授予</h2><p>可能会存在一个事务总是不能获取到某个数据项的锁，从而永远不可能取的进展，我们成为<strong>饿死</strong>。</p>
+<p>我们可以通过如下方式授权加锁来避免事务饿死：当事务T<sub>i</sub>申请对数据项Q加M型锁时，并发控制管理器授权加锁的条件是：</p>
+<ol>
+<li>不存在数据项Q上持有与M型锁不相容锁的其它事务；</li>
+<li>不存在等待数据项Q加锁且先于T<sub>i</sub>申请加锁的事务。</li>
+</ol>
+<h2 id="两阶段封锁协议"><a href="#两阶段封锁协议" class="headerlink" title="两阶段封锁协议"></a>两阶段封锁协议</h2><p>保证可串行化的一个协议是<strong>两阶段封锁协议</strong>。该协议要求每个事务分两个阶段提出加锁和解锁申请：</p>
+<ol>
+<li><strong>增长阶段</strong>：事务可以获得锁，但不能释放锁。</li>
+<li><strong>缩减阶段</strong>：事务可以释放锁，但不能获得新锁。<br>对于任何事务，在调度中该事务获得其最后加锁位置(即增长阶段的结束点)称为事务的封锁点。这样多个事务可以根据其封锁点进行排序，实际上，这个顺序就是事务的一个可串行化顺序。</li>
+</ol>
+<p>值得注意的是，两阶段封锁协议并不保证死锁不会发生。看上文中的图，T<sub>3</sub>与T<sub>4</sub>是两阶段的，但在调度2中确发生了死锁。</p>
+<h2 id="严格两阶段封锁协议"><a href="#严格两阶段封锁协议" class="headerlink" title="严格两阶段封锁协议"></a>严格两阶段封锁协议</h2><p>考虑下面的这个调度：<br><img src="/pics/casscade-rollback.png" alt="级联回滚"><br>在事务T<sub>7</sub>的read(A)步骤之后事务T<sub>5</sub>发生故障，从而导致T<sub>6</sub>与T<sub>7</sub>发生级联回滚。</p>
+<p>级联回滚可以通过将两阶段封锁修改为<strong>严格两阶段封锁协议</strong>加以避免。这个协议除了要求封锁是两阶段的之外，还要求事务持有的所有排它锁必须在事务提交之后方可释放。这个要求保证未提交事务缩写的任何数据在事务提交之前均以排它方式加锁，防止其它事务读这些数据。</p>
+<h2 id="强两阶段封锁协议"><a href="#强两阶段封锁协议" class="headerlink" title="强两阶段封锁协议"></a>强两阶段封锁协议</h2><h2 id="Innodb-多版本并发控制（MVCC）"><a href="#Innodb-多版本并发控制（MVCC）" class="headerlink" title="Innodb 多版本并发控制（MVCC）"></a>Innodb 多版本并发控制（MVCC）</h2><p>Mysql Innodb 引擎通过多版本并发控制（MVCC，multi version concurrency control)的方式来读取数据库行。假如有一个事务要读取某行数据，此时改行数据正好在执行 delete 或者 update 操作，这时事务不会等待行上的锁释放，而是去读取该行的一个快照数据。快照数据是指该行的之前版本的数据，是通过 undo 段来实现的。<br><img src="/pics/mvcc.png" alt="非锁定一致性读"><br>在 read committed 和 repeatable read 事务隔离级别下， Innodb 使用非锁定的一致性读。但是两者有所不同，在 read committed 级别下，总是读取最新版本的数据，就是说该事务执行过程中，如果锁定该行的事务（另一个并发事务）提交了，会读取新的版本，可能与事务开始时读的版本数据不同。但是在 repeatable read 级别下，总是读取事务开始时的版本数据，就是说即使锁定该行的事务提交了，该事务也不会读取最新版本而是依旧读取事务开始时读取的版本。<br><img src="/pics/mvcc-demo.png" alt="并发实例"></p>
+<p>一致性锁定读：  </p>
+<ul>
+<li>select …. for update 会对读取的数据加一个排他锁，其他事务不能对其加任何锁，若要加就会被阻塞。</li>
+<li>select …. lock in share mode  会对读取的数据加一个共享锁，其他事务可以加共享锁。<br>上述语句必须在一个事务中执行，事务结束时（提交或回滚）会释放锁。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/13/数据结构与算法/链表/单链表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/13/数据结构与算法/链表/单链表/" itemprop="url">单链表</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-13T21:30:20+08:00">
+                2019-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/algorithm-and-dataStructure/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm_and_dataStructure</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">public class LinkedList &#123;</span><br><span class="line">    Node head = null;</span><br><span class="line"></span><br><span class="line">    //头插</span><br><span class="line">    public void headAdd(Object val)&#123;</span><br><span class="line">        Node n = new Node(head,val);</span><br><span class="line">        head = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //尾插</span><br><span class="line">    public void tailAdd(Object val)&#123;</span><br><span class="line">        Node n = new Node(null,val);</span><br><span class="line">        Node p = head;</span><br><span class="line">        while (p.next != null)&#123;</span><br><span class="line">            p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line">        p.next = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //链表逆序，时间复杂度O(n),空间复杂度O(1)</span><br><span class="line">    public void reverseList()&#123;</span><br><span class="line">        Node t = null, p = head;</span><br><span class="line">        while (p != null)&#123;</span><br><span class="line">            Node next = p.next;</span><br><span class="line">            p.next = t;</span><br><span class="line">            t = p;</span><br><span class="line">            p = next;</span><br><span class="line">        &#125;</span><br><span class="line">        head = t;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    class Node&#123;</span><br><span class="line">        Node next;</span><br><span class="line">        Object value;</span><br><span class="line"></span><br><span class="line">        public Node(Node next, Object value) &#123;</span><br><span class="line">            this.next = next;</span><br><span class="line">            this.value = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        String str = &quot;&quot;;</span><br><span class="line">        Node p = head;</span><br><span class="line">        while (p != null)&#123;</span><br><span class="line">            str +=p.value;</span><br><span class="line">            p = p.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return str;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">        LinkedList linkedList = new LinkedList();</span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            linkedList.headAdd(i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(linkedList);</span><br><span class="line">        linkedList.reverseList();</span><br><span class="line">        System.out.println(linkedList);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">            linkedList.tailAdd(i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(linkedList);</span><br><span class="line">        linkedList.reverseList();</span><br><span class="line">        System.out.println(linkedList);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

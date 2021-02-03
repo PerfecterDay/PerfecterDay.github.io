@@ -1,37 +1,848 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mybatis,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在前面的博文中，我们分析了 mybatis 使用接口编程时，用到了动态代理技术，实际上在代理对象中还是使用了 SqlSession 的相应方法去执行数据库操作，与直接使用 SqlSession 执行 sql 语句一样。所以，此文我们分析一下 SqlSession 执行 sql 的过程。 SqlSession 的 selectListpublic &amp;lt;E&amp;gt; List&amp;lt;E&amp;gt; se">
+<meta name="keywords" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis 原理分析(5) —— SqlSession 查询分析">
+<meta property="og:url" content="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析——SqlSession查询分析（5）/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="在前面的博文中，我们分析了 mybatis 使用接口编程时，用到了动态代理技术，实际上在代理对象中还是使用了 SqlSession 的相应方法去执行数据库操作，与直接使用 SqlSession 执行 sql 语句一样。所以，此文我们分析一下 SqlSession 执行 sql 的过程。 SqlSession 的 selectListpublic &amp;lt;E&amp;gt; List&amp;lt;E&amp;gt; se">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/sqlSession运行图.png">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.191Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mybatis 原理分析(5) —— SqlSession 查询分析">
+<meta name="twitter:description" content="在前面的博文中，我们分析了 mybatis 使用接口编程时，用到了动态代理技术，实际上在代理对象中还是使用了 SqlSession 的相应方法去执行数据库操作，与直接使用 SqlSession 执行 sql 语句一样。所以，此文我们分析一下 SqlSession 执行 sql 的过程。 SqlSession 的 selectListpublic &amp;lt;E&amp;gt; List&amp;lt;E&amp;gt; se">
+<meta name="twitter:image" content="http://yoursite.com/pics/sqlSession运行图.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析——SqlSession查询分析（5）/">
+
+
+
+
+
+  <title>mybatis 原理分析(5) —— SqlSession 查询分析 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/13/mybatis/mybatis 原理分析——SqlSession查询分析（5）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mybatis 原理分析(5) —— SqlSession 查询分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-13T16:26:53+08:00">
+                2018-07-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mybatis/" itemprop="url" rel="index">
+                    <span itemprop="name">mybatis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在前面的博文中，我们分析了 mybatis 使用接口编程时，用到了动态代理技术，实际上在代理对象中还是使用了 SqlSession 的相应方法去执行数据库操作，与直接使用 SqlSession 执行 sql 语句一样。所以，此文我们分析一下 SqlSession 执行 sql 的过程。</p>
+<h2 id="SqlSession-的-selectList"><a href="#SqlSession-的-selectList" class="headerlink" title="SqlSession 的 selectList"></a>SqlSession 的 selectList</h2><pre><code>public &lt;E&gt; List&lt;E&gt; selectList(String statement, Object parameter, RowBounds rowBounds) {
+    try {
+      MappedStatement ms = configuration.getMappedStatement(statement);
+      return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
+    } catch (Exception e) {
+      throw ExceptionFactory.wrapException(&quot;Error querying database.  Cause: &quot; + e, e);
+    } finally {
+      ErrorContext.instance().reset();
+    }
+  }
+</code></pre><p>首先，从 Configuration 实例中获取了一个 MappedStatement 对象，然后使用 Executor 执行 query 方法操作数据库查询。</p>
+<h2 id="Executor-的-query"><a href="#Executor-的-query" class="headerlink" title="Executor 的 query"></a>Executor 的 query</h2><p>BaseExecutor 实现了 Executor 的一些基本方法。 SimpleExecutor 、 BatchExecutor 、 ReuseExecutor 都继承了 BaseExecutor 。</p>
+<pre><code> public &lt;E&gt; List&lt;E&gt; query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
+   BoundSql boundSql = ms.getBoundSql(parameter);
+   CacheKey key = createCacheKey(ms, parameter, rowBounds, boundSql);
+   return query(ms, parameter, rowBounds, resultHandler, key, boundSql);
+}
+
+ public &lt;E&gt; List&lt;E&gt; query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
+   ErrorContext.instance().resource(ms.getResource()).activity(&quot;executing a query&quot;).object(ms.getId());
+   if (closed) {
+     throw new ExecutorException(&quot;Executor was closed.&quot;);
+   }
+   if (queryStack == 0 &amp;&amp; ms.isFlushCacheRequired()) {
+     clearLocalCache();
+   }
+   List&lt;E&gt; list;
+   try {
+     queryStack++;
+     list = resultHandler == null ? (List&lt;E&gt;) localCache.getObject(key) : null;
+     if (list != null) {
+       handleLocallyCachedOutputParameters(ms, key, parameter, boundSql);
+     } else {
+       list = queryFromDatabase(ms, parameter, rowBounds, resultHandler, key, boundSql);
+     }
+   } finally {
+     queryStack--;
+   }
+   if (queryStack == 0) {
+     for (DeferredLoad deferredLoad : deferredLoads) {
+       deferredLoad.load();
+     }
+     // issue #601
+     deferredLoads.clear();
+     if (configuration.getLocalCacheScope() == LocalCacheScope.STATEMENT) {
+       // issue #482
+       clearLocalCache();
+     }
+   }
+   return list;
+ }
+
+ private &lt;E&gt; List&lt;E&gt; queryFromDatabase(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
+     List&lt;E&gt; list;
+     localCache.putObject(key, EXECUTION_PLACEHOLDER);
+     try {
+       list = doQuery(ms, parameter, rowBounds, resultHandler, boundSql);
+     } finally {
+       localCache.removeObject(key);
+     }
+     localCache.putObject(key, list);
+     if (ms.getStatementType() == StatementType.CALLABLE) {
+       localOutputParameterCache.putObject(key, parameter);
+     }
+     return list;
+   }
+
+    protected abstract &lt;E&gt; List&lt;E&gt; doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)
+          throws SQLException;
+</code></pre><p>跟踪上述代码可以看出 BaseExecutor 中的 query 方法， 最终会调用<strong>抽象方法</strong> doQuery ,子类会重写 doQuery 方法。我们看看 SimpleExecutor 中如何重写 doQuery 方法的。</p>
+<h2 id="SimpleExecutor-中的-doQuery"><a href="#SimpleExecutor-中的-doQuery" class="headerlink" title="SimpleExecutor 中的 doQuery"></a>SimpleExecutor 中的 doQuery</h2><pre><code>public &lt;E&gt; List&lt;E&gt; doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
+    Statement stmt = null;
+    try {
+      Configuration configuration = ms.getConfiguration();
+      StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
+      stmt = prepareStatement(handler, ms.getStatementLog());
+      return handler.&lt;E&gt;query(stmt, resultHandler);
+    } finally {
+      closeStatement(stmt);
+    }
+  }   
+</code></pre><p>SimpleExecutor 的 doQuery 方法中，首先获取 Configuration 实例，然后调用 Configuration 的 newStatementHandler 方法获取了一个 StatementHandler 对象。接着调用了 prepareStatement 方法： </p>
+<pre><code>  private Statement prepareStatement(StatementHandler handler, Log statementLog) throws SQLException {
+      Statement stmt;
+      Connection connection = getConnection(statementLog);
+      stmt = handler.prepare(connection);
+      handler.parameterize(stmt);
+      return stmt;
+    } 
+</code></pre><p>在 prepareStatement 方法中首先获取 Connection 对象， 然后调用 StatementHandler 的 prepare 方法获得了 Statement 对象，接着使用 StatementHandler 的 parameterize 方法，从名字可以看出 parameterize 是为 sql 语句参数赋值的，其中还调用了 ParameterHandler 的 setParameters 方法，而且，ParameterHandler 又用到了 TypeHandler ， 此处，我们先不做分析。</p>
+<p>接着上面的 doQuery 方法，获取到 Statement 后，接着调用了 StatementHandler 的 query 方法，看一下 PreparedStatementHandler 的 query 方法：</p>
+<pre><code>public &lt;E&gt; List&lt;E&gt; query(Statement statement, ResultHandler resultHandler) throws SQLException {
+    PreparedStatement ps = (PreparedStatement) statement;
+    ps.execute();
+    return resultSetHandler.&lt;E&gt; handleResultSets(ps);
+  }
+</code></pre><p>直接使用了 JDBC 中的 PreparedStatement 对象执行数据库操作了，所以 ORM框架底层还是使用的 JDBC 。执行完后，使用 ResultSetHandler 的 handleResultSets 方法处理结果集。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>SqlSession 下的四大对象：</p>
+<ul>
+<li>Executor ：执行器，由它统一调度其他三个对象来执行对应的SQL；</li>
+<li>StatementHandler ：使用数据库的Statement执行操作；</li>
+<li>ParameterHandler ：用于SQL对参数的处理；</li>
+<li>ResultHandler ：进行最后数据集的封装返回处理；</li>
+</ul>
+<p>SqlSession 的查询方法实际上是靠 Executor 来实现的， Executor 在查询过程中使用了 StatementHandler 获取 JDBC 中的 Statement 对象，并为其置参数。 接着使用 Statement 对象执行查询。 在这期间，使用了 ParameterHandler 、 TypeHandler 来设置参数，使用 ResultSetHandler 来处理结果集， ResultSetHandler 内部使用了 ResultHandler 来处理结果集。</p>
+<p><img src="/pics/sqlSession运行图.png" alt="sqlSession运行图"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/13/mybatis/mybatis 原理分析 —— Configuration中MapperRegistry初始化（6）/" rel="next" title="mybatis 原理分析 —— Configuration中MapperRegistry初始化">
+                <i class="fa fa-chevron-left"></i> mybatis 原理分析 —— Configuration中MapperRegistry初始化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/16/mybatis/mybatis——基本配置（1）/" rel="prev" title="mybatis 基本配置(1)">
+                mybatis 基本配置(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SqlSession-的-selectList"><span class="nav-number">1.</span> <span class="nav-text">SqlSession 的 selectList</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Executor-的-query"><span class="nav-number">2.</span> <span class="nav-text">Executor 的 query</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SimpleExecutor-中的-doQuery"><span class="nav-number">3.</span> <span class="nav-text">SimpleExecutor 中的 doQuery</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

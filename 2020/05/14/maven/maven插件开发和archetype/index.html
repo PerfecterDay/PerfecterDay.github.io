@@ -1,37 +1,797 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="maven,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Maven 插件开发Maven 插件开发的一般步骤 创建一个 maven-plugin项目：使用 maven archetype:generate ，然后选择 maven-archetype-plugin 快速创建一个插件项目 为插件编写目标：每个插件必须包含一个或多个目标，Maven称之为 Mojo，继承自 AbstractMojo 类。 为目标提供配置点：在编写Mojo时，提供可配置的参数 编">
+<meta name="keywords" content="maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="maven plugin 开发和 archetype">
+<meta property="og:url" content="http://yoursite.com/2020/05/14/maven/maven插件开发和archetype/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Maven 插件开发Maven 插件开发的一般步骤 创建一个 maven-plugin项目：使用 maven archetype:generate ，然后选择 maven-archetype-plugin 快速创建一个插件项目 为插件编写目标：每个插件必须包含一个或多个目标，Maven称之为 Mojo，继承自 AbstractMojo 类。 为目标提供配置点：在编写Mojo时，提供可配置的参数 编">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/archetype-resource.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.777Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="maven plugin 开发和 archetype">
+<meta name="twitter:description" content="Maven 插件开发Maven 插件开发的一般步骤 创建一个 maven-plugin项目：使用 maven archetype:generate ，然后选择 maven-archetype-plugin 快速创建一个插件项目 为插件编写目标：每个插件必须包含一个或多个目标，Maven称之为 Mojo，继承自 AbstractMojo 类。 为目标提供配置点：在编写Mojo时，提供可配置的参数 编">
+<meta name="twitter:image" content="http://yoursite.com/pics/archetype-resource.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/14/maven/maven插件开发和archetype/">
+
+
+
+
+
+  <title>maven plugin 开发和 archetype | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/14/maven/maven插件开发和archetype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">maven plugin 开发和 archetype</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-14T20:45:23+08:00">
+                2020-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index">
+                    <span itemprop="name">maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Maven-插件开发"><a href="#Maven-插件开发" class="headerlink" title="Maven 插件开发"></a>Maven 插件开发</h3><h4 id="Maven-插件开发的一般步骤"><a href="#Maven-插件开发的一般步骤" class="headerlink" title="Maven 插件开发的一般步骤"></a>Maven 插件开发的一般步骤</h4><ol>
+<li>创建一个 maven-plugin项目：使用 <code>maven archetype:generate</code> ，然后选择 maven-archetype-plugin 快速创建一个插件项目</li>
+<li>为插件编写目标：每个插件必须包含一个或多个目标，Maven称之为 Mojo，继承自 AbstractMojo 类。</li>
+<li>为目标提供配置点：在编写Mojo时，提供可配置的参数</li>
+<li>编写代码实现目标行为：根据实际需求实现Mojo</li>
+<li>错误处理及日志</li>
+<li>测试插件：编写自动化的测试代码测试插件。</li>
+</ol>
+<p>Maven插件的 pom 有两个特殊的地方：</p>
+<ol>
+<li>packaging 类型必须是 maven-plugin</li>
+<li>必须依赖一个 maven-plugin-api 的 artifact。<br>创建好插件项目之后，我们要创建一个Mojo：继承 AbstractMojo 、实现 execute() 方法、提供 @goal 注解。</li>
+</ol>
+<h4 id="调试自己开发的-Maven-插件"><a href="#调试自己开发的-Maven-插件" class="headerlink" title="调试自己开发的 Maven 插件"></a>调试自己开发的 Maven 插件</h4><ol>
+<li>将自己开发的插件 mvn install 到本地</li>
+<li>在一个项目X中使用开发的插件，然后，在该项目路径下执行<code>mvnDebug com.ebay.raptor.build:assembler-maven-plugin:3.0.25-RELEASE:package</code>，注意插件的版本要一致，不然代码无法匹配，代码断点会失效；执行后会打开一个端口等待 debugger 连接 </li>
+<li>在插件开发的IDEA项目中，新建一个 remote 的 debug/run configuration，port修改为上面的port，然后在项目代码中打上断点，然后debug执行即可</li>
+</ol>
+<h3 id="Maven-Archetype-开发"><a href="#Maven-Archetype-开发" class="headerlink" title="Maven Archetype 开发"></a>Maven Archetype 开发</h3><p>一个典型的 Maven Archetype 项目主要包括以下几个部分：</p>
+<ul>
+<li>pom.xml: Archetype 项目自身的 pom</li>
+<li>src/main/resources/archetype-resources/pom.xml : 基于该Archetype生成的项目的 pom 文件</li>
+<li>src/main/resources/META-INF/maven/archetype-metadata.xml : Archetype 的描述符文件</li>
+<li>src/main/resources/archetype-resources/** : 其它需要包含在 Archetype 中的内容。</li>
+</ul>
+<p>一个 Archetype 最核心的是 archetype-metadata.xml 描述符文件，它主要用来控制两个事情：</p>
+<ol>
+<li>声明哪些文件和目录应该包含在 Archetype 中</li>
+<li>这个 Archetype 使用哪些属性参数</li>
+</ol>
+<p>一个示例描述符文件文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;&gt;&lt;/xml&gt;</span><br><span class="line">&lt;archetype-descriptor name=&quot;springboot-archetype-quickstart&quot;&gt;</span><br><span class="line">    &lt;fileSets&gt;</span><br><span class="line">        &lt;fileSet filtered=&quot;true&quot; packaged=&quot;true&quot;&gt;</span><br><span class="line">            &lt;directory&gt;src/main/java&lt;/directory&gt;</span><br><span class="line">            &lt;includes&gt;</span><br><span class="line">                &lt;include&gt;**/*.java&lt;/include&gt;</span><br><span class="line">            &lt;/includes&gt;</span><br><span class="line">        &lt;/fileSet&gt;</span><br><span class="line">        &lt;fileSet filtered=&quot;true&quot; packaged=&quot;true&quot;&gt;</span><br><span class="line">            &lt;directory&gt;src/test/java&lt;/directory&gt;</span><br><span class="line">            &lt;includes&gt;</span><br><span class="line">                &lt;include&gt;**/*.java&lt;/include&gt;</span><br><span class="line">            &lt;/includes&gt;</span><br><span class="line">        &lt;/fileSet&gt;</span><br><span class="line">        &lt;fileSet filtered=&quot;true&quot; packaged=&quot;false&quot;&gt;</span><br><span class="line">            &lt;directory&gt;src/main/resources&lt;/directory&gt;</span><br><span class="line">            &lt;includes&gt;</span><br><span class="line">                &lt;include&gt;**/*.properties&lt;/include&gt;</span><br><span class="line">            &lt;/includes&gt;</span><br><span class="line">        &lt;/fileSet&gt;</span><br><span class="line">    &lt;/fileSets&gt;</span><br><span class="line">    &lt;requiredProperties&gt;</span><br><span class="line">        &lt;requiredProperty key=&quot;port&quot;&gt;&lt;/requiredProperty&gt;</span><br><span class="line">        &lt;requiredProperty key=&quot;groupId&quot;&gt;</span><br><span class="line">            &lt;defaultValue&gt;com.baicy.wang&lt;/defaultValue&gt;</span><br><span class="line">        &lt;/requiredProperty&gt;</span><br><span class="line">    &lt;/requiredProperties&gt;</span><br><span class="line">&lt;/archetype-descriptor&gt;</span><br></pre></td></tr></table></figure></p>
+<p>上述描述符中定义了名称为 quickstart 的 Archetype ，主要包含 fileSets 和 requiredProperties 两个元素。</p>
+<ol>
+<li><p><code>&lt;fileSets&gt;</code><br> 包含一个或多个 fileset，每个 fileset 定义一个目录及与该目录相关的包含或排除规则。上述代码段中第一个 fileSet 指向的是 src/main/java ，该目录对应的是该Archetype项目的 archetype-resources/src/main/java 子资源目录， filtered 表示是否对该文件集合应用属性替换（${x}这样的值是否替换为命令行输入的 x 参数的值）； packaged 表示是否将该目录下的内容放到生成项目的包路径下。<br> include 子元素声明哪些内容将会被包含，<em>* 表示匹配任意目录，</em> 表示匹配处路径分隔符之外的任意字符。<br> <img src="/pics/archetype-resource.png" alt></p>
+</li>
+<li><p><code>&lt;requiredProperties&gt;</code><br>一般在生成 maven 项目时默认需要四个参数：groupId、artifactId、version和package，requiredProperties 用来配置要求额外参数，比如上面要求port参数</p>
+</li>
+</ol>
+<p>项目编写完成后，使用 <code>mvn clean install</code> 安装到本地库，就可以通过该 Archtype 的项目坐标来生成项目了：<br><code>mvn archetype:generate  -DarchetypeGroupId=com.baicy.wang -DarchetypeArtifactId=springboot-archetype-quickstart -DarchetypeVersion=1.0-SNAPSHOT</code>。</p>
+<h4 id="Archetype-Catalog"><a href="#Archetype-Catalog" class="headerlink" title="Archetype Catalog"></a>Archetype Catalog</h4><p>当用户以不指定 Archetype 坐标的方式使用 maven-archetype-plugin 的时候，会得到一个 Archetype 的列表供选择，这个列表来源于一个 archetype-catlog.xml 的文件。 maven-archetype-plugin 可以从下面几个地方获取这个文件：</p>
+<ul>
+<li>internal : maven-archetype-plugin 内置的 Archetype Catalog ，大约包含了 58 个 archetype</li>
+<li>local : 从用户本地的 ～/.m2/archetype-catlog.xml 加载，该文件默认不存在。</li>
+<li>remote : 指向了 Maven 中央仓库的 Archetype Catalog。</li>
+<li>file://… : 用户可以指定本机任意路径下的 archetype-catlog.xml 文件</li>
+<li>http://… : 用户可以使用HTTP协议指定远程的 archetype-catlog.xml 文件</li>
+</ul>
+<p>执行<code>mvn archetype:generate</code> 时，使用 <code>archetypeCatalog</code> 参数指定插件使用的 catalog ，多个 catalog 源之间使用逗号分隔。该参数默认值是“remote,local“，所以 maven-archetype-plugin 默认使用中央仓库加本机的 catalog 信息。</p>
+<h4 id="生成本地仓库的-Archetype-Catalog"><a href="#生成本地仓库的-Archetype-Catalog" class="headerlink" title="生成本地仓库的 Archetype Catalog"></a>生成本地仓库的 Archetype Catalog</h4><p>当我们构建了一个 Archetype 项目并且安装到本地后，我们可以将其添加到本地 archetype-catlog.xml 文件中，这样在生成项目时，就会出现在供选择的列表中了。还有一种方法就是执行 <code>mvn archetype:crawl</code> 目标，它会遍历本地的 Maven 仓库的内容，并自动生成 archetype-catlog.xml 文件。</p>
+<h4 id="IDEA-添加-删除自定义的-archetype"><a href="#IDEA-添加-删除自定义的-archetype" class="headerlink" title="IDEA 添加/删除自定义的 archetype"></a>IDEA 添加/删除自定义的 archetype</h4><p>创建一个项目以后，每次新建项目想以此项目为模板建立新项目，可以将该项目添加到IDEA的 archetype 中。</p>
+<ol>
+<li><code>mvn archetype:create-from-project</code> ： 生成archetype</li>
+<li>到 target/generated-sources/archetype 目录下执行 <code>mvn install</code></li>
+<li>在IDEA新建项目或module的时候，添加 archetype</li>
+<li>删除：C:\Users\BaIcy.IdeaIC2019.2\system\Maven\Indices\UserArchetypes.xml 文件中删除添加的自定义的 archetype</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/maven/" rel="tag"># maven</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/28/work/note-2020-04-28/" rel="next" title="TestEnv/DataTrack/AMQ">
+                <i class="fa fa-chevron-left"></i> TestEnv/DataTrack/AMQ
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/15/git/git核心概念/" rel="prev" title="git 核心概念">
+                git 核心概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven-插件开发"><span class="nav-number">1.</span> <span class="nav-text">Maven 插件开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Maven-插件开发的一般步骤"><span class="nav-number">1.1.</span> <span class="nav-text">Maven 插件开发的一般步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调试自己开发的-Maven-插件"><span class="nav-number">1.2.</span> <span class="nav-text">调试自己开发的 Maven 插件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven-Archetype-开发"><span class="nav-number">2.</span> <span class="nav-text">Maven Archetype 开发</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Archetype-Catalog"><span class="nav-number">2.1.</span> <span class="nav-text">Archetype Catalog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成本地仓库的-Archetype-Catalog"><span class="nav-number">2.2.</span> <span class="nav-text">生成本地仓库的 Archetype Catalog</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IDEA-添加-删除自定义的-archetype"><span class="nav-number">2.3.</span> <span class="nav-text">IDEA 添加/删除自定义的 archetype</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

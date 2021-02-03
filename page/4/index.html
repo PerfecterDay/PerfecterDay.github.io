@@ -1,23 +1,3980 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/4/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-列表生成器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-列表生成器/" itemprop="url">python列表生成器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="python列表生成器"><a href="#python列表生成器" class="headerlink" title="python列表生成器"></a>python列表生成器</h1><hr>
+<p>如果要生成[1x1, 2x2, 3x3, …, 10x10]，仅用一行代码即可：</p>
+<pre><code>[x * x for x in range(1, 11)]
+</code></pre><p>写列表生成式时，把要生成的元素x * x放到前面，后面跟for循环，就可以把list创建出来，十分有用。</p>
+<p>for循环后面还可以加上if判断，这样我们就可以筛选出仅偶数的平方：</p>
+<pre><code>[x * x for x in range(1, 11) if x%2==0]
+</code></pre><p>for循环其实可以同时使用两个甚至多个变量，比如dict的items()可以同时迭代key和value：</p>
+<pre><code> d = {&#39;x&#39;: &#39;A&#39;, &#39;y&#39;: &#39;B&#39;, &#39;z&#39;: &#39;C&#39; }
+ [k + &#39;=&#39; + v for k, v in d.items()]//[&#39;y=B&#39;, &#39;x=A&#39;, &#39;z=C&#39;]
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-切片/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-切片/" itemprop="url">python切片</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="切片"><a href="#切片" class="headerlink" title="切片"></a>切片</h1><hr>
+<p>取一个list或tuple的部分元素是非常常见的操作。切片就是用来实现这个操作的，类似于其他语言中字符串取子串操作，但是比它们更加灵活好用，功能更强大。</p>
+<pre><code>L = [&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;, &#39;Bob&#39;, &#39;Jack&#39;]
+L[0:3] //取前三个元素，[&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;]
+</code></pre><blockquote>
+<p>L[m:n] 代表取L索引m开始直到n结束，但包括n索引的元素。如果m=0，可以省略；如果n是最后一个位置的索引，可以省略。且支持负数索引模式。</p>
+</blockquote>
+<pre><code>L[-2:] //去倒数第二个元素到最后一个元素
+</code></pre><blockquote>
+<p>L[m:n:x] 代表取[m,n)位置上的元素，每x个取一个。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-函数/" itemprop="url">python函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><hr>
+<h2 id="函数定义"><a href="#函数定义" class="headerlink" title="函数定义"></a>函数定义</h2><p>在Python中，定义一个函数要使用def语句，依次写出函数名、括号、括号中的参数和冒号:，然后，在缩进块中编写函数体，函数的返回值用return语句返回。</p>
+<pre><code>def myFunction(arg1,arg2):
+    a = arg1+arg2
+    a++
+    return a
+</code></pre><p>如果没有return语句，函数执行完毕后也会返回结果，只是结果为None。return None可以简写为return。</p>
+<h2 id="空函数"><a href="#空函数" class="headerlink" title="空函数"></a>空函数</h2><p>如果想定义一个什么事也不做的空函数，可以用pass语句：</p>
+<pre><code>def nop():
+    pass
+</code></pre><p>pass语句什么都不做，那有什么用？实际上pass可以用来作为占位符，比如现在还没想好怎么写函数的代码，就可以先放一个pass，让代码能运行起来。</p>
+<pre><code>if age&gt;18:
+    pass
+</code></pre><p>缺少pass，代码会报错。</p>
+<h2 id="参数检查"><a href="#参数检查" class="headerlink" title="参数检查"></a>参数检查</h2><p>调用函数时，如果参数个数不对，Python解释器会自动检查出来，并抛出TypeError：</p>
+<pre><code>myFunction(1)
+Traceback (most recent call last):
+File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+TypeError: TypeError: myFunc() missing 1 required positional argument: &#39;arg2&#39;
+</code></pre><p>但是如果参数类型不对，Python解释器就无法帮我们检查。必须手动检查参数类型是否正确。数据类型检查可以用内置函数isinstance()实现：</p>
+<pre><code>def myFunction(arg1,arg2):
+    if not isinstance(arg1, (int, float)):
+        raise TypeError(&#39;bad operand type&#39;)
+    if not isinstance(arg2, (int, float)):
+        raise TypeError(&#39;bad operand type&#39;)
+    a = arg1+arg2
+    a++
+    return a
+</code></pre><h2 id="返回元组（多个值）"><a href="#返回元组（多个值）" class="headerlink" title="返回元组（多个值）"></a>返回元组（多个值）</h2><pre><code>import math
+def move(x, y, step, angle=0):
+    nx = x + step * math.cos(angle)
+    ny = y - step * math.sin(angle)
+    return nx, ny
+
+x,y=move(100,100,60,math.pi/6)
+print(x,y) //151.96152422706632 70.0
+r = move(100, 100, 60, math.pi / 6)
+print(r) //(151.96152422706632, 70.0)元组
+</code></pre><p>原来返回值是一个tuple！但是，在语法上，返回一个tuple可以省略括号，而多个变量可以同时接收一个tuple，按位置赋给对应的值，所以，Python的函数返回多值其实就是返回一个tuple，但写起来更方便。</p>
+<h2 id="函数参数"><a href="#函数参数" class="headerlink" title="函数参数"></a>函数参数</h2><p>Python的函数定义非常简单，但灵活度却非常大。除了正常定义的必选参数外，还可以使用默认参数、可变参数和关键字参数，使得函数定义出来的接口，不但能处理复杂的参数，还可以简化调用者的代码。</p>
+<h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><p>位置参数就是参数的位置与函数调用时对应位置上的参数一一对应。</p>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><p>定义函数时，为参数赋上一个默认值，此参数即成为默认参数。当调用函数时，不传此位置的参数时，即使用默认参数而不是报错。但是默认参数只能放在必选必选参数后面，可以有多个默认参数，但是这些默认参数必须都在必选参数的后面。</p>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><p>在Python函数中，还可以定义可变参数。顾名思义，可变参数就是传入的参数个数是可变的，可以是1个、2个到任意个，还可以是0个。</p>
+<p>仅仅在参数前面加了一个*号。在函数内部，参数接收到的是一个tuple，因此，函数代码完全不变。但是，调用该函数时，可以传入任意个参数，包括0个参数：</p>
+<pre><code>def calc(*numbers):
+sum = 0
+for n in numbers:
+    sum = sum + n * n
+return sum
+</code></pre><p>如果已经有一个list或者tuple，要调用一个可变参数怎么办？可以这样做：</p>
+<pre><code> nums = [1, 2, 3]
+ calc(nums[0], nums[1], nums[2])
+</code></pre><p>这种写法当然是可行的，问题是太繁琐，所以Python允许你在list或tuple前面加一个*号，把list或tuple的元素变成可变参数传进去：</p>
+<pre><code>nums = [1, 2, 3]
+calc(*nums)
+</code></pre><p>*nums表示把nums这个list的所有元素作为可变参数传进去。这种写法相当有用，而且很常见。</p>
+<h2 id="关键字参数"><a href="#关键字参数" class="headerlink" title="关键字参数"></a>关键字参数</h2><p>可变参数允许你传入0个或任意个参数，这些可变参数在函数调用时自动组装为一个tuple。而关键字参数允许你传入0个或任意个含参数名的参数，这些关键字参数在函数内部自动组装为一个dict。请看示例：</p>
+<pre><code>def person(name, age, **kw):
+    print(&#39;name:&#39;, name, &#39;age:&#39;, age, &#39;other:&#39;, kw)
+</code></pre><p>可以这样调用</p>
+<pre><code>person(&#39;Bob&#39;, 35, city=&#39;Beijing&#39;) //name: Bob age: 35 other: {&#39;city&#39;: &#39;Beijing&#39;}
+</code></pre><p>也可以这样调用</p>
+<pre><code>person(&#39;Adam&#39;, 45, gender=&#39;M&#39;, job=&#39;Engineer&#39;) //name: Adam age: 45 other: {&#39;gender&#39;: &#39;M&#39;, &#39;job&#39;: &#39;Engineer&#39;}
+</code></pre><p>关键字参数有什么用？它可以扩展函数的功能。比如，在person函数里，我们保证能接收到name和age这两个参数，但是，如果调用者愿意提供更多的参数，我们也能收到。试想你正在做一个用户注册的功能，除了用户名和年龄是必填项外，其他都是可选项，利用关键字参数来定义这个函数就能满足注册的需求。</p>
+<p>和可变参数类似，也可以先组装出一个dict，然后，把该dict转换为关键字参数传进去:</p>
+<pre><code>extra = {&#39;city&#39;: &#39;Beijing&#39;, &#39;job&#39;: &#39;Engineer&#39;}
+person(&#39;Jack&#39;, 24, city=extra[&#39;city&#39;], job=extra[&#39;job&#39;])//name: Jack age: 24 other: {&#39;city&#39;: &#39;Beijing&#39;, &#39;job&#39;: &#39;Engineer&#39;}
+</code></pre><p>也可以使用简化的写法：</p>
+<pre><code>person(&#39;Jack&#39;, 24, **extra)
+</code></pre><p>**extra表示把extra这个dict的所有key-value用关键字参数传入到函数的**kw参数，kw将获得一个dict，注意kw获得的dict是extra的一份拷贝，对kw的改动不会影响到函数外的extra</p>
+<h2 id="命名关键字参数"><a href="#命名关键字参数" class="headerlink" title="命名关键字参数"></a>命名关键字参数</h2><p>关键字参数对调用时传入的参数的名字不作限制，可以传入任意的不受限制的关键字参数。如果要限制关键字参数的名字，就可以用命名关键字参数，例如，只接收city和job作为关键字参数。这种方式定义的函数如下：</p>
+<pre><code>def person(name, age, *, city, job):
+    print(name, age, city, job)
+</code></pre><p>和关键字参数**kw不同，命名关键字参数需要一个特殊分隔符*，*后面的参数被视为命名关键字参数。使用如下方方式调用:</p>
+<pre><code>person(&#39;Jack&#39;, 24, city=&#39;Beijing&#39;, job=&#39;Engineer&#39;)
+</code></pre><p>如果函数定义中已经有了一个可变参数，后面跟着的命名关键字参数就不再需要一个特殊分隔符*了：</p>
+<pre><code>def person(name, age, *args, city, job):
+    print(name, age, args, city, job)
+</code></pre><p>使用命名关键字参数时，要特别注意，如果没有可变参数，就必须加一个*作为特殊分隔符。如果缺少*，Python解释器将无法识别位置参数和命名关键字参数。</p>
+<h2 id="参数组合"><a href="#参数组合" class="headerlink" title="参数组合"></a>参数组合</h2><p>参数组合<br>在Python中定义函数，可以用必选参数、默认参数、可变参数、关键字参数和命名关键字参数，这5种参数都可以组合使用。但是请注意，参数定义的顺序必须是：必选参数、默认参数、可变参数、命名关键字参数和关键字参数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-tuple元组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-tuple元组/" itemprop="url">python元组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="tuple元组"><a href="#tuple元组" class="headerlink" title="tuple元组"></a>tuple元组</h1><hr>
+<h2 id="tuple元组定义"><a href="#tuple元组定义" class="headerlink" title="tuple元组定义"></a>tuple元组定义</h2><p>tuple元组使用哪个()定义：</p>
+<pre><code>classmates = (&#39;Michael&#39;, &#39;Bob&#39;, &#39;Tracy&#39;)
+</code></pre><p>特殊情况：</p>
+<pre><code>x=(1) //x=1,定义了一个数字而非元组
+x=(1,) //x=(1,)，只有一个值时，要在元素后加一个逗号
+</code></pre><p>tuple元组与list非常类似，但是tuple一旦初始化就不能修改。所以只能访问元组内的元素但是不能修改元组的赋值，也不能对其进行插入删除等操作。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-__slots__/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-__slots__/" itemprop="url">python_slots</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h1><p>为了达到限制的目的，Python允许在定义class的时候，定义一个特殊的<strong>slots</strong>变量，来限制该class实例能添加的属性：</p>
+<pre><code>class Student(object):
+     __slots__ = (&#39;name&#39;, &#39;age&#39;) # 用tuple定义允许绑定的属性名称
+</code></pre><p>这样的话Student类只能绑定name和age属性，不管是在<strong>init</strong>()方法内绑定还是为实例绑定动态属性，都只能是name或age，否则会报错。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-list列表/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-list列表/" itemprop="url">python list</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><hr>
+<p>Python内置的一种数据类型是列表：list。list是一种有序的集合，可以随时添加和删除其中的元素。</p>
+<h2 id="list的定义"><a href="#list的定义" class="headerlink" title="list的定义"></a>list的定义</h2><p>直接用[]定义一个list：</p>
+<pre><code>classmates = [&#39;Michael&#39;, &#39;Bob&#39;, &#39;Tracy&#39;]
+</code></pre><h2 id="list元素个数"><a href="#list元素个数" class="headerlink" title="list元素个数"></a>list元素个数</h2><p>用len()函数可以获得list元素的个数：</p>
+<pre><code>len(classmates) //3
+</code></pre><h2 id="list中元素的访问"><a href="#list中元素的访问" class="headerlink" title="list中元素的访问"></a>list中元素的访问</h2><p>直接用list变量名+[位置]访问对应位置的元素,正数从0开始递增编码，倒数从-1开始递减编码</p>
+<pre><code>0,1,2
+-3,-2,-1
+
+classmates[0] //&#39;Michael&#39;
+classmates[1] //&#39;Bob&#39;
+classmates[2] //&#39;Tracy&#39;
+classmates[3] //&#39;IndexError&#39;
+classmates[-1] //&#39;Tracy&#39;
+classmates[-2] //&#39;Bob&#39;
+classmates[-3] //&#39;Michael&#39;
+classmates[-4] //IndexError
+</code></pre><p>当索引超出了范围时，Python会报一个IndexError错误，所以，要确保索引不要越界，记得最后一个元素的索引是len(classmates) - 1。</p>
+<h2 id="list添加元素"><a href="#list添加元素" class="headerlink" title="list添加元素"></a>list添加元素</h2><p>list是一个可变的有序表，所以，可以往list中追加元素。</p>
+<p>可以使用append()方法往list末尾追加元素：</p>
+<pre><code>classmates.append(&#39;Adam&#39;) //[&#39;Michael&#39;, &#39;Bob&#39;, &#39;Tracy&#39;,&#39;Adam&#39;]
+</code></pre><p>也可以用insert()方法把元素插入到指定的位置，比如索引号为1的位置</p>
+<pre><code>classmates.insert(1,&#39;Jack&#39;) //[&#39;Michael&#39;, &#39;Jack&#39;, &#39;Bob&#39;, &#39;Tracy&#39;, &#39;Adam&#39;]
+</code></pre><h2 id="list删除元素"><a href="#list删除元素" class="headerlink" title="list删除元素"></a>list删除元素</h2><p>使用pop()方法可以删除list末尾的元素：</p>
+<pre><code>classmates.pop() //[&#39;Michael&#39;, &#39;Jack&#39;, &#39;Bob&#39;, &#39;Tracy&#39;]
+</code></pre><p>要删除指定位置的元素，使用pop(i)方法，其中i是索引位置：</p>
+<pre><code>classmates.pop(1) //[&#39;Michael&#39;, &#39;Bob&#39;, &#39;Tracy&#39;]
+</code></pre><h2 id="list元素替换"><a href="#list元素替换" class="headerlink" title="list元素替换"></a>list元素替换</h2><p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置：</p>
+<pre><code>classmates[1] = &#39;Sarah&#39; //[&#39;Michael&#39;, &#39;Sarah&#39;, &#39;Tracy&#39;]
+</code></pre><h2 id="多维list"><a href="#多维list" class="headerlink" title="多维list"></a>多维list</h2><pre><code>p = [&#39;asp&#39;, &#39;php&#39;]
+s = [&#39;python&#39;, &#39;java&#39;, p, &#39;scheme&#39;]
+s[2][0] //&#39;asp&#39;
+s[2][1] //&#39;php&#39;
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/24/测试/powermock使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/24/测试/powermock使用/" itemprop="url">powermock</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-24T15:11:23+08:00">
+                2018-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/test/" itemprop="url" rel="index">
+                    <span itemprop="name">test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Powermock的特长"><a href="#Powermock的特长" class="headerlink" title="Powermock的特长"></a>Powermock的特长</h2><p>EasyMock、Mockito无法完成对 final类型的class和 method 的 mock 操作，不能 mock static方法，不能 mock 局部变量，PowerMock正是为了解决这些难题的。</p>
+<h2 id="mock"><a href="#mock" class="headerlink" title="mock"></a>mock</h2><p>Powermockito.mock()方法主要是根据 class 参数创建一个对应的 mock 对象， powermock 的创建方式可不像 easymock 等使用 proxy 的方式创建，他是会在你运行的过程中动态的修改 class 字节码文件的形式来创建的。</p>
+<h2 id="do-when-then"><a href="#do-when-then" class="headerlink" title="do..when..then"></a>do..when..then</h2><p>我们可以看到，每次当我们想给一个 mock 的对象进行某种行为的预期时，都会使用 do…when…then…这样的语法，其实理解起来非常简单:做什么、在什么时候、然后返回什么。</p>
+<h2 id="verify"><a href="#verify" class="headerlink" title="verify"></a>verify</h2><p>当我们测试一个 void 方法的时候，根本没有办法去验证一个 mock 对象所执行后的结果，因此唯一的方法就是检查方法是否被调用， verify 就是用来验证某个方法是否被调用过的。</p>
+<h2 id="RunWith-PowerMockRunner-class-、-PrepareForTest-xxx-class"><a href="#RunWith-PowerMockRunner-class-、-PrepareForTest-xxx-class" class="headerlink" title="@RunWith(PowerMockRunner.class)、@PrepareForTest(xxx.class)"></a>@RunWith(PowerMockRunner.class)、@PrepareForTest(xxx.class)</h2><p><code>@RunWith(PowerMockRunner.class)</code>:使用 PowerMockRunner 运行测试<br><code>@PrepareForTest(xxx.class)</code>: 加载构造 xxx.class。</p>
+<h2 id="mock局部变量"><a href="#mock局部变量" class="headerlink" title="mock局部变量"></a>mock局部变量</h2><pre><code>public class EmployeeService {
+    public int getTotalEmployee() {
+        EmployeeDao employeeDao = new EmployeeDao(); 
+        return employeeDao.getTotal();
+    }
+}
+</code></pre><p>假设要测试上述方法，但是<code>EmployeeDao</code>对象并不可用且不是注入到<code>EmployeeService</code>的成员变量中的，我们无法mock一个dao然后设置到<code>EmployeeService</code>的成员变量上。</p>
+<p>但是，使用 Powermock 可以这样做：</p>
+<pre><code>EmployeeDao employeeDao = PowerMockito.mock(EmployeeDao.class);
+PowerMockito.whenNew(EmployeeDao.class).withNoArguments() .thenReturn(employeeDao);
+PowerMockito.when(employeeDao.getTotal()).thenReturn(10);
+Mockito.verify(employeeDao).addEmployee(employee);
+</code></pre><p>其实相当于mock了<code>EmployeeDao</code>的构造函数。最后一行的<code>verify</code>方法可以验证<code>addEmployee</code>方法是否被调用了。</p>
+<h2 id="mock-static方法"><a href="#mock-static方法" class="headerlink" title="mock static方法"></a>mock static方法</h2><p>需要注意的是，当你想 mock static 方法时，你必须使用<br><code>@PrepareForTest(需要测试的类.class)</code> 注，这样的话，在需要测试类中使用的类的静态方法会使用你mock后的。</p>
+<pre><code>PowerMockito.mockStatic(EmployeeUtils.class);
+PowerMockito.when(EmployeeUtils.getEmployeeCount()).thenReturn(10);
+
+final EmployeeService employeeService = new EmployeeService(); 
+int count = employeeService.getEmployeeCount(); 
+assertEquals(10, count);
+</code></pre><p>假如想要在调用 <code>Thread.sleep</code> 方法时，抛出异常：</p>
+<pre><code>// These two lines are tightly bound.
+PowerMockito.doThrow(new InterruptedException()).when(Thread.class);
+Thread.sleep(Matchers.anyLong());
+</code></pre><h2 id="spy"><a href="#spy" class="headerlink" title="spy"></a>spy</h2><p>正常情况下，当我们mock了一个对象时，如果调用mock对象的方法，其实什么都不会做。除非你对其做了when…thenReturn 这样的操作。</p>
+<p>当我们采用 spy 的方式 mock 一个对象，然后再调用其中的某个方法，他就会根据真实 class 的所提供的方法来调用。</p>
+<pre><code>FileService fileService = PowerMockito.spy(new FileService()); 
+fileService.write(&quot;liudehua&quot;);
+File file = new File(System.getProperty(&quot;user.dir&quot;)+&quot;/wangwenjun.txt&quot;); 
+assertTrue(file.exists());
+</code></pre><p>如果是     <code>FileService fileService = PowerMockito.mock(FileService.class);</code> 则不会生成 wangwenjun.txt 文件。</p>
+<h2 id="mock-private-方法"><a href="#mock-private-方法" class="headerlink" title="mock private 方法"></a>mock private 方法</h2><p>假设我们有一个类，其中有一个方法 A 是公有方法，但是他需要依赖一个私有方法 B， 但是其中的方法 B 是一个很难在单元测试中真实模拟，所以我们需要 mock 私有方法的行为。</p>
+<pre><code>EmployeeService employeeService = PowerMockito.spy(new EmployeeService());
+PowerMockito.doNothing().when(employeeService, &quot;checkExist&quot;, &quot;wangwenjun&quot;);
+boolean result = employeeService.exist(&quot;wangwenjun&quot;);
+assertTrue(result);
+PowerMockito.verifyPrivate(employeeService).invoke(&quot;checkExist&quot;,&quot;wan gwenjun&quot;);
+</code></pre><h2 id="doReturn-when-VS-thenReturn-when"><a href="#doReturn-when-VS-thenReturn-when" class="headerlink" title="doReturn/when VS thenReturn/when"></a>doReturn/when VS thenReturn/when</h2><ol>
+<li>对于普通 mock 对象方法，两者没有什么区别，mock的方法调用都不会实际运行</li>
+<li>返回值为 void 的方法，用 doReturn<br>Allows to choose a static method when stubbing in<br>doThrow()|doAnswer()|doNothing()|doReturn() style<br>Example:<br>   doThrow(new RuntimeException()).when(StaticList.class);<br>   StaticList.clear();</li>
+<li>对于 spy 的对象， doReturn/when 不会执行 mock的方法，而 thenReturn/when 会执行方法。</li>
+</ol>
+<h2 id="mock-void-方法"><a href="#mock-void-方法" class="headerlink" title="mock void 方法"></a>mock void 方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">doThrow(new RuntimeException()).when(mockKafka).publishMonitoredCompanyData(Mockito.anyList());</span><br><span class="line"></span><br><span class="line">doNothing().when(mockKafka).publishMonitoredCompanyData(Mockito.anyList());</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/web/phantomjs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/21/web/phantomjs/" itemprop="url">phantomjs</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T21:56:23+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/phantomjs/" itemprop="url" rel="index">
+                    <span itemprop="name">phantomjs</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>phantom.args</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/web/npm使用教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/web/npm使用教程/" itemprop="url">npm教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="npm教程"><a href="#npm教程" class="headerlink" title="npm教程"></a>npm教程</h1><hr>
+<h2 id="npm安装"><a href="#npm安装" class="headerlink" title="npm安装"></a>npm安装</h2><p>npm 是随同 Node 一起安装的包管理工具，类似于java开发中 Maven 。</p>
+<h2 id="npm和-node-升级"><a href="#npm和-node-升级" class="headerlink" title="npm和 node 升级"></a>npm和 node 升级</h2><ol>
+<li>npm install npm@latest: 升级 npm</li>
+<li>npm install n  -&gt;  n stable: 升级 node </li>
+</ol>
+<h2 id="npm配置查看及更改"><a href="#npm配置查看及更改" class="headerlink" title="npm配置查看及更改"></a>npm配置查看及更改</h2><ol>
+<li><code>npm config list</code>：查看npm配置项。</li>
+<li><code>npm config ls -l</code>：查看npm所有配置项。</li>
+<li><code>npm set key = value</code>：更改配置项key的值为value，<code>npm set registry=&quot;https://registry.npm.taobao.org/&quot;</code>-&gt;修改npm中央仓库。</li>
+</ol>
+<h2 id="npm安装依赖包"><a href="#npm安装依赖包" class="headerlink" title="npm安装依赖包"></a>npm安装依赖包</h2><p>npm作为一款js的包管理工具,主要作用是对前端项目的依赖包进行管理。</p>
+<ol>
+<li><code>npm init</code>命令可以创建一个npm包，类似于java中新建一个maven项目。根据提示，会生成一个package.json文件描述了包的信息，包括名称、版本、作者等信息，类似于maven中的pom文件。</li>
+<li><code>npm install name -g</code>：全局安装name包，<code>npm install name --save</code>：安装包的同时，将信息写入package.json依赖中，<code>npm install name --dev-save</code>：将报信息写入devDependencies依赖项内。</li>
+<li><code>npm remove name</code>：移除对name包的依赖</li>
+<li><code>npm update name</code>：更新name依赖包。</li>
+<li><code>npm uninstall package</code>:删除 node_modules 目录下面的包</li>
+<li><code>npm uninstall --save package</code>: 从 package.json 文件中删除依赖，需要在命令后添加参数 —save:</li>
+<li><code>npm run 脚本名称</code>: package.json的scripts中添加脚本名字和脚本命令后，使用此命令运行相应脚本。<code>start</code>脚本可以省略run：<code>npm start</code>。</li>
+<li><code>npm root</code>：查看当前包安装的路径，<code>npm root -g</code>：查看全局包的安装路径。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx配置文件结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx配置文件结构/" itemprop="url">nginx配置文件结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nginx配置文件结构"><a href="#nginx配置文件结构" class="headerlink" title="nginx配置文件结构"></a>nginx配置文件结构</h1><hr>
+<p>nginx由配置文件中的指令控制，通过指令可以配置nginx的行为。nginx指令分为简单指令和块指令。</p>
+<ol>
+<li>简单指令：由配置项名字+由空格分隔的若干参数+分号；组成。</li>
+<li>块指令：与简单指令的结构类似，但是由包含指令的大括号{指令}结束，即配置项名字+由空格分隔的若干参数+{指令}（参数可以为空）。如果一个块指令的大括号内能由其他指令，则这个块称为一个上下文context。例如events、http、server、location。</li>
+<li>配置文件中所有不在某个上下文中的指令，默认为在ma`in上下文中。</li>
+<li>events和http指令在main上下文中，server在http中，location在server中。</li>
+<li>#后边的内容表示注释。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx负载均衡/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx负载均衡/" itemprop="url">nginx负载均衡</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nginx负载均衡"><a href="#nginx负载均衡" class="headerlink" title="nginx负载均衡"></a>nginx负载均衡</h1><hr>
+<h2 id="负载均衡算法"><a href="#负载均衡算法" class="headerlink" title="负载均衡算法"></a>负载均衡算法</h2><p>nginx支持以下几种负载均衡算法：</p>
+<ul>
+<li>round-robin轮询算法——轮流将请求发送至各个服务器，nginx的默认算法</li>
+<li>least-connected最少连接算法——将请求转发至活动连接最少的服务器</li>
+<li>ip-hash算法——基于客户端的请求IP，使用hash算法决定将下一次请求转发至哪台服务器</li>
+</ul>
+<h2 id="round-robin轮询配置"><a href="#round-robin轮询配置" class="headerlink" title="round-robin轮询配置"></a>round-robin轮询配置</h2><p>当没有指定轮询算法时，nginx默认使用轮询调度算法。</p>
+<pre><code>http {
+    upstream myapp1 {
+        server srv1.example.com;
+        server srv2.example.com;
+        server srv3.example.com;
+    }
+
+    server {
+        listen 80;
+
+        location / {
+            proxy_pass http://myapp1;
+        }
+    }
+}
+</code></pre><p>srv1、srv2、srv3组成的服务器组，所有匹配到上述server上下文的请求都被转发到myapp1服务器组上，nginx使用轮询算法在srv1-srv3上转发请求。</p>
+<p>nginx反向代理支持HTTP, HTTPS, FastCGI, uwsgi, SCGI, memcached, and gRPC。如果要支持https，只要将http改成https即可。</p>
+<p>要使用FastCGI, uwsgi, SCGI, memcached, 或者 gRPC, 请分别使用 fastcgi_pass, uwsgi_pass, scgi_pass, memcached_pass,  grpc_pass 指令。</p>
+<h2 id="least-connected最少连接算法"><a href="#least-connected最少连接算法" class="headerlink" title="least-connected最少连接算法"></a>least-connected最少连接算法</h2><p>要使用least-connected算法，只需在服务器组中使用least_conn指令即可：</p>
+<pre><code>upstream myapp1 {
+    least_conn;
+    server srv1.example.com;
+    server srv2.example.com;
+    server srv3.example.com;
+}
+</code></pre><h2 id="ip-hash算法、会话维持"><a href="#ip-hash算法、会话维持" class="headerlink" title="ip-hash算法、会话维持"></a>ip-hash算法、会话维持</h2><p>上述的round-robin、least-connected算法无法保证统一客户端的后续请求被发送至同一台服务器。这样就会导致会话丢失，如果希望同一客户端的请求被发送至同一台服务器，可以使用ip-hash算法。该算法基于客户端ip进行hash计算以决定将请求发送至哪台服务器，同一ip客户端的请求计算的hash值一样，所以将会被发送至相同的服务器，除非该服务器不可用。</p>
+<p>要使用ip-hash算法，只需在服务器组中使用 ip_hash指令即可：</p>
+<pre><code>upstream myapp1 {
+    ip_hash;
+    server srv1.example.com;
+    server srv2.example.com;
+    server srv3.example.com;
+}
+</code></pre><h2 id="支持权重的负载均衡"><a href="#支持权重的负载均衡" class="headerlink" title="支持权重的负载均衡"></a>支持权重的负载均衡</h2><pre><code>upstream myapp1 {
+    server srv1.example.com weight=3;
+    server srv2.example.com;
+    server srv3.example.com;
+}
+</code></pre><p>如果有5个请求，3个被转发到srv1,srv2、srv3分别处理一个请求。</p>
+<p>least-connected 和 ip-hash 算法的负载均衡也支持权重。</p>
+<h2 id="健康检查"><a href="#健康检查" class="headerlink" title="健康检查"></a>健康检查</h2><p>nginx支持健康检查功能，即检测服务器组内的每台机器是否能正常的提供服务。将不会转发请求到不能正常提供服务的服务器。</p>
+<p>max_fails指令设置在fail_timeout时间内，通讯失败的次数。如果被设置为0，表示关闭健康检查功能，默认值是1。如果设置为2，则表示在fail_timeout时间内，2次没有与服务器正常通信，则标记该服务器为非正常服务器。然后每隔fail_timeout时间就检测一次服务器状态，如果能正常通信，则标记为存活服务器。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx的FastCGI代理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx的FastCGI代理/" itemprop="url">nginx的FastCGI代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nginx的FastCGI代理"><a href="#nginx的FastCGI代理" class="headerlink" title="nginx的FastCGI代理"></a>nginx的FastCGI代理</h1><hr>
+<p>nginx的FastCGI代理可以将请求转发到FastCGI服务器上，比如PHP服务。</p>
+<p>主要是用fastcgi_pass指令和fastcgi_param指令。</p>
+<pre><code>server {
+    location / {
+        fastcgi_pass  localhost:9000;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param QUERY_STRING    $query_string;
+    }
+
+    location ~ \.(gif|jpg|png)$ {
+        root html/images;
+    }
+}
+</code></pre><p>在PHP中，SCRIPT_FILENAME代表PHP脚本的名字，QUERY_STRING是请求的参数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx是如何处理请求的/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx是如何处理请求的/" itemprop="url">nginx是如何处理请求的</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nginx是如何处理请求的"><a href="#nginx是如何处理请求的" class="headerlink" title="nginx是如何处理请求的"></a>nginx是如何处理请求的</h1><hr>
+<h2 id="基于名字的虚拟主机"><a href="#基于名字的虚拟主机" class="headerlink" title="基于名字的虚拟主机"></a>基于名字的虚拟主机</h2><p>首先，nginx会决定哪个server上下文处理请求。server_name指令为每个server上下文指定一个名字。<br>如下配置文件：</p>
+<pre><code>server {
+    listen      80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      80;
+    server_name example.net www.example.net;
+    ...
+}
+
+server {
+    listen      80;
+    server_name example.com www.example.com;
+    ...
+}
+</code></pre><p>上述配置文件中，nginx会比较请求头”Host”和server_name的参数来决定将请求交给哪个server处理。如果，没有匹配到任何server上下文或者请求中没有HOST请求头，nginx会将请求转发给默认server处理。上述配置中第一个server是默认server。nginx中的默认server就是第一个server。要显示的声明一个默认server，在listen命令中使用default_server参数：</p>
+<pre><code>server {
+    listen      80 default_server;
+    server_name example.net www.example.net;
+    ...
+}
+</code></pre><h2 id="拒绝没有Host头的请求"><a href="#拒绝没有Host头的请求" class="headerlink" title="拒绝没有Host头的请求"></a>拒绝没有Host头的请求</h2><pre><code>server {
+    listen      80;
+    server_name &quot;&quot;;
+    return      444;
+}
+</code></pre><p>server_name设置为空将会匹配到没有”Host”头的请求，nginx将会返回444响应码并关闭连接。</p>
+<h2 id="混合名字和IP的虚拟主机"><a href="#混合名字和IP的虚拟主机" class="headerlink" title="混合名字和IP的虚拟主机"></a>混合名字和IP的虚拟主机</h2><p>如下配置文件：</p>
+<pre><code>server {
+    listen      192.168.1.1:80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      192.168.1.1:80;
+    server_name example.net www.example.net;
+    ...
+}
+
+server {
+    listen      192.168.1.2:80;
+    server_name example.com www.example.com;
+    ...
+}
+</code></pre><p>nginx首先会匹配IP和端口，然后在IP和端口匹配的server块中进一步匹配server_name，如果没有匹配到正确的server_name,nginx会将请求交给默认server处理。在上述配置文件中，假如在 192.168.1.1:80 收到一个www.example.com的请求，最终会由第一个server处理该请求。因为第一个换个第二个server中都没有www.example.com的server_name参数配置。<br>如果改成如下配置：</p>
+<pre><code>server {
+    listen      192.168.1.1:80;
+    server_name example.org www.example.org;
+    ...
+}
+
+server {
+    listen      192.168.1.1:80 default_server;
+    server_name example.net www.example.net;
+    ...
+}
+
+server {
+    listen      192.168.1.2:80 default_server;
+    server_name example.com www.example.com;
+    ...
+}
+</code></pre><p>则上述请求会被第二个server处理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx代理服务/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx代理服务/" itemprop="url">nginx代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nginx代理"><a href="#nginx代理" class="headerlink" title="nginx代理"></a>nginx代理</h1><hr>
+<p>nginx一个最常用的功能就是作为一个代理服务器，即收到客户端的请求后，将请求转发到被代理的服务器上，收到被代理的服务器响应后，将其发送到客户端。</p>
+<p>nginx转发指令是proxy_pass，参数转发的完整地址，包括协议、url和端口号。<br>如下配置：</p>
+<pre><code>events {
+    worker_connections  1024;
+}
+
+http{
+    server {
+    location / {
+        proxy_pass http://localhost:8080/;
+    }
+
+    location ~ \.(gif|jpg|png)$ {
+        root html/images;
+    }
+}
+
+server {
+    listen 8080;
+    root html/proxy;
+
+    location / {
+    }
+}
+}
+</code></pre><p>上述配置文件中，所有80端口的图片请求将被映射到html/images目录下,其他请求则会被转发到8080端口上，映射到html/proxy目录中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/netty/netty-组件和设计/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/netty/netty-组件和设计/" itemprop="url">netty的组件和设计</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T16:52:11+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/netty/" itemprop="url" rel="index">
+                    <span itemprop="name">netty</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id><a href="#" class="headerlink" title=" "></a> </h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/sql/msyql/mysql高可用-主从复制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/11/sql/msyql/mysql高可用-主从复制/" itemprop="url">mysql高可用-主从复制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-11T16:15:00+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="复制原理"><a href="#复制原理" class="headerlink" title="复制原理"></a>复制原理</h3><p>复制是 mysql 数据库提供的一种高可用高性能解决方案，分为3个步骤：</p>
+<ol>
+<li>主服务器把数据更改（写）记录到二进制日志文件中，</li>
+<li>从服务器把主服务器的二进制日志复制到自己的中继日志中（slave IO 线程）</li>
+<li>从服务器重做中继日志中的日志，把更改应用到本地数据库上，以达到数据的最终一致性。</li>
+</ol>
+<p><img src="/pics/mysql-replacation.jpg" alt="mysql 复制原理"></p>
+<p>一般要设置 slave 机器：<br><figure class="highlight plain"><figcaption><span>CHANGE MASTER TO</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-&gt;     MASTER_HOST=&apos;master_host_name&apos;,</span><br><span class="line">-&gt;     MASTER_USER=&apos;replication_user_name&apos;,</span><br><span class="line">-&gt;     MASTER_PASSWORD=&apos;replication_password&apos;,</span><br><span class="line">-&gt;     MASTER_LOG_FILE=&apos;recorded_log_file_name&apos;,</span><br><span class="line">-&gt;     MASTER_LOG_POS=recorded_log_position;</span><br></pre></td></tr></table></figure></p>
+<p>然后哦开启 slave 线程：<code>start slave</code>.</p>
+<p>使用 <code>show master status</code> 或 <code>show slave status</code> 可以分别查看主/从服务器上的复制状态。<br><img src="/pics/slave-status.jpg" alt="slave status 状态说明"></p>
+<h3 id="Docker主从复制实战"><a href="#Docker主从复制实战" class="headerlink" title="Docker主从复制实战"></a>Docker主从复制实战</h3><ol>
+<li>下载 mysql 的docker 镜像：<code>docker pull mysql</code></li>
+<li>启动主mysql：<code>docker run -p 3316:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --name=mysql-master  mysql</code></li>
+<li>启动从mysql：<code>docker run -p 3326:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --name=mysql-slave  mysql</code></li>
+<li>进入docker容器，允许 root 任意IP登录： <code>update mysql.user set host=&#39;%&#39; where user=&#39;root&#39;;</code>,然后 <code>flush privileges</code></li>
+<li>宿主机连接mysql测试：<code>mysql -hlocalhost --protocol=TCP -P3316 -umaster -p</code>，切记要加上 —protocol=TCP 选项</li>
+<li><p>宿主机新建主服务器配置文件 master.cnf:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server-id = 1</span><br><span class="line">log-bin=mysql-bin</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line"># binlog-do-db</span><br><span class="line"># binlog_format=mixed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制 master.cnf 到 mysql-master 的 /etc/mysql/conf.d目录下：<br> <code>docker cp master.cnf mysql-master:/etc/mysql/conf.d</code></p>
+</li>
+<li><p>宿主机新建主服务器配置文件 slave.cnf:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server-id = 2</span><br><span class="line"># relay_log = relay_bin</span><br><span class="line"># relay-log-index = relay-bin.index</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制 slave.cnf 到 mysql-slave 的 /etc/mysql/conf.d目录下：<br> <code>docker cp slave.cnf mysql-slave:/etc/mysql/conf.d</code></p>
+</li>
+<li>重启主从服务器：<code>docker restart mysql-master mysql-slave</code></li>
+<li>进入 mysql-master 主容器，创建同步账号并授权： <ul>
+<li>创建同步账号：<code>create user repl@&#39;%&#39; identified by &#39;repl&#39;;</code></li>
+<li>mysql8 可能需要修改密码认证方式：<code>ALTER USER &#39;repl&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password;</code></li>
+<li>授权：<code>GRANT REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO repl@&#39;%&#39;;</code></li>
+<li>查看同步状态：<code>show master status;</code></li>
+<li>记下容器 IP：<code>hostname -I</code> -&gt; 假设为 172.17.0.2</li>
+</ul>
+</li>
+<li>进入 mysql-slave 从容器，配置 slave：<ul>
+<li>配置同步账号信息：<code>CHANGE MASTER TO MASTER_HOST=&#39;172.17.0.2&#39;, MASTER_USER=&#39;repl&#39;, MASTER_PASSWORD=&#39;repl&#39;;</code></li>
+<li>启动同步：<code>start slave;</code></li>
+<li>查看同步状态：<code>show slave status\G;</code></li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/sql/msyql/mysql安装及启动/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/sql/msyql/mysql安装及启动/" itemprop="url">mysql的安装及配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="windwos-下-mysql-的安装及配置"><a href="#windwos-下-mysql-的安装及配置" class="headerlink" title="windwos 下 mysql 的安装及配置"></a>windwos 下 mysql 的安装及配置</h1><h2 id="mysql-安装"><a href="#mysql-安装" class="headerlink" title="mysql 安装"></a>mysql 安装</h2><ol>
+<li>下载zip包，解压到某个目录</li>
+<li><p>解压目录下创建my.ini文件，配置basedir和datadir路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line"># set basedir to your installation path</span><br><span class="line">basedir=C:/Program Files (x86)/mysql-8.0.21-winx64</span><br><span class="line"># set datadir to the location of your data directory</span><br><span class="line">datadir=D:/mysqldata/data</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行 mysqld —initialize —console —user=root ,初始化数据库，会在控制台打印出root账户的随机密码。必须保证配置的 data 目录是空的，否则会报错。</p>
+</li>
+<li>启动mysqld服务：mysqld</li>
+<li>停止mysqld服务：mysqladmin -u root shutdown，如果要密码加上-p</li>
+<li>执行mysql -hlocalhost -uroot -p连接数据库</li>
+<li>首次连接数据库后要更改初始化密码：ALTER USER ‘root’@’localhost’ IDENTIFIED BY ‘root’;否则不能执行sql语句</li>
+<li>允许 root 从任意IP登录：<code>update mysql.user set host=&#39;%&#39; where user=&#39;root&#39;;</code>,然后 <code>flush privileges</code></li>
+</ol>
+<h2 id="mysql-安装为服务"><a href="#mysql-安装为服务" class="headerlink" title="mysql 安装为服务"></a>mysql 安装为服务</h2><ol>
+<li>mysqld —install-manual安装为手动启动的服务，mysqld —install 安装位自动启动的服务</li>
+<li>启动：net start mysql，停止：net stop mysql</li>
+<li>mysqld —remove卸载服务</li>
+</ol>
+<h1 id="linux-下安装-mysql"><a href="#linux-下安装-mysql" class="headerlink" title="linux 下安装 mysql"></a>linux 下安装 mysql</h1><pre><code>shell&gt; groupadd mysql
+shell&gt; useradd -r -g mysql -s /bin/false mysql
+shell&gt; cd /usr/local
+shell&gt; tar zxvf /path/to/mysql-VERSION-OS.tar.gz
+shell&gt; ln -s full-path-to-mysql-VERSION-OS mysql
+shell&gt; cd mysql
+shell&gt; mkdir mysql-files
+shell&gt; chown mysql:mysql mysql-files
+shell&gt; chmod 750 mysql-files
+shell&gt; bin/mysqld --initialize --user=mysql
+shell&gt; bin/mysql_ssl_rsa_setup
+shell&gt; bin/mysqld_safe --user=mysql &amp;
+# Next command is optional
+shell&gt; cp support-files/mysql.server /etc/init.d/mysql.server
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/sql/msyql/mysql数据备份与还原/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/11/sql/msyql/mysql数据备份与还原/" itemprop="url">mysql数据备份与还原</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-11T09:15:26+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="备份概述"><a href="#备份概述" class="headerlink" title="备份概述"></a>备份概述</h3><p>根据备份方法不同，可以分为三类：</p>
+<ol>
+<li>热备，数据库不停止，备份不会对数据库产生影响</li>
+<li>冷备，数据库停止，复制相关文件即可</li>
+<li>温备，数据库不停止，但是备份会影响数据库操作，如加一个全局读锁以保证备份数据的一致性</li>
+</ol>
+<p>根据备份后文件的内容可以分为：</p>
+<ol>
+<li>裸文件备份</li>
+<li>逻辑备份</li>
+</ol>
+<p>裸文件备份是指备份数据库的物理文件，可以使用相关工具不停机复制，也可以停机复制。恢复时间短，但是备份内容不可读。</p>
+<p>逻辑备份是指备份出的文件内容是可读的，一般是文本文件。内容是指由一条条 sql 语句或者表数据构成。优点是可以查看到处文件的内容，但是恢复时间较长。</p>
+<p>数据可备份的一致性：在备份的时间点上，数据库中的数据是一致的。假设，正在备份时，网络游戏中某个玩家在购买道具，先扣除相应金钱，然后发放装备。必须确保备份后的数据是一致的。不能扣钱不发装备或者发了装备不扣钱。可以开启一个事务，然后备份相关表，最后提交。扣钱-发装备操作必须在一个事务中完成。</p>
+<h3 id="冷备"><a href="#冷备" class="headerlink" title="冷备"></a>冷备</h3><p>对于 Innodb 引擎很简单，只需要备份 Mysql 数据库的 frm 文件（mysql8删除了这个文件，将表定义放在在ibd文件中）、共享表空间文件、独立表空间文件(*.ibd)、重做日志文件。优点是：</p>
+<ol>
+<li>备份简单，只需要复制相关文件即可</li>
+<li>恢复简单，将备份文件复制到对应目录即可</li>
+<li>恢复的速度快，不需要执行sql语句，也不用重建索引</li>
+<li>跨操作系统，跨版本</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>备份文件比较大，除了数据文件外，包含了数据库中其它数据。</li>
+<li>也不总是可以跨平台。操作系统、数据库版本、浮点数格式、文件大小写敏感都会成为问题。</li>
+</ol>
+<h3 id="逻辑备份"><a href="#逻辑备份" class="headerlink" title="逻辑备份"></a>逻辑备份</h3><h4 id="mysqldump-备份"><a href="#mysqldump-备份" class="headerlink" title="mysqldump 备份"></a>mysqldump 备份</h4><p><code>mysqldump [arguments] &gt; file_name</code>，不能导出视图。<br>重要参数：</p>
+<ol>
+<li>—all-databases: 备份所有数据库。</li>
+<li>—databases db_name1 db_name1 db_name1: 备份指定数据库</li>
+<li>—single-transaction : 在备份开始时，先执行 <code>start transaction</code> 语句开启事务，保证数据一致性，但是不能执行DDL语句，不能隔离DDL操作。且只对 Innodb 引擎有效</li>
+<li>—lock-tables(-l): 备份时，依次锁住数据库中每个架构下的所有表来保证单表的一致性，不能保证整个数据库的一致性。一般用于 MyIsam 引擎，且与 —single-transaction 互斥，不能同时使用。这个选项默认是打开的，也就是说备份时默认是锁表的，如果是热备，那么线上只能执行读语句，所有写事务都会被阻塞。</li>
+<li>—lock-all-tables(-x): 备份时，锁住所有架构下的所有表， 避免 —lock-tables 不能锁住所有表的问题。</li>
+<li>—add-drop-tables:在 create database 前先运行 drop database。此参数要和 —al-databases 或者 —databases 选项一起使用。</li>
+<li>—master-data[=value]： 通过改参数产生的备份文件主要用来建立一个 replication。value为1时，文件中记录 change master 语句；为2时，change master 语句被写出 sql注释。</li>
+<li>—events(-E): 备份事件调度器</li>
+<li>—routines(-R): 备份存储过程和函数。</li>
+<li>—triggers：备份触发器</li>
+<li>—hex-blob：将 binary、varbinary、blob、bit类型的数据备份为十六进制的格式，默认是不可读的乱码。</li>
+<li>—where=’where_condition’(-w ‘where_condition’)：导出给定条件的数据。</li>
+</ol>
+<h4 id="mysqldump-恢复"><a href="#mysqldump-恢复" class="headerlink" title="mysqldump 恢复"></a>mysqldump 恢复</h4><ol>
+<li>mysql -uroot -p &lt; file_name</li>
+<li>source file_name</li>
+</ol>
+<h4 id="SELECT…INTO-OUTFILE-备份"><a href="#SELECT…INTO-OUTFILE-备份" class="headerlink" title="SELECT…INTO OUTFILE 备份"></a>SELECT…INTO OUTFILE 备份</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">select * from Table into outfile &apos;/路径/文件名&apos;</span><br><span class="line">fields terminated by &apos;,&apos;</span><br><span class="line">enclosed by &apos;&quot;&apos;</span><br><span class="line">lines terminated by &apos;\r\n&apos;</span><br></pre></td></tr></table></figure>
+<p>导出一张表中的数据到文件.</p>
+<h4 id="SELECT…INTO-OUTFILE-恢复"><a href="#SELECT…INTO-OUTFILE-恢复" class="headerlink" title="SELECT…INTO OUTFILE 恢复"></a>SELECT…INTO OUTFILE 恢复</h4><ol>
+<li>load data infile    </li>
+<li>mysqlimport [options] db_file</li>
+</ol>
+<h4 id="二进制日志备份与恢复"><a href="#二进制日志备份与恢复" class="headerlink" title="二进制日志备份与恢复"></a>二进制日志备份与恢复</h4><p>首先需要开启二进制日志功能：<br>    log-bin=mysql-bin<br>    sync_binlog=1<br>    innodb_support_xa=1<br>备份二进制文件前，使用 <code>flush logs</code> 命令生成一个新的二进制日志文件，然后备份之前的二进制文件。</p>
+<p>恢复二进制日志：<br><code>mysqlbinlog [options] bin_log_file | mysql -u root -p</code><br>—start-position 和 —stop-position 可以用来指定从二进制日志的某个偏移量进行恢复。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/sql/msyql/mysql用户权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/sql/msyql/mysql用户权限/" itemprop="url">mysql 用户及权限管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T09:20:28+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p>mysql 用户信息存储在 mysql.user 表中。</p>
+<ol>
+<li>创建用户： <code>CREATE USER &#39;username&#39;@&#39;ip&#39; IDENTIFIED WITH mysql_native_password BY &#39;passowrd&#39;</code>;</li>
+<li>允许用户从任意IP登录：<code>update mysql.user set host=&#39;%&#39; where user=&#39;root&#39;;</code></li>
+<li>修改用户密码： <code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;你的密码&#39;;</code> mysql 8<br><code>update mysq.user set password=password(&#39;11111111&#39;) where xxx;</code> 8 以前的版本</li>
+<li>删除用户： <code>drop user testuser@&#39;localhost&#39;</code></li>
+<li>刷新用户权限：<code>flush privileges</code></li>
+</ol>
+<h3 id="授权与收回"><a href="#授权与收回" class="headerlink" title="授权与收回"></a>授权与收回</h3><p>SQL标准包括 select、insert、update、delete以及all权限。</p>
+<ol>
+<li>查看用户的权限：<code>show grants for &lt;user&gt;</code></li>
+<li><p>授权语句：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">grant &lt;权限列表&gt;</span><br><span class="line">on &lt;数据库/表/视图&gt;</span><br><span class="line">to &lt;用户/角色列表&gt;</span><br><span class="line"></span><br><span class="line">grant select on department to public,Amy,Simith;授予public,Amy,Simith 关于 department 的select 权限  </span><br><span class="line">grant all on *.* to admin; 授予admin所有权限  </span><br><span class="line">grant all on student.* to teacher;授予teacher所有student数据库相关的权限</span><br></pre></td></tr></table></figure>
+<p> public代表系统中所有的当前用户和将来的用户。</p>
+</li>
+<li><p>收回权限语句：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">revoke &lt;权限列表&gt;</span><br><span class="line">on &lt;关系名或视图名&gt;</span><br><span class="line">from &lt;用户/角色列表&gt;</span><br><span class="line"></span><br><span class="line">revoke select on department from Amy,Simith</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/sql/msyql/mysql查询历史sql记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/23/sql/msyql/mysql查询历史sql记录/" itemprop="url">mysql 历史sql查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T13:50:21+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="开启操作记录日志"><a href="#开启操作记录日志" class="headerlink" title="开启操作记录日志"></a>开启操作记录日志</h2><p>首先进入mysql输入指令</p>
+<pre><code>show variables like &#39;gen%&#39;;
+</code></pre><p>可以看到输出</p>
+<pre><code>+------------------+-------------------------------------+
+| Variable_name    | Value                               |
++------------------+-------------------------------------+
+| general_log      | OFF                                 |
+| general_log_file | /usr/local/mysql/data/localhost.log |
++------------------+-------------------------------------+
+</code></pre><p>可以看到general_log是开启还是环比状态，以及这个帐号的general_log文件在哪，设置开启</p>
+<pre><code>set global general_log=ON;
+commit;//如果关闭了自动提交，记得commit一次结束事务
+</code></pre><p>然后就可以去general_log_file的路径查看操作记录了</p>
+<h2 id="采用数据库内部查看"><a href="#采用数据库内部查看" class="headerlink" title="采用数据库内部查看"></a>采用数据库内部查看</h2><p>除了可以用日志文件的形式查看数据库操作记录之外，也可以把日志存储在一个表，在数据库内部查看</p>
+<pre><code>show variables like &#39;%log_output%&#39;;
+</code></pre><p>可以看到输出，</p>
+<pre><code>+---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| log_output    | FILE  |
++---------------+-------+
+</code></pre><p>然后将其改为表单</p>
+<pre><code>set  global log_output=&#39;TABLE&#39;;
+</code></pre><p>之后就可以通过以下两句话查看数据库操作记录</p>
+<pre><code>select * from mysql.general_log; &lt;=====查看操作记录
+truncate table mysql.general_log; &lt;=====清空操作记录表单
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

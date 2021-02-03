@@ -1,37 +1,852 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="su 和 sudosu [user]: 切换到 [user] 用户，需要输入切换到的用户的密码，省略 user 的话默认切换到 root 用户。执行完 命令后，使用 exit 切换到原用户。 su - 与 su 的区别：两者都是切换到root 用户，但是前者会连shell 环境一起切换。 sudo [command]: 以 root 权限执行命令，需要输入当前用户的密码，一般成功后15分钟内 su">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用命令速记">
+<meta property="og:url" content="http://yoursite.com/2018/09/05/linux/常用命令速记/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="su 和 sudosu [user]: 切换到 [user] 用户，需要输入切换到的用户的密码，省略 user 的话默认切换到 root 用户。执行完 命令后，使用 exit 切换到原用户。 su - 与 su 的区别：两者都是切换到root 用户，但是前者会连shell 环境一起切换。 sudo [command]: 以 root 权限执行命令，需要输入当前用户的密码，一般成功后15分钟内 su">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用命令速记">
+<meta name="twitter:description" content="su 和 sudosu [user]: 切换到 [user] 用户，需要输入切换到的用户的密码，省略 user 的话默认切换到 root 用户。执行完 命令后，使用 exit 切换到原用户。 su - 与 su 的区别：两者都是切换到root 用户，但是前者会连shell 环境一起切换。 sudo [command]: 以 root 权限执行命令，需要输入当前用户的密码，一般成功后15分钟内 su">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/05/linux/常用命令速记/">
+
+
+
+
+
+  <title>常用命令速记 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/05/linux/常用命令速记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用命令速记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-05T21:05:38+08:00">
+                2018-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="su-和-sudo"><a href="#su-和-sudo" class="headerlink" title="su 和 sudo"></a>su 和 sudo</h3><p>su [user]: 切换到 [user] 用户，需要输入切换到的用户的密码，省略 user 的话默认切换到 root 用户。执行完 命令后，使用 exit 切换到原用户。</p>
+<p>su - 与 su 的区别：两者都是切换到root 用户，但是前者会连shell 环境一起切换。</p>
+<p><code>sudo [command]</code>: 以 root 权限执行命令，需要输入当前用户的密码，一般成功后15分钟内 sudo 无需再输入密码。但是这些都是由配置文件<code>/etc/sudoers</code>来进行授权的，就是说如果用户没有sudo权限，也是无法执行该命令的。 可以使用 visudo 命令修改其中的配置。</p>
+<p>示例配置：<code>root  ALL=(ALL)  ALL -&gt; 用户  允许登陆的主机位置=（可以切换的账户） 可以执行的命令</code>: 该配置表示root用户在任意位置切换到任意账户执行任意命令。</p>
+<p><code>%admin     ALL = (ALL) ALL -&gt;  用户组 允许登陆的主机位置=（可以切换的账户） 可以执行的命令</code>:  admin用户组在任意位置切换到任意账户执行任意命令。</p>
+<h3 id="系统状态查看"><a href="#系统状态查看" class="headerlink" title="系统状态查看"></a>系统状态查看</h3><ol>
+<li><code>pgrep</code>：查看进程</li>
+<li><code>arch</code>:显示架构</li>
+<li><code>uname -a</code>:查看Linux系统版本</li>
+<li><p>查看某个时间点的进程信息-<code>ps</code>:<code>ps -lef</code></p>
+<ul>
+<li>UID：启动这些进程的用户。</li>
+<li>PID：进程的进程ID。 </li>
+<li>PPID：父进程的进程号（如果该进程是由另一个进程启动的）。</li>
+<li>C：进程生命周期中的CPU利用率。</li>
+<li>STIME：进程启动时的系统时间。</li>
+<li>TTY：进程启动时的终端设备。</li>
+<li>TIME：运行进程需要的累计CPU时间。</li>
+<li>CMD：启动的程序名称。</li>
+<li>F：内核分配给进程的系统标记。</li>
+<li>S：进程的状态（ O代表正在运行； S代表在休眠； R代表可运行，正等待运行； Z代表僵化，进程已结束但父进程已不存在； T代表停止）。</li>
+<li>PRI：进程的优先级（越大的数字代表越低的优先级）。</li>
+<li>NI：谦让度值用来参与决定优先级。</li>
+<li>ADDR：进程的内存地址。</li>
+<li>SZ：假如进程被换出，所需交换空间的大致大小。</li>
+<li>WCHAN：进程休眠的内核函数的地址。  </li>
+</ul>
+</li>
+<li><p>实时信息-<code>top</code></p>
+<p> top命令跟ps命令相似，能够显示进程信息，但它是实时显示的。</p>
+<p> 输出的第一部分显示的是系统的概况：<br> 第一行显示了当前时间、系统的运行时间、登录的用户数以及系统的平均负载（1分钟、5分钟和15分钟的平均负载）。</p>
+<p> 下一行显示了CPU的概要信息。 top根据进程的属主（用户还是系统）和进程的状态（运行、<br> 空闲还是等待）将CPU利用率分成几类输出。</p>
+<p> 紧跟其后的两行说明了系统内存的状态。第一行说的是系统的物理内存：总共有多少内存，<br> 当前用了多少，还有多少空闲。后一行说的是同样的信息，不过是针对系统交换空间（如果分配<br> 了的话）的状态而言的。</p>
+<p> 最后一部分显示了当前运行中的进程的详细列表，有些列跟ps命令的输出类似</p>
+<ul>
+<li>PID：进程的ID。</li>
+<li>USER：进程属主的名字。</li>
+<li>PR：进程的优先级。</li>
+<li>NI：进程的谦让度值。</li>
+<li>VIRT：进程占用的虚拟内存总量。</li>
+<li>RES：进程占用的物理内存总量。</li>
+<li>SHR：进程和其他进程共享的内存总量。</li>
+<li>S：进程的状态（ D代表可中断的休眠状态， R代表在运行状态， S代表休眠状态， T代表跟踪状态或停止状态， Z代表僵化状态）。</li>
+<li>%CPU：进程使用的CPU时间比例。</li>
+<li>%MEM：进程使用的内存占可用内存的比例。72 第 4 章 更多的 bash shell 命令</li>
+<li>%id：空闲CPU时间百分比，如果这个值过低，表明系统CPU存在瓶颈；</li>
+<li>%wa：等待I/O的CPU时间百分比，如果这个值过高，表明IO存在瓶颈；</li>
+<li>TIME+：自进程启动到目前为止的CPU时间总量。</li>
+<li><p>COMMAND：进程所对应的命令行名称，也就是启动的程序名</p>
+<p>进入top交互界面后，可以使用下面的键进行操作：</p>
+</li>
+</ul>
+<ol>
+<li>按E键可以切换上面概况的内存单位（KB/MB/GB），下边进程的详细信息按e键切换。  </li>
+<li>-p [pid]：可以显示指定进程的信息  </li>
+<li>P：根据CPU使用百分比大小进行排序。</li>
+<li>M：根据驻留内存大小进行排序。</li>
+<li>i：使top不显示任何闲置或者僵死进程。</li>
+</ol>
+</li>
+<li><p>结束进程-<code>kill/killall</code></p>
+<p> 在Linux中，进程之间通过信号来通信。进程的信号就是预定义好的一个消息，进程能识别<br> 它并决定忽略还是作出反应。进程如何处理信号是由开发人员通过编程来决定的。大多数编写完<br> 善的程序都能接收和处理标准Unix进程信号。<br> |信号|名称|描述|<br> |—|:—:|—|<br> |1 |HUP| 挂起<br> |2 |INT| 中断<br> |3 |QUIT| 结束运行<br> |9 |KILL| 无条件终止<br> |11 |SEGV| 段错误<br> |15 |TERM|尽可能终止<br> |17 |STOP| 无条件停止运行，但不终止<br> |18 |TSTP| 停止或暂停，但继续在后台运行<br> |19 |CONT| 在STOP或TSTP之后恢复执行</p>
+<p> <code>kill -9 pid</code><br> killall 不仅支持pid参数，还支持通配符：<code>killall http*</code></p>
+</li>
+<li><p>磁盘/文件管理/内存</p>
+<ol>
+<li>查看磁盘空间使用情况: <code>df -h</code></li>
+<li>查看当前目录所占空间大小: <code>du -sh</code></li>
+<li>打包：<code>tar -cvf etc.tar /etc &lt;==仅打包，不压缩！</code> -c :打包选项, -v :显示打包进度, -f :使用档案文件</li>
+<li>解包：<code>tar -xvf demo.tar</code>  -x:解包选项  -z:解压gz文件  -j:解压bz2文件  -J:解压xz文件</li>
+<li>压缩文件：<code>gzip demo.txt</code></li>
+<li>解压缩文件：<code>gunzip demo.tar.gz</code></li>
+<li>iostat工具<ol>
+<li>-C 显示CPU使用情况</li>
+<li>-d 显示磁盘使用情况</li>
+<li>-k 以 KB 为单位显示</li>
+<li>-m 以 M 为单位显示</li>
+<li>-N 显示磁盘阵列(LVM) 信息</li>
+<li>-n 显示NFS 使用情况</li>
+<li>-p[磁盘] 显示磁盘和分区的情况</li>
+<li>-x 显示详细信息</li>
+</ol>
+<ul>
+<li>如果%iowait的值过高，表示硬盘存在I/O瓶颈。</li>
+<li>如果 %util 接近 100%，说明产生的I/O请求太多，I/O系统已经满负荷，该磁盘可能存在瓶颈。</li>
+<li>如果 svctm 比较接近 await，说明 I/O 几乎没有等待时间；</li>
+<li>如果 await 远大于 svctm，说明I/O 队列太长，io响应太慢，则需要进行必要优化。</li>
+<li>如果avgqu-sz比较大，也表示有大量io在等待。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>性能监控</p>
+<ol>
+<li>top</li>
+<li>CPU使用率： <code>sar [-u|-r|-q] 1 2</code> 每秒采样一次，总共采样2次; -r:显示内存; -q:查看运行队列中的进程数、系统上的进程大小、平均负载等</li>
+<li>查看内存用量：<code>free -m</code> MB为单位显示</li>
+<li>查看cpu、内存、使用情况：<code>vmstat n m</code> （n 为监控频率、m为监控次数）</li>
+</ol>
+</li>
+<li><p>网络监控</p>
+<ol>
+<li><code>netstat [-atlp]</code> : -a：所有端口；-t:tcp；-l:监听的状态；-p:pid信息</li>
+<li><code>lsof</code> :列出当前系统打开文件的工具; <code>-i [tcp|udp:端口]</code>查看某个tcp/udp端口被哪个进程占用；<code>-p pid</code>查看pid进程打开的文件和端口</li>
+<li><code>route -n</code> :查看路由状态</li>
+<li><code>traceroute IP</code> :探测前往地址IP的路由路径</li>
+<li><code>host domain</code> :DNS查询,寻找域名domain对应的IP；也可以使用 nslookup</li>
+<li><code>host ip</code> :查看IP对应的域名</li>
+<li><code>scp localpath ID@host:path</code> :将本地localpath指向的文件上传到远程主机的path路径</li>
+<li><code>scp -r ID@site:path localpath</code> :遍历下载path路径下的整个文件系统，到本地的localpath</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/01/java/jvm/java基础-类和对象的初始化/" rel="next" title="java基础-类和对象的初始化">
+                <i class="fa fa-chevron-left"></i> java基础-类和对象的初始化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/27/spring/spring_mvc/Spring mvc中ContextLoaderListener分析/" rel="prev" title="springmvc中ContextLoaderListener分析">
+                springmvc中ContextLoaderListener分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#su-和-sudo"><span class="nav-number">1.</span> <span class="nav-text">su 和 sudo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#系统状态查看"><span class="nav-number">2.</span> <span class="nav-text">系统状态查看</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

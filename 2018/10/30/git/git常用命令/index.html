@@ -1,37 +1,813 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="git,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Github 配置 SSH 登录 打开 git bash，非 windows 下不需要 查看是否已经有 SSH keys： ls -la ~/.ssh 生成 SSH keys: ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 启动 ssh-agent：eval ssh-agent -s 添加 key 到 ssh-age">
+<meta name="keywords" content="git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 常用命令">
+<meta property="og:url" content="http://yoursite.com/2018/10/30/git/git常用命令/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Github 配置 SSH 登录 打开 git bash，非 windows 下不需要 查看是否已经有 SSH keys： ls -la ~/.ssh 生成 SSH keys: ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 启动 ssh-agent：eval ssh-agent -s 添加 key 到 ssh-age">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/git-frame.jpg">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git 常用命令">
+<meta name="twitter:description" content="Github 配置 SSH 登录 打开 git bash，非 windows 下不需要 查看是否已经有 SSH keys： ls -la ~/.ssh 生成 SSH keys: ssh-keygen -t rsa -b 4096 -C &amp;quot;your_email@example.com&amp;quot; 启动 ssh-agent：eval ssh-agent -s 添加 key 到 ssh-age">
+<meta name="twitter:image" content="http://yoursite.com/pics/git-frame.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/30/git/git常用命令/">
+
+
+
+
+
+  <title>git 常用命令 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/git/git常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">git 常用命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T21:52:10+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Github-配置-SSH-登录"><a href="#Github-配置-SSH-登录" class="headerlink" title="Github 配置 SSH 登录"></a>Github 配置 SSH 登录</h3><ol>
+<li>打开 git bash，非 windows 下不需要</li>
+<li>查看是否已经有 SSH keys： <code>ls -la ~/.ssh</code></li>
+<li>生成 SSH keys: <code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+<li>启动 ssh-agent：eval <code>ssh-agent -s</code></li>
+<li>添加 key 到 ssh-agent: <code>ssh-add ~/.ssh/id_ed25519</code></li>
+<li>将生成的 SSH 公钥(id_rsa.pub)粘贴到GitHub上</li>
+<li>测试能否连接：<code>ssh -T git@github.com</code></li>
+</ol>
+<p><img src="/pics/git-frame.jpg" width="50%" height="50%"></p>
+<h3 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h3><ol>
+<li><code>git clean</code>: 删除工作区中未跟踪（不在版本库也未索引的）的文件</li>
+<li><code>git add</code>: 这是个多功能命令:可以用它开 始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</li>
+<li><code>git ls-files --satge</code>:查看暂存区的文件</li>
+<li><code>git diff</code> : 只显示尚未暂存的改动，而不是自上次提交以来所做的所有改动</li>
+<li><code>git diff --staged</code>:比对已暂存文件与最后一次提交的文件差异</li>
+<li><code>git rm filename</code> : 删除某个文件，会同时删除版本库和工作区的文件</li>
+<li><code>git rm --cached filename</code>:从暂存区和工作区删除某个文件，提交后，版本库中会删除这个文件，但是工作区磁盘上会保留</li>
+<li><code>git checkout head filename</code>:从暂存区恢复工作区中的文件，通常是想放弃对工作区中的修改或者误删了工作区文件</li>
+<li><code>git checkout &lt;hash&gt; &lt;filename&gt;</code>：恢复文件到某个提交状态</li>
+<li><code>git reset [HEAD|&lt;h&gt;&lt;/h&gt;ash] filename</code>:从版本库中恢复某个文件，当你删除了工作区中的文件，又删除了暂存区中的文件，想恢复文件可以用这个命令</li>
+<li><code>git commit</code>:将暂存区中的文件提交到版本库</li>
+<li><code>git commit --amend</code>：将本次提交与前一次的提交合并为一次提交</li>
+<li><code>git checkout branchname</code>:切换分支</li>
+<li><code>git checkout -b branchname</code>:切换分支,如果分支名不存在则基于当前分支新建一个分支</li>
+<li><code>git reset filename</code>:从版本库中还原某个文件到暂存区，当想撤销某次git add filename操作时使用，不加filename时，重置整个暂存区，工作区内容不受影响</li>
+<li><code>git reset</code>:恢复暂存区文件为版本库状态,工作区文件不会改变</li>
+<li><code>git reset --hard head~1</code>:用上一次提交的版本库状态恢复暂存区和工作区</li>
+<li><code>git log</code>: 查看提交历史记录</li>
+<li><code>git log filename</code>: 查看某个文件的历史提交记录</li>
+<li><code>git show &lt;commit_id&gt;</code>: 查看某次提交的信息信息</li>
+<li><code>git reflog</code>:查看引用历史记录</li>
+<li><code>git reset ref</code>:将版本库恢复到某次提交状态，适用于往前reset后又想往后reset</li>
+<li><code>git stash</code>:将当前工作区中的修改保存起来,并用版本库中的内容恢复暂存区和工作区，当开发到一半时，需要处理另一个bug时使用</li>
+<li><code>git stash pop</code>:将保存的内容恢复到工作区</li>
+</ol>
+<h3 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h3><ol>
+<li><code>git checkout -b 本地分支名x origin/远程分支名x</code>: 在本地新建分支x，并自动切换到该本地分支x</li>
+<li><code>git branch -a</code>:查看所有分支</li>
+<li><code>git branch --merged|--no-merged</code>:查看已经合并到/尚未合并当前分支的分支</li>
+<li><code>git branch &lt;BranchName&gt;</code>:创建 BranchName 分支</li>
+<li><code>git checkout &lt;BranchName&gt;</code>:切换到 BranchName 分支</li>
+<li><code>git checkout -b &lt;BranchName&gt;</code>:在当前分支基础上新建 BranchName 分支，并切换到 BranchName 分支</li>
+<li><code>git brnch -d &lt;BranchName&gt;</code>:删除 BranchName 分支</li>
+<li><code>git merge &lt;BranchName&gt;</code>: 将 BranchName 合并到当前分支</li>
+<li><code>git merge --abort</code>: 中断合并</li>
+<li><code>git rebase &lt;targetBranch&gt; &lt;sourceBranch&gt;</code>: Rebase 实际上就是取出 sourceBranch 的一系列的提交记录，“复制”它们，然后在targetBranch 的后边逐个的放下去，创造更线性的提交历史。sourceBranch 省略时，表示将当前分支 rebase到 targetBranch。</li>
+</ol>
+<h3 id="git远程命令"><a href="#git远程命令" class="headerlink" title="git远程命令"></a>git远程命令</h3><ol>
+<li><code>git clone</code>: 从远程库克隆</li>
+<li><code>git remote</code> :显示远程主机</li>
+<li><code>git remote show &lt;仓库名&gt;</code> :显示远程主机详细信息</li>
+<li><code>git remote add &lt;仓库名&gt; &lt;仓库地址&gt;</code>:添加远程主机</li>
+<li><code>git remote rm &lt;仓库名&gt;</code>：删除远程主机</li>
+<li><code>git remote rename &lt;原仓库名&gt; &lt;新仓库名&gt;</code>：远程主机的改名</li>
+<li><code>git fetch &lt;仓库名&gt;</code>：访问远程仓库，从中拉取所有你本地仓库还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看</li>
+<li><code>git fetch origin 远程分支名x:本地分支名x</code> : 在本地新建分支x，但是不会自动切换到该本地分支x，需要手动checkout</li>
+<li><code>git fetch &lt;仓库名&gt; &lt;分支名&gt;</code>：取回远程主机指定分支的更新</li>
+<li><code>git pull &lt;仓库名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code>：取回远程主机某个分支的更新，再与本地的指定分支合并</li>
+<li><code>git pull &lt;仓库名&gt; &lt;远程分支名&gt;</code>：取回远程主机某个分支的更新，再与本地的当前分支合并</li>
+<li><code>git branch --set-upstream &lt;本地分支名&gt; &lt;仓库名&gt;/&lt;远程分支名&gt;</code> ：手动建立追踪关系</li>
+<li><code>git pull origin</code> : 如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名</li>
+<li><code>git pull</code> :如果当前分支只有一个追踪分支，连远程主机名都可以省略</li>
+<li><code>git push remote localbranch:remotebranch</code> : 将本地localbranch分支推送到remote的remotebranch分支上</li>
+<li><code>git push remote localbranch</code> : 将本地localbranch分支推送到remote的同名分支上</li>
+<li><code>git push remote :remotebranch</code> :删除remote的remotebranch分支</li>
+<li><code>git push remote --delete remotebranch</code> :删除remote的remotebranch分支</li>
+<li><code>git push</code> : 如果当前分支只有一个追踪分支，那么主机名都可以省略</li>
+</ol>
+<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ol>
+<li>windows乱码：<br> 使用git bush时，使用git add XX 添加文件后，git status 发现中文文件名是数字形式，比如”\123\456\789.txt”，点击也无法打开，二使用ls，git log都可以显示中文，最后修改配置:<br> <code>git config --global core.quotepath false</code> 解决</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/30/web/datatable添加按钮/" rel="next" title="datatable 添加功能按钮">
+                <i class="fa fa-chevron-left"></i> datatable 添加功能按钮
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/03/java/IO/java基础-NIO/" rel="prev" title="java基础-NIO">
+                java基础-NIO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github-配置-SSH-登录"><span class="nav-number">1.</span> <span class="nav-text">Github 配置 SSH 登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-常用命令"><span class="nav-number">2.</span> <span class="nav-text">git 常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-分支"><span class="nav-number">3.</span> <span class="nav-text">git 分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git远程命令"><span class="nav-number">4.</span> <span class="nav-text">git远程命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常见问题"><span class="nav-number">4.1.</span> <span class="nav-text">常见问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

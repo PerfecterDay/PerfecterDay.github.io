@@ -1,37 +1,791 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="初始化,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="主要转自：https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html 类是 Java 中的一等公民，一个 Java 类中可以有：成员方法、成员变量、初始化块。 类初始化类的生命周期 类初始化类”初始化”阶段，它是一个类或接口被首次使用的前阶段中的最后一项工作，本阶段负责为类变量赋予正确的初始值。 Java 编译器把所">
+<meta name="keywords" content="初始化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础-类和对象的初始化">
+<meta property="og:url" content="http://yoursite.com/2018/09/01/java/jvm/java基础-类和对象的初始化/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="主要转自：https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html 类是 Java 中的一等公民，一个 Java 类中可以有：成员方法、成员变量、初始化块。 类初始化类的生命周期 类初始化类”初始化”阶段，它是一个类或接口被首次使用的前阶段中的最后一项工作，本阶段负责为类变量赋予正确的初始值。 Java 编译器把所">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/class%20lifecycle.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础-类和对象的初始化">
+<meta name="twitter:description" content="主要转自：https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html 类是 Java 中的一等公民，一个 Java 类中可以有：成员方法、成员变量、初始化块。 类初始化类的生命周期 类初始化类”初始化”阶段，它是一个类或接口被首次使用的前阶段中的最后一项工作，本阶段负责为类变量赋予正确的初始值。 Java 编译器把所">
+<meta name="twitter:image" content="http://yoursite.com/pics/class%20lifecycle.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/01/java/jvm/java基础-类和对象的初始化/">
+
+
+
+
+
+  <title>java基础-类和对象的初始化 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/java/jvm/java基础-类和对象的初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础-类和对象的初始化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-01T20:46:20+08:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">jvm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>主要转自：<a href="https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html</a></p>
+<p>类是 Java 中的一等公民，一个 Java 类中可以有：成员方法、成员变量、初始化块。</p>
+<h2 id="类初始化"><a href="#类初始化" class="headerlink" title="类初始化"></a>类初始化</h2><h1 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h1><p><img src="/pics/class lifecycle.png" alt="类的生命周期"></p>
+<h1 id="类初始化-1"><a href="#类初始化-1" class="headerlink" title="类初始化"></a>类初始化</h1><p>类”初始化”阶段，它是一个类或接口被首次使用的前阶段中的最后一项工作，本阶段负责为类变量赋予正确的初始值。</p>
+<p>Java 编译器把所有的类变量初始化语句和类型的静态初始化器通通收集到 <code>&lt;clinit&gt;</code> 方法内，该方法只能被 Jvm 调用，专门承担初始化工作。初始化顺序和语句出现的先后顺序保持一致。</p>
+<p>除接口以外，初始化一个类之前必须保证其直接超类已被初始化，并且该初始化过程是由 Jvm 保证线程安全的。另外，并非所有的类都会拥有一个 <code>&lt;clinit&gt;()</code> 方法，在以下条件中该类不会拥有 <code>&lt;clinit&gt;()</code> 方法：</p>
+<ul>
+<li>该类既没有声明任何类变量，也没有静态初始化语句；</li>
+<li>该类声明了类变量，但没有明确使用类变量初始化语句或静态初始化语句初始化；</li>
+<li>该类仅包含静态 final 变量的类变量初始化语句，并且类变量初始化语句是编译时常量表达式。</li>
+</ul>
+<ol>
+<li>类加载的时候如果发现其有父类，则先加载父类。</li>
+<li>类加载时候，会先初始化类变量（如果定义类变量时初始化了的话）和静态初始化块中的初始化语句，两者的顺序以出现的先后次序为准。因为原因1，所以总是先执行父类的初始化（一直追溯到Object）然后才执行子类的初始化。类初始化只会在类加载过程中初始化一次，后续驻留在内存中，不再初始化。</li>
+</ol>
+<h1 id="对象初始化"><a href="#对象初始化" class="headerlink" title="对象初始化"></a>对象初始化</h1><p>在类被装载、连接和初始化，这个类就随时都可能使用了。对象实例化和初始化是就是对象生命的起始阶段的活动，在这里我们主要讨论对象的初始化工作的相关特点。</p>
+<ol>
+<li>实例化对象时，系统首先会为对象分配内存，然后初始化整块内存为0、null、false。</li>
+<li>然后，执行初始化代码和成员变量声明语句中的初始化，两者顺序以出现先后顺序为准。最后，调用相应的构造器执行初始化。</li>
+<li>第2步只是在没有父类情况下的初始化，如果有父类，则会从根类开始执行上述步骤直到执行初始化的类。</li>
+</ol>
+<p>Java 编译器在编译每个类时都会为该类至少生成一个实例初始化方法—即 <code>&lt;init&gt;()</code> 方法。此方法与源代码中的每个构造方法相对应，如果类没有明确地声明任何构造方法，编译器则为该类生成一个默认的无参构造方法，这个默认的构造器仅仅调用父类的无参构造器，与此同时也会生成一个与默认构造方法对应的 <code>&lt;init&gt;()</code> 方法.</p>
+<p>通常来说，<code>&lt;init&gt;()</code> 方法内包括的代码内容大概为：调用另一个 <code>&lt;init&gt;()</code> 方法；对实例变量初始化；与其对应的构造方法内的代码。</p>
+<p>如果构造方法是明确地从调用同一个类中的另一个构造方法开始，那它对应的 <code>&lt;init&gt;()</code> 方法体内包括的内容为：一个对本类的 <code>&lt;init&gt;()</code> 方法的调用；对应构造方法内的所有字节码。</p>
+<p>如果构造方法不是通过调用自身类的其它构造方法开始，并且该对象不是 Object 对象，那 <code>&lt;init&gt;()</code> 法内则包括的内容为：一个对父类 <code>&lt;init&gt;()</code> 方法的调用；对实例变量初始化方法的字节码；最后是对应构造方法的方法体字节码。</p>
+<p>如果这个类是 Object，那么它的 <code>&lt;init&gt;()</code> 方法则不包括对父类 <code>&lt;init&gt;()</code> 方法的调用。</p>
+<h1 id="类的初始化时机"><a href="#类的初始化时机" class="headerlink" title="类的初始化时机"></a>类的初始化时机</h1><p>本文到目前为止，我们已经大概有了解到了类生命周期中都经历了哪些阶段，但这个类的生命周期的开始阶段—类装载又是在什么时候被触发呢？类又是何时被初始化的呢？让我们带着这三个疑问继续去寻找答案。</p>
+<p>Java 虚拟机规范为类的初始化时机做了严格定义：”initialize on first active use”—“ 在首次主动使用时初始化”。这个规则直接影响着类装载、连接和初始化类的机制—因为在类型被初始化之前它必须已经被连接，然而在连接之前又必须保证它已经被装载了。</p>
+<p>在与初始化时机相关的类装载时机问题上，Java 虚拟机规范并没有对其做严格的定义，这就使得 JVM 在实现上可以根据自己的特点提供采用不同的装载策略。我们可以思考一下 Jboss AOP 框架的实现原理，它就是在对你的 class 文件装载环节做了手脚—插入了 AOP 的相关拦截字节码，这使得它可以对程序员做到完全透明化，哪怕你用 new 操作符创建出的对象实例也一样能被 AOP 框架拦截—与之相对应的 Spring AOP，你必须通过他的 BeanFactory 获得被 AOP 代理过的受管对象，当然 Jboss AOP 的缺点也很明显—他是和 JBOSS 服务器绑定很紧密的，你不能很轻松的移植到其它服务器上。嗯~……，说到这里有些跑题了，要知道 AOP 实现策略足可以写一本厚厚的书了，嘿嘿，就此打住。</p>
+<p>说了这么多，类的初始化时机就是在”在首次主动使用时”，那么，哪些情形下才符合首次主动使用的要求呢？</p>
+<p>首次主动使用的情形：</p>
+<ul>
+<li>创建某个类的新实例时—new、反射、克隆或反序列化；</li>
+<li>调用某个类的静态方法时；</li>
+<li>使用某个类或接口的静态字段或对该字段赋值时（final字段除外）；</li>
+<li>调用Java的某些反射方法时</li>
+<li>初始化某个类的子类时</li>
+<li>在虚拟机启动时某个含有main()方法的那个启动类。<br>除了以上几种情形以外，所有其它使用JAVA类型的方式都是被动使用的，他们不会导致类的初始化。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/初始化/" rel="tag"># 初始化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/24/测试/powermock使用/" rel="next" title="powermock">
+                <i class="fa fa-chevron-left"></i> powermock
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/05/linux/常用命令速记/" rel="prev" title="常用命令速记">
+                常用命令速记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#类初始化"><span class="nav-number">1.</span> <span class="nav-text">类初始化</span></a></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#类的生命周期"><span class="nav-number"></span> <span class="nav-text">类的生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类初始化-1"><span class="nav-number"></span> <span class="nav-text">类初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象初始化"><span class="nav-number"></span> <span class="nav-text">对象初始化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#类的初始化时机"><span class="nav-number"></span> <span class="nav-text">类的初始化时机</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

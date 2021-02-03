@@ -1,23 +1,1888 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/9/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/9/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/web/css入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/22/web/css入门/" itemprop="url">CSS 综述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T18:03:24+08:00">
+                2019-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CSS-语句"><a href="#CSS-语句" class="headerlink" title="CSS 语句"></a>CSS 语句</h2><h3 id="规则集"><a href="#规则集" class="headerlink" title="规则集"></a>规则集</h3><p>通过在每个声明块前加上选择器（selector）来将一组声明块应用到选择器选择的元素上，选择器是一种模式，它能在页面上匹配一些元素。这将使相关的声明块仅被应用到被选择的元素上。选择器加上声明块被称为<strong>规则集（ruleset）</strong>，通常简称<strong>规则（rule）</strong>。<br><img src="/pics/css-rule.jpg" alt="规则"></p>
+<p>一个元素可以被多个选择器所匹配，因此，一个给定的属性可能被多个规则设置多次。 CSS 定义了哪个规则比其它规则更具优先级，则更具优先级的规则必定被应用：这被称为<strong>层叠算法（cascade algorithm）</strong>，关于层叠算法的更多内容和运作原理见层叠和继承。</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="@-规则"></a>@-规则</h3><p><strong>@-规则(At-rules)</strong>在CSS中被用来传递元数据、条件信息或其它描述性信息。它由（@）符号开始，紧跟着一个表明它是哪种规则的描述符，之后是这种规则的语法块，并最终由一个半角分号（;）结束。每种由描述符定义的@-规则，都有其特有的内部语法和语义。一些例子如下：</p>
+<ul>
+<li>@charset 和 @import （元数据）</li>
+<li>@media 或 @document （条件信息，又被称为嵌套语句，见下方。)</li>
+<li>@font-face （描述性信息）<br>具体语法示例：<br><code>@import &#39;custom.css&#39;; //该@-规则向当前 CSS 导入其它 CSS 文件</code></li>
+</ul>
+<h3 id="嵌套语句"><a href="#嵌套语句" class="headerlink" title="嵌套语句"></a>嵌套语句</h3><p><strong>嵌套语句</strong> 是@-规则中的一种，它的语法是 CSS 规则的嵌套块，只有在特定条件匹配时才会应用到文档上。特定条件如下：</p>
+<ul>
+<li>@media 只有在运行浏览器的设备匹配其表达条件时才会应用该@-规则的内容；</li>
+<li>@supports 只有浏览器确实支持被测功能时才会应用该@-规则的内容；</li>
+<li>@document 只有当前页面匹配一些条件时才会应用该@-规则的内容。</li>
+</ul>
+<p>任何不是规则集或@-规则或嵌套语句的 CSS 语句都是无效的，并会因此被忽略。</p>
+<h2 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h2><p>选择器可以被分为以下类别：</p>
+<ul>
+<li>简单选择器（Simple selectors）：通过元素类型、class 或 id 匹配一个或多个元素。</li>
+<li>属性选择器（Attribute selectors）：通过 属性 / 属性值 匹配一个或多个元素。</li>
+<li>伪类（Pseudo-classes）：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是DOM树中一父节点的第一个子节点。</li>
+<li>伪元素（Pseudo-elements）:匹配处于相关的确定位置的一个或多个元素，例如每个段落的第一个字，或者某个元素之前生成的内容。 </li>
+<li>组合器（Combinators）：这里不仅仅是选择器本身，还有以有效的方式组合两个或更多的选择器用于非常特定的选择的方法。例如，你可以只选择divs的直系子节点的段落，或者直接跟在headings后面的段落。</li>
+<li>多重选择器（Multiple selectors）：这些也不是单独的选择器；这个思路是将以逗号分隔开的多个选择器放在一个CSS规则下面， 以将一组声明应用于由这些选择器选择的所有元素。</li>
+</ul>
+<h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><p>“简单”选择器，之所以这么称呼它是因为它们基于元素的类型（或其 class或 id）直接匹配文档的一个或多个元素。</p>
+<h4 id="类型选择器（又名元素选择器）"><a href="#类型选择器（又名元素选择器）" class="headerlink" title="类型选择器（又名元素选择器）"></a>类型选择器（又名元素选择器）</h4><p>此选择器只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。这是选择所有指定类型的最简单方式。</p>
+<h4 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h4><p>类选择器由一个点“.”以及类后面的类名组成。类名是在HTML class文档元素属性中没有空格的任何值。由你自己选择一个名字。同样值得一提的是，文档中的多个元素可以具有相同的类名，而单个元素可以有多个类名(以空格分开多个类名的形式书写)。</p>
+<h4 id="ID-选择器节"><a href="#ID-选择器节" class="headerlink" title="ID 选择器节"></a>ID 选择器节</h4><p>ID选择器是由一个哈希/磅符号 (#)，后面跟着给定元素的ID名称组成的。 任何元素都可以使用id属性设置唯一的ID名称。 由你自己决定选择一个ID名称是什么。 这是选择单个元素的最有效的方式。</p>
+<p>注意：一个ID名称必须在文档中是唯一的。关于重复ID的行为是不可预测的，比如一些浏览器只是计入第一个实例，其余的将被忽略</p>
+<h4 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h4><p>通用选择（*）是最终的王牌。它允许选择在一个页面中的所有元素。由于给每个元素应用同样的规则几乎没有什么实际价值，更常见的做法是与其他选择器结合使用。</p>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>属性选择器是一种特殊类型的选择器，它根据元素的 属性 和属性值来匹配元素。它们的通用语法由方括号 ([]) 组成，其中包含属性名称，后跟可选条件以匹配属性的值。 属性选择器可以根据其匹配属性值的方式分为两类： </p>
+<ul>
+<li>存在和值属性选择器</li>
+<li>子串值属性选择器。</li>
+</ul>
+<h4 id="存在和值（Presence-and-value）属性选择器"><a href="#存在和值（Presence-and-value）属性选择器" class="headerlink" title="存在和值（Presence and value）属性选择器"></a>存在和值（Presence and value）属性选择器</h4><p>这些属性选择器尝试匹配精确的属性值：</p>
+<ul>
+<li>[attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。</li>
+<li>[attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。</li>
+<li>[attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。</li>
+</ul>
+<h4 id="子串值（Substring-value）属性选择器"><a href="#子串值（Substring-value）属性选择器" class="headerlink" title="子串值（Substring value）属性选择器"></a>子串值（Substring value）属性选择器</h4><p>这种情况的属性选择器也被称为“伪正则选择器”，因为它们提供类似 regular expression 的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）：</p>
+<ul>
+<li>[attr|=val] : 选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。</li>
+<li>[attr^=val] : 选择attr属性的值以 val 开头（包括 val）的元素。</li>
+<li>[attr$=val] : 选择attr属性的值以 val 结尾（包括 val）的元素。</li>
+<li>[attr*=val] : 选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。</li>
+</ul>
+<h3 id="伪选择器"><a href="#伪选择器" class="headerlink" title="伪选择器"></a>伪选择器</h3><p>伪选择器 。该选择器不是选择元素，而是元素的某些部分，或仅在某些特定上下文中存在的元素。它们有两种主要类型 ：</p>
+<ul>
+<li>伪类</li>
+<li>伪元素。</li>
+</ul>
+<h4 id="伪类（Pseudo-class）"><a href="#伪类（Pseudo-class）" class="headerlink" title="伪类（Pseudo-class）"></a>伪类（Pseudo-class）</h4><p>一个 CSS  伪类（pseudo-class） 是一个以冒号(:)作为前缀，被添加到一个选择器末尾的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。你可能希望某个元素在处于某种状态下呈现另一种样式，例如当鼠标悬停在元素上面时，或者当一个复选框被禁用或被勾选时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。下面是一些伪类示例：</p>
+<ul>
+<li>:active</li>
+<li>:any</li>
+<li>:checked</li>
+<li>:default</li>
+<li>:dir()</li>
+</ul>
+<h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4><p>伪元素（Pseudo-element）跟伪类很像，但它们又有不同的地方。它们都是关键字，但这次伪元素前缀是两个冒号 (::) ， 同样是添加到选择器后面去选择某个元素的某个部分。</p>
+<ul>
+<li>::after</li>
+<li>::before</li>
+<li>::first-letter</li>
+<li>::first-line</li>
+<li>::selection</li>
+<li>::backdrop</li>
+</ul>
+<h3 id="组合器和选择器组"><a href="#组合器和选择器组" class="headerlink" title="组合器和选择器组"></a>组合器和选择器组</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:right">组合器</th>
+<th style="text-align:right">选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择器组</td>
+<td style="text-align:right">A,B</td>
+<td style="text-align:right">匹配满足A（和/或）B的任意元素（参见下方 同一规则集上的多个选择器）.</td>
+</tr>
+<tr>
+<td>后代选择器</td>
+<td style="text-align:right">A B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A的后代结点（B是A的子节点，或者A的子节点的子节点）</td>
+</tr>
+<tr>
+<td>子选择器</td>
+<td style="text-align:right">A &gt; B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A的直接子节点</td>
+</tr>
+<tr>
+<td>相邻兄弟选择器</td>
+<td style="text-align:right">A + B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A的下一个兄弟节点（AB有相同的父结点，并且B紧跟在A的后面）</td>
+</tr>
+<tr>
+<td>通用兄弟选择器</td>
+<td style="text-align:right">A ~ B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A之后的任意一个兄弟节点（AB有相同的父节点，B在A之后，但不一定是紧挨着A）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="CSS数值与单位"><a href="#CSS数值与单位" class="headerlink" title="CSS数值与单位"></a>CSS数值与单位</h2><h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><p>当有多个选择器匹配到同一个元素上时，哪个选择器的 CSS 规则最终会应用到元素上？<br>什么选择器在层叠中胜出取决于三个因素（这些都是按重量级顺序排列的——前面的的一种会否决后一种）：</p>
+<ol>
+<li>重要性（Importance）</li>
+<li>专用性（Specificity）</li>
+<li>源代码次序（Source order）</li>
+</ol>
+<h3 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h3><p>在CSS中，有一个特别的语法可以让一条规则总是优先于其他规则：<code>!important</code> 。把它加在属性值的后面可以使这条声明有无比强大的力量。<br>相互冲突的声明将按以下顺序适用，后一种将覆盖先前的声明：</p>
+<ol>
+<li>在用户代理样式表的声明 (例如：浏览器在没有其他声明的默认样式).</li>
+<li>用户样式表中的普通声明（由用户设置的自定义样式）。</li>
+<li>作者样式表中的普通声明（这是我们设置的样式，Web开发人员）。</li>
+<li>作者样式表中的重要声明</li>
+<li>用户样式表中的重要声明</li>
+</ol>
+<h3 id="专用性"><a href="#专用性" class="headerlink" title="专用性"></a>专用性</h3><p>一个选择器具有的专用性的量是用四种不同的值（或组件）来衡量的，它们可以被认为是千位，百位，十位和个位——在四个列中的四个简单数字：</p>
+<ol>
+<li>千位：如果声明是在style 属性中该列加1分（这样的声明没有选择器，所以它们的专用性总是1000。）否则为0。</li>
+<li>百位：在整个选择器中每包含一个ID选择器就在该列中加1分。</li>
+<li>十位：在整个选择器中每包含一个类选择器、属性选择器、或者伪类就在该列中加1分。</li>
+<li>个位：在整个选择器中每包含一个元素选择器或伪元素就在该列中加1分。<br>通用选择器 (*), 复合选择器 (+, &gt;, ~, ‘ ‘) 和否定伪类 (:not) 在专用性中无影响。如果多个选择器具有相同的重要性和专用性，则选择哪一个选择器取决于 Source order.</li>
+</ol>
+<p>下表显示了几个示例。试着通过这些，并确保你理解他们为什么具有我们给予他们的专用性。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>千位</th>
+<th>百位</th>
+<th>十位</th>
+<th>个位</th>
+<th>合计值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>#indentifier</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>h1 + p::first-letter</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0003</td>
+</tr>
+<tr>
+<td>li &gt; a[href*=”zh-CN”] &gt; .inline-warning</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0022</td>
+</tr>
+<tr>
+<td>没有选择器, 规则在一个元素的 &lt;style&gt; 属性里</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在考虑所有这些层叠理论和什么样式优先于其他样式被应用时，你应该记住的一件事是，所有这些都发生在属性级别上——属性覆盖其他属性，但你不会让整个规则凌驾于其他规则之上。<br>当多个CSS规则匹配相同的元素时，它们都被应用到该元素中。只有在这之后，任何相互冲突的属性才会被评估，以确定哪种风格会战胜其他类型。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>CSS为处理继承提供了四种特殊的通用属性值：</p>
+<ul>
+<li>inherit： 该值将应用到选定元素的属性值设置为与其父元素一样。</li>
+<li>initial ：该值将应用到选定元素的属性值设置为与浏览器默认样式表中该元素设置的值一样。如果浏览器默认样式表中没有设置值，并且该属性是自然继承的，那么该属性值就被设置为 inherit。</li>
+<li>unset ：该值将属性重置为其自然值，即如果属性是自然继承的，那么它就表现得像 inherit，否则就是表现得像 initial。</li>
+<li>revert ：如果当前的节点没有应用任何样式，则将该属性恢复到它所拥有的值。换句话说，属性值被设置成自定义样式所定义的属性（如果被设置）， 否则属性值被设置成用户代理的默认样式。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/web/css中的BFC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/22/web/css中的BFC/" itemprop="url">CSS 之 BFC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T23:16:24+08:00">
+                2019-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。</p>
+<p>下列方式会创建块格式化上下文：</p>
+<ul>
+<li>根元素或包含根元素的元素</li>
+<li>浮动元素（元素的 float 不是 none）</li>
+<li>绝对定位元素（元素的 position 为 absolute 或 fixed）</li>
+<li>行内块元素（元素的 display 为 inline-block）</li>
+<li>表格单元格（元素的 display为 table-cell，HTML表格单元格默认为该值）</li>
+<li>表格标题（元素的 display 为 table-caption，HTML表格标题默认为该值）</li>
+<li>匿名表格单元格元素（元素的 display为 table、table-row、 table-row-group、+ table-header-group、table-footer-group（分别是HTML table、row、tbody、thead、tfoot的默+ 认属性）或 inline-table）</li>
+<li>overflow 值不为 visible 的块元素</li>
+<li>display 值为 flow-root 的元素</li>
+<li>contain 值为 layout、content或 strict 的元素</li>
+<li>弹性元素（display为 flex 或 inline-flex元素的直接子元素）</li>
+<li>网格元素（display为 grid 或 inline-grid 元素的直接子元素）</li>
+<li>多列容器（元素的 column-count 或 column-width 不为 auto，包括 column-count 为 1）</li>
+<li>column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。<br>块格式化上下文包含创建它的元素内部的所有内容.</li>
+</ul>
+<p>块格式化上下文对浮动定位（参见 float）与清除浮动（参见 clear）都很重要。浮动定位和清除浮动时只会应用于同一个BFC内的元素。浮动不会影响其它BFC中元素的布局，而清除浮动只能清除同一BFC中在它前面的元素的浮动。外边距折叠（Margin collapsing）也只会发生在属于同一BFC的块级元素之间。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/os/CPU模式及内存寻址/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/30/os/CPU模式及内存寻址/" itemprop="url">CPU模式及内存寻址</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T19:50:07+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/os/" itemprop="url" rel="index">
+                    <span itemprop="name">os</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="CPU原理及寄存器"><a href="#CPU原理及寄存器" class="headerlink" title="CPU原理及寄存器"></a>CPU原理及寄存器</h3><p><img src="/pics/cpu.png" width="60%" height="50%"></p>
+<p><img src="/pics/common-regiisters.png" width="100%" height="50%"></p>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><p> <img src="/pics/IA32instructor-format.png" alt="IA32指令格式"></p>
+<p>寻址，址指的是CPU指令中操作数的地址，寻址就是寻找操作数（包括源操作数和目的操作数）的地址，CPU的寻址方式，就是指CPU指令中支持的给出操作数地址的方式。<br>寻址方式，从大方向来看可以分为: </p>
+<ol>
+<li>寄存器寻址;</li>
+<li>立即数寻址;</li>
+<li>内存寻址。<ol>
+<li>直接寻址</li>
+<li>基址寻址</li>
+<li>变址寻址</li>
+<li>基址变址寻址</li>
+</ol>
+</li>
+</ol>
+<h4 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h4><p>它是指操作数在寄存器中，直接从寄存器中拿数据就行了，因此只要在指令中直接给出寄存器名即可。<br><code>mov ax, 0x10</code><br><code>add ax, 0x10</code><br>上述指令中的源操作数就是寄存器寻址</p>
+<h4 id="立即数寻址"><a href="#立即数寻址" class="headerlink" title="立即数寻址"></a>立即数寻址</h4><p>立即数就是指令中直接给出的常数，指令中的数据就是操作数，不用去寄存器或者内存中寻找操作数。<br><code>mov ax, 0x10</code> 这条指令中的目的操作数就是寄存器寻址</p>
+<h4 id="内存寻址"><a href="#内存寻址" class="headerlink" title="内存寻址"></a>内存寻址</h4><p>操作数在内存中的寻址方式称为内存寻址。</p>
+<h5 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h5><p>直接寻址，就是将直接在操作数中给出的数字作为内存地址，通过中括号的形式告诉CPU，取此地址中的值作为操作数。如:<br>   mov ax, [0x1234]<br>   mov ax, [fs:0x5678]</p>
+<h5 id="基址寻址"><a href="#基址寻址" class="headerlink" title="基址寻址"></a>基址寻址</h5><p>基址寻址，就是在操作数中用 bx 寄存器或bp寄存器作为地址的起始，地址的变化以它为基础。bx寄存器的默认段寄存器是DS，而bp寄存器的默认段寄存器是SS，即bp和sp都是栈 的有效地址。</p>
+<h5 id="变址寻址"><a href="#变址寻址" class="headerlink" title="变址寻址"></a>变址寻址</h5><p>变址寻址其实和基址寻址类似，只是寄存器由bx、bp换成了si和di。si是指源索引寄存器(source index)，di是指目的索引寄存器(destination index)。两个寄存器的默认段寄存器都是ds。<br>   mov [di]，ax :将寄存器ax的值存入ds:di指向的内存<br>   mov [si+0x1234], ax ;变址中也可以加个偏移量</p>
+<h4 id="基址变址寻址"><a href="#基址变址寻址" class="headerlink" title="基址变址寻址"></a>基址变址寻址</h4><p>这是基址寻址和变址寻址的结合，即基址寄存器 bx 或 bp 加一个变址寄存器 si 或 di。如:<br>   mov [bx+di], ax 将 ax 中的值送入以 ds 为段基址，bx+di 为偏移地址的内存<br>   add [bx+si], ax 将 ax 与[ds: bx+si]处的值相加后存入内存[ds:bx+si]</p>
+<h3 id="实模式"><a href="#实模式" class="headerlink" title="实模式"></a>实模式</h3><p>x86架构的cpu在启动时都是进入的实模式，实模式的特点是：</p>
+<ol>
+<li>段式内存访问机制（段基址+段内偏移），操作数一般16位。</li>
+<li>16位的寄存器，20位地址线，最大只能访问1M内存。</li>
+<li>内存访问方式是段地址*16+偏移地址构成内存的物理地址，且可以通过在程序中修改段基址来访问任意的真实物理内存，并修改。这样用户程序与系统程序一样，拥有至高无上的权利甚至可以修改操作系统的内存。</li>
+<li>因为只有16位寄存器，所以一个段最多只能是64KB大小，超过这个大小就要切换段基址来访问更大范围的内存区域。</li>
+<li>一次只能运行一个程序。</li>
+</ol>
+<p>写一个实模式的程序，你要了解你的程序将会被加载到内存的什么位置，然后将合适的段加载到内存中合适的位置（没有被他人占用），并且初始化各个数据段寄存器的值，以保证其正确地指向各个段基址。恶意程序可以访问任意的物理地址，包括更改操作系统占用内存。</p>
+<h3 id="保护模式"><a href="#保护模式" class="headerlink" title="保护模式"></a>保护模式</h3><p>保护模式的一些特性：</p>
+<ol>
+<li>指令寻址方式扩展，操作数扩展到32位。</li>
+<li><p>除段寄存器外，通用寄存器、指令指针寄存器、标志寄存器等都扩展到32位，地址总线和数据总线为32位。<br><img src="/pics/register-extend.png" width="50%" height="50%"></p>
+</li>
+<li><p>通过段描述符来描述一段内存，包括段基址、段大小、特权级、权限、属性等等。许多描述符组成<strong>全局段描述符表</strong>，存储在内存中。 每个段描述符8个字节。</p>
+</li>
+<li>GDTR：48位寄存器保存<strong>GDT全局描述符表在内存中的段基址及大小，前32位为GDT在内存中的起始地址，后16位为GDT的大小。所以段描述符表最多存储2^16/2^3=2^13个段</strong>。</li>
+<li>每个程序都可以在全局描述符表中定义自己的段描述符。</li>
+<li>保护模式下的段寄存器叫做<strong>段选择子</strong>，0~1位用来存储RPL(请求特权级),第2位代表是在GDT还是在LDT中，3~15位为索引，表示在GDT或者LDT表中的索引。</li>
+</ol>
+<p>进入保护模式的步骤：</p>
+<ol>
+<li>打开A20地址线(将端口 0x92 的第1位置1)</li>
+<li>填写GDT表并将其加载到 GDTR</li>
+<li>将CR0寄存器的PE位置1。</li>
+</ol>
+<h4 id="保护模式下的内存访问过程："><a href="#保护模式下的内存访问过程：" class="headerlink" title="保护模式下的内存访问过程："></a>保护模式下的内存访问过程：</h4><h5 id="分段内存访问（段部件功能）"><a href="#分段内存访问（段部件功能）" class="headerlink" title="分段内存访问（段部件功能）"></a>分段内存访问（段部件功能）</h5><p><img src="/pics/segment.png" alt="保护模式下的内存访问"></p>
+<p>因为</p>
+<ol>
+<li>段描述符（段描述符表）是在内存中，访问内存比较慢</li>
+<li>段描述符格式怪异（历史原因），CPU需要额外操作对其进行整合才能根据其中的内容访问内存。<br>所以，有个<strong>段描述符缓冲寄存器</strong>，根据局部性原理，访问一个断后一段时间内将会继续访问该段，段描述符缓冲寄存器用来缓存段描述符避免重复计算。</li>
+</ol>
+<h5 id="特权级"><a href="#特权级" class="headerlink" title="特权级"></a>特权级</h5><ol>
+<li>CPU分为4个特权级 ring0/1/2/3，现代操作系统一般只用了0和3，不同特权级下的权限不同，比如一些特权指令只能在0下运行。</li>
+<li>每个特权级下都有一个独立的栈，所以最多有4个特权级栈，切换特权级时，也要切换栈。所以说<strong>系统调用是需要开销的</strong>(除了栈切换，还有参数传递和上下文保存的开销)</li>
+</ol>
+<h5 id="开启分页"><a href="#开启分页" class="headerlink" title="开启分页"></a>开启分页</h5><p>开启分页后的内存访问：<br><!--![一级页表访存过程](/pics/first-page-table.png) --><br>   <img src="/pics/first-page-table.png" width="60%" height="60%"><br>   <img src="/pics/secondary-page-table.png" width="60%" height="60%"><br>图中的段部件就是上文中未开启分页时的访存过程。</p>
+<p>既然有了一级页表，为什么还 要搞个二级页表呢?理由如下。</p>
+<ol>
+<li>一级页表中最多可容纳 1M(2的20次方)个页表项，每个页表项是 4 字节，能map4KB地址空间，如果页表项全满的话， 便是 4MB 大小，而且也标要求是连续的内存空间，很难找到。使用二级页表的话，页目录表4KB，二级页表4KB，只需要4KB即可分配（但是完全4GB的话，也需要4MB一、二级页表来存储，但是可以离散存储）。一个页目录项能 map 4M地址空间。</li>
+<li>一级页表中所有页表项必须要提前建好，原因是操作系统要占用 4GB 虚拟地址空间的高 1GB， 用户进程要占用低 3GB。</li>
+<li>每个进程都有自己的页表，进程一多，光是页表占用的空间就很可观了。<br>归根结底，我们要解决的是:不要一次性地将全部页表项建好，需要时动态创建页表项。</li>
+<li>分页存储管理系统是离散分配，页表是连续存储，所以单个页表大小不得超过系统最大连续可分配单元，这个单元就是单个页面的大小。如果一个页表的大小超过了一个页面（假如是两个页面），那么分页存储管理系统只能分配两个离散的页面存储这个页表，可是PTR（页表寄存器）只有页表始址和页表长度，它默认页表是连续的。为了可以检索两个页面大小的页表，需要另外一个页表来索引这两个离散的页表页面，这就是二级页表。当然如果二级页表也超过了单个页面的大小，那么就需要三级页表，以此类推。</li>
+</ol>
+<p>启用分页机制:</p>
+<ol>
+<li>准备好页目录表及页表。 </li>
+<li>将页表地址写入控制寄存器 cr3（页目录基址寄存器PDTR）。 </li>
+<li>寄存器 cr0 的 PG 位置 1。</li>
+</ol>
+<p>分页后每个进程都会有一个页表与之对应：</p>
+<p><img src="/pics/process_page_table.png" alt="启用分页后的进程"></p>
+<h5 id="内存规划"><a href="#内存规划" class="headerlink" title="内存规划"></a>内存规划</h5><p>一个用户进程在保护模式下，所有占用的资源（地址空间）就是在分配给它的页表来定义的。基于上述分析：</p>
+<ol>
+<li>如果简单来说，所有用户进程都可以分为两个段：代码段和数据段。操作系统加载程序时，可以定义这两个段的DPL为3，且段选择子的RPL也定义为3，这就是为啥用户进程运行在3的原因。且这两个段能被所有的进程共享，因为最终地址是由页表决定的，只要不同进程定义不同的页表，就不会造成地址冲突。</li>
+<li>用户进程一般都会使用操作系统提供的功能（系统调用），操作系统的功能是被所有进程共享的，所以在所有进程的页表中，关于系统内核部分的都是一样的。这也就是通常所说的用户4G空间被分成高1G内核空间和3G用户空间的原因。我们通常将内核控制在1G大小，然后同样为内核创建页表，然后将内核页目录表的768~1022（对应高1G空间，1023指向页目录表本身）映射到内核所在的1G地址空间内。在为进程创建页表时，会直接拷贝内核页目录表的项768~1022个页目录表项，这样进程的高1G地址空间就指向内核了。所有进程768~1022页目录项都是相同的。</li>
+</ol>
+<h5 id="特权级深入浅出"><a href="#特权级深入浅出" class="headerlink" title="特权级深入浅出"></a>特权级深入浅出</h5><p>CPL:(Current Privilege Level):处理器的当前特权级。<br>DPL:(Descriptor Privilege Level):描述符特权级，即段描述符中指定的该段的特权级。</p>
+<ol>
+<li>欲访问一个非代码段（数据段，栈段等）时，数值上只有CPL ≤ 该段的DPL时，才允许访问该数据段。</li>
+<li>欲访问一个代码段时，数值上只有CPL = 该段的DPL时，才允许访问该数据段。就是说跳转到的代码的特权级必须和当前特权级相同才允许执行。因为，首先低特权级的代码不能随便跳转到高特权级的代码去执行，其次 ，高特权级代码也不允许跳转到低特权级代码。<br>由上可知，代码跳转貌似只能平级跳转，那处理器如何实现特权级变化呢？</li>
+</ol>
+<ul>
+<li>唯一一种处理器会从高特权降到低特权运行的情况:处理器从中断处理程序中返回到用户态的时候。</li>
+<li>处理器只有通过“门结构”才能由低特权级转移到高特权级。<br>考虑下面的问题：<br>正常情况下用户所提交的缓冲区的选择子指向用户自己的数据段。说到这估计您也想到了，问题来了，倘若用户程序怀着一颗有非法企图的心，将参数—缓冲区所在数据段的选择子，用内核数据段的选择子代替(用多个选择子测试几次数据便可推测内核数据段)，这样就把内核破坏了。<!-- ![非法访问](/pics/cheat-rpl.png) -->
+ <img src="/pics/cheat-rpl.png" width="80%" height="80%"><br>这就需要RPL来解决了：<br>RPL（Request Privilege Level):请求者特权级，保存在选择子的低两位。当用户程序请求操作系统服务，如果需要提交选择子作为参数，为安全起见，操作系统会把选择子中的 RPL 改为用户程序的 CPL，为此，处理器还提供了修改 rpl 的相关指令。<br>用户程序的 CPL 是不会骗人的，不可能伪造，它起始是由操作系统在加载用户程序时赋予的，记录在段 寄存器 CS 中的低 2 位，就是 RPL 的位置，而 CS 寄存器只能通过 call、jmp、ret、int、sysenter 等指令修改， 即使改的话，用户程序也只能在 3 级特权下折腾，只要用户进程不请求操作系统服务，它的 CPL 是不会变的， 当它申请了系统服务，如果提交了选择子作为参数，选择子中的 RPL 也会被操作系统修改为用户进程的 CPL。 所以，即使用户程序提交了个伪造的选择子也没用，其 RPL 会被操作系统用其 CPL 替换，还其“真身”。<br>有了RPL，在进行特权检查时要求：<br>数值上 CPL≥DPL 并且 RPL≤DPL</li>
+</ul>
+<p>总结下不通过调用门、直接访问一般数据和代码时的特权检查规则，对于受访者为代码段时: </p>
+<ul>
+<li><p>如果目标为非一致性代码段，要求:</p>
+<p> 数值上 CPL=RPL=目标代码段 DPL</p>
+</li>
+<li><p>如果目标为一致性代码段，要求:</p>
+<p> 数值上(CPL≥目标代码段 DPL &amp;&amp; RPL≥目标代码段 DPL)</p>
+</li>
+<li><p>受访者若为代码，只有在特权级转移时才会被用到，所以有关代码的特权检查都发生在能够改变代码 段寄存器 CS 和指令指针寄存器 EIP 的指令中，即这些指令要么改变 EIP，要么改变 CS 和 EIP。例如 call、 jmp、int、ret、sysexit 等能改变程序执行流的指令。<br>对于受访者为数据段时:</p>
+<p> 数值上(CPL ≤目标数据段 DPL &amp;&amp; RPL ≤ 目标数据段 DPL) </p>
+</li>
+<li><p>栈段的特权级检查比较特殊，因为在各个特权级下，处理器都要有相应的栈(后面会说到)，也就是说栈的特权等级要和 CPL 相同。所以往段寄存器 SS 中赋予数据段选择子时，处理器要求 CPL 等于栈段 选择子对应的数据段的 DPL，</p>
+<p> 即数值上 CPL = RPL = 用作栈的目标数据段 DPL。</p>
+</li>
+</ul>
+<h5 id="调用门"><a href="#调用门" class="headerlink" title="调用门"></a>调用门</h5><p>   <img src="/pics/door.png" width="60%" height="60%"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/TCP-IP/arp协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/17/TCP-IP/arp协议/" itemprop="url">ARP 协议</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-17T22:17:26+08:00">
+                2019-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络协议/" itemprop="url" rel="index">
+                    <span itemprop="name">网络协议</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/pics/arp.png" alt="ARP请求/应答报文格式"><br>以太网目的地址为全1表示的是特殊的广播地址，电缆上的所有以太网络接口都要接收广播的数据帧。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/19/work/面试问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/19/work/面试问题/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-19T11:37:25+08:00">
+                2020-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>&lt;!:: :::<br>title: 面试问题汇总<br>date: 2018:05:29 14:02:00<br>tags: interview<br>category: interview<br>:::</p>
+<h1 id="面试问题汇总"><a href="#面试问题汇总" class="headerlink" title="面试问题汇总"></a>面试问题汇总</h1><p>::::::::::::::::::::::::::::::</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><ol>
+<li>shell查看文件多少行？</li>
+<li>软链接和硬链接？</li>
+</ol>
+<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><ol>
+<li>分布式系统如何实现幂等性？</li>
+<li>如何实现分布式事务？</li>
+</ol>
+<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><ol>
+<li>AQS CAS</li>
+<li>HashMap非线程安全的原因及ConcurrentHashMap线程安全原理。</li>
+<li>正则表达式？</li>
+</ol>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><ol>
+<li>大数据下的分页查询快吗？如何加快？</li>
+<li>join和left join区别？having？</li>
+</ol>
+<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><ol>
+<li>js的apply方法？</li>
+</ol>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><ol>
+<li>给定一个整数数组和一个m,n求元素和最大的长度在m和n之间的连续子数组？</li>
+<li>LRU、LFU算法的实现？</li>
+<li>O(1)的栈，返回栈内的最大数？</li>
+<li>判断回文串？</li>
+</ol>
+<h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><ol>
+<li>spring @Transactional 注解和编程式事务</li>
+<li>数据库事务实现原理（MVCC）</li>
+</ol>
+<p>&lt;!:: 1. 自我介绍</p>
+<ol>
+<li>为什么离职</li>
+</ol>
+<ul>
+<li>入职的时候，项目刚刚完成，没有接到新的项目，提出的几个项目都被砍掉了。目前只是在维护老项目。组内没有核心业务。个人想寻求更多的项目经验，提升技术。</li>
+<li>女友在江苏路上班，且两人有在这边买房的计划，所以想换个较劲的地方上班</li>
+</ul>
+<ol>
+<li>有什么职业规划</li>
+<li>对我们公司有什么了解？对证券行业有什么了解？</li>
+<li>认为管理要有哪些素质？</li>
+<li>项目介绍 ::&gt; ::&gt;</li>
+</ol>
+<p>腾讯面试：<br>TCP状态图、滑动窗口、超时重传、四次挥手的 time_wait状态<br>进程通信方式<br>死锁原因（条件）<br>五种IO模型，<br>进程、线程、协程区别<br>分布式锁<br>缓存穿透、缓存击穿<br>HTTP、HTTPS、跨域</p>
+<pre><code>30:B4:9E:A9:34:4B
+</code></pre><p>ip.addr==180.101.49.12 &amp;&amp; tcp.port==443</p>
+<p>ffffffffffff<br>0c6abc5f846f<br>0806<br>0001<br>0800<br>06<br>04<br>0001<br>0c6abc5f846f<br>c0a80101<br>000000000000<br>c0a80102<br>000000000000000000000000000000000000</p>
+<p>30b49ea9344b<br>30b49ea9344b<br>0806<br>0001<br>0800<br>06<br>04<br>000230b49ea9344bc0a8010630b49ea9344bc0a80101</p>
+<p>ffffffffffff<br>0c6abc5f846f<br>0806<br>0001<br>0800<br>06<br>04<br>0001<br>0c6abc5f846f<br>c0a80101<br>000000000000<br>c0a80102<br>000000000000000000000000000000000000</p>
+<p>30:B4:9E:A9:34:4B</p>
+<p>0c:6a:bc:5f:84:6f</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/19/work/项目亮点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/19/work/项目亮点/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-19T11:37:25+08:00">
+                2020-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>cache vendor的response<ul>
+<li>requestHash计算</li>
+<li>request、response的异步保存</li>
+<li>淘汰策略</li>
+</ul>
+</li>
+</ol>
+<p>REGS 工作流程</p>
+<pre><code>1. API中定义一个接口，映射到某个URI
+2. 在Service中实现这个接口
+3. 在workflowcontext.xml中定义一个Bean，配置好
+&quot;product&quot;:&quot;AUTHFLOW&quot;,
+ &quot;intent&quot;:&quot;AUTHFLOW&quot;,
+ &quot;country_code&quot;:&quot;US&quot;,
+Workflowcontextfactory 根据这些配置寻找对应的workflowcontext
+设置workflowcontext的各个属性值。
+</code></pre><ol>
+<li>使用workflowExecutor执行workflow</li>
+<li>workflowExecutor先调用context的validātor验证一下请求<ol>
+<li>调用context的preprocessor执行预处理</li>
+<li>判断response是否为空，不为空直接跳到12</li>
+<li>为空调用context的requestTransformer的transform方法转换请求内容</li>
+<li>调用context的vendorService执行service方法并得到response，一般要定义一个vendorService并重写callExternalService方法对接vendor</li>
+<li>设置context的vendorResponse对象为response</li>
+<li>调用context的responseTransformer的transform方法转换响应</li>
+<li>调用context的postProcessor执行后处理</li>
+<li>响应response</li>
+</ol>
+</li>
+</ol>
+<p>zootUseCaseId/zootSignupOnProductId<br>zootUseCaseId是我们这边自己定义用来区分不同flow的，会发给zoot，zoot也用这个来区分不同flow，我们用product/intent/country区分，zoot用这个区分不同流量。zootSignupOnProductId是zoot分配给我们的一个ID，对应一个policy。这两个是zoot的，其他vendor没有。</p>
+<p>REGS 缓存<br>Preprocessor根据useCaseDeDup是否为真来决定是否缓存的：<br> if (!context.getUseCaseDeDup()) {<br>            saveRequest(context);<br>            return;<br>        }<br>两种开启缓存的方法：</p>
+<pre><code>1. 在workflowcontext.xml中配置flowcontext bean时设置useCaseDeDup为true
+
+ //read cache if client need
+boolean readCache = HttpHeaderHelper.getReadCache(headers);
+workflowContext.setUseCaseDeDup(readCache);
+
+2. 在http请求头中配置Prefer：read-cache,.?cache-item-max-age=\d+的正则表达式匹配
+</code></pre><p>缓存 cache时，先计算request的hash值，然后去数据库查找是否有相同hash的response如果有直接返回response，如果没有，callvendor取回response，transform response生成后，应该尽快返回response给上游，并且异步起线程保存response缓存下来，减小延迟SLA。另外，除了缓存外，如果要发MQ、Kafka等应用都要异步启动线程处理。</p>
+<p>Audit监控机制<br>如果要从老的workflow切换到新的workflow，主要是上游可能要切换厂商或者其他原因。我们会在调试上线后，监控一段时间，看看切换到新flow的流量是否正常。<br>在这段时间，业务上起作用的还是老的flow，REGS会为老的flow配置一个 auditResponsePostProcessor 的 postprocessor。这个 postprocessor 异步启动一个线程，根据配置，决定是否将同样的请求发送到新的workflow上，如果发到新的workflow上，会比较两个workflow的返回结果，看看是否正常。因为是异步线程，所以不会影响老业务的的及时响应。<br>配置example:<br>{<br>    “audit_config” : {<br>        “audits” : [<br>            {<br>                “primary_workflow”: “WFC_DE_ARL”,<br>                “audit_workflow”: “WFC_DE_ARL_NEW”,<br>                “audit_percentage” : 10<br>            },<br>            {<br>                “primary_workflow”: “WFC_IT_ARL”,<br>                “audit_workflow”: “WFC_IT_ARL_NEW”,<br>                “audit_percentage” : 10<br>            },<br>            {<br>                “primary_workflow”: “WFC_US_NASSN”,<br>                “audit_workflow”: “WFC_US_NASSN_NEW”,<br>                “audit_percentage” : 100<br>            }<br>        ]<br>    }<br>}<br>表示发送10%的流量到新flow上，但是response并不会返回给上游，只是用来检查新flow工作是否符合预期。</p>
+<p>Ramup机制<br>audit阶段如果返现一切正常，就会从老的flow切换到新的flow。但是为了安全起见，并不是一步完全切过去，而是以百分比的方式慢慢切到新的flow上。ThrottleService会根据配置决定使用新的还是旧的flow。<br>与 audit不同的是，ramup的时候只会发请求到一个flow，且response会返回给上游，而audit使用旧flow的response，新flow的response只是用来校验。所以此时上游收到的response是既有上游的又有下游的。这样的话，加入切换到新flow出问题了，直接可以修改配置，使切换到新flow上流量的百分比设为0，即可使用旧flow承载全部流量。</p>
+<p>Simulator<br>boolean simulationEnabled = config.getBoolean(ServiceConstants.ENABLE_SIMULATOR,<br>                false) &amp;&amp; HttpHeaderHelper.simulatorNotEnabled(context.getHttpHeaders()) ;<br>可以在config或者http请求头中配置是否使用simulator。</p>
+<pre><code>1. config文件中的enable_simulation或者在remote config中配置。
+2. 在http请求头中添加 SIMULATOR:true
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/03/分布式/redis/Redis-Sentinel高可用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/03/分布式/redis/Redis-Sentinel高可用/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T22:51:40+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

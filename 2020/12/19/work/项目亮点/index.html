@@ -1,37 +1,732 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="cache vendor的response requestHash计算 request、response的异步保存 淘汰策略    REGS 工作流程 1. API中定义一个接口，映射到某个URI 2. 在Service中实现这个接口 3. 在workflowcontext.xml中定义一个Bean，配置好 &amp;quot;product&amp;quot;:&amp;quot;AUTHFLOW&amp;quot;,  &amp;">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/2020/12/19/work/项目亮点/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="cache vendor的response requestHash计算 request、response的异步保存 淘汰策略    REGS 工作流程 1. API中定义一个接口，映射到某个URI 2. 在Service中实现这个接口 3. 在workflowcontext.xml中定义一个Bean，配置好 &amp;quot;product&amp;quot;:&amp;quot;AUTHFLOW&amp;quot;,  &amp;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.223Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="cache vendor的response requestHash计算 request、response的异步保存 淘汰策略    REGS 工作流程 1. API中定义一个接口，映射到某个URI 2. 在Service中实现这个接口 3. 在workflowcontext.xml中定义一个Bean，配置好 &amp;quot;product&amp;quot;:&amp;quot;AUTHFLOW&amp;quot;,  &amp;">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/12/19/work/项目亮点/">
+
+
+
+
+
+  <title> | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/19/work/项目亮点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-19T11:37:25+08:00">
+                2020-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <ol>
+<li>cache vendor的response<ul>
+<li>requestHash计算</li>
+<li>request、response的异步保存</li>
+<li>淘汰策略</li>
+</ul>
+</li>
+</ol>
+<p>REGS 工作流程</p>
+<pre><code>1. API中定义一个接口，映射到某个URI
+2. 在Service中实现这个接口
+3. 在workflowcontext.xml中定义一个Bean，配置好
+&quot;product&quot;:&quot;AUTHFLOW&quot;,
+ &quot;intent&quot;:&quot;AUTHFLOW&quot;,
+ &quot;country_code&quot;:&quot;US&quot;,
+Workflowcontextfactory 根据这些配置寻找对应的workflowcontext
+设置workflowcontext的各个属性值。
+</code></pre><ol>
+<li>使用workflowExecutor执行workflow</li>
+<li>workflowExecutor先调用context的validātor验证一下请求<ol>
+<li>调用context的preprocessor执行预处理</li>
+<li>判断response是否为空，不为空直接跳到12</li>
+<li>为空调用context的requestTransformer的transform方法转换请求内容</li>
+<li>调用context的vendorService执行service方法并得到response，一般要定义一个vendorService并重写callExternalService方法对接vendor</li>
+<li>设置context的vendorResponse对象为response</li>
+<li>调用context的responseTransformer的transform方法转换响应</li>
+<li>调用context的postProcessor执行后处理</li>
+<li>响应response</li>
+</ol>
+</li>
+</ol>
+<p>zootUseCaseId/zootSignupOnProductId<br>zootUseCaseId是我们这边自己定义用来区分不同flow的，会发给zoot，zoot也用这个来区分不同flow，我们用product/intent/country区分，zoot用这个区分不同流量。zootSignupOnProductId是zoot分配给我们的一个ID，对应一个policy。这两个是zoot的，其他vendor没有。</p>
+<p>REGS 缓存<br>Preprocessor根据useCaseDeDup是否为真来决定是否缓存的：<br> if (!context.getUseCaseDeDup()) {<br>            saveRequest(context);<br>            return;<br>        }<br>两种开启缓存的方法：</p>
+<pre><code>1. 在workflowcontext.xml中配置flowcontext bean时设置useCaseDeDup为true
+
+ //read cache if client need
+boolean readCache = HttpHeaderHelper.getReadCache(headers);
+workflowContext.setUseCaseDeDup(readCache);
+
+2. 在http请求头中配置Prefer：read-cache,.?cache-item-max-age=\d+的正则表达式匹配
+</code></pre><p>缓存 cache时，先计算request的hash值，然后去数据库查找是否有相同hash的response如果有直接返回response，如果没有，callvendor取回response，transform response生成后，应该尽快返回response给上游，并且异步起线程保存response缓存下来，减小延迟SLA。另外，除了缓存外，如果要发MQ、Kafka等应用都要异步启动线程处理。</p>
+<p>Audit监控机制<br>如果要从老的workflow切换到新的workflow，主要是上游可能要切换厂商或者其他原因。我们会在调试上线后，监控一段时间，看看切换到新flow的流量是否正常。<br>在这段时间，业务上起作用的还是老的flow，REGS会为老的flow配置一个 auditResponsePostProcessor 的 postprocessor。这个 postprocessor 异步启动一个线程，根据配置，决定是否将同样的请求发送到新的workflow上，如果发到新的workflow上，会比较两个workflow的返回结果，看看是否正常。因为是异步线程，所以不会影响老业务的的及时响应。<br>配置example:<br>{<br>    “audit_config” : {<br>        “audits” : [<br>            {<br>                “primary_workflow”: “WFC_DE_ARL”,<br>                “audit_workflow”: “WFC_DE_ARL_NEW”,<br>                “audit_percentage” : 10<br>            },<br>            {<br>                “primary_workflow”: “WFC_IT_ARL”,<br>                “audit_workflow”: “WFC_IT_ARL_NEW”,<br>                “audit_percentage” : 10<br>            },<br>            {<br>                “primary_workflow”: “WFC_US_NASSN”,<br>                “audit_workflow”: “WFC_US_NASSN_NEW”,<br>                “audit_percentage” : 100<br>            }<br>        ]<br>    }<br>}<br>表示发送10%的流量到新flow上，但是response并不会返回给上游，只是用来检查新flow工作是否符合预期。</p>
+<p>Ramup机制<br>audit阶段如果返现一切正常，就会从老的flow切换到新的flow。但是为了安全起见，并不是一步完全切过去，而是以百分比的方式慢慢切到新的flow上。ThrottleService会根据配置决定使用新的还是旧的flow。<br>与 audit不同的是，ramup的时候只会发请求到一个flow，且response会返回给上游，而audit使用旧flow的response，新flow的response只是用来校验。所以此时上游收到的response是既有上游的又有下游的。这样的话，加入切换到新flow出问题了，直接可以修改配置，使切换到新flow上流量的百分比设为0，即可使用旧flow承载全部流量。</p>
+<p>Simulator<br>boolean simulationEnabled = config.getBoolean(ServiceConstants.ENABLE_SIMULATOR,<br>                false) &amp;&amp; HttpHeaderHelper.simulatorNotEnabled(context.getHttpHeaders()) ;<br>可以在config或者http请求头中配置是否使用simulator。</p>
+<pre><code>1. config文件中的enable_simulation或者在remote config中配置。
+2. 在http请求头中添加 SIMULATOR:true
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/08/17/springboot/jackson使用总结/" rel="next" title="jackson 使用总结">
+                <i class="fa fa-chevron-left"></i> jackson 使用总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/12/19/work/面试问题/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

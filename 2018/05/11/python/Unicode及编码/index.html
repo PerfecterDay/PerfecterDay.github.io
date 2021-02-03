@@ -1,37 +1,782 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="字符串及编码 字符编码的意义假如一串二进制对应一串字符，如何解释下面二进制串：  0100100001000101010011000100110001001111  这其中有两个关键问题：  字节是怎样分组的？（例如1个字节的字符和2个字节的字符） 一个或多个字节是怎么映射到字符上的？  大致说来，编码定义了两件事：  字节是怎么分组的，如8 bits或16 bits一组，这也被称作编码单元。 编">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unicode编码">
+<meta property="og:url" content="http://yoursite.com/2018/05/11/python/Unicode及编码/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="字符串及编码 字符编码的意义假如一串二进制对应一串字符，如何解释下面二进制串：  0100100001000101010011000100110001001111  这其中有两个关键问题：  字节是怎样分组的？（例如1个字节的字符和2个字节的字符） 一个或多个字节是怎么映射到字符上的？  大致说来，编码定义了两件事：  字节是怎么分组的，如8 bits或16 bits一组，这也被称作编码单元。 编">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.197Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unicode编码">
+<meta name="twitter:description" content="字符串及编码 字符编码的意义假如一串二进制对应一串字符，如何解释下面二进制串：  0100100001000101010011000100110001001111  这其中有两个关键问题：  字节是怎样分组的？（例如1个字节的字符和2个字节的字符） 一个或多个字节是怎么映射到字符上的？  大致说来，编码定义了两件事：  字节是怎么分组的，如8 bits或16 bits一组，这也被称作编码单元。 编">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/11/python/Unicode及编码/">
+
+
+
+
+
+  <title>Unicode编码 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/Unicode及编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Unicode编码</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="字符串及编码"><a href="#字符串及编码" class="headerlink" title="字符串及编码"></a>字符串及编码</h1><hr>
+<h2 id="字符编码的意义"><a href="#字符编码的意义" class="headerlink" title="字符编码的意义"></a>字符编码的意义</h2><p>假如一串二进制对应一串字符，如何解释下面二进制串：</p>
+<blockquote>
+<p>0100100001000101010011000100110001001111</p>
+</blockquote>
+<p>这其中有两个关键问题：</p>
+<ol>
+<li>字节是怎样分组的？（例如1个字节的字符和2个字节的字符）</li>
+<li>一个或多个字节是怎么映射到字符上的？</li>
+</ol>
+<p>大致说来，编码定义了两件事：</p>
+<ol>
+<li>字节是怎么分组的，如8 bits或16 bits一组，这也被称作编码单元。</li>
+<li>编码单元和字符之间的映射关系。例如，在ASCII码中，十进制65映射到字母A上</li>
+</ol>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>Unicode背后的想法非常简单，然而却被普遍的误解了。Unicode就像一个电话本，标记着字符和数字之间的映射关系。Joel称之为「神奇数字」，因为它们可能是随机指定的，而且不会给出任何解释。官方术语是<strong>码位(Code Point)</strong>，总是用U+开头。理论上每种语言中的每种字符都被Unicode协会指定了一个神奇数字。例如希伯来文中的第一个字母א，是U+2135，字母A是U+0061。</p>
+<p>Unicode并不涉及字符是怎么在字节中表示的，它仅仅指定了字符对应的数字，仅此而已。</p>
+<p>关于Unicode的其它误解包括：Unicode支持的字符上限是65536个，Unicode字符必须占两个字节。告诉你这些的人应该去换换脑子了。</p>
+<p><strong>记住，Unicode只是一个用来映射字符和数字的标准。它对支持字符的数量没有限制，也不要求字符必须占两个、三个或者其它任意数量的字节。</strong></p>
+<p>Unicode字符是怎样被编码成内存中的字节这是另外的话题，它是被<strong>UTF(Unicode Transformation Formats)</strong>定义的。</p>
+<h2 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h2><p>两个最流行的Unicode编码方案是UTF-8和UTF-16。让我们看看它们的细节：</p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8是一个非常惊艳的概念，它漂亮的实现了对ASCII码的向后兼容，以保证Unicode可以被大众接受。发明它的人至少应该得个诺贝尔和平奖。</p>
+<p>在UTF-8中，0-127号的字符用1个字节来表示，使用和US-ASCII相同的编码。这意味着1980年代写的文档用UTF-8打开一点问题都没有。只有128号及以上的字符才用2个，3个或者4个字节来表示。因此，UTF-8被称作<strong>可变长度编码</strong>。</p>
+<p>回到文章开始的问题,</p>
+<blockquote>
+<p>0100100001000101010011000100110001001111</p>
+</blockquote>
+<p>这个字节流在ASCII和UTF-8中表示相同的字符：HELLO。</p>
+<h3 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h3><p>另一个流行的可变长度编码方案是UTF-16，它使用2个或者4个字节来存储字符。然而，人们逐渐意识到UTF-16可能会浪费存储空间，但那是另一个话题了。</p>
+<h3 id="低字节序-Little-Endian-和高字节序-Big-Endian"><a href="#低字节序-Little-Endian-和高字节序-Big-Endian" class="headerlink" title="低字节序(Little Endian)和高字节序(Big Endian)"></a>低字节序(Little Endian)和高字节序(Big Endian)</h3><p>Endian读作End-ian或者Indian。这个术语的起源可以追溯到格列佛游记。（小说中，小人国为水煮蛋应该从大的一端（Big-End）剥开还是小的一端（Little-End）剥开而争论，争论的双方分别被称为“大端派”和“小端派”。）</p>
+<p>低字节序和高字节序只是一个关于在内存中存储和读取一段字节（被称作words）的约定。这意味着当你让计算机用UTF-16把字母A（占两个字节）存在内存中时，使用哪种字节序方案决定了你把第一个字节放在第二个字节的前面还是后面。这么说有点不太容易懂，让我们来看一个例子：当你使用UTF-16存下来自你朋友的附件时，在不同的系统中它的后半部分可能是这样的：</p>
+<p>00 68 00 65 00 6C 00 6C 00 6F（高字节序，高位字节被存在前面）</p>
+<p>68 00 65 00 6C 00 6C 00 6F 00（低字节序，低位字节被存在前面）</p>
+<p>字节序方案只是一个微处理器架构设计者的偏好问题，例如，Intel使用低字节序，Motorola使用高字节序。</p>
+<h3 id="字节顺序标记-BOM"><a href="#字节顺序标记-BOM" class="headerlink" title="字节顺序标记(BOM)"></a>字节顺序标记(BOM)</h3><p>如果你经常要在高低字节序的系统间转换文档，并且希望区分字节序，还有一种奇怪的约定，被称作<strong>BOM</strong>。BOM是一个设计得很巧妙的字符，用来放在文档的开头告诉阅读器该文档的字节序。在UTF-16中，它是通过在第一个字节放置FE FF来实现的。在不同字节序的文档中，它会被显示成FF FE或者FE FF，清楚的把这篇文档的字节序告诉了解释器。</p>
+<p>BOM尽管很有用，但并不是很简洁，因为还有一个类似的概念，称作<strong>「魔术字」(Magic Byte)</strong>，很多年来一直被用来表明文件的格式。BOM和魔术字间的关系一直没有被清楚的定义过，因此有的解释器会搞混它们。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你没时间读整篇文章或者你仅仅是略读了一下前面的内容。那请你确保你能理解下面的几条：</p>
+<ol>
+<li>这个世界上从来没有纯文本这回事，如果你想读出一个字符串，你必须知道它的编码。</li>
+<li>Unicode是一个简单的标准，用来把字符映射到数字上。Unicode协会的人会帮你处理所有幕后的问题，包括为新字符指定编码。</li>
+<li>Unicode并不告诉你字符是怎么编码成字节的。这是被编码方案决定的，通过UTF来指定。</li>
+<li>永远记得通过Content-Type或者meta charset标签来显式指定你的文档的编码。这样浏览器就不需要猜测你使用的编码了，他们会准确的使用你指定的编码来渲染文档。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/11/python/python-__slots__/" rel="next" title="python_slots">
+                <i class="fa fa-chevron-left"></i> python_slots
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/11/nginx/nginx静态内容配置/" rel="prev" title="配置nginx处理静态内容请求">
+                配置nginx处理静态内容请求 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串及编码"><span class="nav-number">1.</span> <span class="nav-text">字符串及编码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符编码的意义"><span class="nav-number">1.1.</span> <span class="nav-text">字符编码的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode"><span class="nav-number">1.2.</span> <span class="nav-text">Unicode</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Unicode编码"><span class="nav-number">1.3.</span> <span class="nav-text">Unicode编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-8"><span class="nav-number">1.3.1.</span> <span class="nav-text">UTF-8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UTF-16"><span class="nav-number">1.3.2.</span> <span class="nav-text">UTF-16</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#低字节序-Little-Endian-和高字节序-Big-Endian"><span class="nav-number">1.3.3.</span> <span class="nav-text">低字节序(Little Endian)和高字节序(Big Endian)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字节顺序标记-BOM"><span class="nav-number">1.3.4.</span> <span class="nav-text">字节顺序标记(BOM)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

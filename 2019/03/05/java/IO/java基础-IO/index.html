@@ -1,37 +1,821 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="IO,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="File类File 类看上去是指代文件，其实它既能代表一个特定文件，也能代表一个目录。 目录列表 String[] list(): 返回所有文件名的字符串数组 String[] list(FileNameFilter filter): 返回 FileNameFilter 过滤后的字符串数组 File[] listFiles(): 返回所有的文件数组 File[] listFiles(Filenam">
+<meta name="keywords" content="IO">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础-IO">
+<meta property="og:url" content="http://yoursite.com/2019/03/05/java/IO/java基础-IO/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="File类File 类看上去是指代文件，其实它既能代表一个特定文件，也能代表一个目录。 目录列表 String[] list(): 返回所有文件名的字符串数组 String[] list(FileNameFilter filter): 返回 FileNameFilter 过滤后的字符串数组 File[] listFiles(): 返回所有的文件数组 File[] listFiles(Filenam">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/stream-2.png">
+<meta property="og:image" content="http://yoursite.com/pics/stream-1.png">
+<meta property="og:image" content="http://yoursite.com/pics/stream-framework.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础-IO">
+<meta name="twitter:description" content="File类File 类看上去是指代文件，其实它既能代表一个特定文件，也能代表一个目录。 目录列表 String[] list(): 返回所有文件名的字符串数组 String[] list(FileNameFilter filter): 返回 FileNameFilter 过滤后的字符串数组 File[] listFiles(): 返回所有的文件数组 File[] listFiles(Filenam">
+<meta name="twitter:image" content="http://yoursite.com/pics/stream-2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/05/java/IO/java基础-IO/">
+
+
+
+
+
+  <title>java基础-IO | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/java/IO/java基础-IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础-IO</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-05T22:30:29+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/IO/" itemprop="url" rel="index">
+                    <span itemprop="name">IO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h2><p><code>File</code> 类看上去是指代文件，其实它既能代表一个特定文件，也能代表一个目录。</p>
+<h3 id="目录列表"><a href="#目录列表" class="headerlink" title="目录列表"></a>目录列表</h3><ul>
+<li><code>String[] list()</code>: 返回所有文件名的字符串数组</li>
+<li><code>String[] list(FileNameFilter filter)</code>: 返回 <code>FileNameFilter</code> 过滤后的字符串数组</li>
+<li><code>File[] listFiles()</code>: 返回所有的文件数组</li>
+<li><code>File[] listFiles(FilenameFilter filter)</code>: 返回 <code>FilenameFilter</code> 过滤后的文件数组</li>
+</ul>
+<p>假如 <code>File</code> 指代的是一个目录，那么就可以使用 <code>list()</code> 方法获取目录下的文件列表，如果想获取所有文件列表，使用不带参数的 <code>list()</code> 的方法即可；如果想获得一个受限列表，那么就要使用“目录过滤器”了。 <code>FilenameFilter</code> 接口的 <code>boolean accept(File dir,String name)</code> 返回 <code>true</code> 的才会返回到数组中。 <code>listFiles</code> 同理。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public class FileList &#123;</span><br><span class="line">    public static void main(String[] args) &#123;****</span><br><span class="line">        File f = new File(&quot;/usr/local/etc&quot;);</span><br><span class="line">        File[] allFiles = f.listFiles();</span><br><span class="line">        File[] filterFiles = f.listFiles((dir,name)-&gt;&#123;</span><br><span class="line">            return name.contains(&quot;a&quot;); </span><br><span class="line">        &#125;);</span><br><span class="line">        for (File allFile : allFiles) &#123;</span><br><span class="line">            System.out.print(allFile.getName()+&quot;, &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        for (File filterFile : filterFiles) &#123;</span><br><span class="line">            System.out.print(filterFile.getName()+&quot;, &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        String[] allNames = f.list();</span><br><span class="line">        String[] filterNames = f.list((dir,name)-&gt; &#123;</span><br><span class="line">                return name.contains(&quot;.&quot;);</span><br><span class="line">        &#125;);</span><br><span class="line">        for (String file : allNames) &#123;</span><br><span class="line">            System.out.print(file+&quot;, &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        for (String file : filterNames) &#123;</span><br><span class="line">            System.out.print(file+&quot;, &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="目录-文件的检查及创建"><a href="#目录-文件的检查及创建" class="headerlink" title="目录/文件的检查及创建"></a>目录/文件的检查及创建</h3><p>可以获取文件/目录相关的信息：</p>
+<ul>
+<li><code>String getAbsolutePath()</code> :获取绝对路径</li>
+<li><code>String getName()</code> :获取名字</li>
+<li><code>File getParent()</code> :获取父目录</li>
+<li><code>long length()</code> :获取目录/文件大小</li>
+<li><code>long lastModified()</code> :获取最后修改时间</li>
+<li><code>boolean canExecute()</code> :是否可执行</li>
+<li><code>boolean canRead()</code> :是否可读</li>
+<li><code>boolean canWrite()</code> :是否可写</li>
+<li><code>boolean createNewFile()</code> :创建新文件当 <code>File</code> 代表一个文件时</li>
+<li><code>boolean mkdir()</code> :创建新目录当 <code>File</code> 代表一个目录时</li>
+</ul>
+<h2 id="IO-流"><a href="#IO-流" class="headerlink" title="IO 流"></a>IO 流</h2><p>流按照不同的方式可以分为如下几类：<br>输入流：从外设/网络等流入程序内存的流，只能从其中读数据，不能写<br>输出流：从程序内存输出到外设/网络等的流，只能向其中写数据，不能读<br>节点流：可以直接从/向一个特定的IO设备（磁盘、网络等）读写数据的流，称为节点流，也称为低级流<br>处理流：对于一个已经存在的流进行连接或封装，通过封装后流来实现数据读写的功能，也称为高级流；关闭最上层的处理流，系统会自动关闭该处理流包装的节点流<br><img src="/pics/stream-2.png" width="50%/"><br>字节流/字符流：两种流操作的数据单元不同，字节流按字节处理数据，而字符流按16位字符处理数据<br><img src="/pics/stream-1.png" width="60%/"></p>
+<h3 id="输入输出流体系"><a href="#输入输出流体系" class="headerlink" title="输入输出流体系"></a>输入输出流体系</h3><p><img src="/pics/stream-framework.png" alt="stream-framework"><br>粗体标出的类代表节点流，必须直接与指定的物理节点关联；斜体标出的类代表抽象基类，无法直接创建实例。<br>访问数组和字符串的流看似没什么用，因为数组和字符串本来就可以在内存中直接访问，为啥还要使用流来读写呢？当你的API接口只接受IO流参数，但是你又想用字符串或数组去调用这个API时，就可以使用这种流来调用。</p>
+<h4 id="InputStream-和-Reader"><a href="#InputStream-和-Reader" class="headerlink" title="InputStream 和 Reader"></a>InputStream 和 Reader</h4><p>InputStream/Reader 里包含以下三个读方法：  </p>
+<ul>
+<li><code>int read()</code>: 从输入流中读取一个字节，返回读取到的字节数据</li>
+<li><code>int read(byte[]/char[] b)</code>: 从输入流中读取数据到字节/字符数组b中，最多读取b.length个字节，返回实际读取的字节/字符数</li>
+<li><code>int read(byte[] b, int off, int len)</code>: 从输入流中最多读取len个字节/字符存入字节/字符数组b中，从off位置开始存放，返回实际读取的字节/字符数<br>除此之外，它们还支持如下几个方法来移动记录指针：</li>
+<li><code>boolean markSupported()</code>: 判断流是否支持记录标记</li>
+<li><code>synchronized void mark(int readlimit)</code>: 在记录指针（读取位置的记录，读取时会从这个位置开始读）当前位置记录一个标记</li>
+<li><code>synchronized void reset()</code>: 将记录指针重新定位到上一个记录标记的位置</li>
+<li><code>long skip(long n)</code>: 将记录指针向前移动 n 个字节/字符</li>
+</ul>
+<h4 id="OutputStream-和-Writer"><a href="#OutputStream-和-Writer" class="headerlink" title="OutputStream 和 Writer"></a>OutputStream 和 Writer</h4><p>OutputStream/Writer 也提供如下三个写方法：</p>
+<ul>
+<li><code>void write(int b)</code>: 将字节/字符 b写入到流中</li>
+<li><code>void write(byte[]/char[] buf)</code>: 将字节/字符数组buf中的数据写入输出流中</li>
+<li><code>void write(byte[]/char[] buf, int off, int len)</code>: 将字节/字符数组buf中从off位置开始长度为len的数据写入输出流中<br>因为字符流直接以字符为操作单位，因此 Writer 也支持直接写字符串：</li>
+<li><code>void write(String str)</code>: 将字符串 str 中的字符写入输出流中</li>
+<li><code>void write(String str,int off, int len)</code>: 将字符串 str 中从 off 位置开始，长度为len的字符写入输出流中</li>
+</ul>
+<h4 id="标准输入输出"><a href="#标准输入输出" class="headerlink" title="标准输入输出"></a>标准输入输出</h4><p>Java的标准输入/输出分别通过 <code>System.in/System.out</code> 来代表，默认情况下分别代表键盘和显示器，当程序从 System.in 读数据时，实际上是从键盘读取输入；当程序通过 System.out 来输出数据时，数据会显示在屏幕上。<br>System类还提供了三个重定向标准输入/输出的方法：</p>
+<ul>
+<li><code>static void setIn(InputStream in)</code>:  重定向标准输入流</li>
+<li><code>static void setOut(PrintStream out)</code>: 重定向标准输出流</li>
+<li><code>static void setErr(PrintStream err)</code>: 重定向标准错误输出流</li>
+</ul>
+<h4 id="JVM读取其它进程的数据"><a href="#JVM读取其它进程的数据" class="headerlink" title="JVM读取其它进程的数据"></a>JVM读取其它进程的数据</h4><p>我们知道使用 <code>Runtime</code> 类的 <code>Process exec(String command)</code> 方法可以启动一个进程，并返沪一个 Process 对象， 该 Process 对象代表由 Java 启动的子进程，Process 提供了三个方法用于程序和其子进程进行通信：</p>
+<ul>
+<li><code>OutputStream getOutputStream()</code>: 获取子进程的输出流，实际对应子进程的输入流，对本进程来说是输出流，用于向子进程写数据</li>
+<li><code>InputStream getInputStream()</code>: 获取子进程的输入流，实际上对应子进程的输出流，对本进程来说是输入流，用于读取子进程的输出数据</li>
+<li><code>InputStream getErrorStream()</code>: 获取子进程的错误输入流，实际上对应子进程的错误输出流，对本进程来说是输入流，用于读取子进程的错误输出数据</li>
+</ul>
+<h4 id="RandomAccessFile"><a href="#RandomAccessFile" class="headerlink" title="RandomAccessFile"></a>RandomAccessFile</h4><p><code>RandomAccessFile</code> 功能非常强大，能够支持随机的读写数据，就是能够随机的从指定位置开始读/写数据，也可以跳过某些数据的读写。<code>RandomAccessFile</code>提供两种构造方法来生成对象：</p>
+<ol>
+<li>RandomAccessFile(File file, String mode)</li>
+<li>RandomAccessFile(String name, String mode)<br>mode 参数指定 RandomAccessFile 的访问模式，该参数有如下四个值：</li>
+</ol>
+<ul>
+<li>“r”: 以只读方式打开指定文件</li>
+<li>“rw”: 以读写方式打开指定文件，如果文件不存在，则尝试创建文件</li>
+<li>“rws”: 以读写方式打开指定文件，相对于 “rw”模式，还要求对文件内容或元数据的每个更新都同步写入到底层存储设备。</li>
+<li>“rwd”: 以读写方式打开指定文件，相对于 “rw”模式，还要求对文件内容的每个更新都同步写入到底层存储设备。<br>打开一个 <code>RandomAccessFile</code> 对象后，可以使用下述两个方法来操纵文件记录指针：</li>
+<li><code>long getFilePointer()</code>: 获取文件记录指针的位置</li>
+<li><code>void seek(long pos)</code>: 将文件记录指针定位到指定的 pos 位置。<br>RandomAccessFile 还包含类似于了 InputStream/OutputStream 中的三种 read()/write() 方法，用法是完全一样的，另外还包含了系列方便的 readXXX 和 writeXXX 方法。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/IO/" rel="tag"># IO</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/04/java/java基础-范型/" rel="next" title="java基础-范型">
+                <i class="fa fa-chevron-left"></i> java基础-范型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/06/java/java基础-入门，数据类型和数组/" rel="prev" title="java基础-入门，数据类型和数组">
+                java基础-入门，数据类型和数组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#File类"><span class="nav-number">1.</span> <span class="nav-text">File类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目录列表"><span class="nav-number">1.1.</span> <span class="nav-text">目录列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#目录-文件的检查及创建"><span class="nav-number">1.2.</span> <span class="nav-text">目录/文件的检查及创建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IO-流"><span class="nav-number">2.</span> <span class="nav-text">IO 流</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#输入输出流体系"><span class="nav-number">2.1.</span> <span class="nav-text">输入输出流体系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#InputStream-和-Reader"><span class="nav-number">2.1.1.</span> <span class="nav-text">InputStream 和 Reader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#OutputStream-和-Writer"><span class="nav-number">2.1.2.</span> <span class="nav-text">OutputStream 和 Writer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标准输入输出"><span class="nav-number">2.1.3.</span> <span class="nav-text">标准输入输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM读取其它进程的数据"><span class="nav-number">2.1.4.</span> <span class="nav-text">JVM读取其它进程的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RandomAccessFile"><span class="nav-number">2.1.5.</span> <span class="nav-text">RandomAccessFile</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

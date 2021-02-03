@@ -1,37 +1,807 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="docker,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="docker 核心组件 Docker客户端与服务器端：Docker是 C/S 架构的， 镜像：镜像是构建 Docker 世界的基石，Docker基于镜像来运行容器。 容器：容器是基于镜像的，能够为一系列操作提供一个隔离的执行环境。 Registry：相当于 GitHub，用来存储、发布镜像的仓库。 如何确定自己是否是登录到一台物理机/虚拟机/容器shell中： systemd-detect-vir">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker 命令">
+<meta property="og:url" content="http://yoursite.com/2019/02/21/docker/doker命令/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="docker 核心组件 Docker客户端与服务器端：Docker是 C/S 架构的， 镜像：镜像是构建 Docker 世界的基石，Docker基于镜像来运行容器。 容器：容器是基于镜像的，能够为一系列操作提供一个隔离的执行环境。 Registry：相当于 GitHub，用来存储、发布镜像的仓库。 如何确定自己是否是登录到一台物理机/虚拟机/容器shell中： systemd-detect-vir">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.716Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker 命令">
+<meta name="twitter:description" content="docker 核心组件 Docker客户端与服务器端：Docker是 C/S 架构的， 镜像：镜像是构建 Docker 世界的基石，Docker基于镜像来运行容器。 容器：容器是基于镜像的，能够为一系列操作提供一个隔离的执行环境。 Registry：相当于 GitHub，用来存储、发布镜像的仓库。 如何确定自己是否是登录到一台物理机/虚拟机/容器shell中： systemd-detect-vir">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/21/docker/doker命令/">
+
+
+
+
+
+  <title>docker 命令 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/docker/doker命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">docker 命令</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T20:38:24+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="docker-核心组件"><a href="#docker-核心组件" class="headerlink" title="docker 核心组件"></a>docker 核心组件</h4><ol>
+<li>Docker客户端与服务器端：Docker是 C/S 架构的，</li>
+<li>镜像：镜像是构建 Docker 世界的基石，Docker基于镜像来运行容器。</li>
+<li>容器：容器是基于镜像的，能够为一系列操作提供一个隔离的执行环境。</li>
+<li>Registry：相当于 GitHub，用来存储、发布镜像的仓库。</li>
+<li>如何确定自己是否是登录到一台物理机/虚拟机/容器shell中： systemd-detect-virt -c</li>
+</ol>
+<h4 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h4><ol>
+<li><code>docker build -t [&lt;仓库名&gt;:&lt;标签&gt;] 镜像构建上下文路径</code> : 利用 Dockerfile 来制作镜像</li>
+<li><code>docker build -f path/to/dockerfile -t [&lt;仓库名&gt;:&lt;标签&gt;] 镜像构建上下文路径</code> : 利用指定的 Dockerfile 来制作镜像</li>
+<li><code>docker search xxx</code>: 查找镜像</li>
+<li><code>docker pull &lt;image_name&gt;;</code>: 从 Registry 下载镜像</li>
+<li><code>docker push &lt;image_name&lt;</code>: 上传到 Registry ，默认dockerHub</li>
+<li><code>docker images</code> : 查看docker镜像</li>
+<li><code>docker image ls -a</code>: 查看所有镜像</li>
+<li><code>docker image ls &lt;image_name&lt;</code>: 查看指定镜像</li>
+<li><code>docker image inspect &lt;image_name&lt;</code>: 查看指定镜像的详细信息</li>
+<li><code>docker image rm [选项] &lt;镜像1&lt; [&lt;镜像2&lt; ...]</code>: 删除镜像</li>
+<li><code>docker image prune</code>: 删除虚悬镜像(dangling image)</li>
+<li><code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code> : 将修改后的容器保存为镜像</li>
+</ol>
+<h5 id="Dockerfile-镜像指令"><a href="#Dockerfile-镜像指令" class="headerlink" title="Dockerfile 镜像指令"></a>Dockerfile 镜像指令</h5><p>当构建的时候，用户会指定构建镜像上下文的路径，docker build 命令得知这个路径后，会将路径下的所有内容打包，然后上传给 Docker 引擎。这样 Docker 引擎收到这个上下文包后，展开就会获得构建镜像所需的一切文件。<br>Dockerfile 中每一个指令都会建立一层，每一条指令执行过程都类似于：新建立一层，在其上执行这些命令，执行结束后，commit 这一层的修改，构成新的镜像。</p>
+<ol>
+<li>FROM: 指定基础镜像 ，后续指令都是基于基础镜像的</li>
+<li>CMD ：容器就是进程，既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。CMD 指令就是用于指定默认的容器主进程的启动命令的。如果启动容器时，添加了指令，则会覆盖CMD指令<br> <code>CMD [&#39;/bin/bash&#39;,&#39;-l&#39;]</code></li>
+<li>ENTRYPOINT： 类似于CMD，但是启动容器时添加的指令将会作为参数传递到ENTRYPOINT的指令中</li>
+<li>WORKDIR：在容器内部切换工作目录，CMD和ENTRYPOINT的指令就运行在这个目录中</li>
+<li>ENV: 用来在构建镜像过程中设置环境变量，这个环境变量可以在后续RUN指令中使用</li>
+<li>USER：用来指定该镜像会以什么用户运行</li>
+<li>VOLUME：为基于镜像创建的容器添加卷。</li>
+<li>ADD: 用来将构建环境下的文件和目录复制到镜像中，不能对构建目录或者上下文之外的文件进行ADD操作。ADD归档文件时会自动解压<br> <code>ADD hello.jar /opt/application/hello.jar</code></li>
+<li>COPY： 类似于ADD，区别在于不会做文件提取和解压的工作。</li>
+<li>ONBUILD：</li>
+<li>RUN: 用来执行命令行命令的。由于命令行的强大能力，RUN 指令在定制镜像时是最常用的指令之一。</li>
+<li>EXPOSE &lt;端口1&gt; [&lt;端口2&gt;…] : 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。</li>
+</ol>
+<h4 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h4><h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><ol>
+<li>docker run &lt;options&gt; &lt;image_name&gt; &lt;command&gt;: 创建并启动容器执行 command 命令，容器是否长久运行和 command 命令有关，相关选项：<ul>
+<li><code>-d</code> :代表后台守护进程运行</li>
+<li><code>-p 宿主机:宿主机端口：容器端口</code>：将容器端口映射到宿主机端口</li>
+<li><code>--restart=always</code>：自动重启容器</li>
+<li><code>--name=yourname</code>：指定容器名字</li>
+<li><code>-v 宿主机目录：容器目录：ro|rw</code>： 将宿主机的目录作为卷，挂载到容器对应目录</li>
+<li><code>-e, --env=[]</code>: 设置环境变量<br>示例：<code>docker run -p 3316:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --name=mysql-master  mysql</code></li>
+</ul>
+</li>
+<li>docker create &lt;options&gt; &lt;image_name&gt; &lt;command&gt;：创建一个新的容器但不启动它。 示例：<code>docker create  --name myrunoob  nginx:latest</code></li>
+</ol>
+<h5 id="启动-停止容器"><a href="#启动-停止容器" class="headerlink" title="启动/停止容器"></a>启动/停止容器</h5><ol>
+<li>docker run：同上</li>
+<li>docker start &lt;container_id&gt;: 重启已经停止的容器</li>
+<li>docker stop &lt;container_id&gt;: 停止容器</li>
+<li>docker restart :重启容器  示例-<code>docker restart master slave</code></li>
+</ol>
+<h5 id="容器查看-删除"><a href="#容器查看-删除" class="headerlink" title="容器查看/删除"></a>容器查看/删除</h5><ol>
+<li>docker ps : 查看正在运行的容器</li>
+<li>docker container ls: 查看容器（默认指显示正在运行的容器，与ps一样）， -a 选项查看所有容器</li>
+<li>docker inspect &lt;container_id&gt;: 查看指定容器的详细信息</li>
+<li>docker system df: 查看镜像、容器、数据卷所占用的空间</li>
+<li>docker container rm &lt;container_id&gt;: 删除指定容器</li>
+<li>docker container prune: 清理所有处于终止状态的容器</li>
+</ol>
+<h5 id="其它容器操作"><a href="#其它容器操作" class="headerlink" title="其它容器操作"></a>其它容器操作</h5><ol>
+<li>docker logs &lt;container_id&gt; : 查看容器的运行日志</li>
+<li>docker top &lt;container_id&gt; : 查看容器内的进程</li>
+<li>docker exec -it &lt;container_id&gt; &lt;command&gt;: 进入容器运行指定命令</li>
+<li>复制宿主机文件到容器目录：<code>docker cp slave.cnf mysql-slave:/etc/mysql/conf.d</code></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag"># docker</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/20/linux/linux环境变量总结/" rel="next" title="Linux环境变量总结">
+                <i class="fa fa-chevron-left"></i> Linux环境变量总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/26/数据结构与算法/排序/快速排序/" rel="prev" title="快速排序算法">
+                快速排序算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#docker-核心组件"><span class="nav-number">1.</span> <span class="nav-text">docker 核心组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像操作"><span class="nav-number">2.</span> <span class="nav-text">镜像操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Dockerfile-镜像指令"><span class="nav-number">2.1.</span> <span class="nav-text">Dockerfile 镜像指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器操作"><span class="nav-number">3.</span> <span class="nav-text">容器操作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#创建容器"><span class="nav-number">3.1.</span> <span class="nav-text">创建容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#启动-停止容器"><span class="nav-number">3.2.</span> <span class="nav-text">启动/停止容器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#容器查看-删除"><span class="nav-number">3.3.</span> <span class="nav-text">容器查看/删除</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#其它容器操作"><span class="nav-number">3.4.</span> <span class="nav-text">其它容器操作</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

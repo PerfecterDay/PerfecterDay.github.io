@@ -1,37 +1,829 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mysql,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="文件种类 配置参数文件：告诉mysql在启动时在哪里可以找到数据库文件，并且指定一些初始化参数配置来数据库。 日志文件：错误日志文件、二进制日志文件、慢查询日志文件、查询日志文件等。 socket 文件：使用 UNIX 套接字连接时需要的文件 pid文件：mysql 实例的进程 ID文件 mysql表结构文件：用来存放 Mysql表结构定义文件。 存储引擎文件：Mysql支持多种存储引擎，每种存储">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql 中的文件">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/sql/msyql/mysql中的文件/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="文件种类 配置参数文件：告诉mysql在启动时在哪里可以找到数据库文件，并且指定一些初始化参数配置来数据库。 日志文件：错误日志文件、二进制日志文件、慢查询日志文件、查询日志文件等。 socket 文件：使用 UNIX 套接字连接时需要的文件 pid文件：mysql 实例的进程 ID文件 mysql表结构文件：用来存放 Mysql表结构定义文件。 存储引擎文件：Mysql支持多种存储引擎，每种存储">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/mysql-tablespace.png">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql 中的文件">
+<meta name="twitter:description" content="文件种类 配置参数文件：告诉mysql在启动时在哪里可以找到数据库文件，并且指定一些初始化参数配置来数据库。 日志文件：错误日志文件、二进制日志文件、慢查询日志文件、查询日志文件等。 socket 文件：使用 UNIX 套接字连接时需要的文件 pid文件：mysql 实例的进程 ID文件 mysql表结构文件：用来存放 Mysql表结构定义文件。 存储引擎文件：Mysql支持多种存储引擎，每种存储">
+<meta name="twitter:image" content="http://yoursite.com/pics/mysql-tablespace.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/10/10/sql/msyql/mysql中的文件/">
+
+
+
+
+
+  <title>mysql 中的文件 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/sql/msyql/mysql中的文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql 中的文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-10T22:26:33+08:00">
+                2019-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="文件种类"><a href="#文件种类" class="headerlink" title="文件种类"></a>文件种类</h4><ol>
+<li>配置参数文件：告诉mysql在启动时在哪里可以找到数据库文件，并且指定一些初始化参数配置来数据库。</li>
+<li>日志文件：错误日志文件、二进制日志文件、慢查询日志文件、查询日志文件等。</li>
+<li>socket 文件：使用 UNIX 套接字连接时需要的文件</li>
+<li>pid文件：mysql 实例的进程 ID文件</li>
+<li>mysql表结构文件：用来存放 Mysql表结构定义文件。</li>
+<li>存储引擎文件：Mysql支持多种存储引擎，每种存储引擎都会有自己的文件来存储各种数据。</li>
+</ol>
+<h4 id="参数文件"><a href="#参数文件" class="headerlink" title="参数文件"></a>参数文件</h4><p>命令行中输入 <code>mysql --help | grep my.cnf</code> 可以查看 mysql 查找配置文件路径的顺序。<br>mysql 参数有 <strong>静态参数</strong> 和 <strong>动态参数</strong> 之分：</p>
+<ol>
+<li>动态参数意味着在mysql运行过程中能够动态的更改。</li>
+<li>静态参数在实例运行后便不可更改。<br>使用 <strong>set</strong> 命令可以对动态的参数值进行修改：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set [global | session ] system_var_name=expr</span><br><span class="line">set [@@global. | @@session. | @@]system_var_name=expr</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>有些参数只能在会话中修改，有些参数可以在整个生命周期中都会生效，有些参数既可以在会话中生效又可以在整个实例的生命周期内生效。<br>使用 <code>show variables like &#39;xxx&#39;</code> 可以查看参数配置的值。</p>
+<h4 id="日志文件"><a href="#日志文件" class="headerlink" title="日志文件"></a>日志文件</h4><ol>
+<li>错误日志<br>错误日志文件对mysql的启动、运行和关闭过程进行记录，其实就是 mysql 运行的日志文件。可以使用命令 <code>show variables like &#39;log_error&#39;</code> 来定位改文件。</li>
+<li>慢查询日志<br> 可以在mysql启动时设定一个阈值，将运行时间超过（大于）该阈值的所有 SQL 语句都记录到慢查询日志文件中。DBA可以对这些语句进行优化。该阈值可以通过 <code>long_query_time</code> (mysql8 中是<code>slow_query_log</code>)参数来设置，默认是10秒。通过 <code>slow_query_log_file</code>设置慢查询日志的位置。<br> 另一个和慢查询有关的参数是 <code>log_queries_not_using_indexes</code>, 如果这个参数为 on 的话，那么没有使用索引的sql语句也会被记录到慢查询日志中。<code>log_throttle_queries_not_using_indexes</code> 用来设置每分钟允许记录到慢查询日志中的未使用索引的sql语句的次数，默认是0表示没有限制。生产环境中建议设置以防止慢查询日志不断快速增加。<br> 慢查询日志变得很大时，可以使用 <code>mysqldumpslow</code> 命令来分析慢查询日志。</li>
+<li>查询日志<br> 查询日志记录了所有的数据库查询请求信息，无论这些查询是否得到了正确的执行。<code>general_log</code>和 <code>general_log_file</code>分别设置是否开启查询日志以及日志文件的存储位置。</li>
+<li><p>二进制日志<br> 二进制日志记录了所有的对数据库更改的操作日志，不包括 Select/Show这类的操作，因为这类操作不会改变数据库中的数据。但是有些 DML（insert、delete、update） 语句即使没有真正的改变数据，可能也会被记录到日志中。二进制日志有以下几种作用：</p>
+<ol>
+<li>恢复:可以通过二进制日志进行 point-in-time 的恢复</li>
+<li>复制：通过复制二进制日志到另一台数据库恢复即可实现复制</li>
+<li><p>审计：通过二进制日志的信息进行审计来判断是否有注入攻击</p>
+<p>参数 <code>log_bin</code> 、 <code>log_bin_basename</code> 和 <code>log_bin_index</code> 分别用来设置是否打开二进制日志、二进制日志的基础文件名和二进制日志索引文件名，以下参数影响二进制日志的行为：</p>
+</li>
+</ol>
+<ul>
+<li><code>max_binlog_size</code>:单个日志文件的最大大小</li>
+<li><code>binlog_cache_size</code>：基于会话的二进制日志缓冲区（每个会话一个缓冲区），未提交的二进制日志直接写入缓冲区，事务提交时将缓冲区内容写入二进制日志，改参数指定缓冲区大小。如果写入日志超出缓冲区大小，会写入一个临时文件。</li>
+<li><code>sync_binlog</code>：表示写缓冲区多少次后写入到磁盘文件，如果为1表示同步写磁盘，这样会损失一定性能但是可以获得最高的可用性。否则写入缓冲区的文件在宕机有可能未刷盘造成丢失。</li>
+<li><p><code>binlog_format</code>：设置二进制日志文件的格式</p>
+<ol>
+<li>statement: 记录的是数据库的逻辑 SQL 语句,执行update一个值=1 1000次，会产生1000条记录。</li>
+<li>row: 记录的是数据库表的行更改情况</li>
+<li>mixed: 默认statement格式，但是某些情况下使用 row 格式。执行update一个值=1 1000次，只会产生1条记录</li>
+</ol>
+<p>二进制日志文件不能用 cat、less等命令查看，必须使用 <code>mysqlbinlog</code> 工具来查看，statement 格式的日志直接能看到逻辑SQL语句，而 row 格式的日志需要加上 <code>-v</code> 或 <code>-vv</code> 参数。遇到<code>mysqlbinlog: [ERROR] unknown variable &#39;default-character-set=utf8&#39;</code>错误时，使用 <code>mysqlbinlog --no-defaults -v binlog.000109</code> 即可。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="套接字文件"><a href="#套接字文件" class="headerlink" title="套接字文件"></a>套接字文件</h3><p>在 UNIX 系统下本地连接 mysql 可以使用 UNIX 域套接字方式，这种方式需要一个套接字文件，使用 <code>show variables like &#39;%socket%&#39;</code> 可以查看配置。</p>
+<h3 id="PID文件"><a href="#PID文件" class="headerlink" title="PID文件"></a>PID文件</h3><p>mysql 启动时会将进程ID写入一个文件，改文件就是 pid 文件。使用 <code>show variables like &#39;pid_file&#39;</code> 查看配置。</p>
+<h3 id="表结构定义文件"><a href="#表结构定义文件" class="headerlink" title="表结构定义文件"></a>表结构定义文件</h3><p>mysql是插件式的存储引擎结构，但无论一张表采取那种存储引擎,Mysql都有一个以frm结尾的后缀名文件，这个文件记录了表结构定义。视图也会有一个frm文件定义视图结构。Mysql8版本删除了 frm 表结构文件，将表结构直接存放在 ibd 文件中。</p>
+<h3 id="innodb存储引擎文件"><a href="#innodb存储引擎文件" class="headerlink" title="innodb存储引擎文件"></a>innodb存储引擎文件</h3><p>主要介绍表空间文件和重做日志文件。</p>
+<h4 id="表空间文件"><a href="#表空间文件" class="headerlink" title="表空间文件"></a>表空间文件</h4><p>Innodb 存储引擎以索引组织表的形式来存储数据，所有的数据都存放在一个空间中，称为表空间。表空间又由段、区、页组成。大致如下图所示：<br><img src="/pics/mysql-tablespace.png" alt="Innodb 数据逻辑存储结构"></p>
+<p>innodb 采用将存储数据按表空间进行存放的设计，默认配置下会有一个初始大小10M的名为 ibdata1 的文件，该文件就是默认的表空间文件。用户可以通过参数 <code>innodb_data_file_path</code> 对默认表空间文件进行设置。设置表空间文件后，所有基于 innodb 存储引擎的表的数据都会保存到该共享表空间中。</p>
+<p>若设置了 <code>innodb_file_per_table = on</code>, mysql 会为每张基于 innodb 引擎的表产生独立的表空间文件，命名规则为：表名.ibd。这些单独的表空间文件仅存储该表的<strong>数据、索引和插入缓冲BITMAP</strong>等信息，其余信息如回滚信息（UNDO）、插入缓冲索引页、系统事务信息、双写缓冲等还是存在共享表空间中。</p>
+<h5 id="分区表"><a href="#分区表" class="headerlink" title="分区表"></a>分区表</h5><ul>
+<li><p>查看分区：</p>
+<ol>
+<li><code>show create table REGSAPICallAudit</code></li>
+<li>查看表是否采用了分区:<code>show table status like &#39;regsapicallaudit&#39;\G</code></li>
+<li>查看 <code>information_schema.partitions</code> 表可以查看详细分区信息：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select</span><br><span class="line">partition_name part,  </span><br><span class="line">partition_expression expr,  </span><br><span class="line">partition_description descr,  </span><br><span class="line">table_rows  </span><br><span class="line">from information_schema.partitions  where </span><br><span class="line">table_schema = schema()  </span><br><span class="line">and table_name=&apos;tr&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>添加分区：  <code>ALTER TABLE REGSAPICallAudit ADD PARTITION (PARTITION</code> `p${date}` <code>VALUES LESS THAN (TO_DAYS(&#39;${date}&#39;)));</code></p>
+</li>
+<li>删除分区：  <code>ALTER TABLE REGSAPICallAudit DROP PARTITION</code> `p2019-06-01`,`p2019-06-02`,`p2019-06-03`;</li>
+<li>重新划分分区：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE regsapicallaudit</span><br><span class="line">REORGANIZE PARTITION `p2020-04-28` INTO (</span><br><span class="line">PARTITION `p2020-04-26` VALUES LESS THAN (737906),</span><br><span class="line">PARTITION `p2020-04-27` VALUES LESS THAN (737907),</span><br><span class="line">PARTITION `p2020-04-28` VALUES LESS THAN (737908)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意重新划分分区时， PARTITION 定义的顺序一定是要递增的。</p>
+<h4 id="重做日志文件"><a href="#重做日志文件" class="headerlink" title="重做日志文件"></a>重做日志文件</h4><p> innodb 存储引擎的数据目录下会有两个名为 ib_logfile0、ib_logfile1 的文件，它们是重做日志文件。当实例或者介质失败时（如断电时），重做日志文件就能派上用场，innodb 存储引擎会使用重做日志文件恢复到失败之前的状态，以此来保证数据的完整性和一致性。下面参数会影响重做日志的属性：</p>
+<ol>
+<li>innodb_log_file_size ： 指定每个重做日志文件的大小</li>
+<li>innodb_log_files_in_group： 指定日志文件组中重做日志文件的数量，默认为2</li>
+<li>innodb_log_group_home_dir： 指定日志文件组所在的目录</li>
+</ol>
+<p>重做日志文件与二进制日志文件的区别？ </p>
+<ol>
+<li>二进制日志会记录所有与mysql数据库有关的日志记录，包括 innodb/myisam/heap 等其他存储引擎的日志，而innodb存储引擎的重做日志文件只记录innodb存储引擎本身的事务日志。</li>
+<li>二进制日志记录的是一个事务的具体操作内容，是对应的SQL语句，是逻辑日志。而重做日志文件记录的是关于每个页更改的物理情况。</li>
+<li>写入时间不同。二进制日志文件仅在事务提交前进行提交，即只写磁盘一次，无论该事务多大。而在事务进行的过程中，却不断有重做日志条目被写入到重做日志文件中。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/21/sql/msyql/mysql用户权限/" rel="next" title="mysql 用户及权限管理">
+                <i class="fa fa-chevron-left"></i> mysql 用户及权限管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/21/web/phantomjs/" rel="prev" title="phantomjs">
+                phantomjs <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件种类"><span class="nav-number">1.</span> <span class="nav-text">文件种类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参数文件"><span class="nav-number">2.</span> <span class="nav-text">参数文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#日志文件"><span class="nav-number">3.</span> <span class="nav-text">日志文件</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#套接字文件"><span class="nav-number"></span> <span class="nav-text">套接字文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PID文件"><span class="nav-number"></span> <span class="nav-text">PID文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表结构定义文件"><span class="nav-number"></span> <span class="nav-text">表结构定义文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#innodb存储引擎文件"><span class="nav-number"></span> <span class="nav-text">innodb存储引擎文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#表空间文件"><span class="nav-number">1.</span> <span class="nav-text">表空间文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分区表"><span class="nav-number">1.1.</span> <span class="nav-text">分区表</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重做日志文件"><span class="nav-number">2.</span> <span class="nav-text">重做日志文件</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

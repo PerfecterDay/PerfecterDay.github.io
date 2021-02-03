@@ -1,37 +1,799 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="linux,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Linux的安全性Linux安全系统的核心是用户账户。每个能进入Linux系统的用户都会被分配一个唯一的用户账户。用户系统对系统中各种对象的访问权限取决于他们登录系统时用的账户。 用户权限是通过创建用户时分配的用户ID（UID）来跟踪的，每个用户都会有一个UID和一个对应的密码 /etc/passwd 文件Linux系统使用一个专门的文件栏来将用户的登录名匹配到UID值，这个文件就是 /etc/p">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux权限">
+<meta property="og:url" content="http://yoursite.com/2019/06/11/linux/linux 权限/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Linux的安全性Linux安全系统的核心是用户账户。每个能进入Linux系统的用户都会被分配一个唯一的用户账户。用户系统对系统中各种对象的访问权限取决于他们登录系统时用的账户。 用户权限是通过创建用户时分配的用户ID（UID）来跟踪的，每个用户都会有一个UID和一个对应的密码 /etc/passwd 文件Linux系统使用一个专门的文件栏来将用户的登录名匹配到UID值，这个文件就是 /etc/p">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.186Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux权限">
+<meta name="twitter:description" content="Linux的安全性Linux安全系统的核心是用户账户。每个能进入Linux系统的用户都会被分配一个唯一的用户账户。用户系统对系统中各种对象的访问权限取决于他们登录系统时用的账户。 用户权限是通过创建用户时分配的用户ID（UID）来跟踪的，每个用户都会有一个UID和一个对应的密码 /etc/passwd 文件Linux系统使用一个专门的文件栏来将用户的登录名匹配到UID值，这个文件就是 /etc/p">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/11/linux/linux 权限/">
+
+
+
+
+
+  <title>Linux权限 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/linux/linux 权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux权限</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T22:01:23+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Linux的安全性"><a href="#Linux的安全性" class="headerlink" title="Linux的安全性"></a>Linux的安全性</h2><p>Linux安全系统的核心是用户账户。每个能进入Linux系统的用户都会被分配一个唯一的用户账户。用户系统对系统中各种对象的访问权限取决于他们登录系统时用的账户。</p>
+<p>用户权限是通过创建用户时分配的用户ID（UID）来跟踪的，每个用户都会有一个UID和一个对应的密码</p>
+<h3 id="etc-passwd-文件"><a href="#etc-passwd-文件" class="headerlink" title="/etc/passwd 文件"></a>/etc/passwd 文件</h3><p>Linux系统使用一个专门的文件栏来将用户的登录名匹配到UID值，这个文件就是 /etc/passwd 文件。它包含了以下信息：</p>
+<ul>
+<li>登录用户名</li>
+<li>用户密码</li>
+<li>UID</li>
+<li>GID（用户组ID）</li>
+<li>用户账户的文本描述</li>
+<li>用户HOME目录的位置</li>
+<li><p>用户默认的Shell<br>root用户账户是Linux系统的管理员，固定分配的UID是0。Linux系统会为各种各样的功能创建不同的用户账户，这些账户不是真正的账户。它们叫做系统账户，是系统上运行各种服务进程访问资源的特殊账户。所有运行在后台的服务都需要一个系统用户登录到Linux系统上。通常系统账户的UID是500以下的值。</p>
+<p>/etc/passwd 文件中用户密码都被设置成了x，真实的密码被保存到了 /etc/shadow 文件中，只有特定的程序（比如登录程序）才能访问这个文件。</p>
+<h3 id="etc-shadow-文件"><a href="#etc-shadow-文件" class="headerlink" title="/etc/shadow 文件"></a>/etc/shadow 文件</h3><p>/etc/shadow文件对Linux系统密码管理提供了更多的控制。只有root用户才能访问/etc/shadow<br>文件，这让它比起/etc/passwd安全许多。</p>
+</li>
+</ul>
+<p>/etc/shadow文件为系统上的每个用户账户都保存了一条记录。记录就像下面这样：<br><code>rich:$1$.FfcK0ns$f1UgiyHQ25wrB/hykCn020:11627:0:99999:7:::</code></p>
+<p>在/etc/shadow文件的每条记录中都有9个字段：</p>
+<ul>
+<li>与/etc/passwd文件中的登录名字段对应的登录名</li>
+<li>加密后的密码</li>
+<li>自上次修改密码后过去的天数密码（自1970年1月1日开始计算）</li>
+<li>多少天后才能更改密码</li>
+<li>多少天后必须更改密码</li>
+<li>密码过期前提前多少天提醒用户更改密码</li>
+<li>密码过期后多少天禁用用户账户</li>
+<li>用户账户被禁用的日期（用自1970年1月1日到当天的天数表示）</li>
+<li>预留字段给将来使用</li>
+</ul>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="添加新用户"><a href="#添加新用户" class="headerlink" title="添加新用户"></a>添加新用户</h3><p>用来向Linux系统添加新用户的主要工具是 <code>useradd</code>,需要root权限或 sudo 。这个命令简单快捷，可以一次性创建新用户账户及设置用户HOME目录结构。<code>useradd</code> 命令使用系统的默认值以及命令行参数来设置用户账户。系统默认值被设置在 <code>/etc/default/useradd</code> 文件中。可以使用加入了 -D 选项的 <code>useradd</code><br>命令查看所用Linux系统中的这些默认值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># /usr/sbin/useradd -D</span><br><span class="line">GROUP=100 新用户会被添加到GID为 100 的公共组</span><br><span class="line">HOME=/home 新用户的HOME目录将会位于/home/loginname</span><br><span class="line">INACTIVE=-1 新用户账户密码在过期后不会被禁用</span><br><span class="line">EXPIRE=   新用户账户未被设置过期日期</span><br><span class="line">SHELL=/bin/bash 新用户账户将bash shell作为默认shell</span><br><span class="line">SKEL=/etc/skel 系统会将/etc/skel目录下的内容复制到用户的HOME目录下</span><br><span class="line">CREATE_MAIL_SPOOL=yes  系统为该用户账户在mail目录下创建一个用于接收邮件的文件</span><br></pre></td></tr></table></figure></p>
+<p>倒数第二个值很有意思。 useradd 命令允许管理员创建一份默认的HOME目录配置，然后把<br>它作为创建新用户HOME目录的模板。这样就能自动在每个新用户的HOME目录里放置默认的系<br>统文件。在Ubuntu Linux系统上，/etc/skel目录有下列文件：</p>
+<ul>
+<li>.bash_logout</li>
+<li>.bashrc</li>
+<li>.profile</li>
+</ul>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p>如果你想从系统中删除用户， <code>userdel</code> 可以满足这个需求。默认情况下， <code>userdel</code> 命令会只<br>删除 <code>/etc/passwd</code> 文件中的用户信息，而不会删除系统中属于该账户的任何文件。要删除用户的 home 目录，加上 -r 选项即可。</p>
+<h3 id="修改用户"><a href="#修改用户" class="headerlink" title="修改用户"></a>修改用户</h3><p>用户账户修改工具：</p>
+<p>命令 | 描述<br>|-|-|<br>|usermod |修改用户账户的字段，还可以指定主要组以及附加组的所属关系|<br>|passwd | 修改已有用户的密码|<br>|chpasswd | 从文件中读取登录名密码对，并更新密码|<br>|chage | 修改密码的过期日期|<br>|chfn | 修改用户账户的备注信息|<br>|chsh | 修改用户账户的默认登录shell|</p>
+<h4 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h4><p><code>usermod</code> 命令是用户账户修改工具中最强大的一个。它能用来修改/etc/passwd文件中的大部分字段，只需用与想修改的字段对应的命令行参数就可以了。参数大部分跟 useradd 命令的参数一样（比如， -c 修改备注字段， -e 修改过期日期， -g 修改默认的登录组）。除此之外，还有另外一些可能派上用场的选项:</p>
+<ul>
+<li>-l: 修改用户账户的登录名</li>
+<li>-L: 锁定账户，使用户无法登录</li>
+<li>-p: 修改账户的密码</li>
+<li>-U: 解除锁定，使用户能够登录</li>
+</ul>
+<h4 id="passwd-和-chpasswd"><a href="#passwd-和-chpasswd" class="headerlink" title="passwd 和 chpasswd"></a>passwd 和 chpasswd</h4><p>只用 passwd 命令，它会改你自己的密码。系统上的任何用户都能改自己的密码，但只有root用户才有权限改别人的密码。</p>
+<p>如果需要为系统中的大量用户修改密码， chpasswd 命令可以事半功倍。 chpasswd 命令能从标准输入自动读取登录名和密码对（由冒号分割）列表，给密码加密，然后为用户账户设置。你也可以用重定向命令来将含有 userid:passwd 对的文件重定向给该命令。<br><code># chpasswd &lt; users.txt</code></p>
+<h2 id="Linux-组"><a href="#Linux-组" class="headerlink" title="Linux 组"></a>Linux 组</h2><h3 id="etc-group-文件"><a href="#etc-group-文件" class="headerlink" title="/etc/group 文件"></a>/etc/group 文件</h3><p>与用户账户类似，组信息也保存在系统的一个文件中。/etc/group文件包含系统上用到的每个组的信息。系统账户用的组通常会分配低于500的GID值，而用户组的GID则会从500开始分配。/etc/group文件有4个字段：</p>
+<ul>
+<li>组名</li>
+<li>组密码</li>
+<li>GID</li>
+<li>属于该组的用户列表<br>查看用户所属组信息：<code>groups</code>|<code>grooups [username]</code>.</li>
+</ul>
+<h3 id="创建新组"><a href="#创建新组" class="headerlink" title="创建新组"></a>创建新组</h3><p><code>groupadd</code>  命令可在系统上创建新组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd shared</span><br><span class="line">usermod -G shared test #添加用户 test 到 shared 组</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改组"><a href="#修改组" class="headerlink" title="修改组"></a>修改组</h3><p><code>groupmod</code> 命令可以修改组：</p>
+<ul>
+<li>-g: 修改GID</li>
+<li>-n: 修改组名</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/10/sql/中级SQL/" rel="next" title="中级 SQL">
+                <i class="fa fa-chevron-left"></i> 中级 SQL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/22/web/css入门/" rel="prev" title="CSS 综述">
+                CSS 综述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux的安全性"><span class="nav-number">1.</span> <span class="nav-text">Linux的安全性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-passwd-文件"><span class="nav-number">1.1.</span> <span class="nav-text">/etc/passwd 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-shadow-文件"><span class="nav-number">1.2.</span> <span class="nav-text">/etc/shadow 文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户管理"><span class="nav-number">2.</span> <span class="nav-text">用户管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加新用户"><span class="nav-number">2.1.</span> <span class="nav-text">添加新用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除用户"><span class="nav-number">2.2.</span> <span class="nav-text">删除用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改用户"><span class="nav-number">2.3.</span> <span class="nav-text">修改用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#usermod"><span class="nav-number">2.3.1.</span> <span class="nav-text">usermod</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#passwd-和-chpasswd"><span class="nav-number">2.3.2.</span> <span class="nav-text">passwd 和 chpasswd</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-组"><span class="nav-number">3.</span> <span class="nav-text">Linux 组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#etc-group-文件"><span class="nav-number">3.1.</span> <span class="nav-text">/etc/group 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新组"><span class="nav-number">3.2.</span> <span class="nav-text">创建新组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改组"><span class="nav-number">3.3.</span> <span class="nav-text">修改组</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

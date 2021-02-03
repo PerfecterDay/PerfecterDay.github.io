@@ -1,37 +1,863 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sql,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数据库表的新建修改与删除 创建新的数据库：create databse [if not exists] db_name; 一个数据库服务器可以同时包含多个数据库，查看包含的数据库：show databases 删除数据库：drop database db_name 进入指定数据库：use db_name 查看数据库下有多少个表：show tables 查看某张表的结构：desc table_nam">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初级 SQL">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/sql/初级SQL/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="数据库表的新建修改与删除 创建新的数据库：create databse [if not exists] db_name; 一个数据库服务器可以同时包含多个数据库，查看包含的数据库：show databases 删除数据库：drop database db_name 进入指定数据库：use db_name 查看数据库下有多少个表：show tables 查看某张表的结构：desc table_nam">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/db-obj.jpg">
+<meta property="og:image" content="http://yoursite.com/pics/mysql-types.jpg">
+<meta property="og:image" content="http://yoursite.com/pics/select-1.jpg">
+<meta property="og:image" content="http://yoursite.com/pics/dikaer.jpg">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.216Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初级 SQL">
+<meta name="twitter:description" content="数据库表的新建修改与删除 创建新的数据库：create databse [if not exists] db_name; 一个数据库服务器可以同时包含多个数据库，查看包含的数据库：show databases 删除数据库：drop database db_name 进入指定数据库：use db_name 查看数据库下有多少个表：show tables 查看某张表的结构：desc table_nam">
+<meta name="twitter:image" content="http://yoursite.com/pics/db-obj.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/14/sql/初级SQL/">
+
+
+
+
+
+  <title>初级 SQL | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/sql/初级SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">初级 SQL</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T20:34:45+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/sql语句/" itemprop="url" rel="index">
+                    <span itemprop="name">sql语句</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="数据库表的新建修改与删除"><a href="#数据库表的新建修改与删除" class="headerlink" title="数据库表的新建修改与删除"></a>数据库表的新建修改与删除</h2><ol>
+<li>创建新的数据库：<br><code>create databse [if not exists] db_name;</code></li>
+<li>一个数据库服务器可以同时包含多个数据库，查看包含的数据库：<br><code>show databases</code></li>
+<li>删除数据库：<br><code>drop database db_name</code></li>
+<li>进入指定数据库：<br><code>use db_name</code></li>
+<li>查看数据库下有多少个表：<br><code>show tables</code></li>
+<li>查看某张表的结构：<br><code>desc table_name</code></li>
+</ol>
+<p>常见的数据库对象：<br><img src="/pics/db-obj.jpg" alt="常见的数据库对象"><br>上述对象都可以在 create 、 drop 和 alter 等于语句中使用，如 create tabel.. 、 create index… </p>
+<p>Sql数据类型：<br>sql标准支持多种数据类型：</p>
+<ul>
+<li><strong>char(n)</strong>:<strong>固定</strong>长度的字符串，用户指定长度n，也可以使用全称character(n);</li>
+<li><strong>varvhar(n)</strong>:<strong>可变长度</strong>的字符串用户指定<strong>最大长度n</strong>，等价于全称character varying(n);</li>
+<li><strong>int</strong>:整数类型，等价于全称integer;</li>
+<li><strong>smallint</strong>:小整数类型;</li>
+<li><strong>numeric(p,d)</strong>:定点数，精度由用户指定。这个数有p位数字(包括一位符号位)，其中d位数字在小数点右边。所以一个numberic(3,1)可以精确表示44.5,但是不能精确表示444.5和0.32;</li>
+<li><strong>real,double precision</strong>:浮点数与双精度浮点数，精度与机器有关;</li>
+<li><strong>float(n)</strong>:精度至少为n位的浮点数。<br>每种类型都可能包含一个称作<strong>空值</strong>的特殊值 NULL 。</li>
+</ul>
+<p><strong>char(10)</strong>类型的字段存储“Aou”三个字符时，不足10位的部分会补上7个空格来填充，而<strong>varchar(10)</strong>存储相同值时只会占用三个字符的空间，因此更推荐使用<strong>varchar(n)</strong>数据类型。</p>
+<p>Mysql 的数据类型：<br><img src="/pics/mysql-types.jpg" alt="Mysql 数据类型"></p>
+<h3 id="创建数据库表"><a href="#创建数据库表" class="headerlink" title="创建数据库表"></a>创建数据库表</h3><ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">creaet table [db-name].table-name(</span><br><span class="line">    # 可以有多个如下的列定义</span><br><span class="line">    column-name datatype [default expr],</span><br><span class="line">    ...,</span><br><span class="line">    ...,</span><br><span class="line">    primary key(column-name...)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从其他表中创建表并导入数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">creaet table [db-name].table-name as select col1,col2... from table2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个与 table_name2 相同的表：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table table_name like table_name2</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="修改表："><a href="#修改表：" class="headerlink" title="修改表："></a>修改表：</h3><ol>
+<li>增加列<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alter table table-name add (</span><br><span class="line">    # 可以有多个如下的列定义</span><br><span class="line">    column-name datatype [default expr],</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>实际上，如果表中已经有了数据，除非给新增字段指定默认值，否则新增字段不可以指定非空约束，因为新增字段肯定是空的。</p>
+<ol>
+<li>修改列定义：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table-name modify column-name datatype [default expr] [first|after column-name2]</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>first或 after column 代表将目标列修改到指定位置（column-name2 之前或之后）。如果数据表里已经有数据，修改列很容易失败，因为很可能修改的列定义与原有的数据记录有冲突。如果修改数据列的默认值，则只会对新增的数据有影响，已有的数据不会有任何影响。</p>
+<ol>
+<li>删除列：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table table-name drop column-name</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>删除列总是可以成功的，且会从每行中删除该列的数据，并释放该列所占的空间。所以删除列一般时间比较长，因为还要回收空间。</p>
+<h3 id="删除表："><a href="#删除表：" class="headerlink" title="删除表："></a>删除表：</h3><pre><code>drop table table-name
+</code></pre><h3 id="清空表："><a href="#清空表：" class="headerlink" title="清空表："></a>清空表：</h3><pre><code>truncate table-name
+</code></pre><h2 id="SLQ-查询"><a href="#SLQ-查询" class="headerlink" title="SLQ 查询"></a>SLQ 查询</h2><p>Sql 查询的语法顺序:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">SELECT [DISTINCT]</span><br><span class="line">FROM</span><br><span class="line">WHERE</span><br><span class="line">GROUP BY</span><br><span class="line">HAVING</span><br><span class="line">UNION</span><br><span class="line">ORDER BY</span><br><span class="line">LIMIT/ROWNUM</span><br></pre></td></tr></table></figure></p>
+<p>这 8 种关键字是有严格顺序的，<br>这 8 种关键字可以选择的写其中几种，但是顺序要按照上面的顺序来</p>
+<p>SQL 查询的基本结构:<br>一个sql查询包括三种类型子句： <strong>select</strong> 子句、 <strong>from</strong> 子句、 <strong>where</strong> 子句：</p>
+<ol>
+<li><strong>select</strong> 子句用于列出查询结果中所需要的属性</li>
+<li><strong>from</strong> 子句是一个查询求值中要访问的关系列表</li>
+<li><strong>where</strong> 子句是一个作用在 <strong>from</strong> 子句中关系上的谓词。<br>一个典型的sql查询具有如下形式：</li>
+</ol>
+<p><img src="/pics/select-1.jpg" alt="sql查询的基本结构"></p>
+<p>每个 <strong>A<sub>i</sub></strong> 代表一个属性，每个 <strong>r<sub>i</sub></strong> 代表一个关系，P是一个谓词，如果省略 <strong>where</strong> 子句，那么谓词P为true。</p>
+<p>通常来说，一个SQL查询的含义可以理解如下：</p>
+<ol>
+<li>为<strong>from</strong>子句中列出的关系产生笛卡尔积</li>
+<li>在步骤1的基础上应用 <strong>where</strong> 子句中指定的谓词</li>
+<li>在步骤2结果中的每个元组，输出 <strong>select</strong> 子句中指定的属性(或表达式结果)。</li>
+</ol>
+<p><img src="/pics/dikaer.jpg" alt="笛卡尔积"></p>
+<h3 id="order-by"><a href="#order-by" class="headerlink" title="order by"></a>order by</h3><p><code>select * from instructr order by salary desc, name asc</code><br>查询 instructr 中所有元组，按照工资从高到低排序，如果两个元组工资相同，则按照名字升序排序。如果想在多个列上进行排序，必须对每一列指定 DESC/ASC 关键字,没有指定默认为ASC.</p>
+<h3 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h3><p><code>limit 5 offset 6</code> 或者写成 <code>limit 6,5</code><br>返回从第6行起（包括第6行）的5条数据。</p>
+<h3 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h3><p>DISTINCT 关键字作用于所有的列，不仅仅是跟在其后的那一列，不能部分使用 DISTINCT。作用于多列时，必须所有列的值都相同才不会被重复检索出来。</p>
+<h3 id="集合运算"><a href="#集合运算" class="headerlink" title="集合运算"></a>集合运算</h3><p>SQL 关系上的 <code>union 、 intersect 、 except</code> 运算对应于数学集合论中的并、交和差运算。三个运算都会自动去除输入中的重复。若想保留重复，分别在三个操作后加上 all 即可。<br><code>（select x from A) union [all] (select x from B)</code></p>
+<h3 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h3><p>如果算术表达式的任一输入为 null，则该算术表达式的结果为空。</p>
+<p>涉及 null 的比较运算的结果为 unknown，是 true 和 false 之外的第三个逻辑值。</p>
+<ol>
+<li>true and unknown = unknown；false and unknown = false；unknown and unknown = unknown</li>
+<li>true or unknown = true；false or unknown = unknown；unknown or unknown = unknown</li>
+<li>not unknown = unknown<br>如果 where 子句的谓词条件对一个元组计算出来的结果是 false 或 unknown，那么这个元组就不能被加入到结果集中。</li>
+</ol>
+<p>可以用 <code>is null</code> 或者 <code>is not null</code> 来判断是否为空。不能用 =、!= 来判断。</p>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><ul>
+<li>%：表示任何字符出现任意次数</li>
+<li>_：匹配单个任意字符，而不是多个字符</li>
+</ul>
+<h3 id="聚集函数"><a href="#聚集函数" class="headerlink" title="聚集函数"></a>聚集函数</h3><p>聚集函数是以值得一个集合为输入，返回单个值得函数。SQL提供了五个固有的聚集函数：</p>
+<ul>
+<li>平均值： avg</li>
+<li>最大值： max</li>
+<li>最小值： min</li>
+<li>总和：   sum</li>
+<li>计数：   count</li>
+</ul>
+<h3 id="having子句"><a href="#having子句" class="headerlink" title="having子句"></a>having子句</h3><p>包含聚集、<strong>group by</strong>或<strong>having</strong>子句的查询的含义可通过下述操作序列来定义：</p>
+<ol>
+<li>与不带聚集的查询情况类似，最先根据 <strong>from</strong> 子句计算出一个关系； </li>
+<li>如果出现 <strong>where</strong> 子句，<strong>where</strong> 子句中的谓词将应用到 <strong>from</strong> 子句的结果关系上； </li>
+<li>如果出现了<strong>group by</strong>子句， 满足 <strong>where</strong> 谓词的元组通过<strong>group by</strong>子句形成分组。 如果没有 <strong>group by</strong> 子句，满足 <strong>where</strong> 谓词的整个元组集被当做一个分组。 </li>
+<li>如果出现了 <strong>having</strong> 子句，它将应用到每个分组上；不满足 <strong>having</strong> 子句谓词的分组将被抛弃。 </li>
+<li><strong>select</strong>子句 利用剩下的分组产生出查询结果中的元组，即在每个分组上应用聚集函数来得到单个结果元组。</li>
+</ol>
+<p>出现在 <strong>select</strong> 语句中但没有被聚集的属性，只能是那些出现在 <strong>group by</strong> 子句中那些的属性。换句话说，任何没有出现在 <strong>group by</strong> 子句中的属性，如果出现在 <strong>select</strong> 子句中，<strong>它只能出现在聚集函数内部</strong>，否则这样的查询就是错误的。</p>
+<p>与 <strong>select</strong> 子句类似, 任何出现在 <strong>having</strong> 子句中，但没有被聚集的属性必须出现在 <strong>group by</strong> 子句中，否则查询就被当成错误的。</p>
+<h3 id="对空值和布尔值的聚集"><a href="#对空值和布尔值的聚集" class="headerlink" title="对空值和布尔值的聚集"></a>对空值和布尔值的聚集</h3><p>除了 <strong>count(*)</strong> 外的所有聚集函数都<strong>忽略</strong>输入集合中的空值。</p>
+<h2 id="SQL-删除"><a href="#SQL-删除" class="headerlink" title="SQL 删除"></a>SQL 删除</h2><p>SQL删除的基本结构：<br><code>delete from r wher p</code><br>r代表一个关系，p代表一个谓词条件。首先从关系r中找出p为真的元组，然后将他们删除。</p>
+<p>delete 语句只能用于一个关系，如果想从多个关系中删除，必须每个关系上使用一条 delete 命令。</p>
+<h2 id="SQL-插入数据"><a href="#SQL-插入数据" class="headerlink" title="SQL 插入数据"></a>SQL 插入数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insert into r(c1,c2,c3...)</span><br><span class="line">values </span><br><span class="line">(value1,value2,value3...),</span><br><span class="line">(value4,value5,value6...),</span><br><span class="line">....</span><br></pre></td></tr></table></figure>
+<p>如果关系r后边没有指出具体的某些列，则默认插入所有列，需要为每列指定值。如果只为指定列赋值了，那么未赋值的列将被赋予空值 null。</p>
+<h2 id="SQL-更新"><a href="#SQL-更新" class="headerlink" title="SQL 更新"></a>SQL 更新</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">update r</span><br><span class="line">set c1=value1,c2=value2,...</span><br><span class="line">where p</span><br></pre></td></tr></table></figure>
+<p>SQL首先检查关系中的所有元组，判断是否应该被更新，然后才执行更新。</p>
+<h3 id="case…when-语句"><a href="#case…when-语句" class="headerlink" title="case…when 语句"></a>case…when 语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">case</span><br><span class="line">    when pred then result1</span><br><span class="line">    when pred2 then result2</span><br><span class="line">    ...</span><br><span class="line">    when predn then resuln</span><br><span class="line">    else result</span><br><span class="line">end as column_name</span><br></pre></td></tr></table></figure>
+<p>统计指定条件下的数据(统计hit_cache=’true’的总合)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sum(</span><br><span class="line">case </span><br><span class="line">    when hit_cache=&apos;true&apos; then 1 </span><br><span class="line">    else 0 </span><br><span class="line">    end</span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/12/sql/数据库并发控制-基于锁的协议/" rel="next" title="基于锁的协议">
+                <i class="fa fa-chevron-left"></i> 基于锁的协议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/19/sql/msyql/读懂mysql执行计划/" rel="prev" title="读懂mysql执行计划">
+                读懂mysql执行计划 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库表的新建修改与删除"><span class="nav-number">1.</span> <span class="nav-text">数据库表的新建修改与删除</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据库表"><span class="nav-number">1.1.</span> <span class="nav-text">创建数据库表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改表："><span class="nav-number">1.2.</span> <span class="nav-text">修改表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除表："><span class="nav-number">1.3.</span> <span class="nav-text">删除表：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清空表："><span class="nav-number">1.4.</span> <span class="nav-text">清空表：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SLQ-查询"><span class="nav-number">2.</span> <span class="nav-text">SLQ 查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#order-by"><span class="nav-number">2.1.</span> <span class="nav-text">order by</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#limit"><span class="nav-number">2.2.</span> <span class="nav-text">limit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#distinct"><span class="nav-number">2.3.</span> <span class="nav-text">distinct</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#集合运算"><span class="nav-number">2.4.</span> <span class="nav-text">集合运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空值"><span class="nav-number">2.5.</span> <span class="nav-text">空值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符"><span class="nav-number">2.6.</span> <span class="nav-text">通配符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集函数"><span class="nav-number">2.7.</span> <span class="nav-text">聚集函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#having子句"><span class="nav-number">2.8.</span> <span class="nav-text">having子句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对空值和布尔值的聚集"><span class="nav-number">2.9.</span> <span class="nav-text">对空值和布尔值的聚集</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-删除"><span class="nav-number">3.</span> <span class="nav-text">SQL 删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-插入数据"><span class="nav-number">4.</span> <span class="nav-text">SQL 插入数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-更新"><span class="nav-number">5.</span> <span class="nav-text">SQL 更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#case…when-语句"><span class="nav-number">5.1.</span> <span class="nav-text">case…when 语句</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

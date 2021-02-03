@@ -1,23 +1,4280 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/7/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/7/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/web/html中的相对路径与绝对路径/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/web/html中的相对路径与绝对路径/" itemprop="url">html中的相对路径与绝对路径</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="html中的相对路径与绝对路径"><a href="#html中的相对路径与绝对路径" class="headerlink" title="html中的相对路径与绝对路径"></a>html中的相对路径与绝对路径</h1><hr>
+<p><img src="/pics/abslout-relative.gif" alt="相对路径与绝对路径"></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>引用者</th>
+<th>被引用者</th>
+<th>相对路径</th>
+<th>绝对路径</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ref1.htm</td>
+<td>BeRef1.gif</td>
+<td>../SubDir2/BeRef1.gif</td>
+<td>/Dir1/SubDir2/BeRef1.gif</td>
+</tr>
+<tr>
+<td>Ref2.htm</td>
+<td>BeRef1.gif</td>
+<td>../../Dir1/SubDir2/<br>BeRef1.gif</td>
+<td>/Dir1/SubDir2/ BeRef1.gif</td>
+</tr>
+<tr>
+<td>Ref1.htm</td>
+<td>BeRef2.htm</td>
+<td>../../Dir2/BeRef2.htm</td>
+<td>/Dir2/BeRef2.htm</td>
+</tr>
+<tr>
+<td>Ref2.htm</td>
+<td>BeRef2.htm</td>
+<td>../BeRef2.htm</td>
+<td>/Dir2/BeRef2.htm</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/15/git/git核心概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/15/git/git核心概念/" itemprop="url">git 核心概念</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-15T13:28:10+08:00">
+                2020-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Git 更像是把数据看作是对小型文件系统的一系列快照。 在 Git 中，每当你提交更新或保存项目状态时，它基本上就会对当时的全部文件创建一个快照并保存这个快照的索引。 为了效率，如果文件没有修改，Git 不再重新存储该文件，而是只保留一个链接指向之前存储的文件。 Git 对待 数据更像是一个快照流。<br><img src="/pics/git-snapshot.png" alt><br>Git 一次提交大概的数据结构如下图所示：<br><img src="/pics/git-commit.png" alt></p>
+<p>Git 拥有三个阶段：工作区、暂存区（索引）及 Git 目录。</p>
+<ul>
+<li>工作区：工作区是对项目的某个版本独立提取出来的内容。 这些从 Git 仓库的压缩数据库中提取出来的文件，放在磁盘上<br>供你使用或修改。就是相当于从版本库中提取出一个快照到磁盘上以作修改</li>
+<li>暂存区是一个文件，保存了下次将要提交的文件列表信息，一般在 Git 仓库目录中。</li>
+<li>Git 仓库目录是 Git 用来保存项目的元数据和对象数据库的地方。 这是 Git 中最重要的部分，从其它计算机克隆<br>仓库时，复制的就是这里的数据。</li>
+</ul>
+<h2 id="重置与检出"><a href="#重置与检出" class="headerlink" title="重置与检出"></a>重置与检出</h2><p>Git 的三个工作区间可以想像成三棵树， reset 命令会以特定的顺序重写这三棵树，在你指定以下选项时停止:</p>
+<ol>
+<li>移动 HEAD 分支的指向 (若指定了 —soft，则到此停止) </li>
+<li>使索引看起来像 HEAD (若未指定 —hard，则到此停止) </li>
+<li>使工作目录看起来像索引<br><img src="/pics/git-reset.png" alt></li>
+</ol>
+<p>git reset 后边加上文件或目录路径时，reset 将会跳过第一步，并且将它的作用范围限定为指定的文件或文件集合。<br><code>git reset eb43bf file.txt</code>: 将提交为 eb43bf 中的 file.txt 文件版本恢复到索引</p>
+<p>下面的速查表列出了命令对树的影响。 “HEAD” 一列中的 “REF” 表示该命令移动了 HEAD 指向的分支引 用，而 “HEAD” 则表示只移动了 HEAD 自身。 特别注意 WD Safe? 一列——如果它标记为 NO，那么运行该命 令之前请考虑一下。<br><img src="/pics/git-reset-checkout.png" alt></p>
+<h2 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h2><p>Git 是一个内容寻址文件系统，听起来很酷。但这是什么意思呢? 这意味着，Git 的核心部分是一个简单的键值对数据库(key-value data store)。 你可以向 Git 仓库中插入任意类型的内容，它会返回一个唯一的键，通过该键可以在任意时刻再次取回该内容。</p>
+<h3 id="Blob对象"><a href="#Blob对象" class="headerlink" title="Blob对象"></a>Blob对象</h3><h4 id="Git-中存入内容"><a href="#Git-中存入内容" class="headerlink" title="Git 中存入内容"></a>Git 中存入内容</h4><p>可以通过底层命令<code>git hash-object</code>来演示上述效果——该命令可将任意数据保存于<code>.git/objects</code>目录 (即对象数据库)，并返回指向该数据对象的唯一的键。<code>git hash-object</code>会接受你传给它的东西，而它只会返回可以存储在Git仓库中的唯 一键。 -w 选项会指示该命令不要只返回键，还要将该对象写入数据库中。上述类型的对象我们称之为数据对象(blob object)</p>
+<h4 id="查看存入-Git-的内容"><a href="#查看存入-Git-的内容" class="headerlink" title="查看存入 Git 的内容"></a>查看存入 Git 的内容</h4><ol>
+<li><code>git cat-file -p &lt;hash&gt;</code> 命令从 Git 那里取回数据， -p 选项可指示该命令自动判断内容的类型，并为我们显示大致的内容：<br> <code>git cat-file -p 257fa7137cae7c6a3bab82d371be6007a491cd1e</code>  </li>
+<li><code>git cat-file -t &lt;hash&gt;</code> 命令，可以让Git告诉我们其内部存储的任何对象类型，只要给定该对象 的 SHA-1 值:<br> <code>git cat-file -p 257fa7137cae7c6a3bab82d371be6007a491cd1e</code></li>
+</ol>
+<h3 id="树对象"><a href="#树对象" class="headerlink" title="树对象"></a>树对象</h3><p>树对象(tree object)能解决文件名保存的问题，也允许我们将多个文件组织到一起。 Git 以一种类似于 UNIX 文件系统的方式存储内容，但作了些许简化。 所有内容均以树对象和数据对象的形式存储，其中树对象对应了 UNIX 中的目录项，数据对象则大致上对应了 inodes 或文件内容。 一个树对象包含了一条或多条树对象记录(tree entry)，每条记录含有一个指向数据对象或者子树对象的 SHA-1 指针， 以及相应的模式、类型、文件名信息。</p>
+<p><code>git cat-file -p master^{tree}</code>: 查看树对象，master^{tree} 语法表示 master 分支上最新的提交所指向的树对象</p>
+<p>通常，Git 根据某一时刻暂存区(即 index 区域，下同)所表示的状态创建并记录一个对应的树对象， 如此重复便可依次记录(某个时间段内)一系列的树对象。首先，需要通过暂存一些文件来创建一个暂存区。然后，可以通过 <code>git write-tree</code> 命令将暂存区内容写入一个树对象。</p>
+<h3 id="提交对象"><a href="#提交对象" class="headerlink" title="提交对象"></a>提交对象</h3><p>每个tree对象分别代表我们想要跟踪的不同项目快照。 然而问题依旧:若想重用这些快照，你必须记住所有三个 SHA-1 哈希值。 并且，你也完全不知道是谁保存了这些快照，在什么时刻保存的，以及为什么保存这些快照。 而以上这些，正是提交对象(commit object)能为你保存的基 本信息。<br>可以通过调用 <code>git commit-tree</code> 命令创建一个提交对象，为此需要指定一个树对象的 SHA-1 值，以及该提交的父 提交对象(如果有的话) 。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/git/git常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/30/git/git常用命令/" itemprop="url">git 常用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T21:52:10+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Github-配置-SSH-登录"><a href="#Github-配置-SSH-登录" class="headerlink" title="Github 配置 SSH 登录"></a>Github 配置 SSH 登录</h3><ol>
+<li>打开 git bash，非 windows 下不需要</li>
+<li>查看是否已经有 SSH keys： <code>ls -la ~/.ssh</code></li>
+<li>生成 SSH keys: <code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code></li>
+<li>启动 ssh-agent：eval <code>ssh-agent -s</code></li>
+<li>添加 key 到 ssh-agent: <code>ssh-add ~/.ssh/id_ed25519</code></li>
+<li>将生成的 SSH 公钥(id_rsa.pub)粘贴到GitHub上</li>
+<li>测试能否连接：<code>ssh -T git@github.com</code></li>
+</ol>
+<p><img src="/pics/git-frame.jpg" width="50%" height="50%"></p>
+<h3 id="git-常用命令"><a href="#git-常用命令" class="headerlink" title="git 常用命令"></a>git 常用命令</h3><ol>
+<li><code>git clean</code>: 删除工作区中未跟踪（不在版本库也未索引的）的文件</li>
+<li><code>git add</code>: 这是个多功能命令:可以用它开 始跟踪新文件，或者把已跟踪的文件放到暂存区，还能用于合并时把有冲突的文件标记为已解决状态等</li>
+<li><code>git ls-files --satge</code>:查看暂存区的文件</li>
+<li><code>git diff</code> : 只显示尚未暂存的改动，而不是自上次提交以来所做的所有改动</li>
+<li><code>git diff --staged</code>:比对已暂存文件与最后一次提交的文件差异</li>
+<li><code>git rm filename</code> : 删除某个文件，会同时删除版本库和工作区的文件</li>
+<li><code>git rm --cached filename</code>:从暂存区和工作区删除某个文件，提交后，版本库中会删除这个文件，但是工作区磁盘上会保留</li>
+<li><code>git checkout head filename</code>:从暂存区恢复工作区中的文件，通常是想放弃对工作区中的修改或者误删了工作区文件</li>
+<li><code>git checkout &lt;hash&gt; &lt;filename&gt;</code>：恢复文件到某个提交状态</li>
+<li><code>git reset [HEAD|&lt;h&gt;&lt;/h&gt;ash] filename</code>:从版本库中恢复某个文件，当你删除了工作区中的文件，又删除了暂存区中的文件，想恢复文件可以用这个命令</li>
+<li><code>git commit</code>:将暂存区中的文件提交到版本库</li>
+<li><code>git commit --amend</code>：将本次提交与前一次的提交合并为一次提交</li>
+<li><code>git checkout branchname</code>:切换分支</li>
+<li><code>git checkout -b branchname</code>:切换分支,如果分支名不存在则基于当前分支新建一个分支</li>
+<li><code>git reset filename</code>:从版本库中还原某个文件到暂存区，当想撤销某次git add filename操作时使用，不加filename时，重置整个暂存区，工作区内容不受影响</li>
+<li><code>git reset</code>:恢复暂存区文件为版本库状态,工作区文件不会改变</li>
+<li><code>git reset --hard head~1</code>:用上一次提交的版本库状态恢复暂存区和工作区</li>
+<li><code>git log</code>: 查看提交历史记录</li>
+<li><code>git log filename</code>: 查看某个文件的历史提交记录</li>
+<li><code>git show &lt;commit_id&gt;</code>: 查看某次提交的信息信息</li>
+<li><code>git reflog</code>:查看引用历史记录</li>
+<li><code>git reset ref</code>:将版本库恢复到某次提交状态，适用于往前reset后又想往后reset</li>
+<li><code>git stash</code>:将当前工作区中的修改保存起来,并用版本库中的内容恢复暂存区和工作区，当开发到一半时，需要处理另一个bug时使用</li>
+<li><code>git stash pop</code>:将保存的内容恢复到工作区</li>
+</ol>
+<h3 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h3><ol>
+<li><code>git checkout -b 本地分支名x origin/远程分支名x</code>: 在本地新建分支x，并自动切换到该本地分支x</li>
+<li><code>git branch -a</code>:查看所有分支</li>
+<li><code>git branch --merged|--no-merged</code>:查看已经合并到/尚未合并当前分支的分支</li>
+<li><code>git branch &lt;BranchName&gt;</code>:创建 BranchName 分支</li>
+<li><code>git checkout &lt;BranchName&gt;</code>:切换到 BranchName 分支</li>
+<li><code>git checkout -b &lt;BranchName&gt;</code>:在当前分支基础上新建 BranchName 分支，并切换到 BranchName 分支</li>
+<li><code>git brnch -d &lt;BranchName&gt;</code>:删除 BranchName 分支</li>
+<li><code>git merge &lt;BranchName&gt;</code>: 将 BranchName 合并到当前分支</li>
+<li><code>git merge --abort</code>: 中断合并</li>
+<li><code>git rebase &lt;targetBranch&gt; &lt;sourceBranch&gt;</code>: Rebase 实际上就是取出 sourceBranch 的一系列的提交记录，“复制”它们，然后在targetBranch 的后边逐个的放下去，创造更线性的提交历史。sourceBranch 省略时，表示将当前分支 rebase到 targetBranch。</li>
+</ol>
+<h3 id="git远程命令"><a href="#git远程命令" class="headerlink" title="git远程命令"></a>git远程命令</h3><ol>
+<li><code>git clone</code>: 从远程库克隆</li>
+<li><code>git remote</code> :显示远程主机</li>
+<li><code>git remote show &lt;仓库名&gt;</code> :显示远程主机详细信息</li>
+<li><code>git remote add &lt;仓库名&gt; &lt;仓库地址&gt;</code>:添加远程主机</li>
+<li><code>git remote rm &lt;仓库名&gt;</code>：删除远程主机</li>
+<li><code>git remote rename &lt;原仓库名&gt; &lt;新仓库名&gt;</code>：远程主机的改名</li>
+<li><code>git fetch &lt;仓库名&gt;</code>：访问远程仓库，从中拉取所有你本地仓库还没有的数据。 执行完成后，你将会拥有那个远程仓库中所有分支的引用，可以随时合并或查看</li>
+<li><code>git fetch origin 远程分支名x:本地分支名x</code> : 在本地新建分支x，但是不会自动切换到该本地分支x，需要手动checkout</li>
+<li><code>git fetch &lt;仓库名&gt; &lt;分支名&gt;</code>：取回远程主机指定分支的更新</li>
+<li><code>git pull &lt;仓库名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code>：取回远程主机某个分支的更新，再与本地的指定分支合并</li>
+<li><code>git pull &lt;仓库名&gt; &lt;远程分支名&gt;</code>：取回远程主机某个分支的更新，再与本地的当前分支合并</li>
+<li><code>git branch --set-upstream &lt;本地分支名&gt; &lt;仓库名&gt;/&lt;远程分支名&gt;</code> ：手动建立追踪关系</li>
+<li><code>git pull origin</code> : 如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名</li>
+<li><code>git pull</code> :如果当前分支只有一个追踪分支，连远程主机名都可以省略</li>
+<li><code>git push remote localbranch:remotebranch</code> : 将本地localbranch分支推送到remote的remotebranch分支上</li>
+<li><code>git push remote localbranch</code> : 将本地localbranch分支推送到remote的同名分支上</li>
+<li><code>git push remote :remotebranch</code> :删除remote的remotebranch分支</li>
+<li><code>git push remote --delete remotebranch</code> :删除remote的remotebranch分支</li>
+<li><code>git push</code> : 如果当前分支只有一个追踪分支，那么主机名都可以省略</li>
+</ol>
+<h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><ol>
+<li>windows乱码：<br> 使用git bush时，使用git add XX 添加文件后，git status 发现中文文件名是数字形式，比如”\123\456\789.txt”，点击也无法打开，二使用ls，git log都可以显示中文，最后修改配置:<br> <code>git config --global core.quotepath false</code> 解决</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/26/docker/docker-compose/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/26/docker/docker-compose/" itemprop="url">docker-compose</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-26T11:05:23+08:00">
+                2020-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们知道使用一个 Dockerfile 模板文件，可以让用户很方便的定义一个单独的应用容器。然而，在日常工作中，经常会碰到需要多个容器相互配合来完成某项任务的情况。例如要实现一个 Web 项目，除了 Web 服务容器本身，往往还需要再加上后端的数据库服务容器，甚至还包括负载均衡容器等。</p>
+<p>Compose 恰好满足了这样的需求。它允许用户通过一个单独的 docker-compose.yml 模板文件（YAML 格式）来定义一组相关联的应用容器为一个项目（project）。</p>
+<p>Compose 中有两个重要的概念：</p>
+<ul>
+<li>服务 (service)：一个应用的容器，实际上可以包括若干运行相同镜像的容器实例。</li>
+<li>项目 (project)：由一组关联的应用容器组成的一个完整业务单元，在 docker-compose.yml 文件中定义。</li>
+</ul>
+<p>Compose 的默认管理对象是项目，通过子命令对项目中的一组容器进行便捷地生命周期管理。</p>
+<p>Compose 项目由 Python 编写，实现上调用了 Docker 服务提供的 API 来对容器进行管理。因此，只要所操作的平台支持 Docker API，就可以在其上利用 Compose 来进行编排管理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/21/docker/doker命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/21/docker/doker命令/" itemprop="url">docker 命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-21T20:38:24+08:00">
+                2019-02-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="docker-核心组件"><a href="#docker-核心组件" class="headerlink" title="docker 核心组件"></a>docker 核心组件</h4><ol>
+<li>Docker客户端与服务器端：Docker是 C/S 架构的，</li>
+<li>镜像：镜像是构建 Docker 世界的基石，Docker基于镜像来运行容器。</li>
+<li>容器：容器是基于镜像的，能够为一系列操作提供一个隔离的执行环境。</li>
+<li>Registry：相当于 GitHub，用来存储、发布镜像的仓库。</li>
+<li>如何确定自己是否是登录到一台物理机/虚拟机/容器shell中： systemd-detect-virt -c</li>
+</ol>
+<h4 id="镜像操作"><a href="#镜像操作" class="headerlink" title="镜像操作"></a>镜像操作</h4><ol>
+<li><code>docker build -t [&lt;仓库名&gt;:&lt;标签&gt;] 镜像构建上下文路径</code> : 利用 Dockerfile 来制作镜像</li>
+<li><code>docker build -f path/to/dockerfile -t [&lt;仓库名&gt;:&lt;标签&gt;] 镜像构建上下文路径</code> : 利用指定的 Dockerfile 来制作镜像</li>
+<li><code>docker search xxx</code>: 查找镜像</li>
+<li><code>docker pull &lt;image_name&gt;;</code>: 从 Registry 下载镜像</li>
+<li><code>docker push &lt;image_name&lt;</code>: 上传到 Registry ，默认dockerHub</li>
+<li><code>docker images</code> : 查看docker镜像</li>
+<li><code>docker image ls -a</code>: 查看所有镜像</li>
+<li><code>docker image ls &lt;image_name&lt;</code>: 查看指定镜像</li>
+<li><code>docker image inspect &lt;image_name&lt;</code>: 查看指定镜像的详细信息</li>
+<li><code>docker image rm [选项] &lt;镜像1&lt; [&lt;镜像2&lt; ...]</code>: 删除镜像</li>
+<li><code>docker image prune</code>: 删除虚悬镜像(dangling image)</li>
+<li><code>docker commit [选项] &lt;容器ID或容器名&gt; [&lt;仓库名&gt;[:&lt;标签&gt;]]</code> : 将修改后的容器保存为镜像</li>
+</ol>
+<h5 id="Dockerfile-镜像指令"><a href="#Dockerfile-镜像指令" class="headerlink" title="Dockerfile 镜像指令"></a>Dockerfile 镜像指令</h5><p>当构建的时候，用户会指定构建镜像上下文的路径，docker build 命令得知这个路径后，会将路径下的所有内容打包，然后上传给 Docker 引擎。这样 Docker 引擎收到这个上下文包后，展开就会获得构建镜像所需的一切文件。<br>Dockerfile 中每一个指令都会建立一层，每一条指令执行过程都类似于：新建立一层，在其上执行这些命令，执行结束后，commit 这一层的修改，构成新的镜像。</p>
+<ol>
+<li>FROM: 指定基础镜像 ，后续指令都是基于基础镜像的</li>
+<li>CMD ：容器就是进程，既然是进程，那么在启动容器的时候，需要指定所运行的程序及参数。CMD 指令就是用于指定默认的容器主进程的启动命令的。如果启动容器时，添加了指令，则会覆盖CMD指令<br> <code>CMD [&#39;/bin/bash&#39;,&#39;-l&#39;]</code></li>
+<li>ENTRYPOINT： 类似于CMD，但是启动容器时添加的指令将会作为参数传递到ENTRYPOINT的指令中</li>
+<li>WORKDIR：在容器内部切换工作目录，CMD和ENTRYPOINT的指令就运行在这个目录中</li>
+<li>ENV: 用来在构建镜像过程中设置环境变量，这个环境变量可以在后续RUN指令中使用</li>
+<li>USER：用来指定该镜像会以什么用户运行</li>
+<li>VOLUME：为基于镜像创建的容器添加卷。</li>
+<li>ADD: 用来将构建环境下的文件和目录复制到镜像中，不能对构建目录或者上下文之外的文件进行ADD操作。ADD归档文件时会自动解压<br> <code>ADD hello.jar /opt/application/hello.jar</code></li>
+<li>COPY： 类似于ADD，区别在于不会做文件提取和解压的工作。</li>
+<li>ONBUILD：</li>
+<li>RUN: 用来执行命令行命令的。由于命令行的强大能力，RUN 指令在定制镜像时是最常用的指令之一。</li>
+<li>EXPOSE &lt;端口1&gt; [&lt;端口2&gt;…] : 仅仅是声明容器打算使用什么端口而已，并不会自动在宿主进行端口映射。</li>
+</ol>
+<h4 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h4><h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><ol>
+<li>docker run &lt;options&gt; &lt;image_name&gt; &lt;command&gt;: 创建并启动容器执行 command 命令，容器是否长久运行和 command 命令有关，相关选项：<ul>
+<li><code>-d</code> :代表后台守护进程运行</li>
+<li><code>-p 宿主机:宿主机端口：容器端口</code>：将容器端口映射到宿主机端口</li>
+<li><code>--restart=always</code>：自动重启容器</li>
+<li><code>--name=yourname</code>：指定容器名字</li>
+<li><code>-v 宿主机目录：容器目录：ro|rw</code>： 将宿主机的目录作为卷，挂载到容器对应目录</li>
+<li><code>-e, --env=[]</code>: 设置环境变量<br>示例：<code>docker run -p 3316:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --name=mysql-master  mysql</code></li>
+</ul>
+</li>
+<li>docker create &lt;options&gt; &lt;image_name&gt; &lt;command&gt;：创建一个新的容器但不启动它。 示例：<code>docker create  --name myrunoob  nginx:latest</code></li>
+</ol>
+<h5 id="启动-停止容器"><a href="#启动-停止容器" class="headerlink" title="启动/停止容器"></a>启动/停止容器</h5><ol>
+<li>docker run：同上</li>
+<li>docker start &lt;container_id&gt;: 重启已经停止的容器</li>
+<li>docker stop &lt;container_id&gt;: 停止容器</li>
+<li>docker restart :重启容器  示例-<code>docker restart master slave</code></li>
+</ol>
+<h5 id="容器查看-删除"><a href="#容器查看-删除" class="headerlink" title="容器查看/删除"></a>容器查看/删除</h5><ol>
+<li>docker ps : 查看正在运行的容器</li>
+<li>docker container ls: 查看容器（默认指显示正在运行的容器，与ps一样）， -a 选项查看所有容器</li>
+<li>docker inspect &lt;container_id&gt;: 查看指定容器的详细信息</li>
+<li>docker system df: 查看镜像、容器、数据卷所占用的空间</li>
+<li>docker container rm &lt;container_id&gt;: 删除指定容器</li>
+<li>docker container prune: 清理所有处于终止状态的容器</li>
+</ol>
+<h5 id="其它容器操作"><a href="#其它容器操作" class="headerlink" title="其它容器操作"></a>其它容器操作</h5><ol>
+<li>docker logs &lt;container_id&gt; : 查看容器的运行日志</li>
+<li>docker top &lt;container_id&gt; : 查看容器内的进程</li>
+<li>docker exec -it &lt;container_id&gt; &lt;command&gt;: 进入容器运行指定命令</li>
+<li>复制宿主机文件到容器目录：<code>docker cp slave.cnf mysql-slave:/etc/mysql/conf.d</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/30/web/datatable添加按钮/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/30/web/datatable添加按钮/" itemprop="url">datatable 添加功能按钮</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-30T16:15:24+08:00">
+                2018-10-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css&quot; /&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.datatables.net/buttons/1.4.0/css/buttons.dataTables.min.css&quot; /&gt;</span><br><span class="line">    &lt;script src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script type=&quot;text/javascript&quot; src=&quot;https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.datatables.net/buttons/1.4.0/js/dataTables.buttons.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.datatables.net/buttons/1.4.0/js/buttons.html5.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.datatables.net/buttons/1.4.0/js/buttons.print.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/pdfmake.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script src=&quot;https://cdn.rawgit.com/bpampuch/pdfmake/0.1.27/build/vfs_fonts.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;table id=&quot;example&quot; class=&quot;display&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot;&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Position&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Office&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Age&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Start date&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Salary&lt;/th&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/thead&gt;</span><br><span class="line">        &lt;tfoot&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;th&gt;Name&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Position&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Office&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Age&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Start date&lt;/th&gt;</span><br><span class="line">                &lt;th&gt;Salary&lt;/th&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/tfoot&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;Tiger Nixon&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;System Architect&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;Edinburgh&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;61&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;2011/04/25&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;$320,800&lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;Garrett Winters&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;Accountant&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;Tokyo&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;63&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;2011/07/25&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;$170,750&lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/tbody&gt;</span><br><span class="line">    &lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    $(document).ready(function () &#123;</span><br><span class="line">        $(&apos;#example&apos;).DataTable(&#123;</span><br><span class="line">            dom: &apos;Bfrtip&apos;,</span><br><span class="line">            buttons: [</span><br><span class="line">                &apos;copy&apos;, &apos;csv&apos;, &apos;excel&apos;</span><br><span class="line">            ]</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/spring/spring-calsspath和classpath星的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/01/spring/spring-calsspath和classpath星的区别/" itemprop="url">classpath和classpath*的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-01T13:55:12+08:00">
+                2018-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="classpath和classpath-的区别"><a href="#classpath和classpath-的区别" class="headerlink" title="classpath和classpath*的区别"></a>classpath和classpath*的区别</h1><p>记录一下踩坑：</p>
+<p>有两个项目A和B，A依赖B，最终运行的是A。使用mybatis做数据库访问，在一个B的jar包中写好了mapper.xml文件，A项目运行时，能运行A中的mapper文件，找不到B中绑定的sql语句。就是说mybatis扫描mapper.xml文件时，能扫描到项目本身的mapper，却不能扫描到依赖jar包中的mapper，仔细查看文件才发现配置文件有问题：</p>
+<pre><code>mapper-locations: classpath:mapper/**/*.xml
+</code></pre><p>改为</p>
+<pre><code>mapper-locations: classpath*:mapper/**/*.xml
+</code></pre><p>后，问题解决。</p>
+<p>classpath和classpath*区别： </p>
+<ol>
+<li><p>classpath：只会到你的class路径中查找找文件。</p>
+</li>
+<li><p>classpath*：不仅包含class路径，还包括jar文件中（class路径）进行查找。</p>
+</li>
+</ol>
+<p>注意： 用classpath<em>:需要遍历所有的classpath，所以加载速度是很慢的；因此，在规划的时候，应该尽可能规划好资源文件所在的路径，尽量避免使用classpath</em>。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/other/base64编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/30/other/base64编码/" itemprop="url">base64编码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T16:29:00+08:00">
+                2018-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编码/" itemprop="url" rel="index">
+                    <span itemprop="name">编码</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h1><p>Base64是一种用64个字符来表示任意二进制数据的方法。</p>
+<p>二进制数据流里边有很多无法显示的字符，所以我们用记事本打开exe、jpg、pdf等文件时会显示乱码。base64是一种用64个字符将二进制数据流编码为可显示字符的方法。</p>
+<p>Base64的原理很简单，首先，准备一个包含64个字符的数组：</p>
+<p>[‘A’~’Z’,’a’~’z’,’0’~’9’,’+’,’/‘]</p>
+<p>然后，对二进制数据进行处理，每3个字节一组，一共是3x8=24bit，划为4组，每组正好6个bit。计算这个二进制流组的值，因为6位最大表示2^6-1=63，正好为64个字符数组的下标索引（从0开始）。然后用计算的值去字符数组中找到对应的字符作为这组的编码字符。依次对所有的二进制bit编码后就是base64编码了。</p>
+<p>如果要编码的二进制数据不是3的倍数，最后会剩下1个或2个字节怎么办？Base64用\x00字节在末尾补足后，再在编码的末尾加上1个或2个=号，表示补了多少字节，解码的时候，会自动去掉。</p>
+<p>由上所述，3个字节的数据进行编码后，会变成4个字节，所以编码会增大约33%的数据量。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/09/vue/vue组件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/09/vue/vue组件/" itemprop="url">Vue组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-09T17:02:00+08:00">
+                2018-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>vue组件主要是封装dom、dom所需要展示的数据及其的展现方式的封装。组件可以扩展 HTML 元素，封装可重用的代码。</p>
+<h2 id="veu组件全局注册"><a href="#veu组件全局注册" class="headerlink" title="veu组件全局注册"></a>veu组件全局注册</h2><p>组件在注册之后，便可以作为自定义元素在一个实例的模板中使用。注意确保在初始化根实例之前注册组件：</p>
+<pre><code>&lt;div id=&quot;example&quot;&gt;
+  &lt;my-component&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+
+// 注册,在所有其它组件中可用
+Vue.component(&#39;my-component&#39;, {
+    template: &#39;&lt;div&gt;A custom component!&lt;/div&gt;&#39;
+})
+// 创建根实例
+new Vue({
+  el: &#39;#example&#39;
+})
+</code></pre><p>会被渲染为       </p>
+<pre><code>&lt;div id=&quot;example&quot;&gt;
+  &lt;div&gt;A custom component!&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h2 id="局部注册"><a href="#局部注册" class="headerlink" title="局部注册"></a>局部注册</h2><p>你不必把每个组件都注册到全局。你可以通过某个 Vue 实例/组件的实例选项 components 注册仅在其作用域中可用的组件：</p>
+<pre><code>var Child = {
+  template: &#39;&lt;div&gt;A custom component!&lt;/div&gt;&#39;,
+  data: function () {
+    return {
+      count: 0
+    }
+  }
+}
+new Vue({
+  components: {
+    // &lt;my-component&gt; 将只在父组件模板中可用
+    &#39;my-component&#39;: Child
+  }
+})
+</code></pre><p>这种封装也适用于其它可注册的 Vue 功能，比如指令。</p>
+<p><strong><em>一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝。如果 Vue 没有这条规则，多处用到的组件实例之间会相互影响。</em></strong></p>
+<h2 id="基础组件的自动化全局注册"><a href="#基础组件的自动化全局注册" class="headerlink" title="基础组件的自动化全局注册"></a>基础组件的自动化全局注册</h2><p>可能你的许多组件只是包裹了一个输入框或按钮之类的元素，是相对通用的。我们有时候会把它们称为基础组件，它们会在各个组件中被频繁的用到。</p>
+<p>所以会导致很多组件里都会有一个包含基础组件的长列表：</p>
+<p>  import BaseButton from ‘./BaseButton.vue’<br>  import BaseIcon from ‘./BaseIcon.vue’<br>  import BaseInput from ‘./BaseInput.vue’</p>
+<p>  export default {<br>    components: {<br>      BaseButton,<br>      BaseIcon,<br>      BaseInput<br>    }<br>  }<br>  可以在一个文件中注册所有的基础组件。</p>
+<h2 id="单文件组件"><a href="#单文件组件" class="headerlink" title="单文件组件"></a>单文件组件</h2><p>将一个组件封装到一个文件中，其中可以包含 html , css , JS 代码。 使用 vue-loader .</p>
+<h2 id="父子组件之间的数据交互"><a href="#父子组件之间的数据交互" class="headerlink" title="父子组件之间的数据交互"></a>父子组件之间的数据交互</h2><p>开发组件的目的一是为了缩小问题规模，减小复杂度；更多的情况是复用代码，组件一般是可重用的代码。因此，在开发组件时就应该考虑到可重用性问题。</p>
+<p>例如开发了一个展示博客的组件，每条博文都有标题、作者、日期、浏览量等信息。组件展示这些信息的时候，数据必须由父组件传递过来，组件内对数据的展示及处理方式是可重用的。因此，就需要一种父组件向子组件传递数据的一种方式。</p>
+<p>有时候我们在子组件中做了某些操作之后，又需要去操作父组件中的某个值。</p>
+<p>父子组件之间通过什么方式来传递数据呢？</p>
+<h3 id="通过-Prop-向子组件传递数据"><a href="#通过-Prop-向子组件传递数据" class="headerlink" title="通过 Prop 向子组件传递数据"></a>通过 Prop 向子组件传递数据</h3><p>Prop 使你可以在组件上注册的一些自定义特性。当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性。为了给博文组件传递一个标题，我们可以用一个 props 选项将其包含在该组件可接受的 prop 列表中：</p>
+<pre><code>Vue.component(&#39;blog-post&#39;, {
+    props: [&#39;title&#39;],
+    template: &#39;&lt;h3&gt;{{ title }}&lt;/h3&gt;&#39;
+})
+</code></pre><p>一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。在上述模板中，你会发现我们能够在组件实例中访问这个值，就像访问 data 中的值一样。</p>
+<p>一个 prop 被注册之后，你就可以像这样把数据作为一个自定义特性传递进来：</p>
+<pre><code>&lt;blog-post title=&quot;My journey with Vue&quot;&gt;&lt;/blog-post&gt;
+&lt;blog-post title=&quot;Blogging with Vue&quot;&gt;&lt;/blog-post&gt;
+&lt;blog-post title=&quot;Why Vue is so fun&quot;&gt;&lt;/blog-post&gt;
+</code></pre><p>然而在一个典型的应用中，你可能在 data 里有一个博文的数组：</p>
+<pre><code>new Vue({
+el: &#39;#blog-post-demo&#39;,
+data: {
+    posts: [
+    { id: 1, title: &#39;My journey with Vue&#39; },
+    { id: 2, title: &#39;Blogging with Vue&#39; },
+    { id: 3, title: &#39;Why Vue is so fun&#39; }
+    ]
+}
+})
+</code></pre><p>并想要为每篇博文渲染一个组件：</p>
+<pre><code>&lt;blog-post
+v-for=&quot;post in posts&quot;
+v-bind:key=&quot;post.id&quot;
+v-bind:title=&quot;post.title&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre><p>如上所示，你会发现我们可以使用 v-bind 来动态传递 prop。这在你一开始不清楚要渲染的具体内容，比如从一个 API 获取博文列表的时候，是非常有用的。</p>
+<h3 id="单根元素和对象传递"><a href="#单根元素和对象传递" class="headerlink" title="单根元素和对象传递"></a>单根元素和对象传递</h3><p><strong><em>单个组件中只能包含一个跟元素</em></strong>当组件需要渲染多元素时，必须用一个父元素将它们包裹起来。<br>假如向子元素传递太多属性，则要在子元素的 prop 中全部声明，且父组件在传递的时候也要为每个 prop 传递数据。例如，上面的博文组件，我们要位组件传递标题、作者、日期、浏览量等信息，代码量多且杂。</p>
+<p>这时候可以考虑将要传递的数据封装成一个对象传递给子组件，然后在子组件内部使用对象取值的方式获取数据。<br>    &lt;blog-post<br>    v-for=”post in posts”<br>    v-bind:key=”post.id”<br>    v-bind:post=”post”</p>
+<pre><code>&gt;&lt;/blog-post&gt;
+
+Vue.component(&#39;blog-post&#39;, {
+props: [&#39;post&#39;],
+template: `
+    &lt;div class=&quot;blog-post&quot;&gt;
+    &lt;h3&gt;{{ post.title }}&lt;/h3&gt;
+    &lt;div v-html=&quot;post.content&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+`
+})
+</code></pre><h3 id="通过事件向父级组件发送消息"><a href="#通过事件向父级组件发送消息" class="headerlink" title="通过事件向父级组件发送消息"></a>通过事件向父级组件发送消息</h3><p>Vue 实例提供了一个自定义事件的系统来解决这个问题。我们可以调用内建的 <code>$emit</code> 方法并传入事件的名字，来向父级组件触发一个事件，例如在子组件中有个 button ，当用户点击 button 时，更新父组件中的一个值：</p>
+<pre><code>&lt;button v-on:click=&quot;$emit(&#39;enlarge-text&#39;, 0.1)&quot;&gt;
+Enlarge text
+&lt;/button&gt;
+</code></pre><p>然后当在父级组件监听这个事件的时候，我们可以通过 <code>v-on</code> 监听这个事件:</p>
+<pre><code>&lt;blog-post
+...
+v-on:enlarge-text=&quot;postFontSize += 0.1&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre><h4 id="使用事件抛出一个值"><a href="#使用事件抛出一个值" class="headerlink" title="使用事件抛出一个值"></a>使用事件抛出一个值</h4><p>有的时候用一个事件来抛出一个特定的值是非常有用的。例如我们可能想让 <blog-post> 组件决定它的文本要放大多少。这时可以使用 $emit 的第二个参数来提供这个值：</blog-post></p>
+<pre><code>&lt;button v-on:click=&quot;$emit(&#39;enlarge-text&#39;, 0.1)&quot;&gt;
+    Enlarge text
+&lt;/button&gt;
+</code></pre><p>然后当在父级组件监听这个事件的时候，我们可以通过 <code>$event</code> 访问到被抛出的这个值：</p>
+<pre><code>&lt;blog-post
+...
+v-on:enlarge-text=&quot;postFontSize += $event&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre><p>或者，如果这个事件处理函数是一个方法：</p>
+<pre><code>&lt;blog-post
+...
+v-on:enlarge-text=&quot;onEnlargeText&quot;
+&gt;&lt;/blog-post&gt;
+</code></pre><p>那么这个值将会作为第一个参数传入这个方法：</p>
+<pre><code>methods: {
+    onEnlargeText: function (enlargeAmount) {
+        this.postFontSize += enlargeAmount
+    }
+}
+</code></pre><h4 id="自定义输入组件上使用-v-model"><a href="#自定义输入组件上使用-v-model" class="headerlink" title="自定义输入组件上使用 v-model"></a>自定义输入组件上使用 <code>v-model</code></h4><p>自定义事件也可以用于创建支持 v-model 的自定义输入组件。记住：</p>
+<pre><code>&lt;input v-model=&quot;searchText&quot;&gt;
+</code></pre><p>等价于：</p>
+<pre><code>&lt;input
+v-bind:value=&quot;searchText&quot;
+v-on:input=&quot;searchText = $event.target.value&quot;
+&gt;
+</code></pre><p>当用在组件上时，v-model 则会这样：</p>
+<pre><code>&lt;custom-input
+v-bind:value=&quot;searchText&quot;
+v-on:input=&quot;searchText = $event&quot;
+&gt;&lt;/custom-input&gt;
+</code></pre><p>为了让它正常工作，这个组件内的 <input> 必须：</p>
+<ul>
+<li>将其 value 特性绑定到一个名叫 value 的 prop 上</li>
+<li><p>在其 input 事件被触发时，将新的值通过自定义的 input 事件抛出<br>写成代码之后是这样的：</p>
+<p>  Vue.component(‘custom-input’, {<br>  props: [‘value’],<br>  template: `</p>
+<pre><code>  &lt;input
+  v-bind:value=&quot;value&quot;
+  v-on:input=&quot;$emit(&#39;input&#39;, $event.target.value)&quot;
+  &gt;
+</code></pre><p>  `<br>  })<br>现在 v-model 就应该可以在这个组件上完美地工作起来了：</p>
+<p>  <custom-input v-model="searchText">&lt;/custom-input&gt;</custom-input></p>
+</li>
+</ul>
+<h4 id="slot-插槽分发内容"><a href="#slot-插槽分发内容" class="headerlink" title="slot 插槽分发内容"></a><code>slot</code> 插槽分发内容</h4><p>和 HTML 元素一样，我们经常需要向一个组件传递内容，像这样：</p>
+<pre><code>&lt;alert-box&gt;
+Something bad happened.
+&lt;/alert-box&gt;
+</code></pre><p>幸好，Vue 自定义的 <code>&lt;slot&gt;</code> 元素让这变得非常简单：</p>
+<pre><code>Vue.component(&#39;alert-box&#39;, {
+    template: &#39;
+        &lt;div class=&quot;demo-alert-box&quot;&gt;
+        &lt;strong&gt;Error!&lt;/strong&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+        &lt;/div&gt;&#39;
+})
+</code></pre><p>‘Something bad happened.’ 会直接插入到组件的 <code>slot</code> 标签位置.</p>
+<h4 id="动态组件"><a href="#动态组件" class="headerlink" title="动态组件"></a>动态组件</h4><pre><code>&lt;component v-bind:is=&quot;currentTabComponent&quot;&gt;&lt;/component&gt;
+</code></pre><p>在上述示例中， <code>currentTabComponent</code> 可以包括</p>
+<ul>
+<li>已注册组件的名字，或</li>
+<li>一个组件的选项对象</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/vue/vue模板语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/vue/vue模板语法/" itemprop="url">Vue模版语法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h2><h3 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h3><p>数据绑定最常见的形式就是使用“Mustache”语法 (双大括号) 的文本插值：</p>
+<pre><code>&lt;span&gt;Message: {{ msg }}&lt;/span&gt;
+</code></pre><p>Mustache 标签将会被替代为对应数据对象上 msg 属性的值。无论何时，绑定的数据对象上 msg 属性发生了改变，插值处的内容都会更新。</p>
+<p>通过使用 <code>v-once</code> 指令，你也能执行一次性地插值，当数据改变时，插值处的内容不会更新。但请留心这会影响到该节点上所有的数据绑定：</p>
+<pre><code>&lt;span v-once&gt;这个将不会改变: {{ msg }}&lt;/span&gt;
+</code></pre><h3 id="原始-HTML"><a href="#原始-HTML" class="headerlink" title="原始 HTML"></a>原始 HTML</h3><pre><code>&lt;p&gt;Using mustaches: {{ rawHtml }}&lt;/p&gt;
+&lt;p&gt;Using v-html directive: &lt;span v-html=&quot;rawHtml&quot;&gt;&lt;/span&gt;&lt;/p&gt;
+</code></pre><p>这个 span 的内容将会被替换成为属性值 rawHtml，直接作为 HTML——会忽略解析属性值中的数据绑定</p>
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令：</p>
+<pre><code>&lt;div v-bind:id=&quot;dynamicId&quot;&gt;&lt;/div&gt;
+</code></pre><h3 id="使用Javascript表达式"><a href="#使用Javascript表达式" class="headerlink" title="使用Javascript表达式"></a>使用Javascript表达式</h3><p>迄今为止，在我们的模板中，我们一直都只绑定简单的属性键值。但实际上，对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持。</p>
+<pre><code>{{ number + 1 }}
+{{ ok ? 'YES' : 'NO' }}
+{{ message.split('').reverse().join('') }}
+&lt;div v-bind:id=&quot;&#39;list-&#39; + id&quot;&gt;&lt;/div&gt;
+</code></pre><p>有个限制就是，每个绑定都只能包含单个表达式，所以下面的例子都不会生效。</p>
+<pre><code>&lt;!-- 这是语句，不是表达式 --&gt;
+{{ var a = 1 }}
+&lt;!-- 流控制也不会生效，请使用三元表达式 --&gt;
+{{ if (ok) { return message } }}
+</code></pre><h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="v-if"><a href="#v-if" class="headerlink" title="v-if"></a>v-if</h3><pre><code>&lt;p v-if=&quot;seen&quot;&gt;现在你看到我了&lt;/p&gt;
+</code></pre><p>这里，v-if 指令将根据表达式 seen 的值的真假来插入/移除 </p><p> 元素。</p>
+<h2 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h2><ol>
+<li>v-bind:href=’’ -&gt;  :href=’’</li>
+<li>v-on:click=’’ -&gt; @click=’’</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/vue/vue安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/vue/vue安装/" itemprop="url">Vue安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/vue/" itemprop="url" rel="index">
+                    <span itemprop="name">vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="直接用-lt-script-gt-引入"><a href="#直接用-lt-script-gt-引入" class="headerlink" title="直接用 &lt;script&gt; 引入"></a>直接用 <code>&lt;script&gt;</code> 引入</h2><p>直接下载并用 <code>&lt;script&gt;</code> 标签引入，Vue 会被注册为一个全局变量。</p>
+<h2 id="NPM"><a href="#NPM" class="headerlink" title="NPM"></a>NPM</h2><pre><code>npm install vue
+</code></pre><h2 id="命令行工具-CLI"><a href="#命令行工具-CLI" class="headerlink" title="命令行工具 (CLI)"></a>命令行工具 (CLI)</h2><p>使用 vue-cli工具。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/06/other/vscode 快捷键/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/06/other/vscode 快捷键/" itemprop="url">VS code 快捷键</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-06T14:00:00+08:00">
+                2020-03-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/08/os/Unix的IO模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/08/os/Unix的IO模型/" itemprop="url">Unix的I/O模型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-08T13:23:07+08:00">
+                2018-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/os/" itemprop="url" rel="index">
+                    <span itemprop="name">os</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="几种I-O模型"><a href="#几种I-O模型" class="headerlink" title="几种I/O模型"></a>几种I/O模型</h1><p>Unix下可用的5种I/O模型：</p>
+<ol>
+<li>阻塞式I/O</li>
+<li>非阻塞式I/O</li>
+<li>I/O复用(select和poll)</li>
+<li>信号驱动式I/O(SIGIO)</li>
+<li>异步I/O(POSIX的aio_系列函数)</li>
+</ol>
+<h2 id="阻塞式I-O模型"><a href="#阻塞式I-O模型" class="headerlink" title="阻塞式I/O模型"></a>阻塞式I/O模型</h2><p>阻塞式I/O模型如图所示：<br><img src="/pics/bio.png" alt="阻塞式I/O模型"><br>进程调用recvfrom，其通调用知道数据报到达且被复制到应用进程的缓冲区中或者发生错误才返回。从调用recvfrom开始到它返回的这段时间内，进程是被阻塞的。recvfrom成功返回后，进程被唤醒，开始处理数据报。</p>
+<h2 id="非阻塞式I-O模型"><a href="#非阻塞式I-O模型" class="headerlink" title="非阻塞式I/O模型"></a>非阻塞式I/O模型</h2><p>进程把一个套接字设置成非阻塞是在通知内核：当所请求的I/O操作非得把进程投入睡眠才能完成时，不要把本进程设置为阻塞，而是返回一个错误。<br><img src="/pics/non-block-io.png" alt="非阻塞式I/O模型"><br>如图所示，前三次调用recvfrom时没有数据可返回，内核立即返回一个EWOULDBLOCK错误，这三次重复调用时进程主动发起的，进程不能处于阻塞状态。第四次调用revfrom时已经有一个数据准备好了，它被复制到进程缓冲区，在复制过程中，进程处阻塞状态，复制完成后，进程被唤醒，开始处理数据。</p>
+<p>当一个进程像这样对一个非阻塞描述符循环调用recvfrom时，我们称之为轮询（polling）。应用进程持续轮询内核，以查看某个操作是否完成。</p>
+<h2 id="I-O复用模型"><a href="#I-O复用模型" class="headerlink" title="I/O复用模型"></a>I/O复用模型</h2><p>有了I/O复用，我们就可以调用select或poll，阻塞在这两个系统调用中的某一个上，而不是阻塞在真正的I/O系统调用之上。<br><img src="/pics/io-multiuse.png" alt="I/O复用模型"></p>
+<p>我们阻塞于select调用，等待数据报套接字变为可读。当select返回套接字可读时，我们调用recvfrom把所读数据复制到应用程序缓冲区中。所以这里其实有两次系统调用，并且每次都是阻塞的。</p>
+<p>与阻塞式I/O模型比较，I/O复用并不显得有什么优势，事实上，I/O复用的select需要两个而不是单个系统调用该，还稍有劣势。不过，I/O复用与阻塞式调用最大的区别在于，I/O复用的优势在于可以等待多个描述符，这也是I/O复用名字的来源，多个I/O套接字复用一个进程。</p>
+<p>与I/O复用密切相关的是另一种I/O模型是在多线程中使用阻塞式I/O。这种模型与I/O复用的区别在于：它没有使用select或poll阻塞在多个描述符上，而是使用多线程（每个描述符一个线程），每个线程可以自由的调用阻塞式recvfrom之类的系统调用。线程与描述符是一一对应的，而I/O是一对多的。</p>
+<h2 id="信号驱动式I-O模型"><a href="#信号驱动式I-O模型" class="headerlink" title="信号驱动式I/O模型"></a>信号驱动式I/O模型</h2><p>使用信号，让内核在描述符就绪时发送SIGIO信号通知我们。</p>
+<p><img src="/pics/signal-driven.png" alt="信号驱动式I/O模型"><br>首先开启套接字的信号驱动式I/O功能，并通过sigaction系统调用安装一个信号处理函数。sigaction系统调用会立即返回，不会阻塞线程。当数据报准备就绪时，内核就为该进程产生一个SIGIO信号。我们随后可以在信号处理函数中调用recvfrom读取数据，并通知主循环数据已经准备好，也可以通知主循环，让他读取数据报。</p>
+<p>无论如何处理SIGIO信号，这种模型的优势在于等待数据报到达期间进程不被阻塞。主循环继续执行，只要等待来自信号处理函数的通知：既可以是数据已准备好，也可以是数据准备好被读取了。</p>
+<h2 id="异步I-O模型-POSIX的aio-系列函数"><a href="#异步I-O模型-POSIX的aio-系列函数" class="headerlink" title="异步I/O模型(POSIX的aio_系列函数)"></a>异步I/O模型(POSIX的aio_系列函数)</h2><p>异步I/O的工作机制是：告知系统内核启动一个操作，并让内核在整个操作（包括数据从内核复制到进程缓冲区）完成后通知进程。与信号驱动的I/O模型的主要区别在于：</p>
+<p>信号驱动式I/O是由内核通知我们可以启动一个I/O操作，而异步I/O模型是由内核告知我们I/O操作何时完成。<br><img src="/pics/async-io.png" alt="异步I/O模型"></p>
+<p>调用aio_read(或者其他异步IO函数)时，系统调用会立即返回，而且在进程完成期间，我们的进程不会被阻塞。上图中假设要求内核在操作完成时发送某个信号。该信号直到数据已复制到应用进程缓存区中时才会产生信号，这一点不同于信号驱动式I/O模型。</p>
+<h1 id="各种I-O模型的比较"><a href="#各种I-O模型的比较" class="headerlink" title="各种I/O模型的比较"></a>各种I/O模型的比较</h1><p>前四种模型的主要区别在于第一阶段，因为他们的第二阶段是一样的：在数据从内核拷贝到进程缓冲区期间，进程阻塞于recvfrom调用。相反，异步I/O模型在这两个阶段都要处理。</p>
+<h2 id="同步I-O与异步I-O的对比"><a href="#同步I-O与异步I-O的对比" class="headerlink" title="同步I/O与异步I/O的对比"></a>同步I/O与异步I/O的对比</h2><p>维基上的定义：<br>异步IO是计算机操作系统对输入输出的一种处理方式：发起IO请求的线程不等IO操作完成，就继续执行随后的代码，IO结果用其他方式通知发起IO请求的程序。与异步IO相对的是更为常见的“同步（阻塞）IO”：发起IO请求的线程不从正在调用的IO操作函数返回（即被阻塞），直至IO操作完成。</p>
+<p>POSIX把这两个术语定义如下：</p>
+<ul>
+<li>同步I/O操作：导致请求进程阻塞，知道I/O操作何时完成。</li>
+<li>异步I/O操作：不导致请求进程阻塞。</li>
+</ul>
+<p><img src="/pics/io-compare.png" alt="I/O模型的比较"></p>
+<p>根据上述定义：前4种都是同步I/O，只有异步I/O模型与POSIX的异步I/O相匹配。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/Unicode及编码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/Unicode及编码/" itemprop="url">Unicode编码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="字符串及编码"><a href="#字符串及编码" class="headerlink" title="字符串及编码"></a>字符串及编码</h1><hr>
+<h2 id="字符编码的意义"><a href="#字符编码的意义" class="headerlink" title="字符编码的意义"></a>字符编码的意义</h2><p>假如一串二进制对应一串字符，如何解释下面二进制串：</p>
+<blockquote>
+<p>0100100001000101010011000100110001001111</p>
+</blockquote>
+<p>这其中有两个关键问题：</p>
+<ol>
+<li>字节是怎样分组的？（例如1个字节的字符和2个字节的字符）</li>
+<li>一个或多个字节是怎么映射到字符上的？</li>
+</ol>
+<p>大致说来，编码定义了两件事：</p>
+<ol>
+<li>字节是怎么分组的，如8 bits或16 bits一组，这也被称作编码单元。</li>
+<li>编码单元和字符之间的映射关系。例如，在ASCII码中，十进制65映射到字母A上</li>
+</ol>
+<h2 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h2><p>Unicode背后的想法非常简单，然而却被普遍的误解了。Unicode就像一个电话本，标记着字符和数字之间的映射关系。Joel称之为「神奇数字」，因为它们可能是随机指定的，而且不会给出任何解释。官方术语是<strong>码位(Code Point)</strong>，总是用U+开头。理论上每种语言中的每种字符都被Unicode协会指定了一个神奇数字。例如希伯来文中的第一个字母א，是U+2135，字母A是U+0061。</p>
+<p>Unicode并不涉及字符是怎么在字节中表示的，它仅仅指定了字符对应的数字，仅此而已。</p>
+<p>关于Unicode的其它误解包括：Unicode支持的字符上限是65536个，Unicode字符必须占两个字节。告诉你这些的人应该去换换脑子了。</p>
+<p><strong>记住，Unicode只是一个用来映射字符和数字的标准。它对支持字符的数量没有限制，也不要求字符必须占两个、三个或者其它任意数量的字节。</strong></p>
+<p>Unicode字符是怎样被编码成内存中的字节这是另外的话题，它是被<strong>UTF(Unicode Transformation Formats)</strong>定义的。</p>
+<h2 id="Unicode编码"><a href="#Unicode编码" class="headerlink" title="Unicode编码"></a>Unicode编码</h2><p>两个最流行的Unicode编码方案是UTF-8和UTF-16。让我们看看它们的细节：</p>
+<h3 id="UTF-8"><a href="#UTF-8" class="headerlink" title="UTF-8"></a>UTF-8</h3><p>UTF-8是一个非常惊艳的概念，它漂亮的实现了对ASCII码的向后兼容，以保证Unicode可以被大众接受。发明它的人至少应该得个诺贝尔和平奖。</p>
+<p>在UTF-8中，0-127号的字符用1个字节来表示，使用和US-ASCII相同的编码。这意味着1980年代写的文档用UTF-8打开一点问题都没有。只有128号及以上的字符才用2个，3个或者4个字节来表示。因此，UTF-8被称作<strong>可变长度编码</strong>。</p>
+<p>回到文章开始的问题,</p>
+<blockquote>
+<p>0100100001000101010011000100110001001111</p>
+</blockquote>
+<p>这个字节流在ASCII和UTF-8中表示相同的字符：HELLO。</p>
+<h3 id="UTF-16"><a href="#UTF-16" class="headerlink" title="UTF-16"></a>UTF-16</h3><p>另一个流行的可变长度编码方案是UTF-16，它使用2个或者4个字节来存储字符。然而，人们逐渐意识到UTF-16可能会浪费存储空间，但那是另一个话题了。</p>
+<h3 id="低字节序-Little-Endian-和高字节序-Big-Endian"><a href="#低字节序-Little-Endian-和高字节序-Big-Endian" class="headerlink" title="低字节序(Little Endian)和高字节序(Big Endian)"></a>低字节序(Little Endian)和高字节序(Big Endian)</h3><p>Endian读作End-ian或者Indian。这个术语的起源可以追溯到格列佛游记。（小说中，小人国为水煮蛋应该从大的一端（Big-End）剥开还是小的一端（Little-End）剥开而争论，争论的双方分别被称为“大端派”和“小端派”。）</p>
+<p>低字节序和高字节序只是一个关于在内存中存储和读取一段字节（被称作words）的约定。这意味着当你让计算机用UTF-16把字母A（占两个字节）存在内存中时，使用哪种字节序方案决定了你把第一个字节放在第二个字节的前面还是后面。这么说有点不太容易懂，让我们来看一个例子：当你使用UTF-16存下来自你朋友的附件时，在不同的系统中它的后半部分可能是这样的：</p>
+<p>00 68 00 65 00 6C 00 6C 00 6F（高字节序，高位字节被存在前面）</p>
+<p>68 00 65 00 6C 00 6C 00 6F 00（低字节序，低位字节被存在前面）</p>
+<p>字节序方案只是一个微处理器架构设计者的偏好问题，例如，Intel使用低字节序，Motorola使用高字节序。</p>
+<h3 id="字节顺序标记-BOM"><a href="#字节顺序标记-BOM" class="headerlink" title="字节顺序标记(BOM)"></a>字节顺序标记(BOM)</h3><p>如果你经常要在高低字节序的系统间转换文档，并且希望区分字节序，还有一种奇怪的约定，被称作<strong>BOM</strong>。BOM是一个设计得很巧妙的字符，用来放在文档的开头告诉阅读器该文档的字节序。在UTF-16中，它是通过在第一个字节放置FE FF来实现的。在不同字节序的文档中，它会被显示成FF FE或者FE FF，清楚的把这篇文档的字节序告诉了解释器。</p>
+<p>BOM尽管很有用，但并不是很简洁，因为还有一个类似的概念，称作<strong>「魔术字」(Magic Byte)</strong>，很多年来一直被用来表明文件的格式。BOM和魔术字间的关系一直没有被清楚的定义过，因此有的解释器会搞混它们。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>如果你没时间读整篇文章或者你仅仅是略读了一下前面的内容。那请你确保你能理解下面的几条：</p>
+<ol>
+<li>这个世界上从来没有纯文本这回事，如果你想读出一个字符串，你必须知道它的编码。</li>
+<li>Unicode是一个简单的标准，用来把字符映射到数字上。Unicode协会的人会帮你处理所有幕后的问题，包括为新字符指定编码。</li>
+<li>Unicode并不告诉你字符是怎么编码成字节的。这是被编码方案决定的，通过UTF来指定。</li>
+<li>永远记得通过Content-Type或者meta charset标签来显式指定你的文档的编码。这样浏览器就不需要猜测你使用的编码了，他们会准确的使用你指定的编码来渲染文档。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/28/work/note-2020-04-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/28/work/note-2020-04-28/" itemprop="url">TestEnv/DataTrack/AMQ</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-28T22:58:26+08:00">
+                2020-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paypal/" itemprop="url" rel="index">
+                    <span itemprop="name">paypal</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Testenv"><a href="#Testenv" class="headerlink" title="Testenv"></a>Testenv</h3><ol>
+<li>创建testenv: <code>testenv create 10d --backed-by msmaster.qa.paypal.com</code></li>
+<li>增加生存时间:<code>testenv ttl extend te-testenv-001 1h</code></li>
+<li>减少生存时间:<code>testenv ttl reduce te-testenv-001 1h</code></li>
+<li>clone testenv :<code>testenv clone te-testenv-001 5h --backed-by msrelease.qa.paypal.com</code></li>
+<li>查看testEnv列表: <code>testenv list</code>, <code>testenv list --operable</code></li>
+<li>查看某个 testenv 详细信息：<code>testenv desc te-testenv-001</code></li>
+<li>删除testEnv:<code>testenv delete te-testenv-001</code></li>
+<li>生成配置文件：<code>testenv spec generate te-testenv-001 &gt; te-testenv-001-spec.yml</code></li>
+<li>安装app: <code>testenv app install te-alm-xxx amqriskexternalgwd:1.0.3_SNAPSHOT_20200428020842519</code></li>
+<li>查看app详细信息：<code>testenv app desc te-alm-xxx amqriskexternalgwd</code></li>
+<li>卸载app：<code>testenv app uninstall te-testenv-001 hermesnodeweb,mfsissuanceserv</code></li>
+<li>拷贝testenv某个app内的文件到本地：<code>testenv scp te-zhongzwang-2462_riskexternalgateway_0:path_to_file ~/Downloads</code></li>
+<li>运行batch：<code>testenv app run ${testenv_box_name} batch-risk-externalgateway:${build_version} --command &quot;${job_name}&quot;</code></li>
+<li>查看运行的job:<code>estenv job list te-alm-xxx</code></li>
+<li>查看job的详细信息：<code>testenv job desc 0dd7104f-aff5-4f2f-a319-9e7ad4c6e2de</code></li>
+</ol>
+<h3 id="DataTrack"><a href="#DataTrack" class="headerlink" title="DataTrack"></a>DataTrack</h3><p>DataTrack里查看所有表：<code>select * from all_tables where table_name like &#39;%RISKVERI%&#39;;</code></p>
+<h3 id="AMQ"><a href="#AMQ" class="headerlink" title="AMQ"></a>AMQ</h3><ol>
+<li>查看cdb的配置：<code>ssh hyperlvs31.qa.paypal.com /usr/local/bin/cdbdump &lt; ~/Downloads/RISKVERIFICATION_amq.cdb | sed &#39;s/.*://&#39; | sed &#39;s/-&gt;/ = /&#39; |sed \$d | sed \$d</code></li>
+<li>利用远程stage机器制作cdb文件：<code>ssh hyperlvs31.qa.paypal.com /usr/local/bin/cdbmake3 - &lt; /amqcommon/queue/RAPTOR_amq.txt &gt; /amqcommon/queue/RAPTOR_amq.cdb</code></li>
+</ol>
+<p>导出docker镜像中的文件：</p>
+<ol>
+<li><code>docker run -v &quot;$HOME/amqcommon/queue:/amqcommon/STAGE2/amqcommon/queue&quot; --rm -it dockerhub.paypalcorp.com/paas/amqcommon</code></li>
+<li>then symlink to root sudo ln -s ~/amqcommon /amqcommon</li>
+</ol>
+<p>Publisher and Message:<br>AMQ 是基于数据库的，Publisher 将消息插入到数据库queue的表中，Subscriber 从表中读取消息。</p>
+<p>Publisher 在publish 消息的时候，会指定一个 dequeue 时间，在这个时间之前，消费者是“看不到”这个消息的，也因为这样消息出队顺序不是按照入队顺序有序的，而是根据 dequeue time 顺序。另外，每个消息会分配一个 sub-queue id，每个queuue有一个参数<code>xxx_subqueue_max</code>来设置最大sub-queue id，Publisher 在publish 消息的时候会随机指定一个不大于该值的ID。因此一条消息可以根据 （message type，dequeue time, sub-queue id）来区分，如下图（不同颜色代表不同的message_type）：<br><img src="/pics/2D_Message_Grid.png" height="50%" width="50%"><br>为了避免这些值都相同，还会为每条message指定一个 message id，因此，(message type, dequeue time, sub-queue id, message id)唯一标识一条消息。</p>
+<p>Job划分：<br>消息最终会划分到job中，一个job最终会对应到一个消息的集合。在数据库表中，每个 job 有下边四列：</p>
+<ol>
+<li>START_TIME：起始 dequeue time</li>
+<li>END_TIME: 结束 dequeue time</li>
+<li>START_SUBQ：起始 sub-queue id</li>
+<li>END_SUBQ： 结束 sub-queue id<br>这样每个job就会划分处理queue中的一部分消息，如上图中，每个小方格代表一个job。然后，每个job会被一个 subscriber的worker领取并执行。假如某个component订阅了一个queue中一个 messageType，但是component是多线程并发消费消息的而且水平部署了多个，那么如何避免这么多线程同时消费同一个message呢？使用job划分的方式可以达到这点。</li>
+</ol>
+<p>AMQ 表：<br><a href="https://engineering.paypalcorp.com/confluence/display/AMQue/AMQ+Tables" target="_blank" rel="noopener">https://engineering.paypalcorp.com/confluence/display/AMQue/AMQ+Tables</a></p>
+<p>修改raptor运行端口：(vm options)-&gt;<code>-Dapplication.nonssl.port=8081 -Dapplication.ssl.port=8442 -Dadmin.port=8082</code><br><a href="https://engineering.paypalcorp.com/raptor/doc/RaptorSvcs/latest/docs/mds/HTCustomizeContainerConfiguration.md" target="_blank" rel="noopener">https://engineering.paypalcorp.com/raptor/doc/RaptorSvcs/latest/docs/mds/HTCustomizeContainerConfiguration.md</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/19/TCP-IP/TCP协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/19/TCP-IP/TCP协议/" itemprop="url">TCP 协议</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-19T22:45:26+08:00">
+                2019-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络协议/" itemprop="url" rel="index">
+                    <span itemprop="name">网络协议</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="TCP服务概述"><a href="#TCP服务概述" class="headerlink" title="TCP服务概述"></a>TCP服务概述</h4><p>TCP提供一种面向连接的、可靠的字节流服务。<br>面向连接意味着两个使用TCP的应用在彼此交换数据之前必须先建立一个TCP连接<br>TCP通过下列方式来提供可靠性：</p>
+<pre><code>1. 应用数据被分割成TCP认为最适合发送的数据块，对比UDP，UDP不会处理应用程序产生的数据报。
+2. 确认机制：接收方收到一个报文段后会向发送方发送一个确认，告诉对方收到了报文段。
+3. 超时重传：TCP发出一个报文段后，启动一个定时器，如果在超时之前没有收到接收方的确认，将会重发这个报文段。
+4. 校验机制：TCP将保持它首部和数据的检验和。如果收到段的检验和有差错，TCP将丢弃这个报文段，也不确认收到此报文段（希望发端超时并重发）
+5. 保证有序：IP数据报的到达可能会失序，因此TCP报文段的到达也可能会失序，如果必要，TCP将对收到的数据进行重新排序，将收到的数据以正确的顺序交给应用层。
+6. 保证无重复：IP数据报会发生重复， TCP的接收端会丢弃重复的数据。
+7. 流量控制：TCP连接的每一方都有固定大小的缓冲空间。TCP的接收端只允许另一端发送接收端缓冲区所能接纳的数据。这将防止较快主机致使较慢主机的缓冲区溢出。
+</code></pre><h4 id="TCP首部"><a href="#TCP首部" class="headerlink" title="TCP首部"></a>TCP首部</h4><p><img src="/pics/tcp.png" alt="TCP首部格式"></p>
+<ul>
+<li>URG：紧急指针有效</li>
+<li>ACK：确认序号有效。</li>
+<li>PSH：接收方应该尽快将这个报文段交给应用层。</li>
+<li>RST：重建连接。</li>
+<li>SYN：同步序号用来发起一个连接。这个标志和下一个标志将在第1 8章介绍。</li>
+<li>FIN：发端完成发送任务。<h4 id="TCP半关闭"><a href="#TCP半关闭" class="headerlink" title="TCP半关闭"></a>TCP半关闭</h4>TCP提供了连接的一端在结束它的发送后还能接收来自另一端数据的能力。这就是所谓的半关闭。</li>
+</ul>
+<p><img src="/pics/tcp-status.png" alt="TCP状态变迁图"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/spring/spring_ioc/spring的启动与配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/06/spring/spring_ioc/spring的启动与配置/" itemprop="url">Spring 的启动与配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T21:05:20+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">MVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Spring-Framework-的启动"><a href="#Spring-Framework-的启动" class="headerlink" title="Spring Framework 的启动"></a>Spring Framework 的启动</h2><p>Spring Framework 是另一个容器，它可以运行任何 Java SE和 Java EE  容器中，并作为应用程序的运行时环境。另外，如同计算机或者jvm的那个样例一样， Spring 必须被启动并且需要得到如何运行它所包含的应用程序的指令。<br>配置和启动 Spring Framework 是两个不同的任务，并且相互独立，都可以通过多种方式实现。配置告诉 Spring 如何运行它所包含的应用程序时，启动进程将启动 Spring Framework并将配置指令传递给它。</p>
+<p>在 Java SE 中，只有一种方式启动 Spring Framework：通过应用程序的 main 方法以编程的方式启动。<br>在 Java EE 应用程序中，有两种选择：</p>
+<ol>
+<li>可以使用 XML 创建部署描述符启动 Spring</li>
+<li>也可以在 <code>javax.servlet.ServletContainerInitializer</code> 中通过编程的方式启动。</li>
+</ol>
+<h3 id="部署描述符启动"><a href="#部署描述符启动" class="headerlink" title="部署描述符启动"></a>部署描述符启动</h3><p>传统的 Spring Framework 应用程序总是使用 Java EE 的部署描述符启动。配置文件中至少包含一个 <code>DispatcherServlet</code> 的实例，然后以 <code>contextConfugLocation</code> 初始化参数的形式为它提供配置文件。也可以包含多个 <code>DispatcherServlet</code> 实例。另外，一般还会配置 <code>ContextLoaderListener</code> 实例加上 <code>contextConfigLocation</code>的上下文参数。参数为其典型的配置如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;WEB-INF/rootContext.xml&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;&gt;</span><br><span class="line">&lt;listener&gt;</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">org.springframework.web.context.ContextLoaderListener</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">&lt;/listener&gt;</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;dispatcher&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;org.sringframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;contextConfugLocation&lt;/init-param&gt;</span><br><span class="line">    &lt;param-value&gt;WEB-INF/servletContext.xml&lt;/param-value&gt;</span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;dispatcher&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure></p>
+<p><code>ContextLoaderListener</code> 将在 WEB 应用程序启动时被初始化（因为它实现了 <code>ServletContextListener</code>)，然后从 <code>contextConfigLocation</code> 上下文初始化参数指定的配置文件中加载根应用上下文，并启动根应用上下文。</p>
+<p>注意： <code>contextConfigLocation</code> 上下文初始化参数不同于 <code>DispatcherServlet</code> 的 <code>contextConfigLocation</code> Servlet初始化参数。它们不冲突；前者作用于整个 Servlet 上下文，而后者只作用于它所指定的 Servlet 。 监听器创建的根应用上下文将被自动设置为所有通过 <code>DispatcherServlet</code> 创建的应用上下文的父亲上下文。</p>
+<h3 id="初始化器中使用编程的方式启动-Spring"><a href="#初始化器中使用编程的方式启动-Spring" class="headerlink" title="初始化器中使用编程的方式启动 Spring"></a>初始化器中使用编程的方式启动 Spring</h3><p><code>ServletContextListener</code> 可以以编程的方式配置应用程序的中 Servlet、 Listener 和 Filter 。使用该接口的缺点是：监听器的 <code>contextInitialized</code> 方法可能在其它监听器之后调用。 Java EE 6 中添加了一个新的接口 <code>ServletContainerInitializer</code> 。 实现了 <code>ServletContainerInitializer</code> 接口的类将在程序启动时，并在所有监听器启动之前调用它的 <code>onStartup</code> 方法。这是应用程序生命周期中最早可以使用的时间点。但是，不要再部署描述符中配置 <code>ServletContainerInitializer</code> ，相反，需要使用 Java 的服务提供接口（SPI：Service Provider Interface）声明实现了 <code>ServletContainerInitializer</code> 的一个或多个类，在文件 <code>/META-INF/services/javax.servlet.ServletContainerInitializer</code> 中列出它们，每行一个类。</p>
+<p>这种方式不利的一面在于文件不能直接存在于应用程序的 WAR 文件或解压后的目录中——不能将文件放在 Web 应用程序的 <code>/META-INF/services</code> 目录中。它必须在 JAR 文件的 <code>/META-INF/services</code> 目录中，并且需要将该JAR文件包含在应用程序WAR的 <code>WEB-INF/lib</code> 目录中。     </p>
+<p>Spring Framework 提供了一个桥接口，是这种方式更容易实现。 <code>org.springframework.web.SpringServletContainerInitializer</code> 实现了 <code>ServletContainerInitializer</code> 接口，而且包含该类的 JAR 中包含了一个服务提供文件，列出了 <code>SpringServletContainerInitializer</code> 类的名字，所以应用程序会在启动时调用它的 <code>onStartup</code> 方法。然后，该类将在此方法中扫描应用程序以寻找实现了 <code>org.springframework.web.WebApplicationInitializer</code> 接口的实现类，并调用所有找到类的 <code>onStartup</code> 方法。在 <code>WebApplicationInitializer</code> 实现类中可以配置 Servlet 、 Filter 和 Listener ，更重要的是，可以在该方法中启动 Spring 。</p>
+<h2 id="Spring-Framework-的配置方式"><a href="#Spring-Framework-的配置方式" class="headerlink" title="Spring Framework 的配置方式"></a>Spring Framework 的配置方式</h2><p>Spring Framework 的配置大致可以分为三种方式：</p>
+<h3 id="创建-XML-配置"><a href="#创建-XML-配置" class="headerlink" title="创建 XML 配置"></a>创建 XML 配置</h3><p>这是最传统的配置方式，使用 &lt;beans&gt; XML 命名空间，将需要注入的 bean 配置在 ,&lt;bean&gt; 标签下即可配置 bean 。</p>
+<h3 id="创建混合配置"><a href="#创建混合配置" class="headerlink" title="创建混合配置"></a>创建混合配置</h3><p>XML 配置文件的缺点是太繁杂，一个大型的企业级应用中，可能会定义数百个 bean ,每个 bean 都至少要三行代码的话，关是配置文件都要数千行。</p>
+<p>spring 注解配置的核心在于 <strong>组件扫描</strong> 和 <strong>注解配置</strong>。 </p>
+<h4 id="组件扫描的开启"><a href="#组件扫描的开启" class="headerlink" title="组件扫描的开启"></a>组件扫描的开启</h4><p>XML 文件中使用 <code>&lt;context:annotation-config&gt;</code> 和 <code>&lt;context:component-scan&gt;</code> 元素即可开启<strong>组件扫描</strong> 和 <strong>注解配置</strong> 。不过<code>&lt;context:component-scan&gt;</code> 也有 <code>&lt;context:annotation-config&gt;</code> 注解的功能，因此只要配置 <code>&lt;context:component-scan&gt;</code> 就能开启上述功能</p>
+<h4 id="扫描注解配置"><a href="#扫描注解配置" class="headerlink" title="扫描注解配置"></a>扫描注解配置</h4><p>通过使用注解扫描， Spring 将扫描通过特定注解指定的包去扫描类。扫描路径下的所有标注了 <code>@Componengt</code> 注解的类都将变成由 Spring 管理的 Bean，这意味着 Spring 将负责实例化它们并注入它们的依赖对象。</p>
+<p>其它符合组件扫描的注解： 所有标注了 <code>@Component</code> 的注解都将变成组件扫描注解，任何标注了一个组件扫描注解的注解也将编程组件扫描注解。因此， 标注了 <code>@Controller</code> 、 <code>@Service</code>  、 <code>@Repository</code> 注解的类也将编程Spring 管理的bean。</p>
+<p>与组件扫描注解配合使用的另一个注解是 <code>@Autowired</code> 。可以为任何公开、保护和私有的字段或接受一个或多个参数的 <strong>设置方法</strong> 标注 <code>@Autowired</code>。 <code>@Autowired</code> 声明了 Spring 实例化之后应该注入的依赖对象，并且它也可以用于构造器。通常Spring管理的bean类必须有无参构造函数，但对于只含有一个标注了 <code>@Autowired</code> 的构造器的类， Spring 将使用该构造器并注入所有的构造器参数。</p>
+<p>任何情况下，如果Spring无法为依赖找到匹配的bean，将抛出异常并启动失败。</p>
+<p>同样，如果为依赖找到多个匹配的 bean，它也将抛出异常并启动失败。这种情况下，可以使用 <code>@Qualifier</code> 或 <code>@Primary</code> 注解解决。 通过 <code>@Qualifier</code> 可以使用指定名字的依赖。而使用 <code>@Primary</code> 标注的类表示在出现多个符合条件的依赖时，应该优先使用标注了该注解的bean。</p>
+<h3 id="使用-Configuration-配置"><a href="#使用-Configuration-配置" class="headerlink" title="使用 @Configuration 配置"></a>使用 @Configuration 配置</h3><p>上述两种配置方式基本上都还是要依赖 XML ，第二种方式中要在 XML 中开启注解组件扫描和启用注解配置功能。不过，在使用 XML 配置Spring时有一些缺点：</p>
+<ol>
+<li>XML 难于调试。</li>
+<li>不能对 XML 配置进行单元测试。因为 XML 配置会启动整个应用程序并加载所有 bean ，实际上不是单元测试而是继承测试。</li>
+</ol>
+<p>使用 <code>AnnotationConfigWebApplicationContext</code> 启动 Spring ，并调用该类的 <code>register(Class&lt;T&gt; configClass)</code> 方法注册配置类即可实现 java 配置。 这些配置类必须标注上 <code>@Configuration</code> 注解，也必须有默认构造函数，配置类中标注了 <code>@Bean</code> 注解的无参方法将注册 bean。</p>
+<p>在配置类中可以使用下列注解代替 XML 中的一些配置元素：</p>
+<ol>
+<li><code>@ComponentScan</code> : 替代的是 <code>&lt;context:component-scan&gt;</code> ，启用组件扫描功能</li>
+<li><code>@EnableAspectAutoProxy</code> : 替代的是 <code>&lt;aop:aspect-autoprooxy&gt;</code> 元素，启用对标注了 <code>@Aspect</code> 注解的类的处理，面向切面编程时使用</li>
+<li><code>@EnableAsync</code> : 替代的是 <code>&lt;async:*&gt;</code> 命名空间，启用Spring的异步 <code>@Async</code> 方法执行</li>
+<li><code>@EnableCaching</code> : 替代的是 <code>&lt;cache:*&gt;</code> 命名空间。</li>
+<li><code>@EnableScheduling</code> : 替代的是 <code>&lt;task:*&gt;</code> 命名空间，激活标注了 <code>@Scheduled</code> 的计划的执行。</li>
+<li><code>@EnableTransactionManagement</code> : 替代的是 <code>&lt;tx:annotation-driven&gt;</code>， 可以为标注了 <code>@Transactional</code> 注解的方法启用事务管理。</li>
+<li><code>@EnableWebMvc</code> : 替代的是 <code>&lt;mvc:annotation-driven&gt;</code>， 激活了注解驱动的控制器请求映射。该注解将激活一个非常复杂的配置，通常需要进行自定义。通过使标注了 <code>@Configuration</code> 注解的配置里实现 <code>WebMvcConfigurer</code> 或者继承 <code>WebMvcConfigurerAdapter</code> 来定义整个 Web MVC 配置。</li>
+</ol>
+<p>另外，某些情况下，我们不得不使用 XML 配置，比如要注入某个 Jar 包中的 Bean ，无法为该 bean 的类标注上类似 <code>@Component</code> 的注解。我们可以使用 <code>@Import</code> 和 <code>@ImportResource</code> 注解来加载其它配置类或 XML 配置文件。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//Java注解的方式配置 Bean</span><br><span class="line">@Configuration</span><br><span class="line">@Import(&#123;DatabaseConfiguration.class, ClusterConfiguraton.class&#125;)</span><br><span class="line">@ImportResource(&quot;classpath:com/wrox/config/spring-security.xml)</span><br><span class="line">@ComponentScan(&quot;com.baicy.wang&quot;)</span><br><span class="line">public class ExampleConfiguration&#123;</span><br><span class="line">    @Bean</span><br><span class="line">    public Bean getBean()&#123;</span><br><span class="line">        return new Bean();</span><br><span class="line">    &#125;</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br><span class="line">//使用上述配置启动上下文</span><br><span class="line">AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();</span><br><span class="line">context.register(ExampleConfiguration.class);</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/04/spring/spring JMS集成/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/04/spring/spring JMS集成/" itemprop="url">Spring JMS集成</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-04T10:04:39+08:00">
+                2019-08-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="JMS-简介"><a href="#JMS-简介" class="headerlink" title="JMS 简介"></a>JMS 简介</h3><p>在JMS出世之前，存在各种MOM（Message-Oriented Middleware)产品，不同产品使用自己的API，所以企业信息系统在使用这些MOM时，不得不使用各个MOM特定的API，这些API可能基于不同的语言实现，为了能够在JAVA平台上使用消息机制开发的程序有一个统一的访问不同MOM产品的方式，于是诞生了JMS规范。JMS规范是一套API规范，类似于JDBC。使得在访问消息中间件时，能够使用一套统一的API规范，这样即使切换了中间件系统，也不用重构应用代码。</p>
+<p>JMS定义了两种消息模型：</p>
+<ol>
+<li>点对点模式。消息发者将消息发送到指定的消息队列，消息接收者也是从同一个消息队列中顺序获取数据，并对获取的消息进行处理。这种模式类似于生产者-消费者模式</li>
+<li>发布订阅模式。消息发送者将消息发送到指定的消息主题（topic），多个消息接收者可以从相应的主题中获取某个相同消息的拷贝并进行处理。这种模式类似于报纸杂志的订阅场景。</li>
+</ol>
+<p>一个典型的JMS应用通常由以下几个部分组成：</p>
+<ul>
+<li>JMS类型的客户端程序。使用Java开发的用于发送或者接收消息的程序。</li>
+<li>非JMS类型的客户端程序。使用消息系统提供的特定API开发的客户端程序，在JMS之前，这种客户端是比较常见的。</li>
+<li>消息。JMS定义了5种消息类型： StreamMessage 、 ByteMessgae 、 MapMessage 、 TextMessage 以及 ObjectMessage。</li>
+<li>JMS Provider 。JMS规定了一套API接口规范，加入JMS规范的各种MOM产品，需要根据规范提供特定于自身产品的JMS实现，这些特定MOM产品的JMS API 实现及相关功能实现称之为 JMS Provider 。</li>
+<li>受管理对象。为了向不同JMS类型客户端程序屏蔽各种 JMS Provider 之间的差异性，系统管理员可以将某些特定类型的对象，通过 JMS Provider 提供的管理工具提前配置到系统中。这些提前配置到系统然后再交给JMS客户端使用的对象就叫做受管理对象。有如下两种类型：<ol>
+<li>ConnectionFactory ：客户端通过 ConnectionFactory 获取 Connection 之后才能访问消息系统。</li>
+<li>Destination ：即消息发送或者接收的目的地，就是配置好的 Queue 和 Topic 。</li>
+</ol>
+</li>
+</ul>
+<h3 id="使用JMS-API开发的传统套路"><a href="#使用JMS-API开发的传统套路" class="headerlink" title="使用JMS API开发的传统套路"></a>使用JMS API开发的传统套路</h3><p>使用JMS API发送消息的一般过程：</p>
+<ol>
+<li>首先，从 JNDI 获取 JMS 的受管理对象，即 ConnectionFactory 和稍后要用到的一个或多个 Destination 引用。</li>
+<li>使用获取 ConnectionFactory 创建发送消息的 Connection</li>
+<li>使用 Connection 创建发送消息的 Session</li>
+<li>使用 Session 创建发送消息的 MessageProducer</li>
+<li>使用 Session 创建将被发送的消息</li>
+<li>使用 MessageProducer 发送的消息到指定的 Destination</li>
+<li>最后做资源管理，包括 MessageProducer、Session以及Connection的关闭</li>
+</ol>
+<h3 id="kafka的Docker镜像使用说明-wurstmeister-kafka"><a href="#kafka的Docker镜像使用说明-wurstmeister-kafka" class="headerlink" title="kafka的Docker镜像使用说明(wurstmeister/kafka)"></a>kafka的Docker镜像使用说明(wurstmeister/kafka)</h3><ol>
+<li><p>编写一个 docker-compose.yml 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;2&apos;</span><br><span class="line">services:</span><br><span class="line">  zookeeper:</span><br><span class="line">    image: wurstmeister/zookeeper</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;2181:2181&quot;</span><br><span class="line">  kafka:</span><br><span class="line">    image: wurstmeister/kafka</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;9092&quot;</span><br><span class="line">    environment:</span><br><span class="line">      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092</span><br><span class="line">      KAFKA_LISTENERS: PLAINTEXT://:9092</span><br><span class="line">      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181</span><br><span class="line">    volumes:</span><br><span class="line">      - /var/run/docker.sock:/var/run/docker.sock</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 Server: <code>docker-compose up -d</code></p>
+</li>
+<li>扩展 broker: <code>docker-compose up -d --scale kafka=4</code></li>
+<li>创建 topic: <code>docker exec kafka_kafka_1 kafka-topics.sh --create --topic topic001 --partitions 4 --zookeeper zookeeper:2181 --replication-factor 2</code></li>
+<li>查看 topic: <code>docker exec kafka_kafka_3 kafka-topics.sh --list --zookeeper zookeeper:2181</code></li>
+<li>查看 topic 详细信息： <code>docker exec kafka_kafka_3 kafka-topics.sh --describe --topic topic001 --zookeeper zookeeper:2181</code></li>
+<li>消费消息： <code>docker exec kafka_kafka_2 kafka-console-consumer.sh --topic topic001 --bootstrap-server kafka_kafka_1:9092,kafka_kafka_2:9092,kafka_kafka_3:9092,kafka_kafka_4:9092</code></li>
+<li>生产消息： <code>docker exec -it kafka_kafka_1 kafka-console-producer.sh --topic topic001 --broker-list kafka_kafka_1:9092,kafka_kafka_2:9092,kafka_kafka_3:9092,kafka_kafka_4:9092</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/13/spring/spring_ioc/spring ioc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/13/spring/spring_ioc/spring ioc/" itemprop="url">Spring IOC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-13T21:34:23+08:00">
+                2019-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/IOC/" itemprop="url" rel="index">
+                    <span itemprop="name">IOC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Spring的IoC容器所起的作用就是它会以某种方式加载Configuration Metadata（通常也就是XML格式的配置信息），然后根据这些信息绑定整个系统的对象，最终组装成一个可用的基于轻量级容器的应用系统。<br>Spring的IoC容器实现以上功能的过程，基本上可以按照类似的流程划分为两个阶段，即容器启动阶段和Bean实例化阶段。<br><img src="/pics/ioc-phase.png" height="60%" width="60%"><br>Spring的IoC容器在实现的时候，充分运用了这两个实现阶段的不同特点，在每个阶段都加入了相应的容器扩展点，以便我们可以根据具体场景的需要加入自定义的扩展逻辑。</p>
+<ol>
+<li><p>容器启动阶段<br> 容器启动伊始，首先会通过某种途径加载 Configuration MetaData 。除了代码方式比较直接，在大部分情况下，容器需要依赖某些工具类（ BeanDefinitionReader ）对加载的 Configuration MetaData 进行解析和分析，并将分析后的信息编组为相应的 BeanDefinition，最后把这些保存了bean定义必要信息的BeanDefinition，注册到相应的BeanDefinitionRegistry，这样容器启动工作就完成了。总地来说，该阶段所做的工作可以认为是准备性的，重点更加侧重于对象管理信息的收集。当然，一些验证性或者辅助性的工作也可以在这个阶段完成。</p>
+</li>
+<li><p>Bean实例化阶段<br> 容器会首先检查所请求的对象之前是否已经存在。如果没有，则会根据注册的BeanDefinition所提供的信息实例化被请求对象，并为其注入依赖。如果该对象实现了某些回调接口，也会根据回调接口的要求来装配它。当该对象装配完毕之后，容器会立即将其返回请求方使用。如果说第一阶段只是根据图纸装配生产线的话，那么第二阶段就是使用装配好的生产线来生产具体的产品了。</p>
+</li>
+</ol>
+<h3 id="第一阶段的扩展点-BeanFactoryPostProcessor"><a href="#第一阶段的扩展点-BeanFactoryPostProcessor" class="headerlink" title="第一阶段的扩展点 BeanFactoryPostProcessor"></a>第一阶段的扩展点 BeanFactoryPostProcessor</h3><p>Spring提供了一种叫做 BeanFactoryPostProcessor 的容器扩展机制。该机制允许我们在容器实例化相应对象之前，对注册到容器的 BeanDefinition 所保存的信息做相应的修改。这就相当于在容器实现的第一阶段最后加入一道工序，让我们对最终的 BeanDefinition 做一些额外的操作，比如修改其中bean定义的某些属性，为bean定义增加其他信息等。</p>
+<p>org.springframework.beans.factory.config.PropertyPlaceholderConfigurer 和 org.springframework.beans.factory.config.PropertyOverrideConfigurer 是两个比较常用的 BeanFactoryPostProcessor。另外，为了处理配置文件中的数据类型与真正的业务对象所定义的数据类型转换， Spring还允许我们通过org.springframework.beans.factory.config.CustomEditorConfigurer 来注册自定义的 PropertyEditor 以补充容器中默认的 PropertyEditor 。</p>
+<h3 id="第二阶段扩展-BeanPostProcessor"><a href="#第二阶段扩展-BeanPostProcessor" class="headerlink" title="第二阶段扩展 BeanPostProcessor"></a>第二阶段扩展 BeanPostProcessor</h3><p>在已经可以借助于 BeanFactoryPostProcessor 来干预 Spring 的第一个阶段启动之后，我们就可以开始探索下一个阶段，即bean实例化阶段的实现逻辑了。</p>
+<h4 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h4><p>容器启动之后，并不会马上就实例化相应的bean定义。我们知道，容器现在仅仅拥有所有对象的 BeanDefinition 来保存实例化阶段将要用的必要信息。只有当请求方通过 BeanFactory 的 getBean() 方法来请求某个对象实例的时候，才有可能触发Bean实例化阶段的活动。 BeanFactory 的 getBean()法可以被客户端对象显式调用，也可以在容器内部隐式地被调用。隐式调用有如下两种情况:</p>
+<ul>
+<li>对于BeanFactory来说，对象实例化默认采用延迟初始化。通常情况下，当对象A被请求而需要第一次实例化的时候，如果它所依赖的对象B之前同样没有被实例化，那么容器会先实例化对象A所依赖的对象。这时容器内部就会首先实例化对象B，以及对象 A依赖的其他还没有实例化的对象。这种情况是容器内部调用getBean()，对于本次请求的请求方是隐式的。</li>
+<li>ApplicationContext启动之后会实例化所有的bean定义，这个特性在本书中已经多次提到。但ApplicationContext在实现的过程中依然遵循Spring容器实现流程的两个阶段，只不过它会在启动阶段的活动完成之后，紧接着调用注册到该容器的所有bean定义的实例化方法getBean()。这就是为什么当你得到ApplicationContext类型的容器引用时，容器内所有对象已经被全部实例化完成。不信你查一下类org.AbstractApplicationContext的refresh()方法。</li>
+</ul>
+<h5 id="BeanFactory中bean的生命周期"><a href="#BeanFactory中bean的生命周期" class="headerlink" title="BeanFactory中bean的生命周期"></a>BeanFactory中bean的生命周期</h5><p><img src="/pics/beanfactory-bean-lifecycle.png" alt="BeanFactory 中bean的生命周期"></p>
+<p>BeanFactory 实例化一个 <code>bean</code> 的步骤：</p>
+<p><img src="/pics/spring-bean.JPG" alt="BeanFactory 中bean的生命周期"></p>
+<p>注意到：自定义的 <code>bean</code> 实例化时，会调用 <code>BeanPostProcessor</code>相关的方法，<code>BeanPostProcessor</code> 不一定是 <code>bean</code> 本身实现的接口，它是 Spring 容器提供的容器级别接口，所有实现 <code>BeanPostProcessor</code> 的类在注册到容器中后，都会在 <code>spring</code> 实例化某个<code>bean</code>的时候其作用。就是说，如果我们自定义了一个 <code>BeanPostProcessor</code> 的实现类并注册到容器中，则它会在<code>spring</code>实例化所有其它<code>bean</code>的时候起作用。</p>
+<h5 id="ApplicationContext中bean的生命周期"><a href="#ApplicationContext中bean的生命周期" class="headerlink" title="ApplicationContext中bean的生命周期"></a>ApplicationContext中bean的生命周期</h5><p><img src="/pics/applicationContext-bean-lifecycle.png" alt="ApplicationContext 中bean的生命周期"></p>
+<p>Bean 在应用上下文中的生命周期与在 BeanFactory 中的类似，实际上，应用上下文在初始化时，会向容器中注册一个 <code>ApplicationContextAwareProcessor</code> 类型的 <code>BeanPostProcessor</code> 实现类，并实现 <code>postProcessBeforeInitialization</code> 方法，这样的话，调用 <code>getBean</code>方法时， <code>ApplicationContextAwareProcessor</code> 就会生效， <code>postProcessBeforeInitialization</code> 判断如果 Bean 实现了 <code>EnvironmentAware</code> , <code>EmbeddedValueResolverAware</code> , <code>ResourceLoaderAware</code> , <code>ApplicationEventPublisherAware</code> , <code>MessageSourceAware</code> , <code>ApplicationContextAware</code> 接口，则会分别调用它们。</p>
+<p>ApplicationContext 和 BeanFactory 的一个重大区别在于：前者会利用java反射机制自动识别出注册的 <code>BeanPostProcessor</code>, <code>BeanFactoryPostProcessor</code> , <code>InstantiationAwareBeanPostProcessor</code> ,并自动将它们注册到容器中；而后者需要手工调用 <code>addBeanPostProcessor</code> 方法注册它们。</p>
+<p><code>ApplicationContext</code> 的 <code>refresh</code> 方法，会在 <code>ApplicationContext</code> 初始化时调用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">public void refresh() throws BeansException, IllegalStateException &#123;</span><br><span class="line">	synchronized (this.startupShutdownMonitor) &#123;</span><br><span class="line">		// Prepare this context for refreshing.</span><br><span class="line">		prepareRefresh();</span><br><span class="line"></span><br><span class="line">		// 获取beanFactory，此时会解析加载xml中的beanDefinition，但是并没有注册 bean 对象</span><br><span class="line">		ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();</span><br><span class="line"></span><br><span class="line">           // 注册一些 BeanPostProcessor bean，开始生成 bean</span><br><span class="line">		prepareBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">           // Allows post-processing of the bean factory in context subclasses.</span><br><span class="line">           postProcessBeanFactory(beanFactory);</span><br><span class="line"></span><br><span class="line">           // 注册并调用BeanFactoryPostProcessor的postProcessBeanFactory方法</span><br><span class="line">           invokeBeanFactoryPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">           // 注册 BeanPostProcessor 类型的bean，自动实现 BeanPostProcessor 注册</span><br><span class="line">           registerBeanPostProcessors(beanFactory);</span><br><span class="line"></span><br><span class="line">           // Initialize message source for this context.</span><br><span class="line">           initMessageSource();</span><br><span class="line"></span><br><span class="line">           // Initialize event multicaster for this context.</span><br><span class="line">           initApplicationEventMulticaster();</span><br><span class="line"></span><br><span class="line">           // Initialize other special beans in specific context subclasses.</span><br><span class="line">           onRefresh();</span><br><span class="line"></span><br><span class="line">           // Check for listener beans and register them.</span><br><span class="line">           registerListeners();</span><br><span class="line"></span><br><span class="line">           // Instantiate all remaining (non-lazy-init) singletons.</span><br><span class="line">           finishBeanFactoryInitialization(beanFactory);</span><br><span class="line"></span><br><span class="line">           // Last step: publish corresponding event.</span><br><span class="line">           finishRefresh();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>看看几个主要的方法：</p>
+<ol>
+<li><p><code>obtainFreshBeanFactory()</code> 方法 :</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">protected ConfigurableListableBeanFactory obtainFreshBeanFactory() &#123;</span><br><span class="line">	refreshBeanFactory();</span><br><span class="line">	ConfigurableListableBeanFactory beanFactory = getBeanFactory();</span><br><span class="line">	if (logger.isDebugEnabled()) &#123;</span><br><span class="line">		logger.debug(&quot;Bean factory for &quot; + getDisplayName() + &quot;: &quot; + beanFactory);</span><br><span class="line">	&#125;</span><br><span class="line">	return beanFactory;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">protected final void refreshBeanFactory() throws BeansException &#123;</span><br><span class="line">	if (hasBeanFactory()) &#123;</span><br><span class="line">		destroyBeans();</span><br><span class="line">		closeBeanFactory();</span><br><span class="line">	&#125;</span><br><span class="line">	DefaultListableBeanFactory beanFactory = createBeanFactory();</span><br><span class="line">	beanFactory.setSerializationId(getId());</span><br><span class="line">	customizeBeanFactory(beanFactory);</span><br><span class="line">	//加载beanDefinition</span><br><span class="line">	loadBeanDefinitions(beanFactory);</span><br><span class="line">	synchronized (this.beanFactoryMonitor) &#123;</span><br><span class="line">		this.beanFactory = beanFactory;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 该方法主要是实例化一个 <code>beanFactory</code>，并加载 bean 定义。</p>
+</li>
+<li><p><code>prepareBeanFactory</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">   protected void prepareBeanFactory(ConfigurableListableBeanFactory beanFactory) &#123;</span><br><span class="line">	// Tell the internal bean factory to use the context&apos;s class loader etc.</span><br><span class="line">	beanFactory.setBeanClassLoader(getClassLoader());</span><br><span class="line">	beanFactory.setBeanExpressionResolver(new StandardBeanExpressionResolver(beanFactory.getBeanClassLoader()));</span><br><span class="line">	beanFactory.addPropertyEditorRegistrar(new ResourceEditorRegistrar(this, getEnvironment()));</span><br><span class="line"></span><br><span class="line">	// Configure the bean factory with context callbacks.</span><br><span class="line">	beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));</span><br><span class="line">	beanFactory.ignoreDependencyInterface(EnvironmentAware.class);</span><br><span class="line">	beanFactory.ignoreDependencyInterface(EmbeddedValueResolverAware.class);</span><br><span class="line">	beanFactory.ignoreDependencyInterface(ResourceLoaderAware.class);</span><br><span class="line">	beanFactory.ignoreDependencyInterface(ApplicationEventPublisherAware.class);</span><br><span class="line">	beanFactory.ignoreDependencyInterface(MessageSourceAware.class);</span><br><span class="line">	beanFactory.ignoreDependencyInterface(ApplicationContextAware.class);</span><br><span class="line"></span><br><span class="line">	// BeanFactory interface not registered as resolvable type in a plain factory.</span><br><span class="line">	// MessageSource registered (and found for autowiring) as a bean.</span><br><span class="line">	beanFactory.registerResolvableDependency(BeanFactory.class, beanFactory);</span><br><span class="line">	beanFactory.registerResolvableDependency(ResourceLoader.class, this);</span><br><span class="line">	beanFactory.registerResolvableDependency(ApplicationEventPublisher.class, this);</span><br><span class="line">	beanFactory.registerResolvableDependency(ApplicationContext.class, this);</span><br><span class="line"></span><br><span class="line">	// Register early post-processor for detecting inner beans as ApplicationListeners.</span><br><span class="line">	beanFactory.addBeanPostProcessor(new ApplicationListenerDetector(this));</span><br><span class="line"></span><br><span class="line">	// Detect a LoadTimeWeaver and prepare for weaving, if found.</span><br><span class="line">	if (beanFactory.containsBean(LOAD_TIME_WEAVER_BEAN_NAME)) &#123;</span><br><span class="line">		beanFactory.addBeanPostProcessor(new LoadTimeWeaverAwareProcessor(beanFactory));</span><br><span class="line">		// Set a temporary ClassLoader for type matching.</span><br><span class="line">		beanFactory.setTempClassLoader(new ContextTypeMatchClassLoader(beanFactory.getBeanClassLoader()));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Register default environment beans.</span><br><span class="line">	if (!beanFactory.containsLocalBean(ENVIRONMENT_BEAN_NAME)) &#123;</span><br><span class="line">		beanFactory.registerSingleton(ENVIRONMENT_BEAN_NAME, getEnvironment());</span><br><span class="line">	&#125;</span><br><span class="line">	if (!beanFactory.containsLocalBean(SYSTEM_PROPERTIES_BEAN_NAME)) &#123;</span><br><span class="line">		beanFactory.registerSingleton(SYSTEM_PROPERTIES_BEAN_NAME, getEnvironment().getSystemProperties());</span><br><span class="line">	&#125;</span><br><span class="line">	if (!beanFactory.containsLocalBean(SYSTEM_ENVIRONMENT_BEAN_NAME)) &#123;</span><br><span class="line">		beanFactory.registerSingleton(SYSTEM_ENVIRONMENT_BEAN_NAME, getEnvironment().getSystemEnvironment());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>registerListeners</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">   protected void registerListeners() &#123;</span><br><span class="line">	// Register statically specified listeners first.</span><br><span class="line">	for (ApplicationListener&lt;?&gt; listener : getApplicationListeners()) &#123;</span><br><span class="line">		getApplicationEventMulticaster().addApplicationListener(listener);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Do not initialize FactoryBeans here: We need to leave all regular beans</span><br><span class="line">	// uninitialized to let post-processors apply to them!</span><br><span class="line">	String[] listenerBeanNames = getBeanNamesForType(ApplicationListener.class, true, false);</span><br><span class="line">	for (String listenerBeanName : listenerBeanNames) &#123;</span><br><span class="line">		getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	// Publish early application events now that we finally have a multicaster...</span><br><span class="line">	Set&lt;ApplicationEvent&gt; earlyEventsToProcess = this.earlyApplicationEvents;</span><br><span class="line">	this.earlyApplicationEvents = null;</span><br><span class="line">	if (earlyEventsToProcess != null) &#123;</span><br><span class="line">		for (ApplicationEvent earlyEvent : earlyEventsToProcess) &#123;</span><br><span class="line">			getApplicationEventMulticaster().multicastEvent(earlyEvent);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/分布式/redis/Redis手册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/25/分布式/redis/Redis手册/" itemprop="url">Redis 手册</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-25T21:07:35+08:00">
+                2019-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分布式/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Redis是一种基于键值对（key-value）的NoSQL数据库，与很多键值对数据库不同的是，Redis中的值可以是由string（字符串）、hash（哈希）、list（列表）、set（集合）、zset（有序集合）、Bitmaps（位图）、HyperLogLog、GEO（地理信息定位）等多种数据结构和算法组成，因此Redis可以满足很多的应用场景，而且因为Redis会将所有数据都存放在内存中，所以它的读写性能非常惊人。不仅如此，Redis还可以将内存的数据利用快照和日志的形式保存到硬盘上，这样在发生类似断电或者机器故障的时候，内存中的数据不会“丢失”。除了上述功能以外，Redis还提供了键过期、发布订阅、事务、流水线、Lua脚本等附加功能。总之，如果在合适的场景使用好Redis，它就会像一把瑞士军刀一样所向披靡。</p>
+<h3 id="Redis-Server-启动与连接"><a href="#Redis-Server-启动与连接" class="headerlink" title="Redis Server 启动与连接"></a>Redis Server 启动与连接</h3><p><img src="/pics/redis-exe.png" alt></p>
+<ol>
+<li><p>redis-server</p>
+<ol>
+<li>默认配置启动：<code># redis-server</code></li>
+<li>指定配置文件启动: <code># redis-server /opt/redis/redis.conf</code></li>
+</ol>
+<p>Redis目录下都会有一个redis.conf配置文件，里面就是Redis的默认配置，通常来讲我们会在一台机器上启动多个Redis，并且将配置集中管理在指定目录下，而且配置不是完全手写的，而是将redis.conf作为模板进行修改。</p>
+<p>一些基础配置：</p>
+<ul>
+<li>port : 配置监听端口</li>
+<li>logfile : 配置日志文件</li>
+<li>dir : Redis 工作目录（存放持久化文件和日志文件）</li>
+<li>daemonize: 是否以守护进程的方式启动</li>
+</ul>
+</li>
+<li><p>redis-cli</p>
+<ul>
+<li><code>redis-cli -h {host} -p {port} -a {password}</code> ：使用主机、端口和密码以交互式连接 redis 服务</li>
+<li><code>redis-cli -h {host} -p {port} -a {password} {command}</code> ：使用主机、端口和密码以命令式连接 redis 服务并执行一条命令</li>
+</ul>
+</li>
+<li><p>关闭 Redis 服务</p>
+<ol>
+<li><code>redis-cli shutdown</code>：断开与客户端的连接、持久化文件生成，是一种相对优雅的关闭方式。</li>
+<li>shutdown还有一个参数，代表是否在关闭Redis前，生成持久化文件：<code>redis-cli shutdown nosave|save</code></li>
+<li>除了可以通过shutdown命令关闭Redis服务以外，还可以通过kill进程号的方式关闭掉Redis，但是不要粗暴地使用kill-9强制杀死Redis服务，不但不会做持久化操作，还会造成缓冲区等资源不能被优雅关闭，极端情况会造成AOF和复制丢失数据的情况。</li>
+</ol>
+</li>
+</ol>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ol>
+<li>键通用命令<ol>
+<li>查看所有的键： <code>keys *</code>，会遍历所有的键，谨慎使用。</li>
+<li>键总数： <code>dbsize</code> ,不会遍历所有键，而是直接获取 Redis内置的键总数变量的值</li>
+<li>检查键是否存在： <code>exists key</code>， 存在返回1，否则返回0</li>
+<li>删除键： <code>del key1 key2 ...</code>, 返回成功删除键的个数</li>
+<li>键过期： <code>expire key seconds</code> ,超过过期时间后，键会自动删除</li>
+<li>键剩余过期时间： <code>ttl key</code>，返回大于等于0的整数，代表剩余过期时间；如果没有设置过期时间，返回-1；键不存在，返回-2</li>
+<li>查看键对应的值的数据类型： <code>type key</code>，键不存在返回 none</li>
+<li>键重命名： <code>rename key newkey</code>, 如果 newkey 已经存在，那么他的值将会被 key 的值覆盖</li>
+<li><code>renamenx key newkey</code>： 只有 newkey 不存在时才会重命名成功，由于重命名键期间会执行del命令删除旧的键，如果键对应的值比较大，会存在阻塞Redis的可能性，这点不要忽视。</li>
+<li>随机返回一个键： <code>randomkey</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>字符串类型是 Redis 最基础的类型，所有的键都是字符串类型。字符串的值实际可以是字符串、数字，甚至二进制（图片、音视频），但是大小最大不能超过512MB。<br><img src="/pics/redis-string.png" alt></p>
+<ol>
+<li><p>命令</p>
+<ul>
+<li><code>set key value [ex seconds] [px milliseconds] [nx|xx]</code> : 设置值</li>
+<li><code>setex</code> : 相当于上面的 ex 选项</li>
+<li><code>setnx</code> ：相当于上面的 nx 选项，不存在时才设置成功。</li>
+<li><code>mset key value [key value...]</code> : 批量设置值</li>
+<li><code>get key</code> ：获取 key 对应的值，key 不存在则返回 nil。</li>
+<li><code>mget key [key...]</code> : 批量获取值</li>
+<li><code>incr key</code> ：计数自增,若值不是整数，返回错误；若值是整数，返回自增后的结果；键不存在，按照值为0自增，返回结果1。</li>
+<li><code>decr key</code> ：计数递减1</li>
+<li><code>incrby key increment</code> ：计数 + increment</li>
+<li><code>decrby key decrement</code> ：计数 - decrement</li>
+<li><code>incrbyfloat key increment</code> ：浮点数 + increment</li>
+<li><code>append key value</code> ：向字符串尾部追加值</li>
+<li><code>strlen value</code> ：获取字符串长度</li>
+<li><code>getset key value</code> ：设置并返回原值</li>
+<li><code>setrange key offeset value</code> ：设置指定位置的字符</li>
+<li><code>getrange key start end</code> ：获取部分字符串<br><img src="/pics/redis-string-time.png" alt></li>
+</ul>
+</li>
+<li><p>内部编码<br>字符串类型的内部编码有3种：</p>
+<ul>
+<li>int：8个字节的长整型。</li>
+<li>embstr：小于等于39个字节的字符串。</li>
+<li>raw：大于39个字节的字符串。</li>
+</ul>
+</li>
+</ol>
+<h4 id="哈希"><a href="#哈希" class="headerlink" title="哈希"></a>哈希</h4><p><img src="/pics/redis-hash.png" alt></p>
+<ol>
+<li><p>命令</p>
+<ul>
+<li>设置值 ：<code>hset key field value</code>,设置 field-value，成功返回1，否则返回0。还有 <code>hsetnx</code> 命令，只有field不存在时才会设置值</li>
+<li>获取值 ：<code>hget key field</code>；如果 field 不存在，返回 nil</li>
+<li>删除 field ：<code>hdel key field [field ...]</code>：可以删除一个或多个 field，返回成功删除的个数</li>
+<li>计算field的个数 ：<code>hlen key</code></li>
+<li>批量设置field-value ：<code>hmset key field value [field value ...]</code></li>
+<li>批量获取field-value ：<code>hmget key field [field....]</code></li>
+<li>判断 field 是否存在 ：<code>hexists key field</code>,存在返回1，否则返回0</li>
+<li>获取所有 field ：<code>hkeys key</code></li>
+<li>获取所有 value ：<code>hvals key</code></li>
+<li>获取所有 field-value ：<code>hgetall key</code></li>
+<li>指定 field 加1：<code>hincrby key field</code></li>
+<li>同上，对浮点数操作 ：<code>hincrbyfloat key field</code></li>
+<li>计算value的字符串长度 ：<code>hstrlen key field</code></li>
+</ul>
+<p><img src="/pics/redis-hash-time.png" alt></p>
+</li>
+</ol>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><h4 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h4><h4 id="有序集合"><a href="#有序集合" class="headerlink" title="有序集合"></a>有序集合</h4><h3 id="Jedis-简介"><a href="#Jedis-简介" class="headerlink" title="Jedis 简介"></a>Jedis 简介</h3><ol>
+<li><p>直接构造操作 Jedis </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 1. 生成一个Jedis对象，这个对象负责和指定Redis实例进行通信</span><br><span class="line">Jedis jedis = new Jedis(&quot;127.0.0.1&quot;, 6379);</span><br><span class="line"># 2. jedis执行set操作</span><br><span class="line">jedis.set(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line"># 3. jedis执行get操作, value=&quot;world&quot;</span><br><span class="line">String value = jedis.get(&quot;hello&quot;);</span><br></pre></td></tr></table></figure>
+<p>还有一个包含4个参数的构造函数是比较常用的：<br><code>Jedis(final String host, final int port, final int connectionTimeout, final int
+soTimeout)</code></p>
+<ul>
+<li>host：Redis实例的所在机器的IP。</li>
+<li>port：Redis实例的端口。</li>
+<li>connectionTimeout：客户端连接超时。</li>
+<li>soTimeout：客户端读写超时。</li>
+</ul>
+<p>Jedis 对 Redis 五种数据结构的操作示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 1.string</span><br><span class="line">// 输出结果：OK</span><br><span class="line">jedis.set(&quot;hello&quot;, &quot;world&quot;);</span><br><span class="line">// 输出结果：world</span><br><span class="line">jedis.get(&quot;hello&quot;);</span><br><span class="line">// 输出结果：1</span><br><span class="line">jedis.incr(&quot;counter&quot;);</span><br><span class="line">// 2.hash</span><br><span class="line">jedis.hset(&quot;myhash&quot;, &quot;f1&quot;, &quot;v1&quot;);</span><br><span class="line">jedis.hset(&quot;myhash&quot;, &quot;f2&quot;, &quot;v2&quot;);</span><br><span class="line">// 输出结果：&#123;f1=v1, f2=v2&#125;</span><br><span class="line">jedis.hgetAll(&quot;myhash&quot;);</span><br><span class="line">// 3.list</span><br><span class="line">jedis.rpush(&quot;mylist&quot;, &quot;1&quot;);</span><br><span class="line">jedis.rpush(&quot;mylist&quot;, &quot;2&quot;);</span><br><span class="line">jedis.rpush(&quot;mylist&quot;, &quot;3&quot;);</span><br><span class="line">// 输出结果：[1, 2, 3]</span><br><span class="line">jedis.lrange(&quot;mylist&quot;, 0, -1);</span><br><span class="line">// 4.set</span><br><span class="line">jedis.sadd(&quot;myset&quot;, &quot;a&quot;);</span><br><span class="line">jedis.sadd(&quot;myset&quot;, &quot;b&quot;);</span><br><span class="line">jedis.sadd(&quot;myset&quot;, &quot;a&quot;);</span><br><span class="line">// 输出结果：[b, a]</span><br><span class="line">jedis.smembers(&quot;myset&quot;);</span><br><span class="line">// 5.zset</span><br><span class="line">jedis.zadd(&quot;myzset&quot;, 99, &quot;tom&quot;);</span><br><span class="line">jedis.zadd(&quot;myzset&quot;, 66, &quot;peter&quot;);</span><br><span class="line">jedis.zadd(&quot;myzset&quot;, 33, &quot;james&quot;);</span><br><span class="line">// 输出结果：[[[&quot;james&quot;],33.0], [[&quot;peter&quot;],66.0], [[&quot;tom&quot;],99.0]]</span><br><span class="line">jedis.zrangeWithScores(&quot;myzset&quot;, 0, -1);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Jedis 连接池<br>Jedis提供了JedisPool这个类作为对Jedis的连接池，同时使用了Apache的通用对象池工具common-pool作为资源的管理工具，下面是使用JedisPool操作Redis的代码示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// common-pool连接池配置，这里使用默认配置，后面小节会介绍具体配置说明</span><br><span class="line">GenericObjectPoolConfig poolConfig = new GenericObjectPoolConfig();</span><br><span class="line">// 初始化Jedis连接池</span><br><span class="line">JedisPool jedisPool = new JedisPool(poolConfig, &quot;127.0.0.1&quot;, 6379);</span><br><span class="line"></span><br><span class="line">//从连接池获取 Jedis 连接对象</span><br><span class="line">Jedis jedis = null;</span><br><span class="line">try &#123;</span><br><span class="line">   // 1. 从连接池获取jedis对象</span><br><span class="line">   jedis = jedisPool.getResource();</span><br><span class="line">   // 2. 执行操作</span><br><span class="line">   jedis.get(&quot;hello&quot;);</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">   logger.error(e.getMessage(),e);</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">   if (jedis != null) &#123;</span><br><span class="line">      // 如果使用JedisPool，close操作不是关闭连接，代表归还连接池</span><br><span class="line">      jedis.close();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下边是 Jedis 连接池的配置参数：<br><img src="/pics/jedispool-config.png" alt></p>
+</li>
+</ol>
+<h3 id="Redis-持久化策略"><a href="#Redis-持久化策略" class="headerlink" title="Redis 持久化策略"></a>Redis 持久化策略</h3><p>Redis 支持两种持久化方式：</p>
+<ul>
+<li>RDB,Snapshoting (快照，默认方式)</li>
+<li>Append-only file (AOF)</li>
+</ul>
+<h4 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h4><p>RDB是默认的持久化方式。这种方式是就是将内存中数据以快照的方式写入到二进制文件中,默认的文件名为 <code>dump.rdb</code> 。触发RDB持久化过程分为手动触发和自动触发。</p>
+<ol>
+<li>手动触发<br>手动触发分别对应 save 和 bgsave 命令：<ul>
+<li>save 命令：对于单线程的 Redis 服务器，会阻塞服务器，直到 RDB 过程完成为止，对于内存中存放大量数据的实例会造成长时间阻塞，线上环境不建议使用。</li>
+<li>bgsave 命令：Redis 进程执行 fork 操作创建子进程，RDB过程由子进程负责，完成后自动结束，阻塞只发生在 fork 阶段，一般时间很短。</li>
+</ul>
+</li>
+<li><p>自动触发<br>下述场景会自动触发 RDB 持久化机制：</p>
+<ol>
+<li>通过配置设置了自动做快照持久化的方式。我们可以配置 redis 在 n 秒内如果超过 m 个 key 被修改就自动做快照（bgsave），下面是默认的快照保存配置：<ul>
+<li>save 900 1 #900 秒内如果超过 1 个 key 被修改，则发起快照保存</li>
+<li>save 300 10 #300 秒内容如超过 10 个 key 被修改，则发起快照保存</li>
+<li>save 60 10000 #60 秒内容如超过 10000 个 key 被修改，则发起快照保存</li>
+</ul>
+</li>
+<li>如果从节点执行全量复制操作，主节点会自动执行 bgsave 生成 RDB 文件发送给从节点</li>
+<li>执行 debug reload 命令重新加载 Redis 时，也会自动触发</li>
+<li>默认情况下执行 shutdown 命令时，如果没有开启 AOF 持久化功能则自动执行 bgsave 。</li>
+</ol>
+</li>
+<li><p>RDB快照保存过程：</p>
+<ol>
+<li>redis 调用 fork后,于是有了子进程和父进程。</li>
+<li>父进程继续处理 client 请求，子进程负责将内存内容写入到临时文件。由于 os 的实时复制机制（ copy on write)父子进程会共享相同的物理页面，当父进程处理写请求时 os 会为父进程要修改的页面创建副本，而不是写共享的页面。所以子进程地址空间内的数据是 fork 时刻整个数据库的一个快照。</li>
+<li>当子进程将快照写入临时文件完毕后，用临时文件替换原来的快照文件，然后子进程退出。 client 也可以使用 <code>save</code> 或者 <code>bgsave</code> 命令通知 redis 做一次快照持久化。 save 操作是在主线程中保存快照的，由于 redis 是用一个主线程来处理所有 client 的请求，这种方式会阻塞所有client 请求。所以不推荐使用。另一点需要注意的是，每次快照持久化都是将内存数据完整写入到磁盘一次，并不是增量的只同步变更数据。如果数据量大的话，而且写操作比较多，必然会引起大量的磁盘 io 操作，可能会严重影响性能。</li>
+</ol>
+</li>
+<li><p>RDB的优缺点</p>
+<ol>
+<li>RDB的优点：<ul>
+<li>RDB是一个紧凑压缩的二进制文件，代表Redis在某个时间点上的数据快照。非常适用于备份，全量复制等场景。比如每6小时执行bgsave备份，并把RDB文件拷贝到远程机器或者文件系统中（如hdfs），用于灾难恢复。</li>
+<li>Redis加载RDB恢复数据远远快于AOF的方式。</li>
+</ul>
+</li>
+<li>RDB的缺点：<ul>
+<li>RDB方式数据没办法做到实时持久化/秒级持久化。因为bgsave每次运行都要执行fork操作创建子进程，属于重量级操作，频繁执行成本过高。</li>
+<li>RDB文件使用特定二进制格式保存，Redis版本演进过程中有多个格式的RDB版本，存在老版本Redis服务无法兼容新版RDB格式的问题。</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="AOF方式"><a href="#AOF方式" class="headerlink" title="AOF方式"></a>AOF方式</h4><p>首先通过 <code>appendonly yes</code> 启用 aof 持久化方式。AOF 以独立日志的方式记录每次写命令。重启时再重新执行AOF文件中的命令达到恢复数据的目的。AOF的主要作用是解决了数据持久化的实时性，目前已经是Redis持久化的主流方式。<br>由于快照方式是在一定间隔时间做一次的，所以如果 redis 意外 down 掉的话，就会丢失最后一次快照后的所有修改。如果应用要求不能丢失任何修改的话，可以采用 aof 持久化方式。</p>
+<p>下面介绍 Append-only file:<br>aof 比快照方式有更好的持久化性能，是由于在使用 aof 持久化方式时,redis 会将每一个收到的写命令都通过 write 函数追加到日志文件中(默认是 appendonly.aof)。当 redis 重启时会通过重新执行文件中保存的写命令来在内存中重建整个数据库的内容。当然由于 os 会在内核中缓存（AOF缓冲区） write 做的修改，所以可能不是立即写到磁盘上。这样 aof 方式的持久化也还是有可能会丢失部分修改。不过我们可以通过配置文件告诉 redis 我们想要通过 fsync 函数强制 os 写入到磁盘的时机。有三种方式如下（默认是：每秒 fsync 一次）：</p>
+<ol>
+<li>appendfsync always //收到写命令写入aof_buf后调用 fsync 就立即写入磁盘，fsync 完成后线程返回。最慢，但是保证完全的持久化</li>
+<li>appendfsync everysec //默认方式，，命令写入 aof_buf 后调用 write 操作，write 操作完成线程返回。fsync 同步文件由专门线程每秒调用一次，在性能和持久化方面做了很好的折中</li>
+<li>appendfsync no //命令写入 aof_buf 后调用系统 write 操作，不对 AOF 文件做 fsync 同步，完全依赖 os，性能最好,持久化没保证</li>
+</ol>
+<p>aof 的方式也同时带来了另一个问题。持久化文件会变的越来越大。AOF重写能压缩文件体积，有以下原因：</p>
+<ul>
+<li>多条命令合并。例如我们调用 incr test 命令 100 次，文件中必须保存全部的 100 条命令，其实有 99 条都是多余的。因为要恢复数据库的状态其实文件中保存一条 set test 100 就够了。</li>
+<li>进程内已经超时的数据不会再写入文件</li>
+<li>旧的AOF文件包含无效命令，如 del key1,hdel key2,srem keys,set alll, set a222等。重写使用进程内数据直接生成，这样新的AOF文件只保留最终数据的写入命令。</li>
+</ul>
+<p>AOF重写降低了文件占用空间，而且也可以更快地被 Redis 加载。为了压缩 aof 的持久化文件， redis 提供了两种方式：</p>
+<ol>
+<li>手动触发：<code>bgrewriteaof</code> 命令。收到此命令 redis 将使用与快照类似的方式将内存中的数据以命令的方式保存到临时文件中，最后替换原来的文件。</li>
+<li>自动触发：根据<code>auto-aof-rewrite-min-size</code>和<code>auto-aof-rewrite-percentage</code>参数确定自动触发时机。<ul>
+<li>auto-aof-rewrite-min-size：表示运行AOF重写时文件最小体积，默认为64MB。</li>
+<li>auto-aof-rewrite-percentage：代表当前AOF文件空间（aof_current_size）和上一次重写后AOF文件空间（aof_base_size）的比值。<br>自动触发时机=aof_current_size &gt; auto-aof-rewrite-minsize &amp;&amp;（aof_current_size-aof_base_size）/aof_base_size &gt;= auto-aof-rewritepercentage<br>其中aof_current_size和aof_base_size可以在info Persistence统计信息中查看。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Redis-复制"><a href="#Redis-复制" class="headerlink" title="Redis 复制"></a>Redis 复制</h3><p>在分布式系统中为了解决单点问题，通常会把数据复制多个副本部署到其他机器，满足故障恢复和负载均衡等需求。Redis也是如此，它为我们提供了复制功能，实现了相同数据的多个Redis副本。复制功能是高可用Redis的基础，后面章节的哨兵和集群都是在复制的基础上实现高可用的。</p>
+<p>参与复制的Redis实例划分为主节点（master）和从节点（slave）。默认情况下，Redis都是主节点。每个从节点只能有一个主节点，而主节点可以同时具有多个从节点。复制的数据流是单向的，只能由主节点复制到从节点。配置复制的方式有以下三种：</p>
+<ol>
+<li>在配置文件中加入 slaveof {masterHost} {masterPort} 随Redis启动生效。</li>
+<li>在 redis-server 启动命令后加入 —slaveof {masterHost} {masterPort} 选项，启动后生效。</li>
+<li>直接使用命令：slaveof {masterHost} {masterPort} ，命令执行后生效。</li>
+</ol>
+<h3 id="Redis-高可用"><a href="#Redis-高可用" class="headerlink" title="Redis 高可用"></a>Redis 高可用</h3><p>Redis 支持一主多从的主从复制和集群分片模式。</p>
+<h4 id="Redis-集群的数据分片"><a href="#Redis-集群的数据分片" class="headerlink" title="Redis 集群的数据分片"></a>Redis 集群的数据分片</h4><p>Redis 集群没有使用一致性hash, 而是引入了哈希槽的概念.</p>
+<p>Redis 集群有16384个哈希槽,每个key通过CRC16校验后对16384取模来决定放置哪个槽.集群的每个节点负责一部分hash槽,举个例子,比如当前集群有3个节点,那么:</p>
+<p>节点 A 包含 0 到 5500号哈希槽.<br>节点 B 包含5501 到 11000 号哈希槽.<br>节点 C 包含11001 到 16384号哈希槽.<br>这种结构很容易添加或者删除节点. 比如如果我想新添加个节点D, 我需要从节点 A, B, C中得部分槽到D上. 如果我想移除节点A,需要将A中的槽移到B和C节点上,然后将没有任何槽的A节点从集群中移除即可. 由于从一个节点将哈希槽移动到另一个节点并不会停止服务,所以无论添加删除或者改变某个节点的哈希槽的数量都不会造成集群不可用的状态.</p>
+<h4 id="Redis-集群的主从复制模型"><a href="#Redis-集群的主从复制模型" class="headerlink" title="Redis 集群的主从复制模型"></a>Redis 集群的主从复制模型</h4><p>为了使在部分节点失败或者大部分节点无法通信的情况下集群仍然可用，所以集群使用了主从复制模型,每个主节点都会有N-1个复制品.</p>
+<p><strong>在我们例子中具有A，B，C三个节点的集群,在没有复制模型的情况下,如果节点B失败了，那么整个集群就会以为缺少5501-11000这个范围的槽而不可用。</strong><br>然而如果在集群创建的时候（或者过一段时间）我们为每个节点添加一个从节点A1，B1，C1,那么整个集群便有三个master节点和三个slave节点组成，这样在节点B失败后，集群便会选举B1为新的主节点继续服务，整个集群便不会因为槽找不到而不可用了</p>
+<p>不过当B和B1 都失败后，集群是不可用的.</p>
+<h4 id="搭建集群"><a href="#搭建集群" class="headerlink" title="搭建集群"></a>搭建集群</h4><ol>
+<li><p>准备节点</p>
+<p>Redis集群一般由多个节点组成，节点数量至少为6个才能保证组成完整高可用的集群。每个节点需要开启配置 cluster-enabled yes，让Redis运行在集群模式下。建议为集群内所有节点统一目录，一般划分三个目录：conf、data、log，分别存放配置、数据和日志相关文件。把6个节点配置统一放在conf目录下，命名规则为 redis-port.conf ,集群相关配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bind 127.0.0.1</span><br><span class="line">port 6379</span><br><span class="line">tcp-backlog 511</span><br><span class="line">loglevel notice</span><br><span class="line">logfile &quot;log/node-6379.log&quot;</span><br><span class="line">cluster-enabled yes</span><br><span class="line">\# 节点超时时间，单位毫秒</span><br><span class="line">cluster-node-timeout 15000</span><br><span class="line">\# 集群内部配置文件</span><br><span class="line">cluster-config-file &quot;nodes-6379.conf&quot;</span><br></pre></td></tr></table></figure>
+<p>配置文件创建好后，分别启动6个实例：</p>
+<p><code>redis-server conf\redis-6379.conf</code></p>
+<p>实例启动后，可以用 redis-cli 连接到任意一台机器，然后执行：<code>cluster nodes</code>，会发现只有一台机器，因为此时6台实例之间并不知道对方。</p>
+</li>
+<li><p>节点握手</p>
+<p>节点握手是指一批运行在集群模式下的节点通过Gossip协议彼此通信，达到感知对方的过程。节点握手是集群彼此通信的第一步，由客户端发起命令：<code>cluster meet {ip} {port}</code></p>
+<p>分别执行上述命令将6台机器加入到集群后，集群还不能正常工作，这时集群处于下线状态，所有的数据读写都被禁止，可以使用 <code>cluster info</code> 命令查看集群的当前状态：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">cluster_state:fail</span><br><span class="line">cluster_slots_assigned:0</span><br><span class="line">cluster_slots_ok:0</span><br><span class="line">cluster_slots_pfail:0</span><br><span class="line">cluster_slots_fail:0</span><br><span class="line">cluster_known_nodes:6</span><br><span class="line">cluster_size:0</span><br><span class="line">cluster_current_epoch:1</span><br><span class="line">cluster_my_epoch:1</span><br><span class="line">cluster_stats_messages_ping_sent:101</span><br><span class="line">cluster_stats_messages_meet_sent:5</span><br><span class="line">cluster_stats_messages_sent:106</span><br><span class="line">cluster_stats_messages_pong_received:106</span><br><span class="line">cluster_stats_messages_received:106</span><br></pre></td></tr></table></figure>
+<p>因为此时还没有为各个节点分配槽，所以现在集群还是不可用的。</p>
+</li>
+<li><p>分配槽</p>
+<p>Redis集群把所有的数据映射到16384个槽中。每个key会映射为一个固定的槽，只有当节点分配了槽，才能响应和这些槽关联的键命令。通过 <code>cluster addslots</code> 命令为节点分配槽。这里利用bash特性批量设置槽（slots），命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">redis-cli -h 127.0.0.1 -p 6379 cluster addslots &#123;0...5461&#125;</span><br><span class="line">windows:FOR /L %i IN (0,1,5461) DO ( redis-cli.exe -h 127.0.0.1 -p 6379 CLUSTER ADDSLOTS %i )</span><br><span class="line">redis-cli -h 127.0.0.1 -p 6380 cluster addslots &#123;5462...10922&#125;</span><br><span class="line">windows:FOR /L %i IN (5461,1,10922) DO ( redis-cli.exe -h 127.0.0.1 -p 6380 CLUSTER ADDSLOTS %i )</span><br><span class="line">redis-cli -h 127.0.0.1 -p 6381 cluster addslots &#123;10923...16383&#125;</span><br><span class="line">windows:FOR /L %i IN (10923,1,16383) DO ( redis-cli.exe -h 127.0.0.1 -p 6381 CLUSTER ADDSLOTS %i )</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="Redis-一致性保证"><a href="#Redis-一致性保证" class="headerlink" title="Redis 一致性保证"></a>Redis 一致性保证</h4><p>Redis 并不能保证数据的强一致性. 这意味这在实际中集群在特定的条件下可能会丢失写操作.</p>
+<p>第一个原因是因为集群是用了异步复制. 写操作过程:</p>
+<p>客户端向主节点B写入一条命令.<br>主节点B向客户端回复命令状态.<br>主节点将写操作复制给他得从节点 B1, B2 和 B3.<br>主节点对命令的复制工作发生在返回命令回复之后， 因为如果每次处理命令请求都需要等待复制操作完成的话， 那么主节点处理命令请求的速度将极大地降低 —— 我们必须在性能和一致性之间做出权衡。 注意：Redis 集群可能会在将来提供同步写的方法。<br>Redis 集群另外一种可能会丢失命令的情况是集群出现了网络分区， 并且一个客户端与至少包括一个主节点在内的少数实例被孤立。</p>
+<p>举个例子 假设集群包含 A 、 B 、 C 、 A1 、 B1 、 C1 六个节点， 其中 A 、B 、C 为主节点， A1 、B1 、C1 为A，B，C的从节点， 还有一个客户端 Z1 假设集群中发生网络分区，那么集群可能会分为两方，大部分的一方包含节点 A 、C 、A1 、B1 和 C1 ，小部分的一方则包含节点 B 和客户端 Z1 .</p>
+<p>Z1仍然能够向主节点B中写入, 如果网络分区发生时间较短,那么集群将会继续正常运作,如果分区的时间足够让大部分的一方将B1选举为新的master，那么Z1写入B中得数据便丢失了.</p>
+<p>注意， 在网络分裂出现期间， 客户端 Z1 可以向主节点 B 发送写命令的最大时间是有限制的， 这一时间限制称为节点超时时间（node timeout）， 是 Redis 集群的一个重要的配置选项：</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,37 +1,795 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="mysql,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="复制原理复制是 mysql 数据库提供的一种高可用高性能解决方案，分为3个步骤：  主服务器把数据更改（写）记录到二进制日志文件中， 从服务器把主服务器的二进制日志复制到自己的中继日志中（slave IO 线程） 从服务器重做中继日志中的日志，把更改应用到本地数据库上，以达到数据的最终一致性。   一般要设置 slave 机器：CHANGE MASTER TO12345-&amp;gt;     MAST">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql高可用-主从复制">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/sql/msyql/mysql高可用-主从复制/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="复制原理复制是 mysql 数据库提供的一种高可用高性能解决方案，分为3个步骤：  主服务器把数据更改（写）记录到二进制日志文件中， 从服务器把主服务器的二进制日志复制到自己的中继日志中（slave IO 线程） 从服务器重做中继日志中的日志，把更改应用到本地数据库上，以达到数据的最终一致性。   一般要设置 slave 机器：CHANGE MASTER TO12345-&amp;gt;     MAST">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/mysql-replacation.jpg">
+<meta property="og:image" content="http://yoursite.com/pics/slave-status.jpg">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.215Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql高可用-主从复制">
+<meta name="twitter:description" content="复制原理复制是 mysql 数据库提供的一种高可用高性能解决方案，分为3个步骤：  主服务器把数据更改（写）记录到二进制日志文件中， 从服务器把主服务器的二进制日志复制到自己的中继日志中（slave IO 线程） 从服务器重做中继日志中的日志，把更改应用到本地数据库上，以达到数据的最终一致性。   一般要设置 slave 机器：CHANGE MASTER TO12345-&amp;gt;     MAST">
+<meta name="twitter:image" content="http://yoursite.com/pics/mysql-replacation.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/11/sql/msyql/mysql高可用-主从复制/">
+
+
+
+
+
+  <title>mysql高可用-主从复制 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/sql/msyql/mysql高可用-主从复制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql高可用-主从复制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-11T16:15:00+08:00">
+                2019-08-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="复制原理"><a href="#复制原理" class="headerlink" title="复制原理"></a>复制原理</h3><p>复制是 mysql 数据库提供的一种高可用高性能解决方案，分为3个步骤：</p>
+<ol>
+<li>主服务器把数据更改（写）记录到二进制日志文件中，</li>
+<li>从服务器把主服务器的二进制日志复制到自己的中继日志中（slave IO 线程）</li>
+<li>从服务器重做中继日志中的日志，把更改应用到本地数据库上，以达到数据的最终一致性。</li>
+</ol>
+<p><img src="/pics/mysql-replacation.jpg" alt="mysql 复制原理"></p>
+<p>一般要设置 slave 机器：<br><figure class="highlight plain"><figcaption><span>CHANGE MASTER TO</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-&gt;     MASTER_HOST=&apos;master_host_name&apos;,</span><br><span class="line">-&gt;     MASTER_USER=&apos;replication_user_name&apos;,</span><br><span class="line">-&gt;     MASTER_PASSWORD=&apos;replication_password&apos;,</span><br><span class="line">-&gt;     MASTER_LOG_FILE=&apos;recorded_log_file_name&apos;,</span><br><span class="line">-&gt;     MASTER_LOG_POS=recorded_log_position;</span><br></pre></td></tr></table></figure></p>
+<p>然后哦开启 slave 线程：<code>start slave</code>.</p>
+<p>使用 <code>show master status</code> 或 <code>show slave status</code> 可以分别查看主/从服务器上的复制状态。<br><img src="/pics/slave-status.jpg" alt="slave status 状态说明"></p>
+<h3 id="Docker主从复制实战"><a href="#Docker主从复制实战" class="headerlink" title="Docker主从复制实战"></a>Docker主从复制实战</h3><ol>
+<li>下载 mysql 的docker 镜像：<code>docker pull mysql</code></li>
+<li>启动主mysql：<code>docker run -p 3316:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --name=mysql-master  mysql</code></li>
+<li>启动从mysql：<code>docker run -p 3326:3306 -e MYSQL_ROOT_PASSWORD=123456 -d --name=mysql-slave  mysql</code></li>
+<li>进入docker容器，允许 root 任意IP登录： <code>update mysql.user set host=&#39;%&#39; where user=&#39;root&#39;;</code>,然后 <code>flush privileges</code></li>
+<li>宿主机连接mysql测试：<code>mysql -hlocalhost --protocol=TCP -P3316 -umaster -p</code>，切记要加上 —protocol=TCP 选项</li>
+<li><p>宿主机新建主服务器配置文件 master.cnf:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server-id = 1</span><br><span class="line">log-bin=mysql-bin</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line"># binlog-do-db</span><br><span class="line"># binlog_format=mixed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制 master.cnf 到 mysql-master 的 /etc/mysql/conf.d目录下：<br> <code>docker cp master.cnf mysql-master:/etc/mysql/conf.d</code></p>
+</li>
+<li><p>宿主机新建主服务器配置文件 slave.cnf:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">server-id = 2</span><br><span class="line"># relay_log = relay_bin</span><br><span class="line"># relay-log-index = relay-bin.index</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制 slave.cnf 到 mysql-slave 的 /etc/mysql/conf.d目录下：<br> <code>docker cp slave.cnf mysql-slave:/etc/mysql/conf.d</code></p>
+</li>
+<li>重启主从服务器：<code>docker restart mysql-master mysql-slave</code></li>
+<li>进入 mysql-master 主容器，创建同步账号并授权： <ul>
+<li>创建同步账号：<code>create user repl@&#39;%&#39; identified by &#39;repl&#39;;</code></li>
+<li>mysql8 可能需要修改密码认证方式：<code>ALTER USER &#39;repl&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password;</code></li>
+<li>授权：<code>GRANT REPLICATION CLIENT, REPLICATION SLAVE ON *.* TO repl@&#39;%&#39;;</code></li>
+<li>查看同步状态：<code>show master status;</code></li>
+<li>记下容器 IP：<code>hostname -I</code> -&gt; 假设为 172.17.0.2</li>
+</ul>
+</li>
+<li>进入 mysql-slave 从容器，配置 slave：<ul>
+<li>配置同步账号信息：<code>CHANGE MASTER TO MASTER_HOST=&#39;172.17.0.2&#39;, MASTER_USER=&#39;repl&#39;, MASTER_PASSWORD=&#39;repl&#39;;</code></li>
+<li>启动同步：<code>start slave;</code></li>
+<li>查看同步状态：<code>show slave status\G;</code></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/11/sql/msyql/mysql数据备份与还原/" rel="next" title="mysql数据备份与还原">
+                <i class="fa fa-chevron-left"></i> mysql数据备份与还原
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/13/spring/spring_ioc/spring ioc/" rel="prev" title="Spring IOC">
+                Spring IOC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#复制原理"><span class="nav-number">1.</span> <span class="nav-text">复制原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker主从复制实战"><span class="nav-number">2.</span> <span class="nav-text">Docker主从复制实战</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

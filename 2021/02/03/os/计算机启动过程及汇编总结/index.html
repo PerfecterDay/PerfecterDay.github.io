@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="os,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="计算机启动过程 计算机加电启动后，CPU的 CS:IP 寄存器被强制初始化为 0xF000:0xFFF0 。CPU 在开机时处于实模式，因此实际的执行入口是 0xF000*16+0xFFF0 -&amp;gt; 0xFFFF0 。这个地址会被映射到 BIOS 程序所在的 ROM 中，因此 BIOS 是计算机启动后第一个执行的程序。BIOS 会检测内存、显卡等硬件信息，并初始化它们，还会建立起中断向量表（I">
+<meta name="keywords" content="os">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机启动过程及汇编总结">
+<meta property="og:url" content="http://yoursite.com/2021/02/03/os/计算机启动过程及汇编总结/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="计算机启动过程 计算机加电启动后，CPU的 CS:IP 寄存器被强制初始化为 0xF000:0xFFF0 。CPU 在开机时处于实模式，因此实际的执行入口是 0xF000*16+0xFFF0 -&amp;gt; 0xFFFF0 。这个地址会被映射到 BIOS 程序所在的 ROM 中，因此 BIOS 是计算机启动后第一个执行的程序。BIOS 会检测内存、显卡等硬件信息，并初始化它们，还会建立起中断向量表（I">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.804Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机启动过程及汇编总结">
+<meta name="twitter:description" content="计算机启动过程 计算机加电启动后，CPU的 CS:IP 寄存器被强制初始化为 0xF000:0xFFF0 。CPU 在开机时处于实模式，因此实际的执行入口是 0xF000*16+0xFFF0 -&amp;gt; 0xFFFF0 。这个地址会被映射到 BIOS 程序所在的 ROM 中，因此 BIOS 是计算机启动后第一个执行的程序。BIOS 会检测内存、显卡等硬件信息，并初始化它们，还会建立起中断向量表（I">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/02/03/os/计算机启动过程及汇编总结/">
+
+
+
+
+
+  <title>计算机启动过程及汇编总结 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/03/os/计算机启动过程及汇编总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计算机启动过程及汇编总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T22:51:40+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/os/" itemprop="url" rel="index">
+                    <span itemprop="name">os</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="计算机启动过程"><a href="#计算机启动过程" class="headerlink" title="计算机启动过程"></a>计算机启动过程</h3><ol>
+<li>计算机加电启动后，CPU的 <code>CS:IP</code> 寄存器被强制初始化为 0xF000:0xFFF0 。CPU 在开机时处于实模式，因此实际的执行入口是 0xF000*16+0xFFF0 -&gt; 0xFFFF0 。这个地址会被映射到 BIOS 程序所在的 ROM 中，因此 BIOS 是计算机启动后第一个执行的程序。BIOS 会检测内存、显卡等硬件信息，并初始化它们，还会建立起中断向量表（IVT）并填写中断例程。</li>
+<li>BIOS 最后一项工作是校验启动盘中位于0盘0道1扇区处的内容，如果此扇区末尾的两个字节分别是0x55和0xaa，BIOS 就会将该扇区的内容加载到物理地址 0x7c00 处，并跳转到改地址执行。此扇区中的指令被称为主引导记录（MBR）。</li>
+</ol>
+<h3 id="什么是地址"><a href="#什么是地址" class="headerlink" title="什么是地址"></a>什么是地址</h3><p>地址只是数字，描述各种符号在源程序中的位置，它是源代码文件中各符号偏移文件开头的距离。由于指令和变量所占内存大小不同，故它们相对于文件开头的偏移量参差不齐。源文件就像旅店一样，里面的符号(指令、变量等)就像旅店里的房间，有单人间、双人间，虽然大小不同，但它们也需要被旅店管理员编号，也就是每个房间都有房间号，这样房客通过房间号便能找到自己的住所。房间由旅店管理员给编址，那源代码文件中各符号地址又是由谁来规划的呢?<br>编译器的工作就是给各符号编址。编译器根据所在硬件平台的特性，将源代码中的每一个符号(指令和数据)都按照本硬件平台的特性分配空间，在不考虑对齐的情况下，这些符号在空间上都彼此相邻，连续分布，它们在程序中距第一个符号的距离便是它们在程序中的地址。<br>编译器给程序中各符号(变量名或函数名等)分配的地址，就是各符号相对于文件开头的偏移量。</p>
+<h3 id="什么是Section"><a href="#什么是Section" class="headerlink" title="什么是Section"></a>什么是Section</h3><p>关键字 section 并没有对程序中的地址产生任何影响，即在默 认情况下，有没有 section 都一个样，section 中数据的地址依然是相对于整个文件的顺延，仅仅是在逻辑 上让开发人员梳理程序之用。<br>section.节名.start，这里是获得名为 data 的 section 在本文件中的<strong>真实偏移</strong>，即起始地址，是 nasm 提供的伪指令</p>
+<h3 id="什么是-vstart"><a href="#什么是-vstart" class="headerlink" title="什么是 vstart"></a>什么是 vstart</h3><p>section 用 vstart=来修饰后，可以被赋予一个虚拟起始地址 virtual start address(强调了这 个是虚拟的地址，不过要注意，这与 x86 CPU 中开启分页后的虚拟地址是两码事，不能混为一谈)，它被 用来计算在该 section 内的所有内存引用地址。它们的功能是告诉编译器:“嘿，老兄，你帮我把后面所有数据(指令和变量)的地址（引用地址） 以 xxxx 为起始开始编吧，但是编译球不会将变量定义到距离开头的该地址处，在文件中依然按顺序存放对应二进制码”。<br>用 vstart 的时机是:我预先知道我的程 序将来被加载到某地址处。</p>
+<p>$$ 表示的是所在的section的<strong>虚拟起始地址</strong><br>$ 表示的是虚拟地址+偏移量，在文件中的真实地址是 0x9，经编译后变成了 0x7c09，类似于重定位:新的地址+在文件中的地 址(也相对于整个文件的偏移量)，即 0x7c00+9。</p>
+<h4 id="nasm-汇编语法"><a href="#nasm-汇编语法" class="headerlink" title="nasm 汇编语法"></a>nasm 汇编语法</h4><ol>
+<li>equ 是 nasm 提供的伪指令，意为 equal，即等于，用于给表达式起个意义更明确的符号名，其指令格式是:<br> 符号名称 equ 表达式<br> 如：<br> <code>RPL0 equ 00b</code></li>
+<li>times 循环次数表达式 : <code>times 60 dq 0</code></li>
+<li>in/out : </li>
+</ol>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ol>
+<li>写文件到img镜像：<code>dd if=mbr.bin of=hd60M.img bs=512 count=1 seek=2 conv=notrunc</code></li>
+<li>汇编文件编译：<code>nasm -f &lt;format&gt; &lt;filename&gt; [-o &lt;output&gt;]</code></li>
+</ol>
+<h3 id="bochs调试命令"><a href="#bochs调试命令" class="headerlink" title="bochs调试命令"></a>bochs调试命令</h3><p>-<em>- Debugger control -</em>- 调试控制：<br>    help, q|quit|exit, set, instrument, show, trace, trace-reg,<br>    trace-mem, u|disasm, ldsym, slist</p>
+<p>-<em>- Execution control -</em>- 执行控制：<br>    c|cont|continue, s|step, p|n|next, modebp, vmexitbp</p>
+<p>-<em>- Breakpoint management -</em>- 断点管理：<br>    vb|vbreak, lb|lbreak, pb|pbreak|b|break, sb, sba, blist,<br>    bpe, bpd, d|del|delete, watch, unwatch</p>
+<p>-<em>- CPU and memory contents -</em>- CPU及内存查看：<br>    x, xp, setpmem, writemem, crc, info,<br>    r|reg|regs|registers, fp|fpu, mmx, sse, sreg, dreg, creg,<br>    page, set, ptime, print-stack, ?|calc</p>
+<p>-<em>- Working with bochs param tree -</em>-<br>    show “param”, restore</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/os/" rel="tag"># os</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/02/03/TCP-IP/IP协议/" rel="next" title="IP协议">
+                <i class="fa fa-chevron-left"></i> IP协议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/02/03/分布式/redis/Redis-Sentinel高可用/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算机启动过程"><span class="nav-number">1.</span> <span class="nav-text">计算机启动过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是地址"><span class="nav-number">2.</span> <span class="nav-text">什么是地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Section"><span class="nav-number">3.</span> <span class="nav-text">什么是Section</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-vstart"><span class="nav-number">4.</span> <span class="nav-text">什么是 vstart</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#nasm-汇编语法"><span class="nav-number">4.1.</span> <span class="nav-text">nasm 汇编语法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用命令"><span class="nav-number">5.</span> <span class="nav-text">常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bochs调试命令"><span class="nav-number">6.</span> <span class="nav-text">bochs调试命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

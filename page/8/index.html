@@ -1,23 +1,4052 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/8/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/8/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/nginx/nginx安装与启动及命令行参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/nginx/nginx安装与启动及命令行参数/" itemprop="url">Nginx安装与启动及命令行参数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/nginx/" itemprop="url" rel="index">
+                    <span itemprop="name">nginx</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Nginx安装与启动及命令行参数"><a href="#Nginx安装与启动及命令行参数" class="headerlink" title="Nginx安装与启动及命令行参数"></a>Nginx安装与启动及命令行参数</h1><hr>
+<h2 id="Nginx安装"><a href="#Nginx安装" class="headerlink" title="Nginx安装"></a>Nginx安装</h2><p>下载<a href="http://nginx.org" target="_blank" rel="noopener">nginx官网</a>下载安装即可。</p>
+<h2 id="Nginx启动、停止及重新加载配置文件"><a href="#Nginx启动、停止及重新加载配置文件" class="headerlink" title="Nginx启动、停止及重新加载配置文件"></a>Nginx启动、停止及重新加载配置文件</h2><p>nginx有一个master线程和若干个工作线程，master线程主要用来读取配置文件、加载配置以及维护工作线程，工作线程才会真正的处理请求。</p>
+<ol>
+<li>安装目录下，直接双击nginx启动。或者，cmd模式切换到安装目录，运行nginx.exe文件。</li>
+<li>一旦nginx启动后，可以使用以下命令：<blockquote>
+<p>nginx -s signal</p>
+</blockquote>
+</li>
+</ol>
+<p>signal可以是以下参数：</p>
+<ul>
+<li><em>stop</em> — 快速停止</li>
+<li><em>quit</em> — 优雅停止</li>
+<li><em>reload</em> — 重新加载配置文件</li>
+<li><em>reopen</em> — 重新打开日志文件</li>
+</ul>
+<h2 id="Nginx命令行参数"><a href="#Nginx命令行参数" class="headerlink" title="Nginx命令行参数"></a>Nginx命令行参数</h2><ul>
+<li><em>-h</em> 显示命令行参数帮助信息</li>
+<li><em>-c file</em> 指定file为nginx的配置文件</li>
+<li><em>-g directives</em> 设置全局的配置指令，如：</li>
+</ul>
+<blockquote>
+<p>nginx -g “pid /var/run/nginx.pid; worker_processes <code>sysctl -n hw.ncpu</code>;”</p>
+</blockquote>
+<ul>
+<li><em>-p prefix</em> 设置nginx路径前缀，即保存nginx服务文件的文件夹</li>
+<li><em>-t</em> 测试配置文件，检查配置文件语法，然后加载配置文件</li>
+<li><em>-T</em> 与-t相同，但是会在标准输出打印出配置文件</li>
+<li><em>-q</em> 测试配置文件，不输出费错误信息</li>
+<li><em>-v</em> 输出nginx的版本</li>
+<li><em>-V</em> 输出nginx的版本，编译器版本及配置参数</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/other/homebrew/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/07/other/homebrew/" itemprop="url">Mac Homebrew 的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-07T19:42:30+08:00">
+                2018-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><ol>
+<li>brew install [formula]:安装 formula</li>
+<li>brew uninstall [formula]:卸载 formula</li>
+<li>brew list: 显示所有安装的 formula</li>
+<li>brew search (text|/text/)： 查找 formula</li>
+</ol>
+<blockquote>
+<p>摘译自 <a href="http://robots.thoughtbot.com/starting-and-stopping-background-services-with-homebrew" target="_blank" rel="noopener">robots.thoughtbot.com</a></p>
+</blockquote>
+<p><code>launchctl</code> 命令加载，卸载开机自动运行的服务，在 OS X 中，服务本身存储在 <code>.plist</code> 文件中（即 property list），这些文件的位置一般在 <code>~/Library/LaunchAgents</code> 或 <code>/Library/LaunchAgents</code>。可以使用 <code>launchctl load $PATH_TO_LIST</code> 和 <code>unload them with launchctl unload $PATH_TO_LIST</code> 命令来加载/卸载他们。加载就是允许这个程序开机执行，卸载反之。</p>
+<p>如果你使用 <code>Homebrew</code> 安装过 <code>mysql</code> 那么下面的安装后提示你可能比较熟悉<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">To have launchd start mysql at login:</span><br><span class="line">    ln -sfv /usr/local/opt/mysql/*.plist ~/Library/LaunchAgents</span><br><span class="line">Then to load mysql now:</span><br><span class="line">    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist</span><br><span class="line">Or, if you don&apos;t want/need launchctl, you can just run:</span><br><span class="line">    mysql.server start</span><br></pre></td></tr></table></figure></p>
+<p>如果按上面的说明操作的话，未免太麻烦了，而且也很难记住 plist 的位置。还好 Homebrew 提供了一个易用的接口来管理 plist，然后你就不用再纠结什么 <code>ln</code>，<code>launchctl</code>，和 plist 的位置了。</p>
+<h2 id="brew-services"><a href="#brew-services" class="headerlink" title="brew services"></a>brew services</h2><p>首先安装 <code>brew services</code> 命令<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew tap gapple/services</span><br></pre></td></tr></table></figure></p>
+<p>下面举个例子<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> $ brew services start mysql</span><br><span class="line">==&gt; Successfully started `mysql` (label: homebrew.mxcl.mysql)</span><br></pre></td></tr></table></figure></p>
+<p>在后台，<code>brew services start</code> 其实执行了最上面的安装后消息里面提到的所有命令，比如首先运行 <code>ln -sfv ...</code>，然后 <code>launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist</code> 。</p>
+<p>假设突然 MySQL 出毛病了，我们要重启一下，那么执行下面的命令就行了<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">brew services restart mysql</span><br><span class="line">Stopping `mysql`... (might take a while)</span><br><span class="line">==&gt; Successfully stopped `mysql` (label: homebrew.mxcl.mysql)</span><br><span class="line">==&gt; Successfully started `mysql` (label: homebrew.mxcl.mysql)</span><br></pre></td></tr></table></figure></p>
+<p>想看所有的已启用的服务的话：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> $ brew services list</span><br><span class="line">redis      started      442 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.redis.plist</span><br><span class="line">postgresql started      443 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.postgresql.plist</span><br><span class="line">mongodb    started      444 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mongodb.plist</span><br><span class="line">memcached  started      445 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.memcached.plist</span><br><span class="line">mysql      started    87538 /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist</span><br></pre></td></tr></table></figure></p>
+<p>要注意的是，这里不止显示通过 <code>brew services</code> 加载的服务，也包含 <code>launchctl load</code> 加载的。</p>
+<p>如果你卸载了 MySQL 但是 <code>Homebrew</code> 没把 plist 文件删除的话，你可以<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ brew services cleanup</span><br><span class="line">Removing unused plist /Users/gabe/Library/LaunchAgents/homebrew.mxcl.mysql.plist</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>最后一提，这玩意路径不一样，会直接复制到 LaunchAgents 目录，结果就是两个一样的启动项了，系统 log 里会很烦人的。。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/linux/linux环境变量总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/20/linux/linux环境变量总结/" itemprop="url">Linux环境变量总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-20T22:09:32+08:00">
+                2019-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>转自： <a href="https://www.jianshu.com/p/ac2bc0ad3d74" target="_blank" rel="noopener">https://www.jianshu.com/p/ac2bc0ad3d74</a></p>
+<h2 id="Linux环境变量分类"><a href="#Linux环境变量分类" class="headerlink" title="Linux环境变量分类"></a>Linux环境变量分类</h2><p>一、按照生命周期来分，Linux环境变量可以分为两类：</p>
+<ol>
+<li>永久的：需要用户修改相关的配置文件，变量永久生效。</li>
+<li>临时的：用户利用export命令，在当前终端下声明环境变量，关闭Shell终端失效。</li>
+</ol>
+<p>二、按照作用域来分，Linux环境变量可以分为：</p>
+<ol>
+<li>系统环境变量：系统环境变量对该系统中所有用户都有效。</li>
+<li>用户环境变量：顾名思义，这种类型的环境变量只对特定的用户有效。</li>
+</ol>
+<h2 id="Linux设置环境变量的方法"><a href="#Linux设置环境变量的方法" class="headerlink" title="Linux设置环境变量的方法"></a>Linux设置环境变量的方法</h2><p>一、在/etc/profile文件中添加变量 对所有用户生效（永久的）<br>用vim在文件/etc/profile文件中增加变量，该变量将会对Linux下所有用户有效，并且是“永久的”。修改文件后要想马上生效还要运行<code>source /etc/profile</code> 不然只能在下次重启时生效。</p>
+<p>二、在用户目录下的 <code>.bash_profile</code> 文件中增加变量 【对单一用户生效（永久的）】<br>用 <code>vim ~/.bash_profile</code> 文件中增加变量，改变量仅会对当前用户有效，并且是“永久的”。修改文件后要想马上生效还要运行 <code>source ~/.bash_profile</code> 不然只能在下次重进此用户时生效。</p>
+<p>三、直接运行 <code>export</code> 命令定义变量 【只对当前shell（BASH）有效（临时的）】<br>在shell的命令行下直接使用 <code>export 变量名=变量值</code><br>定义变量，该变量只在当前的shell（BASH）或其子shell（BASH）下是有效的，shell关闭了，变量也就失效了，再打开新shell时就没有这个变量，需要使用的话还需要重新定义。</p>
+<h2 id="Linux环境变量使用"><a href="#Linux环境变量使用" class="headerlink" title="Linux环境变量使用"></a>Linux环境变量使用</h2><p>一、Linux中常见的环境变量有：</p>
+<ul>
+<li>PATH：指定命令的搜索路径</li>
+<li>HOME：指定用户的主工作目录（即用户登陆到Linux系统中时，默认的目录）。</li>
+<li>HISTSIZE：指保存历史命令记录的条数。</li>
+<li>LOGNAME：指当前用户的登录名。</li>
+<li>HOSTNAME：指主机的名称，许多应用程序如果要用到主机名的话，通常是从这个环境变量中来取得的</li>
+<li>SHELL：指当前用户用的是哪种Shell。</li>
+<li>LANG/LANGUGE：和语言相关的环境变量，使用多种语言的用户可以修改此环境变量。</li>
+<li>MAIL：指当前用户的邮件存放目录。</li>
+</ul>
+<p>二、Linux也提供了修改和查看环境变量的命令，下面通过几个实例来说明：</p>
+<ul>
+<li>echo         显示某个环境变量值 echo $PATH</li>
+<li>export   设置一个新的环境变量 export HELLO=”hello” (可以无引号)</li>
+<li>env      显示所有环境变量</li>
+<li>set      显示本地定义的shell变量  </li>
+<li>unset        清除环境变量 unset HELLO</li>
+<li>readonly     设置只读环境变量 readonly HELLO</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/11/linux/linux 权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/11/linux/linux 权限/" itemprop="url">Linux权限</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T22:01:23+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Linux的安全性"><a href="#Linux的安全性" class="headerlink" title="Linux的安全性"></a>Linux的安全性</h2><p>Linux安全系统的核心是用户账户。每个能进入Linux系统的用户都会被分配一个唯一的用户账户。用户系统对系统中各种对象的访问权限取决于他们登录系统时用的账户。</p>
+<p>用户权限是通过创建用户时分配的用户ID（UID）来跟踪的，每个用户都会有一个UID和一个对应的密码</p>
+<h3 id="etc-passwd-文件"><a href="#etc-passwd-文件" class="headerlink" title="/etc/passwd 文件"></a>/etc/passwd 文件</h3><p>Linux系统使用一个专门的文件栏来将用户的登录名匹配到UID值，这个文件就是 /etc/passwd 文件。它包含了以下信息：</p>
+<ul>
+<li>登录用户名</li>
+<li>用户密码</li>
+<li>UID</li>
+<li>GID（用户组ID）</li>
+<li>用户账户的文本描述</li>
+<li>用户HOME目录的位置</li>
+<li><p>用户默认的Shell<br>root用户账户是Linux系统的管理员，固定分配的UID是0。Linux系统会为各种各样的功能创建不同的用户账户，这些账户不是真正的账户。它们叫做系统账户，是系统上运行各种服务进程访问资源的特殊账户。所有运行在后台的服务都需要一个系统用户登录到Linux系统上。通常系统账户的UID是500以下的值。</p>
+<p>/etc/passwd 文件中用户密码都被设置成了x，真实的密码被保存到了 /etc/shadow 文件中，只有特定的程序（比如登录程序）才能访问这个文件。</p>
+<h3 id="etc-shadow-文件"><a href="#etc-shadow-文件" class="headerlink" title="/etc/shadow 文件"></a>/etc/shadow 文件</h3><p>/etc/shadow文件对Linux系统密码管理提供了更多的控制。只有root用户才能访问/etc/shadow<br>文件，这让它比起/etc/passwd安全许多。</p>
+</li>
+</ul>
+<p>/etc/shadow文件为系统上的每个用户账户都保存了一条记录。记录就像下面这样：<br><code>rich:$1$.FfcK0ns$f1UgiyHQ25wrB/hykCn020:11627:0:99999:7:::</code></p>
+<p>在/etc/shadow文件的每条记录中都有9个字段：</p>
+<ul>
+<li>与/etc/passwd文件中的登录名字段对应的登录名</li>
+<li>加密后的密码</li>
+<li>自上次修改密码后过去的天数密码（自1970年1月1日开始计算）</li>
+<li>多少天后才能更改密码</li>
+<li>多少天后必须更改密码</li>
+<li>密码过期前提前多少天提醒用户更改密码</li>
+<li>密码过期后多少天禁用用户账户</li>
+<li>用户账户被禁用的日期（用自1970年1月1日到当天的天数表示）</li>
+<li>预留字段给将来使用</li>
+</ul>
+<h2 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h2><h3 id="添加新用户"><a href="#添加新用户" class="headerlink" title="添加新用户"></a>添加新用户</h3><p>用来向Linux系统添加新用户的主要工具是 <code>useradd</code>,需要root权限或 sudo 。这个命令简单快捷，可以一次性创建新用户账户及设置用户HOME目录结构。<code>useradd</code> 命令使用系统的默认值以及命令行参数来设置用户账户。系统默认值被设置在 <code>/etc/default/useradd</code> 文件中。可以使用加入了 -D 选项的 <code>useradd</code><br>命令查看所用Linux系统中的这些默认值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># /usr/sbin/useradd -D</span><br><span class="line">GROUP=100 新用户会被添加到GID为 100 的公共组</span><br><span class="line">HOME=/home 新用户的HOME目录将会位于/home/loginname</span><br><span class="line">INACTIVE=-1 新用户账户密码在过期后不会被禁用</span><br><span class="line">EXPIRE=   新用户账户未被设置过期日期</span><br><span class="line">SHELL=/bin/bash 新用户账户将bash shell作为默认shell</span><br><span class="line">SKEL=/etc/skel 系统会将/etc/skel目录下的内容复制到用户的HOME目录下</span><br><span class="line">CREATE_MAIL_SPOOL=yes  系统为该用户账户在mail目录下创建一个用于接收邮件的文件</span><br></pre></td></tr></table></figure></p>
+<p>倒数第二个值很有意思。 useradd 命令允许管理员创建一份默认的HOME目录配置，然后把<br>它作为创建新用户HOME目录的模板。这样就能自动在每个新用户的HOME目录里放置默认的系<br>统文件。在Ubuntu Linux系统上，/etc/skel目录有下列文件：</p>
+<ul>
+<li>.bash_logout</li>
+<li>.bashrc</li>
+<li>.profile</li>
+</ul>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p>如果你想从系统中删除用户， <code>userdel</code> 可以满足这个需求。默认情况下， <code>userdel</code> 命令会只<br>删除 <code>/etc/passwd</code> 文件中的用户信息，而不会删除系统中属于该账户的任何文件。要删除用户的 home 目录，加上 -r 选项即可。</p>
+<h3 id="修改用户"><a href="#修改用户" class="headerlink" title="修改用户"></a>修改用户</h3><p>用户账户修改工具：</p>
+<p>命令 | 描述<br>|-|-|<br>|usermod |修改用户账户的字段，还可以指定主要组以及附加组的所属关系|<br>|passwd | 修改已有用户的密码|<br>|chpasswd | 从文件中读取登录名密码对，并更新密码|<br>|chage | 修改密码的过期日期|<br>|chfn | 修改用户账户的备注信息|<br>|chsh | 修改用户账户的默认登录shell|</p>
+<h4 id="usermod"><a href="#usermod" class="headerlink" title="usermod"></a>usermod</h4><p><code>usermod</code> 命令是用户账户修改工具中最强大的一个。它能用来修改/etc/passwd文件中的大部分字段，只需用与想修改的字段对应的命令行参数就可以了。参数大部分跟 useradd 命令的参数一样（比如， -c 修改备注字段， -e 修改过期日期， -g 修改默认的登录组）。除此之外，还有另外一些可能派上用场的选项:</p>
+<ul>
+<li>-l: 修改用户账户的登录名</li>
+<li>-L: 锁定账户，使用户无法登录</li>
+<li>-p: 修改账户的密码</li>
+<li>-U: 解除锁定，使用户能够登录</li>
+</ul>
+<h4 id="passwd-和-chpasswd"><a href="#passwd-和-chpasswd" class="headerlink" title="passwd 和 chpasswd"></a>passwd 和 chpasswd</h4><p>只用 passwd 命令，它会改你自己的密码。系统上的任何用户都能改自己的密码，但只有root用户才有权限改别人的密码。</p>
+<p>如果需要为系统中的大量用户修改密码， chpasswd 命令可以事半功倍。 chpasswd 命令能从标准输入自动读取登录名和密码对（由冒号分割）列表，给密码加密，然后为用户账户设置。你也可以用重定向命令来将含有 userid:passwd 对的文件重定向给该命令。<br><code># chpasswd &lt; users.txt</code></p>
+<h2 id="Linux-组"><a href="#Linux-组" class="headerlink" title="Linux 组"></a>Linux 组</h2><h3 id="etc-group-文件"><a href="#etc-group-文件" class="headerlink" title="/etc/group 文件"></a>/etc/group 文件</h3><p>与用户账户类似，组信息也保存在系统的一个文件中。/etc/group文件包含系统上用到的每个组的信息。系统账户用的组通常会分配低于500的GID值，而用户组的GID则会从500开始分配。/etc/group文件有4个字段：</p>
+<ul>
+<li>组名</li>
+<li>组密码</li>
+<li>GID</li>
+<li>属于该组的用户列表<br>查看用户所属组信息：<code>groups</code>|<code>grooups [username]</code>.</li>
+</ul>
+<h3 id="创建新组"><a href="#创建新组" class="headerlink" title="创建新组"></a>创建新组</h3><p><code>groupadd</code>  命令可在系统上创建新组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd shared</span><br><span class="line">usermod -G shared test #添加用户 test 到 shared 组</span><br></pre></td></tr></table></figure></p>
+<h3 id="修改组"><a href="#修改组" class="headerlink" title="修改组"></a>修改组</h3><p><code>groupmod</code> 命令可以修改组：</p>
+<ul>
+<li>-g: 修改GID</li>
+<li>-n: 修改组名</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/25/分布式/kafka/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/25/分布式/kafka/" itemprop="url">Kafka 相关问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-25T22:02:12+08:00">
+                2019-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/分布式/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Kafka Producer如何保证消息可靠<br>request.required.acks有三个值 0 1 -1<ol>
+<li>0:生产者不会等待broker的ack，这个延迟最低但是存储的保证最弱当server挂掉的时候就会丢数据</li>
+<li>1：服务端会等待ack值 leader副本确认接收到消息后发送ack但是如果leader挂掉后他不确保是否复制完成新leader也会导致数据丢失</li>
+<li>-1：同样在1的基础上 服务端会等所有的follower的副本受到数据后才会受到leader发出的ack，这样数据不会丢失</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/22/java/java基础-流/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/22/java/java基础-流/" itemprop="url">Java基础-流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-22T22:32:18+08:00">
+                2021-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Java-流概述"><a href="#Java-流概述" class="headerlink" title="Java 流概述"></a>Java 流概述</h3><p>Java 8 中增加了 Stream API，简化了串行或并行的大批量操作。这个 API 提供了两个关键抽象：</p>
+<ol>
+<li><p>Stream（流）<br>代表数据元素的有限或无限顺序，这些元素可能来自任何位置，常见的来源包括集合、数组、文件、正则表达式模式匹配器、伪随机数生成器，以及其他 Stream 。Stream 中的数据元素可以是对象引用、或者基本类型值。它支持三种基本类型：int、long 和 double 。</p>
+</li>
+<li><p>Strean pipeline（流管道）<br>代表这些元素的一个多级计算。一个 Strean pipeline 中包含一个源 Stream ，接着是 0 或者多个中间操作和一个终止操作。每个中间操作都会通过某种方式对 Stream 进行转换，例如将每个元素通过一个函数映射到另一元素，或者过滤掉某些不满足条件的元素。所有的中间操作都会将 Stream 转换成另一个 Stream， 其元素类型可能与输入的 Stream 一样，也可能不同。终止操作会在最后一个中间操作产生的 Stream 上执行一个最终计算，例如将其元素保存到一个集合中，并返回某一个元素，或打印出所有元素等。<br>Stream pipeline 通常是 lazy 的：直到调用终止操作时才会开始计算，对于完成终止操作不需要的数据元素，将永远都不会被计算。正是这种 lazy 计算，使无限 Stream 成为可能。没有终止操作的 Stream pipeline 将是一个静默的无操作指令，因此千万不能忘记终止操作。<br>Stream API 是流式的：所有的 pipeline 的调用可以链接成一个表达式。事实上，多个 pipeline 也可以链接在一起，成为一个表达式。<br>默认情况下，Stream pipeline 是按顺序运行的。要使 pipeline 并发执行，只需在该 pipeline 的任何 Stream 上调用 parallel 方法即可，但是通常不建议这么做。</p>
+</li>
+</ol>
+<h3 id="Collectors-API"><a href="#Collectors-API" class="headerlink" title="Collectors API"></a>Collectors API</h3><p>Collectors API 又叫收集器，它的作用是将 Stream 的元素合并到单个对象中去，收集器产生的对象一般是一个集合。<br>将 Stream 的元素集中到一个真正的 Collection 里去的收集器比较简单，它有三个这样的收集器： <code>toList()</code>、<code>toSet()</code>、<code>toCollection(collectionFactory)</code>，它们分别返回一个列表、一个集合和程序员指定的集合类型。<code>toMap(keyMapper,valueMapper)</code> 将 Stream 元素集合到 Map 中，keyMapper 是一个将 Stream 元素映射到 Map 中键的函数，而 valueMapper 是将 Stream 元素映射到 Map 中值的函数。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/18/java/IO/java基础-序列化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/08/18/java/IO/java基础-序列化/" itemprop="url">Java基础-序列化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T20:13:04+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/IO/" itemprop="url" rel="index">
+                    <span itemprop="name">IO</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="序列化方式"><a href="#序列化方式" class="headerlink" title="序列化方式"></a>序列化方式</h3><p>实现 Serializable 或者 Externailizable 接口。</p>
+<h3 id="Serializable-接口"><a href="#Serializable-接口" class="headerlink" title="Serializable 接口"></a>Serializable 接口</h3><p>一旦某个类实现了 Serializable 接口，就可以使用如下方式序列化：</p>
+<ol>
+<li>创建 ObjectOutputStream 对象.</li>
+<li>调用 ObjectOutputStream 的 writeObject(object)输出可序列化对象</li>
+</ol>
+<p>反序列化：</p>
+<ol>
+<li>创建 ObjectInputStream 对象.</li>
+<li>调用 ObjectOutputStream 的 readObject()反序列化.</li>
+</ol>
+<p>反序列化时读取的只是对象的数据，而不包含类的信息，其实，序列化时也仅仅是保存了对象的信息。因此，反序列化时需要提供类信息，让JVM知道还原成什么类型对象及如何还原对象。</p>
+<p>反序列化时，并没有调用类的构造器来构造对象。</p>
+<p>当一个可序列化类有一个或多个父类时（直接父类和间接父类），这些父类要么有无参构造函数，要么也是可序列化的。如果是不可序列化的，只有无参构造函数，则父类成员变量中的值不会被序列化到二进制流中。</p>
+<h4 id="引用成员的序列化"><a href="#引用成员的序列化" class="headerlink" title="引用成员的序列化"></a>引用成员的序列化</h4><p>递归序列化：当实例化某个对象时，系统会递归地序列化对象的实例变量，如果实例变量是引用类型，则被引用的对象也会被实例化。</p>
+<p>如果一个类中含有引用类型的成员变量，那么引用类型的类必须也是可序列化的，这个类才是可序列化的，否则即使实现了 Serializable 接口，也是不可序列化的。</p>
+<p>假设同一个对象被多个其它对象引用，如果同时序列化这些对象，那么这个对象可能会被序列化多次，一来浪费空间，二来在反序列化时，可能会生成多个对象，这与实际情况不符。所以 Java 使用了下面特殊的序列化算法：</p>
+<ol>
+<li>所有保存到二进制流中的对象都有一个序列化编号</li>
+<li>当程序试图序列化一个对象时，程序将检查对象是否已经被序列化过，只有对象从未被序列化过，系统才会将对象转换成字节序列并输出。</li>
+<li>如果某个对象已经被序列化过，程序将只会输出一个序列化编号，而不会再次序列化该对象<br><img src="/pics/serialize.jpg" alt="对象序列化示意"></li>
+</ol>
+<p>上述机制会引入一个问题：假设有一个可变对象，当第一次序列化后，改变了对象的状态（某些成员变量值），再次序列化时，因为已经被序列化过，所以系统只是输出一个编号，所以序列化的值并不是修改后的值。</p>
+<h4 id="自定义序列化"><a href="#自定义序列化" class="headerlink" title="自定义序列化"></a>自定义序列化</h4><ol>
+<li>通过在实例变量前添加 transient 关键字，可以让 JAVA 序列化机制在序列化时完全忽略该实例变量。</li>
+<li>还可以通过下述签名方法来完全控制某个实例变量的序列化：<ul>
+<li>private void writeObject(ObjectOutputStream out) throws IOException</li>
+<li>private void readObject(ObjectInputStream in) throws IOException,ClassNotFoundException</li>
+<li>private void readObjectNoData(ObjectOutputStream out) throws ObjectStreamException</li>
+</ul>
+</li>
+</ol>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private void writeObject(ObjectOutputStream out) throws IOException&#123;</span><br><span class="line">    out.writeObject(new String(name).reverse());</span><br><span class="line">    out.writeInt(age);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private void readObject(ObjectInputStream in) throws IOException,ClassNotFoundException&#123;</span><br><span class="line">    this.name = (String)in.readObjetc().reverse();</span><br><span class="line">    this.age = in.readInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h3><p>Java序列化机制允许为序列化类提供一个 <code>private static final long serialVersionUID</code> 的值，用于标识 Java 类序列化的版本，也就是说，如果一个类升级后，只要它的 serialVersionUID 类变量值保持不变，序列化机制也会把它们当成同一个序列化版本。如果不显示定义 serialVersionUID 类变量的值，该类变量值将由 JVM 根据类的相关信息计算，而修改后的类计算结果与修改前的类的计算结果往往不同，从而造成对象的反序列化因为类版本不兼容而失败。</p>
+<p>可以通过 JDK 安装路径 bin 下的 serialver.exe 工具来获得该类的 serialVersionUID 类变量的值： <code>serialver Person</code></p>
+<h3 id="Externalizable-接口"><a href="#Externalizable-接口" class="headerlink" title="Externalizable 接口"></a>Externalizable 接口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">void writeExternal(ObjectOutput out) throws IOException;</span><br><span class="line">void readExternal(ObjectInput in) throws IOException, ClassNotFoundException;</span><br></pre></td></tr></table></figure>
+<p>实际上，使用实现 Externalizable 接口方式的序列化方式与前面介绍的自定义序列化方式非常相似，只是 Externalizable 接口强制自定义序列化。<br><img src="/pics/serialize-compare.jpg" alt="两种序列化机制的对比"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li>对象的类名、实例变量（包括基本类型、数组、其它对象的引用）都会被序列化；方法、类变量、 transient 实例变量都不会被序列化</li>
+<li>实现 Serializable 接口的类如果需要让某个实例变量不被序列化，则在该实例变量前加 transient 修饰.</li>
+<li>保证类是可序列化的必须保证引用的实例变量类型也是可序列化的，否则需要时用 transient 修饰，否则该类也是不可序列化的</li>
+<li>反序列化时必须要有序列化对象的 class 文件</li>
+<li>当通过文件、网络来反序列化对象时，必须按实际写入的顺序来读取。</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/java/java基础-Lambda表达式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/06/java/java基础-Lambda表达式/" itemprop="url">Java基础-Lambda表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T17:30:09+08:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注：转载自 <a href="http://blog.oneapm.com/apm-tech/226.html" target="_blank" rel="noopener">http://blog.oneapm.com/apm-tech/226.html</a></p>
+<h3 id="Lambda-表达式简介"><a href="#Lambda-表达式简介" class="headerlink" title="Lambda 表达式简介"></a>Lambda 表达式简介</h3><p>我们知道类和对象是 Java 中的一等公民，也就是说Java中几乎所有的语言都是要先定义一个类或接口，然后创建对象，然后调用对象的方法。不像C那样可以直接定义一个函数然后直接调用这个函数而无需创建对象。Java中的方法参数都是对象类型的，如果我想要传入一个函数作为参数，就比较麻烦，通常是使用一个匿名内部类的方式，语法显得很臃肿。Lambda 表达式正是为了解决这一个问题的，它是一种匿名函数(对 Java 而言这并不完全正确，但现在姑且这么认为)，简单地说，它是没有声明的方法，也即没有访问修饰符、返回值声明和名字。</p>
+<p>你可以将其想做一种速记，在你需要使用某个方法的地方写上它。当某个方法只使用一次，而且定义很简短，使用这种速记替代之尤其有效，这样，你就不必在类中费力写声明与方法了。</p>
+<p>Java 中的 Lambda 表达式通常使用 <code>(argument) -&gt; (body)</code> 语法书写，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(arg1, arg2...) -&gt; &#123; body &#125;</span><br><span class="line">(type1 arg1, type2 arg2...) -&gt; &#123; body &#125;</span><br></pre></td></tr></table></figure></p>
+<p>以下是一些 Lambda 表达式的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(int a, int b) -&gt; &#123;  return a + b; &#125; ;</span><br><span class="line">() -&gt; System.out.println(&quot;Hello World&quot;); </span><br><span class="line">(String s) -&gt; &#123; System.out.println(s); &#125; ;</span><br><span class="line">() -&gt; 42 </span><br><span class="line">() -&gt; &#123; return 3.1415 &#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Lambda-表达式的结构"><a href="#Lambda-表达式的结构" class="headerlink" title="Lambda 表达式的结构"></a>Lambda 表达式的结构</h3><p>让我们了解一下 Lambda 表达式的结构。</p>
+<ol>
+<li>一个 Lambda 表达式可以有零个或多个参数</li>
+<li>参数的类型既可以明确声明，也可以根据上下文来推断。例如：(int a)与(a)效果相同</li>
+<li>所有参数需包含在圆括号内，参数之间用逗号相隔。例如：(a, b) 或 (int a, int b) 或 (String a, int b, float c)</li>
+<li>空圆括号代表参数集为空。例如：() -&gt; 42</li>
+<li>当只有一个参数，且其类型可推导时，圆括号（）可省略。例如：a -&gt; return a*a</li>
+<li>Lambda 表达式的主体可包含零条或多条语句</li>
+<li>如果 Lambda 表达式的主体只有一条语句，花括号{}可省略。匿名函数的返回类型与该主体表达式一致</li>
+<li>如果 Lambda 表达式的主体包含一条以上语句，则表达式必须包含在花括号{}中（形成代码块）。匿名函数的返回类型与代码块的返回类型一致，若没有返回则为空</li>
+</ol>
+<h3 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h3><p>在 Java 中，Marker（标记）类型的接口是一种没有方法或属性声明的接口，简单地说，marker 接口是空接口。相似地，函数式接口是只包含一个抽象方法声明的接口，可以包含多个默认方法、类方法，但只能有一个抽象方法。</p>
+<p>java.lang.Runnable 就是一种函数式接口，在 Runnable 接口中只声明了一个方法 void run()，相似地，ActionListener 接口也是一种函数式接口，我们使用匿名内部类来实例化函数式接口的对象，有了 Lambda 表达式，这一方式可以得到简化。</p>
+<p>每个 Lambda 表达式都能隐式地赋值给函数式接口，例如，我们可以通过 Lambda 表达式创建 Runnable 接口的引用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Runnable r = () -&gt; System.out.println(&quot;hello world&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>当不指明函数式接口时，编译器会自动解释这种转化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new Thread(</span><br><span class="line">   () -&gt; System.out.println(&quot;hello world&quot;)</span><br><span class="line">).start();</span><br></pre></td></tr></table></figure></p>
+<p>因此，在上面的代码中，编译器会自动推断：根据线程类的构造函数签名 <code>public Thread(Runnable r) { }</code>，将该 Lambda 表达式赋给 Runnable 接口。</p>
+<p>以下是一些 Lambda 表达式及其函数式接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Consumer&lt;Integer&gt;  c = (int x) -&gt; &#123; System.out.println(x) &#125;;</span><br><span class="line">BiConsumer&lt;Integer, String&gt; b = (Integer x, String y) -&gt; System.out.println(x + &quot; : &quot; + y);</span><br><span class="line">Predicate&lt;String&gt; p = (String s) -&gt; &#123; s == null &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>@FunctionalInterface 是 Java 8 新加入的一种接口，用于指明该接口类型声明是根据 Java 语言规范定义的函数式接口。Java 8 还声明了一些 Lambda 表达式可以使用的函数式接口，当你注释的接口不是有效的函数式接口时，可以使用 @FunctionalInterface 解决编译层面的错误。</p>
+<p>以下是一种自定义的函数式接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface WorkerInterface &#123;</span><br><span class="line">   public void doSomeWork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>根据定义，函数式接口只能有一个抽象方法，如果你尝试添加第二个抽象方法，将抛出编译时错误。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@FunctionalInterface</span><br><span class="line">public interface WorkerInterface &#123;</span><br><span class="line">    public void doSomeWork();</span><br><span class="line">    public void doSomeMoreWork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Unexpected @FunctionalInterface annotation </span><br><span class="line">    @FunctionalInterface ^ WorkerInterface is not a functional interface multiple </span><br><span class="line">    non-overriding abstract methods found in interface WorkerInterface 1 error</span><br></pre></td></tr></table></figure></p>
+<p>函数式接口定义好后，我们可以在 API 中使用它，同时利用 Lambda 表达式。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> //定义一个函数式接口</span><br><span class="line">@FunctionalInterface</span><br><span class="line">public interface WorkerInterface &#123;</span><br><span class="line">   public void doSomeWork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class WorkerInterfaceTest &#123;</span><br><span class="line">    public static void execute(WorkerInterface worker) &#123;</span><br><span class="line">        worker.doSomeWork();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String [] args) &#123;</span><br><span class="line">        //invoke doSomeWork using Annonymous class</span><br><span class="line">        execute(new WorkerInterface() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void doSomeWork() &#123;</span><br><span class="line">                System.out.println(&quot;Worker invoked using Anonymous class&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        //invoke doSomeWork using Lambda expression </span><br><span class="line">        execute( () -&gt; System.out.println(&quot;Worker invoked using Lambda expression&quot;) );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Worker invoked using Anonymous class </span><br><span class="line">Worker invoked using Lambda expression</span><br></pre></td></tr></table></figure></p>
+<p>这上面的例子里，我们创建了自定义的函数式接口并与 Lambda 表达式一起使用。execute() 方法现在可以将 Lambda 表达式作为参数。</p>
+<h3 id="Lambda-表达式与匿名类的区别"><a href="#Lambda-表达式与匿名类的区别" class="headerlink" title="Lambda 表达式与匿名类的区别"></a>Lambda 表达式与匿名类的区别</h3><p>使用匿名类与 Lambda 表达式的一大区别在于关键词的使用。对于匿名类，关键词 this 解读为匿名类，而对于 Lambda 表达式，关键词 this 解读为写就 Lambda 的外部类。</p>
+<p>Lambda 表达式与匿名类的另一不同在于两者的编译方法。Java 编译器编译 Lambda 表达式并将他们转化为类里面的私有函数，它使用 Java 7 中新加的 invokedynamic 指令动态绑定该方法，关于 Java 如何将 Lambda 表达式编译为字节码，Tal Weiss 写了一篇很好的文章。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/js/00-JS运行机制详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/29/js/00-JS运行机制详解/" itemprop="url">JavaScript的运行机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-29T15:37:30+08:00">
+                2018-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>说到JS，脑海里首先会想到的是单线程、事件循环、异步等等概念，这些名词到底代表什么，之前了解的不是很深入。后来，看到这个Philip Roberts的演讲：《<a href="https://vimeo.com/96425312" target="_blank" rel="noopener">Help, I’m stuck in an event-loop.</a>》.感觉对这些概念的理解又深入了一些。</p>
+<p>首先，引入一张图：<br><img src="/pics/js_eventloop.png" alt="V8 JS运行原理"></p>
+<p>首先按照我的理解来描述一下上图：<br>我们写了一个JS脚本文件，JS引擎执行的时候，会产生执行栈和堆，JS引擎在执行代码的时候，代码可能会调用WebApi执行一些异步操作，比如执行ajax、调用setTimeout、绑定响应DOM事件的函数等等。这些webApi函数往往都是需要一个回调函数作为参数来调用的。但是这些回调函数不会立即被调用，而是在一定条件下，由webApi内部将这些回调函数放到call-back-queue中，JS引擎在执行完脚本代码后，最后会在event-loop上死循环。</p>
+<p>用一句话来总结JS引擎的工作流程：执行JS脚本中的代码，JS代码要么立即执行一些操作，要么就是调用webAPi，WebApi在某些时候会向call-back-queue中放入回调函数，JS引擎执行完这些JS代码后，就会执行一个event-loop,循环执行call-back-queue中的回调函数。</p>
+<p>所以说，JS脚本中的代码总是先于call-back-queue中的代码执行。<br>对照上图，我们一一来解释上述名词</p>
+<h2 id="单线程"><a href="#单线程" class="headerlink" title="单线程"></a>单线程</h2><p>单线程指的是JS引擎执行JS代码是单线程的，但是一些WebApi调用如ajax,setTimeout,事件响应等是由其它线程完成的。之前一直困扰我的一个问题是：既然JS是单线程的，那么它是如何做到并发的执行JS代码，又去发起异步ajax请求的呢？其实，ajax请求是由webApi实现者完成的。它可以是多线程的。<br>所以这里单线程的范畴应该是指图中的call stack、堆、event-loop和call-back-queue。</p>
+<h2 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h2><p>JS引擎最后总是陷入event-loop循环执行call-back-queue中的回调函数。</p>
+<h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2><p>webApi的某些调用执行是在另一个线程中完成的，与JS执行线程是异步的。JS通过执行回调函数来响应webApi产生的事件。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/29/js/03-JS数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/29/js/03-JS数据类型/" itemprop="url">JavaScript 基本概念和数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-29T15:37:30+08:00">
+                2018-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><ol>
+<li>ECMAScript 中的一切（变量、函数名和操作符）都区分大小写。</li>
+<li>标识符:<ul>
+<li>第一个字符必须时字母、下划线或美元符号；</li>
+<li>其他字符可以是字母、数字、下划线或美元符号。</li>
+</ul>
+</li>
+<li><p>严格模式为JS的执行定义了一种不同的解析与执行模式。要在整个脚本中启用严格模式，在脚本顶部添加如下代码：<br> <code>&#39;use strict&#39;</code><br>在某个函数中启用严格模式，可以在函数体顶部加入上述代码：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function doSomething()&#123;</span><br><span class="line">    &apos;use strict&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量<br>ECMAScript 使用 var 操作符来定义一个变量，ECMAScript 中的变量时松散类型的，可以用来保存任何类型的数据。</p>
+</li>
+</ol>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>ECMAScript 有5种基本数据类型： <code>Undefined</code> , <code>Null</code> , <code>Boolean</code> , <code>Number</code> , <code>String</code>。<br>还有一种复杂数据类型： <code>Object</code> 。<br>ECMAScript 不支持任何创建自定义类型的机制，所有值最终都将是上述6种数据类型之一。</p>
+<h3 id="typeof-操作符"><a href="#typeof-操作符" class="headerlink" title="typeof 操作符"></a>typeof 操作符</h3><p>对一个值使用 typeof 操作符，会返回下列某个字符串：</p>
+<ul>
+<li>undefined——-如果这个值未定义或未初始化</li>
+<li>boolean———-如果这个值是布尔值</li>
+<li>string————如果这个值是字符串</li>
+<li>number————如果这个值是数值</li>
+<li>object————如果这个值是对象或 null</li>
+<li>function————如果这个值是函数</li>
+</ul>
+<h3 id="Undefined-类型"><a href="#Undefined-类型" class="headerlink" title="Undefined 类型"></a>Undefined 类型</h3><p>Undefined 类型只有一个值，即特殊的 <code>undefinded</code> 。使用 var 操作符声明变量但是未对其加以初始化时，这个变量的值就是 <code>undefinded</code> 。<br><code>undefinded</code> 值的变量和未定义的变量是不一样的，可以引用 <code>undefinded</code> 值的变量，但是引用未定义的变量很可能会报错。对于未定义的变量，只能执行一项操作，即使用 typeof 操作符检测其数据类型。</p>
+<p>但是，对于未定义的变量和未初始化的变量执行 typeof 操作，返回值都是 undefinded 。</p>
+<h3 id="Null-类型"><a href="#Null-类型" class="headerlink" title="Null 类型"></a>Null 类型</h3><p>Null 类型也只有一个值，即 <code>null</code> 。 <code>null</code> 值表示一个空对象指针，这也是使用 typeof 操作符检测 <code>null</code> 值时会返回 <code>object</code> 的原因。如果定义的变量准备在将来用于保存对象，那么最好将其初始化为 <code>null</code> 而不是其它值。</p>
+<p><code>undefinded</code> 值是 派生于 <code>null</code> 值的，因此：<br><code>null == undefined     //true</code><br>但是，两者的应用场景还是有很大区别的。 <code>undefinded</code> 用来表示未初始化的变量，而只要是想在将来用来保存对象引用的变量，就用 <code>null</code> 初始化。</p>
+<h3 id="Boolean-类型"><a href="#Boolean-类型" class="headerlink" title="Boolean 类型"></a>Boolean 类型</h3><p>Boolean 类型只有两个字面值： <code>true</code> 和 <code>false</code>。所有类型的值都有与这两个值等价的值。要将一个值转换为对应的 Boolean 值，可以使用转型函数 <code>Boolean()</code>。<br>各种数据类型的转换规则如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>转换为true的值</th>
+<th>转换为false的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>任何非空字符串</td>
+<td>空字符串</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>任何非零数字值(包括无穷大)</td>
+<td>0和 NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>任何对象</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>n/a</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Number-类型"><a href="#Number-类型" class="headerlink" title="Number 类型"></a>Number 类型</h3><p>ECMAScript 使用 IEEE-754 标准来表示整数和浮点数。</p>
+<h3 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h3><h3 id="Object-类型"><a href="#Object-类型" class="headerlink" title="Object 类型"></a>Object 类型</h3><p>Object的每个实例都具有下列属性和方法：</p>
+<ul>
+<li>constructor: 保存用于创建当前对象的函数。</li>
+<li>hasOwnProperty(propertyName): 用于检查给定的属性在当前对象实例中（而不是在实例的原型中）是否存在。 <code>property</code> 必须是字符串。</li>
+<li>isPrototypeOf(object): 用于检查调用对象是否是传入对象参数的原型。</li>
+<li>propertyIsEnumerable(propertyName): 用于检查传入的属性是否能够用 <code>for-in</code> 语句来枚举。 <code>property</code> 必须是字符串.</li>
+<li>toLocalString(): 返回对象的字符串表示，该字符串与执行环境的地区对应。</li>
+<li>valueOf(): 返回对象的字符串、整数值或不二值表示。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/09/js/06-JS原型模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/09/js/06-JS原型模式/" itemprop="url">JavaScript 原型模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-09T20:52:37+08:00">
+                2018-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/08/js/05-JS创建对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/08/js/05-JS创建对象/" itemprop="url">JavaScript 创建对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-08T20:52:37+08:00">
+                2018-01-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function createPerson(name,age)&#125;&#123;</span><br><span class="line">    var o = new Object();</span><br><span class="line">    o.name = name;</span><br><span class="line">    o.age = age;</span><br><span class="line">    return o;</span><br><span class="line">&#125;</span><br><span class="line">var p1 = createPerson(&apos;A&apos;,18);</span><br><span class="line">var p2 = createPerson(&apos;B&apos;,20);</span><br></pre></td></tr></table></figure>
+<h2 id="构造函数模式"><a href="#构造函数模式" class="headerlink" title="构造函数模式"></a>构造函数模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">&#125;</span><br><span class="line">var p1 = new Person(&apos;A&apos;,18);</span><br><span class="line">var p2 = new Person(&apos;B&apos;,20);</span><br></pre></td></tr></table></figure>
+<p>与工厂模式相比有以下几点不同：</p>
+<ul>
+<li>没有显示地创建对象</li>
+<li>直接将属性和方法赋给了 <code>this</code> 对象</li>
+<li>没有 return 语句，即使有的话，使用 new 构造对象时，也会被忽略。</li>
+</ul>
+<h3 id="new-操作符"><a href="#new-操作符" class="headerlink" title="new 操作符"></a>new 操作符</h3><p>使用 <code>new</code> 操作符调用构造函数会经历以下4个阶段：</p>
+<ol>
+<li>创建一个新对象</li>
+<li>将构造函数的作用域赋给新对象（因此 <code>this</code> 指向了这个新对象）</li>
+<li>执行构造函数代码</li>
+<li>返回新对象</li>
+</ol>
+<h3 id="构造函数也是普通的函数"><a href="#构造函数也是普通的函数" class="headerlink" title="构造函数也是普通的函数"></a>构造函数也是普通的函数</h3><p>构造函数与其它函数的唯一区别，就在于它的调用方式不同（通过 <code>new</code> 操作符调用）。任何其它函数，只要通过 <code>new</code> 操作符来调用，那么它就可以成为构造函数，如果不通过  <code>new</code> 操作符调用，那它普通函数就没什么两样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var person = new person(&apos;A&apos;,18); //构造函数调用</span><br><span class="line">Person(&apos;A&apos;,18); //普通函数调用，this指向 global或window对象</span><br><span class="line">var o = new Object();</span><br><span class="line">Person.call(o,&apos;A&apos;,18);//在另一个对象作用域中调用，this 指向 o。</span><br></pre></td></tr></table></figure></p>
+<h3 id="构造函数的问题"><a href="#构造函数的问题" class="headerlink" title="构造函数的问题"></a>构造函数的问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">    this.sayName = function()&#123;</span><br><span class="line">        alert(this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述构造函数在实例化对象时，会在每个对象上创建一个 sayName 方法，这些方法并不是同一个实例。这样一方面会加大内存耗用，另一方面也无法体现出方法是共享的这一特性。</p>
+<p>一个简单的方法是将 sayName 定义为全局函数，然后在构造函数中，将其赋值给每个实力属性：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function Person(name,age)&#123;</span><br><span class="line">    this.name = name;</span><br><span class="line">    this.age = age;</span><br><span class="line">    this.sayName = sayName;</span><br><span class="line">&#125;</span><br><span class="line">function sayName()&#123;</span><br><span class="line">    alert(this.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样，实例化多个实例时，各个实例是共享的同一个方法实例，但是破坏了对象的封装性，如果一个对象需要定义很多方法，那么就要定义很多全局函数，那么就毫无封装性可言了。</p>
+<p>好在，这些问题可以通过原型模式解决，下一篇文章讲解原型模式。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/07/js/04-JS函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/07/js/04-JS函数/" itemprop="url">JavaScript 函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-07T21:05:24+08:00">
+                2018-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ecmascript 中的函数使用 <code>function</code> 关键字来声明，后跟一组参数和函数体。定义函数时，不必指明函数是否返回值，如果想要返回值，使用 <code>return</code> 语句即可，如果 <code>return</code>后边没有值或表达式，则默认返回 <code>undefined</code>。</p>
+<h2 id="理解函数参数"><a href="#理解函数参数" class="headerlink" title="理解函数参数"></a>理解函数参数</h2><p>Ecmascript 中的参数在内部是用一个数组来表示的，在函数体内可以通过 <code>arguments</code>对象来访问这个数组。<code>arguments[0]</code> 、 <code>arguments[1]</code> 、 <code>arguments[2]</code> …分别代表第一个、第二个、第三个…参数。也正是因为这个原因，调用函数时，不介意传递多少个参数，也不在乎传递的是什么类型。</p>
+<p>函数的命名参数只是提供便利，不是必须的，完全可以通过 <code>arguments</code> 对象来访问参数， <code>arguments</code> 的 <code>length</code> 属性表示有多少个参数传递给了函数。没有传递值的命名参数将自动赋予 <code>undefined</code> 值。</p>
+<p><code>arguments</code> 的值永远与对应的命名参数保持同步，但两者并不是同一内存空间。</p>
+<p>因为 Ecmascript 函数使用数组来保存参数，可以传递任意数量参数，所以没有函数签名，也就没有真正意义上的函数重载。                                                                                                              </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/26/java/javaee/javaEE基础之Web程序基本结构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/26/java/javaee/javaEE基础之Web程序基本结构/" itemprop="url">JavaEE基础之Web程序基本结构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-26T22:07:35+08:00">
+                2019-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/JavaEE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaEE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="目录结构和War文件"><a href="#目录结构和War文件" class="headerlink" title="目录结构和War文件"></a>目录结构和War文件</h2><p>所有的 Java EE 服务器都支持War应用程序归档，大部分服务器还支持未归档的应用程序目录。如下图所示：<br><img src="/pics/java-web程序目录结构.png" alt="Java Web应用目录结构"><br>无论是未归档的文件还是 War归档文件，它们的目录结构都是一样的。<br>/META-INF:包含应用程序清单文件，也可以存储Web容器或服务器需要使用的资源。<br>/WEB-INF:存放一些包含了信息或指令的文件。<br>/WEB-INF/classes : 存放编译好的class类文件和资源文件。<br>/WEB-INF/classes/META-INF : 存放编译好的class类文件和资源文件。<br>/WEB-INF/lib : 存放依赖的jar包，在类路径上可用。<br>/WEB-INF/i18n : 存放国际化（i18n）和本地化(L10n)文件。<br>/WEB-INF/tags : 存放JSP标签文件。<br>/WEB-INF/tld : 存放JSP标签库描述符。</p>
+<p>根路径下的 <em>/META-INF</em> 不在类路径下，但是 <em>/WEB-INF/classes/META-INF</em>在路径下。根路径下的资源文件一般可以通过URL直接访问。但是 <em>/WEB-INF</em> 和 <em>/META-INF</em> 下的文件是受保护的，不能直接通过URL访问。</p>
+<h2 id="部署描述符"><a href="#部署描述符" class="headerlink" title="部署描述符"></a>部署描述符</h2><p>部署描述符是用于描述Web应用程序的元数据，并为Java EE Web 应用程序服务器部署和运行程序提供指令。一般部署描述符文件在 <em>/WEB-INF/web.xml</em> 中。该文件通常包含Servlet、监听器和过滤器的定义，以及HTTP会话、JSP和应用程序的配置选项。  </p>
+<p>Servlet 3.0及之后更高版本的环境将扫描 Web应用程序和Web片段中的 Java EE Web应用程序注解，用于配置 Servlet、监听器和过滤器等，也就是说提供了注解配置应用程序的能力。如果需要，可以在在根&lt;web-app&gt; 或&lt;web-fragment&gt;元素中添加特性 metadata-complete=”true”，禁止扫描和注解配置。</p>
+<h2 id="类加载器架构"><a href="#类加载器架构" class="headerlink" title="类加载器架构"></a>类加载器架构</h2><p>不同于 JAVA SE 中的双亲优先委托模式，Java EE Web应用程序并不完全适用这种模式。考虑以下两种情况：</p>
+<ol>
+<li>Java EE Web容器适用了与应用程序相同的第三方库，可能存在版本冲突。</li>
+<li>不同的web应用程序之间也可能存在版本冲突。</li>
+</ol>
+<p>Java EE中，每个Web程序都被分配了一个自由的相互隔离的类加载器，它们都继承自公共的Web容器的类加载器。通过隔离不同的应用程序，它们不能访问相互的类（解决了上述第二个问题），不仅消除了类冲突的风险，还是一种防止web应用程序之间互相干扰的方式。</p>
+<p>另外，Web应用程序使用子女优先的类加载模式，即类加载器通常只会在自己无法加载某个类的时候，才请求父类加载器帮助加载（解决上述第二个问题），Java EE服务器也提供了修改类加载模式的方法，可以改为双亲优先加载模式。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/27/java/javaee/javaEE基础之Servlet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/27/java/javaee/javaEE基础之Servlet/" itemprop="url">JavaEE基础之Servlet</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-27T22:07:35+08:00">
+                2019-04-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/JavaEE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaEE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Servlet是所有Java Web应用程序的核心类，它是唯一的既可以直接处理和相应用户请求，也可以将处理工作委托给应用中其它部分的类。除非某些过滤器提前终止了客户端的请求，否则所有的请求都将被发送到某些Servlet中。</p>
+<p>Java EE 容器会有一个或多个内建的 Servlet，用于处理 JSP、显示目录列表和访问静态资源。</p>
+<p><code>javax.servlet.Servlet</code> 是个接口，只包含了初始化并销毁 Servlet 和处理请求的方法。不过，无论什么类型的请求，甚至是非HTTP请求（假设容器支持这样的请求），也将会调用 service 方法。目前 Java EE 7支持的唯一 Servlet 协议就是 HTTP。</p>
+<p>大多数情况下，Servlet都会继承自 <code>javax.servlet.http.HttpServlet</code> ，它提供了相应每种 HTTP 方法类型的方法空实现：<br><img src="/pics/httpservlet方法.png" alt="HttpServlet实现的方法"><br><code>HttpServlet</code> 各个方法接收的是 <code>javax.servlet.http.HttpServletRequest</code> 和 <code>javax.servlet.http.HttpServletResponse</code> 参数，而不是 <code>javax.servlet.http.ServletRequest</code> 和 <code>javax.servlet.http.HttpServletResponse</code> ，这样就可以轻松访问 Servlet 服务所处理的请求中的 HTTP 特定的特性。</p>
+<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="init 方法"></a>init 方法</h2><p><code>init()</code> 方法在 Servlet 构造完成之后调用，但在相应第一个请求之前。与构造器不同，调用 <code>init()</code> 方法时， Servlet 中所有的属性都已经设置完成，并提供了对 <code>javax.servlet.ServletConfig</code> 和 <code>javax.servlet.ServletContext</code> 对象的访问。所以，可以使用该方法<em>读取属性文件</em>，或者使用 <em>JDBC连接数据库</em>。</p>
+<p><code>init()</code> 方法将在 Servlet 启动时调用。 Servlet 会在第一次映射到的请求访问它的时候启动，如果配置了在Web应用程序部署和启动时自动启动，那么 <code>init()</code> 方法也会被调用。</p>
+<h2 id="destory-方法"><a href="#destory-方法" class="headerlink" title="destory 方法"></a>destory 方法</h2><p><code>destory()</code> 方法在 Servlet 不再接受请求之后立即调用，这通常发生在 Web 应用程序被停止或卸载，或者 Web 容器关闭时。因为它将在卸载或关闭时立即调用，所以不需要等待垃圾收集器启动垃圾回收就可以清理资源。</p>
+<p>这对于应用程序被卸载了但是服务器仍然运行的环境来说非常重要（服务器还要支持其它应用运行），因为垃圾收集器可能在几分钟或数小时之后运行。如果在垃圾收集时清理资源而不是在 <code>destory()</code> 方法清理资源，则会导致应用程序占用的资源无法释放。</p>
+<p>因此，应当总是使用 <code>destory()</code> 方法清理 Servlet 持有的资源。</p>
+<h2 id="配置可部署的-Servlet"><a href="#配置可部署的-Servlet" class="headerlink" title="配置可部署的 Servlet"></a>配置可部署的 Servlet</h2><p>在编写创建好 Servlet 之后，需要告诉容器如何部署应用程序中的 Servlet。</p>
+<h3 id="部署描述符"><a href="#部署描述符" class="headerlink" title="部署描述符"></a>部署描述符</h3><p>在部署描述符中进行正确的配置：</p>
+<ol>
+<li>在 web.xml 中添加 Servlet<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如果没有 load-on-startup 标签， Servlet 会在第一个请求到达的时候被初始化及调用init方法。可能需要很长时间。加上 load-on-startup 标签后，表示在部署时就创建相应的 Servlet。 load-on-startup 标签值的大小表示启动顺序，越小越先启动。相同则按在描述符文件中出现的顺序启动。</p>
+<ol>
+<li>将 Servlet 映射到 URL<br>告诉容器如何启动 Servlet 之后，还需要告诉容器不同的 Servlet 分别处理对应哪些URL的请求。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</span><br><span class="line">    &lt;url-pattern&gt;/hello2&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用了上述标签后，所有访问应用程序相对URL/hello和/hello2 的请求都将由上面配置的helloServlet来处理。此处的 servlet-name要和上面的一样。</p>
+<h3 id="WebServlet注解"><a href="#WebServlet注解" class="headerlink" title="@WebServlet注解"></a>@WebServlet注解</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(</span><br><span class="line">    name = &quot;helloServlet&quot;,</span><br><span class="line">    urlPatterns = &#123;&quot;/hello1&quot;,&quot;/hello2&quot;&#125;,</span><br><span class="line">    loadOnStartup = 1</span><br><span class="line">)</span><br><span class="line">public class HelloServlet extends HttpServlet&#123;...&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="编程式配置"><a href="#编程式配置" class="headerlink" title="编程式配置"></a>编程式配置</h3><p>除了上述两种方法，还可以使用编程的方式配置 Servlet.<br><code>ServletContext</code> 接口提供了动态添加 Servlet 的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Dynamic addServlet(String var1, String var2); </span><br><span class="line">2. Dynamic addServlet(String var1, Servlet var2); </span><br><span class="line">3. Dynamic addServlet(String var1, Class&lt;? extends Servlet&gt; var2);</span><br></pre></td></tr></table></figure></p>
+<p>与编程式添加 Listener 和 Filter 一样，这必须要在在 <code>ServletContext</code> 配置完成之前完成，因为容器会根据 <code>ServletContext</code> 配置决定加载哪些 Listener/Filter/Servlet. 所以要在 <code>ServletContextListener</code> 的 <code>contextInitialized()</code> 方法或者 <code>ServletContainerInitializer</code> 中的 <code>onStartup()</code> 中注册 Servlet 。</p>
+<h2 id="使用-HttpServletRequest"><a href="#使用-HttpServletRequest" class="headerlink" title="使用 HttpServletRequest"></a>使用 HttpServletRequest</h2><p><code>HttpServletRequest</code> 是对 <code>ServletRequest</code> 的扩展，可以提供关于收到请求的额外的与 HTTP 协议相关的信息。通过它可以获取 HTTP 请求的详细信息。</p>
+<h3 id="获取请求参数"><a href="#获取请求参数" class="headerlink" title="获取请求参数"></a>获取请求参数</h3><p> <code>HttpServletRequest</code> 最重要的功能就是从客户端发送的请求中获取查询参数。请求参数有两种不同的形式：</p>
+<ol>
+<li>查询参数</li>
+<li>以 <code>application/x-www-form-yrlencoded</code> / <code>multipart/form-data</code>  编码的请求正文。<br>常用方法：<ol>
+<li>String getParameter(String var1)</li>
+<li>String[] getParameterValues(String var1)</li>
+<li>Map<string, string[]> getParameterMap()</string,></li>
+<li>Enumeration<string> getParameterNames()</string></li>
+</ol>
+</li>
+</ol>
+<h3 id="获取与请求内容相关的信息"><a href="#获取与请求内容相关的信息" class="headerlink" title="获取与请求内容相关的信息"></a>获取与请求内容相关的信息</h3><p>与请求内容相关的信息包括：HTTP 请求内容的类型、长度和编码等。</p>
+<ol>
+<li>String getContentType()</li>
+<li>int getContentLength()</li>
+<li>long getContentLengthLong()</li>
+<li>String getCharacterEncoding()</li>
+</ol>
+<h3 id="获取请求内容（请求体中的内容，如上传的附件）"><a href="#获取请求内容（请求体中的内容，如上传的附件）" class="headerlink" title="获取请求内容（请求体中的内容，如上传的附件）"></a>获取请求内容（请求体中的内容，如上传的附件）</h3><ol>
+<li>ServletInputStream getInputStream() throws IOException: 二进制</li>
+<li>BufferedReader getReader() throws IOException：文本<br>请求流只能被读取一次，多次读取会导致 IllegalStateException 异常，如果请求中含有 POST 的请求参数，且使用了获取请求参数的方法获取了POST变量，则不能再次调用上述方法，否则也会导致 IllegalStateException 异常。不要在含有 POST 变量的请求上使用上述方法。</li>
+</ol>
+<h3 id="获取请求特有的数据，如URL、URI和请求头"><a href="#获取请求特有的数据，如URL、URI和请求头" class="headerlink" title="获取请求特有的数据，如URL、URI和请求头"></a>获取请求特有的数据，如URL、URI和请求头</h3><ol>
+<li>StringBuffer getRequestURL()</li>
+<li>String getRequestURI()</li>
+<li>String getServletPath()</li>
+<li>String getHeader(String var1)</li>
+<li>Enumeration<string> getHeaders(String var1)</string></li>
+<li>Enumeration<string> getHeaderNames()</string></li>
+<li>long getDateHeader(String var1)</li>
+<li>int getIntHeader(String var1)</li>
+</ol>
+<h3 id="会话和Cookise"><a href="#会话和Cookise" class="headerlink" title="会话和Cookise"></a>会话和Cookise</h3><ol>
+<li>Cookie[] getCookies()</li>
+<li>HttpSession getSession()/HttpSession getSession(boolean var1)</li>
+</ol>
+<h2 id="使用-HttpServletResponse"><a href="#使用-HttpServletResponse" class="headerlink" title="使用 HttpServletResponse"></a>使用 HttpServletResponse</h2><p>HttpServletResponse 提供了对响应中与HTTP协议相关属性的访问。可以使用 HttpServletResponse 完成响应头设置、编写响应正文、重定向请求、设置 HTTP 状态码、设置 Cookies等任务。</p>
+<h3 id="编写响应正文"><a href="#编写响应正文" class="headerlink" title="编写响应正文"></a>编写响应正文</h3><p>HttpServletResponse 最重要的功能就是向客户端返回数据内容，可以是在浏览器中显示的HTML、浏览器希望获取的图像或客户端下载的文件内容等。</p>
+<ol>
+<li>ServletOutputStream getOutputStream() throws IOException</li>
+<li>PrintWriter getWriter() throws IOException<br>同样，不要对同一个响应对象同时调用上述方法，也不能调用两次其中一个方法。</li>
+</ol>
+<h3 id="设置响应头和其它属性"><a href="#设置响应头和其它属性" class="headerlink" title="设置响应头和其它属性"></a>设置响应头和其它属性</h3><ol>
+<li>void addHeader(String var1, String var2)</li>
+<li>void setHeader(String var1, int var2)</li>
+<li>void setStatus(int var1)</li>
+<li>void sendError(int var1) throws IOException</li>
+<li>void sendRedirect(String var1) throws IOException</li>
+<li>void setDateHeader(String var1, long var2)</li>
+<li>void addDateHeader(String var1, long var2)</li>
+</ol>
+<h2 id="使用初始化参数配置应用程序"><a href="#使用初始化参数配置应用程序" class="headerlink" title="使用初始化参数配置应用程序"></a>使用初始化参数配置应用程序</h2><p>编写 Java Web 应用程序时，不可避免地会需要提供一些配置应用程序和Servlet的方式。通过上下文初始化参数和Servlet初始化参数可对它们进行配置。可以定义数据库连接信息、提供发送订单警告的邮件地址等。这些配置在程序启动时被读取，修改后只有重启应用才会生效。</p>
+<h3 id="上下文初始化参数"><a href="#上下文初始化参数" class="headerlink" title="上下文初始化参数"></a>上下文初始化参数</h3><p>在部署描述符中使用 <context-param> 标签声明上下文初始化参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;settingOne&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;foo&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;settingTwo&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;bar&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure></context-param></p>
+<p>上述参数会被加载到 <code>ServletContext</code> 中，使用 <code>ServletContext</code> 的<br><code>String getInitParameter(String var1)</code> 方法可以获取到初始化参数。 <code>ServletContext</code> 是所有 Servlet 共享的，在任意 Servlet 中都可以获取它的引用，因此，上下文初始化参数是所有 Servlet 共享的。</p>
+<p><code>GenericServlet</code> 中有一个 <code>ServletConfig</code> 类型的成员，使用 <code>ServletConfig</code> 的 <code>getServletContext()</code> 可以获取到 <code>ServletContext</code> 。实际上，<code>GenericServlet</code> 提供了 <code>getServletContext()</code> 方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public ServletContext getServletContext() &#123;</span><br><span class="line">    return this.getServletConfig().getServletContext();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Servlet初始化参数"><a href="#Servlet初始化参数" class="headerlink" title="Servlet初始化参数"></a>Servlet初始化参数</h3><ol>
+<li>在部署描述符中使用下属代码可以为特定 Servlet 配置初始化参数：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">       &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">       &lt;servlet-class&gt;com.servlet.HelloServlet&lt;/servlet-class&gt;</span><br><span class="line">       &lt;init-param&gt;</span><br><span class="line">           &lt;param-name&gt;database&lt;/param-name&gt;</span><br><span class="line">           &lt;param-value&gt;db&lt;/param-value&gt;</span><br><span class="line">       &lt;/init-param&gt;</span><br><span class="line">           &lt;init-param&gt;</span><br><span class="line">           &lt;param-name&gt;server&lt;/param-name&gt;</span><br><span class="line">           &lt;param-value&gt;10.1.21.3&lt;/param-value&gt;</span><br><span class="line">       &lt;/init-param&gt;</span><br><span class="line">       &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">   &lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Servlet初始化参数会被加载到各个Servlet的 <code>ServletConfig</code> 中，因此，它们是Servlet专有的。通过 <code>ServletConfig</code> 的 <code>String getInitParameter(String var1)</code> 方法获取参数值。</p>
+<ol>
+<li>使用注解：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@WebServlet(</span><br><span class="line">    name = &quot;helloServlet&quot;,</span><br><span class="line">    urlPatterns = &#123;&quot;/hello1&quot;,&quot;/hello2&quot;&#125;,</span><br><span class="line">    loadOnStartup = 1,</span><br><span class="line">    initParams = &#123;</span><br><span class="line">        @WebInitParam(name = &quot;database&quot;,value = &quot;db&quot;),</span><br><span class="line">        @WebInitParam(name = &quot;server&quot;,value = &quot;10.1.21.3&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">)</span><br><span class="line">public class HelloServlet extends HttpServlet&#123;...&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用注解的缺点是，修改配置后，需要重新编译程序；而使用部署描述符的方式，修改完后只要重新启动程序即可，无需重新编译。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/java/javaee/javaEE基础之Listener/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/28/java/javaee/javaEE基础之Listener/" itemprop="url">JavaEE基础之Listener</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T15:56:39+08:00">
+                2019-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/JavaEE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaEE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Java-EE-中的-Listener"><a href="#Java-EE-中的-Listener" class="headerlink" title="Java EE 中的 Listener"></a>Java EE 中的 Listener</h2><p>下面是 Java EE 中的 8 个 Listener 接口，可分为三类：</p>
+<ol>
+<li><code>ServletContext</code> 相关接口</li>
+</ol>
+<p><code>ServletContextListener</code> ：用于监听 <code>ServletContext</code> 的启动和销毁。<br><code>ServletContextAttributeListener</code> ：用于监听 application 范围的属性变化。</p>
+<ol>
+<li><code>HttpSession</code> 相关接口</li>
+</ol>
+<p><code>HttpSessionListener</code> ：用于监听 session 的创建和销毁。<br><code>HttpSessionIdListener</code>  ：用于监听 session 的 id 是否被更改。<br><code>HttpSessionAttributeListener</code> ：用于监听 session 范围的属性变化。<br><code>HttpSessionActivationListener</code> ：用于监听绑定在 HttpSession 对象中的 JavaBean 状态。<br><code>HttpSessionBindingListener</code> ：用于监听对象与 session 的绑定和解绑。</p>
+<ol>
+<li><code>ServletRequest</code> 相关接口</li>
+</ol>
+<p><code>ServletRequestListener</code> ：用于监听 ServletRequest 对象的初始化和销毁。<br><code>ServletRequestAttributeListener</code> ：用于监听 ServletRequest 对象的属性变化。</p>
+<ol>
+<li>异步接口</li>
+</ol>
+<p><code>AsyncListener</code> : 用于监听异步请求。</p>
+<h2 id="配置-Listener"><a href="#配置-Listener" class="headerlink" title="配置 Listener"></a>配置 Listener</h2><p>可以使用3种方式配置：</p>
+<ol>
+<li>使用部署描述符</li>
+</ol>
+<p>在部署描述符中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;listener&gt;</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">    com.journaldev.listener.AppContextListener</span><br><span class="line">    &lt;/listener-class&gt;</span><br><span class="line">&lt;/listener&gt;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>使用 <code>@WebListener</code> 注解</li>
+</ol>
+<p>在实现了一个或多个上述Listener接口的类上标注 <code>@WebListener</code> 注解，即可将这个类声明为 Listener。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@WebListener</span><br><span class="line">public class AppContextListener implements ServletContextListener &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>编程式配置</li>
+</ol>
+<p><code>ServletContext</code> 接口提供了动态添加 Listener 的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. void addListener(String var1);</span><br><span class="line">2. &lt;T extends EventListener&gt; void addListener(T var1);</span><br><span class="line">3. void addListener(Class&lt;? extends EventListener&gt; var1);</span><br></pre></td></tr></table></figure></p>
+<p>与编程式添加 Servlet 和 Filter 一样，这必须要在在 <code>ServletContext</code> 配置完成之前完成，因为容器会根据 <code>ServletContext</code> 配置决定加载哪些 Listener/Filter/Servlet. 所以要在 <code>ServletContextListener</code> 的 <code>contextInitialized()</code> 方法或者 <code>ServletContainerInitializer</code> 中的 <code>onStartup()</code> 中注册 Listener。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/28/java/javaee/javaEE基础之Filter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/28/java/javaee/javaEE基础之Filter/" itemprop="url">JavaEE基础之 Filter</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-28T17:30:12+08:00">
+                2019-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/JavaEE/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaEE</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="创建-FIlter"><a href="#创建-FIlter" class="headerlink" title="创建 FIlter"></a>创建 FIlter</h2><p>Filter 主要用来在 Servlet 处理请求的前后完成某些操作。</p>
+<p>创建 Filter 只要实现 <code>Filter</code> 接口即可。过滤器在初始化时将调用 <code>init()</code> 方法，可以访问过滤器配置、初始化参数和 ServletContext ,和 Servlet 的 <code>init()</code> 方法一样。类似的，应用程序关闭时也会调用 <code>destory()</code> 方法。</p>
+<p>当请求进入到 Filter 时， 过滤器的 <code>diFilter()</code> 方法将会被调用，在该方法中提供了对 ServletRequest 、 ServletResponse 和 FilterChain 对象的访问。因此可以对请求和相应进行处理。</p>
+<p><img src="/pics/filterchain.png" alt="过滤器链"><br>过滤器炼的工作方式非常像栈。当请求进入时，首先进入第一个过滤器，该过滤器被添加到栈中。当过滤器调用 <code>FilterChain.diFilter()</code> 时，下一个过滤器将被添加到栈中，一直到请求进入Servlet中，它是最后一个被加入到栈的元素。</p>
+<p>当Servlet的 <code>service()</code> 方法返回时，Servlet出栈，然后控制权返回最后一个加入到栈的 Fliter 中，当它的 <code>diFilter()</code> 方法返回时，过滤器将从栈中移除，控制权返回到之前的过滤器中，一直到第一个过滤器。当第一个过滤器的 <code>diFilter()</code> 方法返回时，请求处理就完成了。</p>
+<h2 id="配置-Filter"><a href="#配置-Filter" class="headerlink" title="配置 Filter"></a>配置 Filter</h2><p>可以是用3种方式配置：</p>
+<ol>
+<li>使用部署描述符</li>
+</ol>
+<p>在部署描述符中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;myFilter&lt;/filter-name&gt;</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">    com.journaldev.filter.MyFilter</span><br><span class="line">    &lt;/listener-class&gt;</span><br><span class="line">    &lt;url-pattern&gt;/foo&lt;/url-pattern&gt;</span><br><span class="line">    &lt;url-pattern&gt;/bar&lt;/url-pattern&gt;</span><br><span class="line">    &lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;dispatcher&gt;REQUEST&lt;/dispatcher&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">      &lt;param-name&gt;count&lt;/param-name&gt;</span><br><span class="line">      &lt;param-value&gt;5&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">&lt;/filter&gt;</span><br></pre></td></tr></table></figure></p>
+<p>与Servlet不同的是，过滤器不是在第一个请求到达时加载的，过滤器的 <code>init()</code> 方法总是在应用程序启动时被调。在 <code>ServletContextListener</code> 初始化之后，Servlet初始化之前，它们将按部署描述符中的顺序加载。处理请求时也按顺序处理。</p>
+<ol>
+<li>使用 <code>@WebFilter</code> 注解</li>
+</ol>
+<p>在实现了 Filter 接口的类上标注 <code>@WebFilter</code> 注解，即可将这个类声明为 Filter .<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@WebFilter(filterName = &quot;FilterDemo02&quot;, </span><br><span class="line">urlPatterns = &#123; &quot;/*&quot; &#125;, </span><br><span class="line">initParams = &#123; @WebInitParam(name = &quot;name&quot;, value = &quot;xc&quot;),</span><br><span class="line">        @WebInitParam(name = &quot;like&quot;, value = &quot;java&quot;) &#125;)</span><br><span class="line">public class FilterDemo02 implements Filter &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注解配置的缺点在于：无法指定各个Filter的加载顺序，也就无法指定各个Filter处理请求的顺序。而这同通常是很重要的。</p>
+<ol>
+<li>编程式配置</li>
+</ol>
+<p><code>ServletContext</code> 接口提供了动态添加 Filter 的方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. javax.servlet.FilterRegistration.Dynamic addFilter(String var1, String var2); </span><br><span class="line">2. javax.servlet.FilterRegistration.Dynamic addFilter(String var1, Filter var2); </span><br><span class="line">3. javax.servlet.FilterRegistration.Dynamic addFilter(String var1, Class&lt;? extends Filter&gt; var2);</span><br></pre></td></tr></table></figure></p>
+<p>与编程式添加 Servlet 和 Listener 一样，这必须要在在 <code>ServletContext</code> 配置完成之前完成，因为容器会根据 <code>ServletContext</code> 配置决定加载哪些 Listener/Filter/Servlet. 所以要在 <code>ServletContextListener</code> 的 <code>contextInitialized()</code> 方法或者 <code>ServletContainerInitializer</code> 中的 <code>onStartup()</code> 中注册 Filter。</p>
+<h2 id="过滤器排序"><a href="#过滤器排序" class="headerlink" title="过滤器排序"></a>过滤器排序</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/03/TCP-IP/IP协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/03/TCP-IP/IP协议/" itemprop="url">IP协议</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-03T22:51:40+08:00">
+                2021-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/网络协议/" itemprop="url" rel="index">
+                    <span itemprop="name">网络协议</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>IP是TCP/IP协议族中最为核心的协议。所有的TCP、UDP、ICMP及IGMP数据都以IP数据报格式传输(见图1-4)。许多刚开始接触TCP/IP的人对IP提供不可靠、无连接的数据报传送服务感到很奇怪，特别是那些具有X.25或SNA背景知识的人。<br>不可靠(unreliable)的意思是它不能保证IP数据报能成功地到达目的地。IP仅提供最好的传输服务。如果发生某种错误时，如某个路由器暂时用完了缓冲区，IP有一个简单的错误处理算法:丢弃该数据报，然后发送ICMP消息报给信源端。任何要求的可靠性必须由上层来提供(如TCP)。<br>无连接(connectionless)这个术语的意思是IP并不维护任何关于后续数据报的状态信息。每个数据报的处理是相互独立的。这也说明，IP数据报可以不按发送顺序接收。如果一信源向相同的信宿发送两个连续的数据报(先是A，然后是B)，每个数据报都是独立地进行路由选择，可能选择不同的路线，因此B可能在A到达之前先到达。</p>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p><img src="/pics/ip-address.png" alt="IP地址分类"><br>全0和全1的主机号都是无效的。<br>子网划分：将主机号范围内部分比特作为子网号来划分子网。</p>
+<h4 id="特殊IP地址"><a href="#特殊IP地址" class="headerlink" title="特殊IP地址"></a>特殊IP地址</h4><p>下图中0表示所有比特全为0；-1表示所有比特全为1；netid/subnetid/hostid代表不全为0或全为1的对应字段；子网号栏为空表示没有子网划分。<br><img src="/pics/special-ip.png" alt="特殊IP地址"><br>表的头两项是特殊的源地址，中间项是特殊换回地址，最后四项是广播地址。</p>
+<h3 id="IP首部"><a href="#IP首部" class="headerlink" title="IP首部"></a>IP首部</h3><p><img src="/pics/ip-header.png" alt="IP首部"></p>
+<ul>
+<li>协议版本：目前的协议版本是4，也就是 IPv4</li>
+<li>首部长度：4位，单位是4字节，因此IP首部最大长度是 $(2^4-1)*4=60$ 字节。</li>
+<li>8位服务类型（TOS）:3位优先权字段（现在已被忽略）+ 4位TOS子字段+1位保留字段（设0）</li>
+<li>总长度字段:代表整个IP数据报总长度，16位，因此IP数据报最大度是$2^{16}=65535$字节</li>
+<li>标识字段：标识字段唯一地标识主机发送的每一份数据报。通常每发一份报文它的值就会加1</li>
+<li>3位标志:</li>
+<li>片偏移:</li>
+<li>TTL(Time to live)生存时间：设置数据报可以经过的最多路由数，一旦经过一个路由，它的值就减1，当为0时，数据报被丢弃</li>
+<li>8位协议: 根据它可以识别是哪个协议向IP传送数据.</li>
+<li>16位首部校验和:针对IP首部的校验和。先把校验和字段置为0，然后对首部中每个16bit进行二进制反码求和，结果存在校验和字段中。</li>
+<li>32位源IP</li>
+<li>32位目的IP</li>
+<li>任选项：目前包括<ol>
+<li>安全和处理限制（用于军事领域）</li>
+<li>记录路径（让每个路由器都记下它的地址）</li>
+<li>时间戳</li>
+<li>宽松的源站选路（为数据指定一系列必须经过的IP地址）</li>
+<li>严格的源站选路（与4类似，但是只能经过这些地址，不能经过其它地址</li>
+</ol>
+</li>
+</ul>
+<h3 id="IP路由表"><a href="#IP路由表" class="headerlink" title="IP路由表"></a>IP路由表</h3><p>IP路由表中的每一项都包含如下信息：<br>+目的IP地址，可以是一个完整的主机地址，也可以是一个网络地址，由表中的标志字段来指定。主机地址的有一个非0的主机号，而网络地址的主机号为0，用以指定网络中的所有主机。<br>+下一跳路由的IP地址。<br>+标志。其中一个标志指明目的IP地址是网络地址还是主机地址，另一个标志指明下一站路由器是否为真正的下一跳路由器，还是一个直接相连的接口。<br>+数据报传输接口</p>
+<h4 id="IP路由过程"><a href="#IP路由过程" class="headerlink" title="IP路由过程"></a>IP路由过程</h4><p>当IP层收到某个接口来的数据报时：<br>1.如果目的IP地址是本机IP地址之一或者是IP广播地址，那么数据报被送到由IP首部协议字段指定的上层协议模块处理。<br>2.否则如果IP层没有设置路由功能，则丢弃该数据报。如果设置了路由功能，则按下述过程对数据报进行转发：<br>1.搜索路由表寻找能与目标IP地址完全匹配的条目（网络号和主机号都匹配），如果找到，则把数据报转发给该表目指定的下一跳路由器或者直接相连的接口。<br>2.搜索路由表查找能与目的网络号相匹配的表目。这里需要用到子网掩码。<br>3.搜索路由表寻找标位默认的表目，将数据报转发给该表目指定的下一跳路由或接口。<br>4.如果上面这些步骤都没有成功，则返回一个“主机不可达”或“网络不可达”的错误。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/17/springboot/hystrix总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/17/springboot/hystrix总结/" itemprop="url">Hystrix 总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-17T19:15:12+08:00">
+                2020-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot/hystrix/" itemprop="url" rel="index">
+                    <span itemprop="name">hystrix</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>现在有个需求，有一个类 RemoteContrller 需要调用若干类的一些方法，这些类和方法的名字都是不一样的，而且未来可能需要支持更多类的方法调用。如何设计这个 RemoteContrller 类，使得能够支持后边调用类的扩展？具体来说， RemoteContrller 可能会涉及到下边这些类的方法调用：<br><img src="/pics/vendor_class.png" alt><br>设计一个 Command 接口，RemoteController 针对 Command 编程，只要调用它的 execute 方法就好了；不用去关心具体的调用逻辑。对应的，对上图中每个类的方法调用都要封装成一个 Command 对象，里边包含着上述类的引用及具体方法调用的实现逻辑，我们可以在此处实现方法调用的扩展和自定义。<br><img src="/pics/command_pattern.png" alt></p>
+<h3 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h3><p>Hystrix 就是使用了上述的命令模式。微服务的场景下，对下游服务的调用实际上就可以看成命令模式中对方法的调用，我们可以使用命令模式，对下游服务调用的方法进行封装和额外处理，比如调用失败次数统计，服务降级，服务熔断…</p>
+<h4 id="Hystrix-相关概念"><a href="#Hystrix-相关概念" class="headerlink" title="Hystrix 相关概念"></a>Hystrix 相关概念</h4><ol>
+<li>服务降级（fallback)：当服务器压力剧增的情况下，根据当前业务情况及流量对一些服务和页面有策略的降级，以此释放服务器资源以保证核心任务的正常运行。下面四种情况会触发服务降级:<ul>
+<li>非HystrixBadRequestException异常：当抛出HystrixBadRequestException时，调用程序可以捕获异常，没有触发getFallback()，而其他异常则会触发getFallback()，调用程序将获得getFallback()的返回</li>
+<li>run()/construct()运行超时：如使用无限while循环或sleep模拟超时，会触发了getFallback()</li>
+<li>熔断器启动：假如我们配置10s内请求数大于3个时就启动熔断器，请求错误率大于80%时就熔断，然后for循环发起请求，当请求符合熔断条件时将触发getFallback()。更多熔断策略见下文</li>
+<li>线程池/信号量已满：假如配置线程池数目为3，然后先用一个for循环执行queue()，触发的run()sleep 2s，然后再用第2个for循环执行execute()，发现所有execute()都触发了fallback，这是因为第1个for的线程还在sleep，占用着线程池所有线程，导致第2个for的所有命令都无法获取到线程</li>
+</ul>
+</li>
+<li>服务熔断：当下游的服务因为某种原因突然变得不可用或响应过慢，上游服务为了保证自己整体服务的可用性，不再继续调用目标服务，直接返回，快速释放资源。如果目标服务情况好转则恢复调用。</li>
+<li>隔离策略： hystrix提供了两种隔离策略：线程池隔离和信号量隔离。hystrix默认采用线程池隔离。<ol>
+<li>线程池隔离：不同服务通过使用不同线程池，彼此间将不受影响，达到隔离效果。以demo为例，我们通过andThreadPoolKey配置使用命名为ThreadPoolTest的线程池，实现与其他命名的线程池天然隔离，如果不配置andThreadPoolKey则使用withGroupKey配置来命名线程池</li>
+<li>信号量隔离：线程隔离会带来线程开销，有些场景（比如无网络请求场景）可能会因为用开销换隔离得不偿失，为此hystrix提供了信号量隔离，当服务的并发数大于信号量阈值时将进入fallback。以demo为例，通过withExecutionIsolationStrategy(ExecutionIsolationStrategy.SEMAPHORE)配置为信号量隔离，通过withExecutionIsolationSemaphoreMaxConcurrentRequests配置执行并发数不能大于3，由于信号量隔离下无论调用哪种命令执行方法，hystrix都不会创建新线程执行run()/construct()，所以调用程序需要自己创建多个线程来模拟并发调用execute()，最后看到一旦并发线程&gt;3，后续请求都进入fallback</li>
+</ol>
+</li>
+<li>熔断机制：熔断机制相当于电路的跳闸功能，举个例子，我们可以配置熔断策略为当请求错误比例在10s内&gt;50%时，该服务将进入熔断状态，后续请求都会进入fallback。hystrix还支持多长时间从熔断状态自动恢复等功能。</li>
+<li>结果cache<br>hystrix支持将一个请求结果缓存起来，下一个具有相同key的请求将直接从缓存中取出结果，减少请求开销。要使用hystrix cache功能，第一个要求是重写getCacheKey() ，用来构造cache key；第二个要求是构建context，如果请求B要用到请求A的结果缓存，A和B必须同处一个context。通过HystrixRequestContext.initializeContext()和context.shutdown()可以构建一个context，这两条语句间的所有请求都处于同一个context。</li>
+<li>合并请求collapsing<br>hystrix支持N个请求自动合并为一个请求，这个功能在有网络交互的场景下尤其有用，比如每个请求都要网络访问远程资源，如果把请求合并为一个，将使多次网络交互变成一次，极大节省开销。重要一点，两个请求能自动合并的前提是两者足够“近”，即两者启动执行的间隔时长要足够小，默认为10ms，即超过10ms将不自动合并。</li>
+</ol>
+<h4 id="Hystrix-使用和运行流程"><a href="#Hystrix-使用和运行流程" class="headerlink" title="Hystrix 使用和运行流程"></a>Hystrix 使用和运行流程</h4><ol>
+<li><p>集成 HystrixCommand 或者 HystrixObservableCommand<br>要想使用hystrix，只需要继承 HystrixCommand 或 HystrixObservableCommand 。两者主要区别是：</p>
+<ul>
+<li>前者的命令逻辑写在run()；后者的命令逻辑写在construct()</li>
+<li>前者的run()是由新创建的线程执行；后者的construct()是由调用程序线程执行</li>
+<li>前者一个实例只能向调用程序发送（emit）单条数据，比如上面例子中run()只能返回一个String结果；后者一个实例可以顺序发送多条数据，比如demo中顺序调用多个onNext()，便实现了向调用程序发送多条数据，甚至还能发送一个范围的数据集</li>
+</ul>
+</li>
+<li><p>执行4个命令执行方法】<br>execute()、queue()、observe()、toObservable()这4个方法用来触发执行run()/construct()，一个实例只能执行一次这4个方法，特别说明的是 HystrixObservableCommand 没有 execute() 和 queue() 方法。<br>4个方法的主要区别是：</p>
+<ul>
+<li>execute()：以同步堵塞方式执行run()。以demo为例，调用execute()后，hystrix先创建一个新线程运行run()，接着调用程序要在execute()调用处一直堵塞着，直到run()运行完成</li>
+<li>queue()：以异步非堵塞方式执行run()。以demo为例，一调用queue()就直接返回一个Future对象，同时hystrix创建一个新线程运行run()，调用程序通过Future.get()拿到run()的返回结果，而Future.get()是堵塞执行的</li>
+<li>observe()：事件注册前执行run()/construct()。以demo为例，第一步是事件注册前，先调用observe()自动触发执行run()/construct()（如果继承的是HystrixCommand，hystrix将创建新线程非堵塞执行run()；如果继承的是HystrixObservableCommand，将以调用程序线程堵塞执行construct()），第二步是从observe()返回后调用程序调用subscribe()完成事件注册，如果run()/construct()执行成功则触发onNext()和onCompleted()，如果执行异常则触发onError()</li>
+<li>toObservable()：事件注册后执行run()/construct()。以demo为例，第一步是事件注册前，一调用toObservable()就直接返回一个Observable<string>对象，第二步调用subscribe()完成事件注册后自动触发执行run()/construct()（如果继承的是HystrixCommand，hystrix将创建新线程非堵塞执行run()，调用程序不必等待run()；如果继承的是HystrixObservableCommand，将以调用程序线程堵塞执行construct()，调用程序等待construct()执行完才能继续往下走），如果run()/construct()执行成功则触发onNext()和onCompleted()，如果执行异常则触发onError()</string></li>
+</ul>
+</li>
+<li><p>运行流程<br><img src="/pics/hystrix-command-flow-chart.png" alt></p>
+</li>
+</ol>
+<h4 id="Hystrix-配置"><a href="#Hystrix-配置" class="headerlink" title="Hystrix 配置"></a>Hystrix 配置</h4><ol>
+<li><p>HystrixCommandProperties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/* --------------统计相关------------------*/ </span><br><span class="line">// 统计滚动的时间窗口,默认:5000毫秒（取自circuitBreakerSleepWindowInMilliseconds）   </span><br><span class="line">private final HystrixProperty metricsRollingStatisticalWindowInMilliseconds;   </span><br><span class="line">// 统计窗口的Buckets的数量,默认:10个,每秒一个Buckets统计   </span><br><span class="line">private final HystrixProperty metricsRollingStatisticalWindowBuckets; // number of buckets in the statisticalWindow   </span><br><span class="line">// 是否开启监控统计功能,默认:true   </span><br><span class="line">private final HystrixProperty metricsRollingPercentileEnabled;   </span><br><span class="line">/* --------------熔断器相关------------------*/ </span><br><span class="line">// 熔断器在整个统计时间内是否开启的阀值，默认20。也就是在metricsRollingStatisticalWindowInMilliseconds（默认10s）内至少请求20次，熔断器才发挥起作用   </span><br><span class="line">private final HystrixProperty circuitBreakerRequestVolumeThreshold;   </span><br><span class="line">// 熔断时间窗口，默认:5秒.熔断器中断请求5秒后会进入半打开状态,放下一个请求进来重试，如果该请求成功就关闭熔断器，否则继续等待一个熔断时间窗口</span><br><span class="line">private final HystrixProperty circuitBreakerSleepWindowInMilliseconds;   </span><br><span class="line">//是否启用熔断器,默认true. 启动   </span><br><span class="line">private final HystrixProperty circuitBreakerEnabled;   </span><br><span class="line">//默认:50%。当出错率超过50%后熔断器启动</span><br><span class="line">private final HystrixProperty circuitBreakerErrorThresholdPercentage;  </span><br><span class="line">//是否强制开启熔断器阻断所有请求,默认:false,不开启。置为true时，所有请求都将被拒绝，直接到fallback </span><br><span class="line">private final HystrixProperty circuitBreakerForceOpen;   </span><br><span class="line">//是否允许熔断器忽略错误,默认false, 不开启   </span><br><span class="line">private final HystrixProperty circuitBreakerForceClosed; </span><br><span class="line">/* --------------信号量相关------------------*/ </span><br><span class="line">//使用信号量隔离时，命令调用最大的并发数,默认:10   </span><br><span class="line">private final HystrixProperty executionIsolationSemaphoreMaxConcurrentRequests;   </span><br><span class="line">//使用信号量隔离时，命令fallback(降级)调用最大的并发数,默认:10   </span><br><span class="line">private final HystrixProperty fallbackIsolationSemaphoreMaxConcurrentRequests; </span><br><span class="line">/* --------------其他------------------*/ </span><br><span class="line">//使用命令调用隔离方式,默认:采用线程隔离,ExecutionIsolationStrategy.THREAD   </span><br><span class="line">private final HystrixProperty executionIsolationStrategy;   </span><br><span class="line">//使用线程隔离时，调用超时时间，默认:1秒   </span><br><span class="line">private final HystrixProperty executionIsolationThreadTimeoutInMilliseconds;   </span><br><span class="line">//线程池的key,用于决定命令在哪个线程池执行   </span><br><span class="line">private final HystrixProperty executionIsolationThreadPoolKeyOverride;   </span><br><span class="line">//是否开启fallback降级策略 默认:true   </span><br><span class="line">private final HystrixProperty fallbackEnabled;   </span><br><span class="line">// 使用线程隔离时，是否对命令执行超时的线程调用中断（Thread.interrupt()）操作.默认:true   </span><br><span class="line">private final HystrixProperty executionIsolationThreadInterruptOnTimeout; </span><br><span class="line">// 是否开启请求日志,默认:true   </span><br><span class="line">private final HystrixProperty requestLogEnabled;   </span><br><span class="line">//是否开启请求缓存,默认:true   </span><br><span class="line">private final HystrixProperty requestCacheEnabled; // Whether request caching is enabled.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HystrixThreadPoolProperties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/* 配置线程池大小,默认值10个. 建议值:请求高峰时99.5%的平均响应时间 + 向上预留一些即可 */ </span><br><span class="line">private final HystrixProperty corePoolSize; </span><br><span class="line">/* 配置线程值等待队列长度,默认值:-1 建议值:-1表示不等待直接拒绝,测试表明线程池使用直接决绝策略+ 合适大小的非回缩线程池效率最高.所以不建议修改此值。 当使用非回缩线程池时，queueSizeRejectionThreshold,keepAliveTimeMinutes 参数无效 */</span><br><span class="line">private final HystrixProperty maxQueueSize;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HystrixCollapserProperties</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//请求合并是允许的最大请求数,默认: Integer.MAX_VALUE   </span><br><span class="line">private final HystrixProperty maxRequestsInBatch;   </span><br><span class="line">//批处理过程中每个命令延迟的时间,默认:10毫秒   </span><br><span class="line">private final HystrixProperty timerDelayInMilliseconds;   </span><br><span class="line">//批处理过程中是否开启请求缓存,默认:开启   </span><br><span class="line">private final HystrixProperty requestCacheEnabled;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/js/01-Javascript标签/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/02/js/01-Javascript标签/" itemprop="url">HTML中的 Javascript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-02T21:14:27+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/js/" itemprop="url" rel="index">
+                    <span itemprop="name">js</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Js最常用的就是 Javascript 标签，然而许多 web开发者并不全都知道下面这些知识。</p>
+<h2 id="Javascript-标签的6个属性"><a href="#Javascript-标签的6个属性" class="headerlink" title="Javascript 标签的6个属性"></a>Javascript 标签的6个属性</h2><ol>
+<li>async: 可选，只对外部文件有效，表示应该立即下载脚本，但不应该妨碍页面的其他操作，比如下载其他资源或等待加载其它脚本。</li>
+<li>defer: 可选，只对外部脚本文件有效。表示脚本可以延迟到文档完全被解析和显示之后再执行。</li>
+<li>src: 可选，表示包含要执行的外部脚本文件。</li>
+<li>charset: 可选，指示字符集。</li>
+<li>language: 已废弃。</li>
+<li>type: 一般为 text/javascript。</li>
+</ol>
+<h2 id="两种解析-Javascript-的标签的方式"><a href="#两种解析-Javascript-的标签的方式" class="headerlink" title="两种解析 Javascript 的标签的方式"></a>两种解析 Javascript 的标签的方式</h2><ol>
+<li><p>内嵌 Javascript : 代码会从上到下依此解释，在解释器对 <code>&lt;script&gt;</code> 元素内部的所有代码求值完毕之前，页面中的其余内容都不会被浏览器加载或显示。以下代码，页面上不会显示test.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        while(true)&#123;&#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    test</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>外部 Javascript :如果通过 <code>&lt;script&gt;</code> 元素来包含外部脚本文件，那么 src 属性是必须的。与解析内嵌的 Javascript 代码一样，在解析外部 Javascript 文件（包括下载该文件）时，页面也会暂时停止。也就是说把上面代码中的 while 死循环放到外部文件，并通过 <code>&lt;script&gt;</code> 元素引入时，html 也不会显示。而且，如果下载 Javascript 文件出现问题，也会阻断页面显示。</p>
+</li>
+<li>如果是引入外部 Javascript ，即带有 src 属性的 <code>&lt;script&gt;</code> 标签，则在起始标签中间不应该在包含额外的 JS 代码，否则，嵌入的代码不会执行而是会被直接忽略。</li>
+<li>只要不存在 defer 和 async 属性，浏览器都会按照 <code>&lt;script&gt;</code> 元素在页面中的出现的顺序对它们依次进行解析。就是说第一个解析执行之后才会解析第二个，以此类推。</li>
+</ol>
+<h2 id="script-标签的位置"><a href="#script-标签的位置" class="headerlink" title="script 标签的位置"></a>script 标签的位置</h2><p>传统的网页一般将 script 元素放在 head 元素中，这意味着必须等到全部的 Javascript 代码都被下载、解析和执行完之后，才能开始呈现页面的内容（浏览器遇到 <code>&lt;body&gt;</code> 标签时才开始呈现内容）。这对于那些需要很多 Javascript 代码的页面来说，会导致浏览器在呈现页面时出现明显的延迟，延迟期间，页面将是一片空白。用户体验时很差的。</p>
+<p>所以，现代Web应用程序一般把 JavaScript 引用放在 <code>&lt;body&gt;</code> 元素中页面内容的后面。</p>
+<h2 id="延迟脚本"><a href="#延迟脚本" class="headerlink" title="延迟脚本"></a>延迟脚本</h2><p>含有 defer 属性的脚本就是延迟脚本。 defer 属性只能用在外部脚本文件。延迟脚本会被立即下载，但脚本会被延迟到整个页面都解析完毕之后再运行。</p>
+<p>HTML5 规范要求脚本按照它们的出现的先后顺序执行，因此第一个延迟脚本会先于第二个延迟脚本执行，而两个脚本会先于 DOMContentLoaded 事件执行。</p>
+<p>但是在现实中，延迟脚本并不一定会按照顺序执行，也不一定会在 DOMContentLoaded 事件出发前执行，因此最好只包含一个延迟脚本。</p>
+<h2 id="异步脚本"><a href="#异步脚本" class="headerlink" title="异步脚本"></a>异步脚本</h2><p>含有 async 属性的脚本时异步脚本，异步脚本会立即下载，但异步脚本并不保证按照指定它们的先后顺序执行。指定 async 属性的目的时不让页面等待脚本下载和执行，从而异步加载页面其他内容。为此，异步脚本不要在加载期间修改DOM。</p>
+<p>异步脚步一定会在页面 load 事件前执行，但可能会在 DOMContentLoaded 事件触发之前或之后执行。</p>
+<h2 id="嵌入脚本-VS-外部文件"><a href="#嵌入脚本-VS-外部文件" class="headerlink" title="嵌入脚本 VS 外部文件"></a>嵌入脚本 VS 外部文件</h2><p>外部文件一般有以下有点：</p>
+<ol>
+<li>可维护性：把 Javascript 代码放到外部文件并集中放到一个文件夹，比遍及在各个 HTML 页面维护起来轻松很多。</li>
+<li>可缓存：浏览器能够根据具体设置缓存链接的所有外部 Javascript 文件。如果多个页面引用同一个 Javascript 文件，那么这个文件只要下载一次。</li>
+<li>适应未来：外部脚本文件在 XHTML 和 HTML 中的语法是相同的。</li>
+</ol>
+<h2 id="noscript"><a href="#noscript" class="headerlink" title="noscript"></a>noscript</h2><p>noscript 元素可以包含出现在文档 body 元素中的任何 HTML 元素—— script元素除外。但是只有在下面情况下才会显示出来：</p>
+<ul>
+<li>浏览器不支持 Javascript 脚本</li>
+<li>浏览器支持 Javascript 脚本，但被禁用。</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,37 +1,787 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="test,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Powermock的特长EasyMock、Mockito无法完成对 final类型的class和 method 的 mock 操作，不能 mock static方法，不能 mock 局部变量，PowerMock正是为了解决这些难题的。 mockPowermockito.mock()方法主要是根据 class 参数创建一个对应的 mock 对象， powermock 的创建方式可不像 easymoc">
+<meta name="keywords" content="test">
+<meta property="og:type" content="article">
+<meta property="og:title" content="powermock">
+<meta property="og:url" content="http://yoursite.com/2018/08/24/测试/powermock使用/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Powermock的特长EasyMock、Mockito无法完成对 final类型的class和 method 的 mock 操作，不能 mock static方法，不能 mock 局部变量，PowerMock正是为了解决这些难题的。 mockPowermockito.mock()方法主要是根据 class 参数创建一个对应的 mock 对象， powermock 的创建方式可不像 easymoc">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.228Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="powermock">
+<meta name="twitter:description" content="Powermock的特长EasyMock、Mockito无法完成对 final类型的class和 method 的 mock 操作，不能 mock static方法，不能 mock 局部变量，PowerMock正是为了解决这些难题的。 mockPowermockito.mock()方法主要是根据 class 参数创建一个对应的 mock 对象， powermock 的创建方式可不像 easymoc">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/24/测试/powermock使用/">
+
+
+
+
+
+  <title>powermock | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/24/测试/powermock使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">powermock</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-24T15:11:23+08:00">
+                2018-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/test/" itemprop="url" rel="index">
+                    <span itemprop="name">test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Powermock的特长"><a href="#Powermock的特长" class="headerlink" title="Powermock的特长"></a>Powermock的特长</h2><p>EasyMock、Mockito无法完成对 final类型的class和 method 的 mock 操作，不能 mock static方法，不能 mock 局部变量，PowerMock正是为了解决这些难题的。</p>
+<h2 id="mock"><a href="#mock" class="headerlink" title="mock"></a>mock</h2><p>Powermockito.mock()方法主要是根据 class 参数创建一个对应的 mock 对象， powermock 的创建方式可不像 easymock 等使用 proxy 的方式创建，他是会在你运行的过程中动态的修改 class 字节码文件的形式来创建的。</p>
+<h2 id="do-when-then"><a href="#do-when-then" class="headerlink" title="do..when..then"></a>do..when..then</h2><p>我们可以看到，每次当我们想给一个 mock 的对象进行某种行为的预期时，都会使用 do…when…then…这样的语法，其实理解起来非常简单:做什么、在什么时候、然后返回什么。</p>
+<h2 id="verify"><a href="#verify" class="headerlink" title="verify"></a>verify</h2><p>当我们测试一个 void 方法的时候，根本没有办法去验证一个 mock 对象所执行后的结果，因此唯一的方法就是检查方法是否被调用， verify 就是用来验证某个方法是否被调用过的。</p>
+<h2 id="RunWith-PowerMockRunner-class-、-PrepareForTest-xxx-class"><a href="#RunWith-PowerMockRunner-class-、-PrepareForTest-xxx-class" class="headerlink" title="@RunWith(PowerMockRunner.class)、@PrepareForTest(xxx.class)"></a>@RunWith(PowerMockRunner.class)、@PrepareForTest(xxx.class)</h2><p><code>@RunWith(PowerMockRunner.class)</code>:使用 PowerMockRunner 运行测试<br><code>@PrepareForTest(xxx.class)</code>: 加载构造 xxx.class。</p>
+<h2 id="mock局部变量"><a href="#mock局部变量" class="headerlink" title="mock局部变量"></a>mock局部变量</h2><pre><code>public class EmployeeService {
+    public int getTotalEmployee() {
+        EmployeeDao employeeDao = new EmployeeDao(); 
+        return employeeDao.getTotal();
+    }
+}
+</code></pre><p>假设要测试上述方法，但是<code>EmployeeDao</code>对象并不可用且不是注入到<code>EmployeeService</code>的成员变量中的，我们无法mock一个dao然后设置到<code>EmployeeService</code>的成员变量上。</p>
+<p>但是，使用 Powermock 可以这样做：</p>
+<pre><code>EmployeeDao employeeDao = PowerMockito.mock(EmployeeDao.class);
+PowerMockito.whenNew(EmployeeDao.class).withNoArguments() .thenReturn(employeeDao);
+PowerMockito.when(employeeDao.getTotal()).thenReturn(10);
+Mockito.verify(employeeDao).addEmployee(employee);
+</code></pre><p>其实相当于mock了<code>EmployeeDao</code>的构造函数。最后一行的<code>verify</code>方法可以验证<code>addEmployee</code>方法是否被调用了。</p>
+<h2 id="mock-static方法"><a href="#mock-static方法" class="headerlink" title="mock static方法"></a>mock static方法</h2><p>需要注意的是，当你想 mock static 方法时，你必须使用<br><code>@PrepareForTest(需要测试的类.class)</code> 注，这样的话，在需要测试类中使用的类的静态方法会使用你mock后的。</p>
+<pre><code>PowerMockito.mockStatic(EmployeeUtils.class);
+PowerMockito.when(EmployeeUtils.getEmployeeCount()).thenReturn(10);
+
+final EmployeeService employeeService = new EmployeeService(); 
+int count = employeeService.getEmployeeCount(); 
+assertEquals(10, count);
+</code></pre><p>假如想要在调用 <code>Thread.sleep</code> 方法时，抛出异常：</p>
+<pre><code>// These two lines are tightly bound.
+PowerMockito.doThrow(new InterruptedException()).when(Thread.class);
+Thread.sleep(Matchers.anyLong());
+</code></pre><h2 id="spy"><a href="#spy" class="headerlink" title="spy"></a>spy</h2><p>正常情况下，当我们mock了一个对象时，如果调用mock对象的方法，其实什么都不会做。除非你对其做了when…thenReturn 这样的操作。</p>
+<p>当我们采用 spy 的方式 mock 一个对象，然后再调用其中的某个方法，他就会根据真实 class 的所提供的方法来调用。</p>
+<pre><code>FileService fileService = PowerMockito.spy(new FileService()); 
+fileService.write(&quot;liudehua&quot;);
+File file = new File(System.getProperty(&quot;user.dir&quot;)+&quot;/wangwenjun.txt&quot;); 
+assertTrue(file.exists());
+</code></pre><p>如果是     <code>FileService fileService = PowerMockito.mock(FileService.class);</code> 则不会生成 wangwenjun.txt 文件。</p>
+<h2 id="mock-private-方法"><a href="#mock-private-方法" class="headerlink" title="mock private 方法"></a>mock private 方法</h2><p>假设我们有一个类，其中有一个方法 A 是公有方法，但是他需要依赖一个私有方法 B， 但是其中的方法 B 是一个很难在单元测试中真实模拟，所以我们需要 mock 私有方法的行为。</p>
+<pre><code>EmployeeService employeeService = PowerMockito.spy(new EmployeeService());
+PowerMockito.doNothing().when(employeeService, &quot;checkExist&quot;, &quot;wangwenjun&quot;);
+boolean result = employeeService.exist(&quot;wangwenjun&quot;);
+assertTrue(result);
+PowerMockito.verifyPrivate(employeeService).invoke(&quot;checkExist&quot;,&quot;wan gwenjun&quot;);
+</code></pre><h2 id="doReturn-when-VS-thenReturn-when"><a href="#doReturn-when-VS-thenReturn-when" class="headerlink" title="doReturn/when VS thenReturn/when"></a>doReturn/when VS thenReturn/when</h2><ol>
+<li>对于普通 mock 对象方法，两者没有什么区别，mock的方法调用都不会实际运行</li>
+<li>返回值为 void 的方法，用 doReturn<br>Allows to choose a static method when stubbing in<br>doThrow()|doAnswer()|doNothing()|doReturn() style<br>Example:<br>   doThrow(new RuntimeException()).when(StaticList.class);<br>   StaticList.clear();</li>
+<li>对于 spy 的对象， doReturn/when 不会执行 mock的方法，而 thenReturn/when 会执行方法。</li>
+</ol>
+<h2 id="mock-void-方法"><a href="#mock-void-方法" class="headerlink" title="mock void 方法"></a>mock void 方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">doThrow(new RuntimeException()).when(mockKafka).publishMonitoredCompanyData(Mockito.anyList());</span><br><span class="line"></span><br><span class="line">doNothing().when(mockKafka).publishMonitoredCompanyData(Mockito.anyList());</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/test/" rel="tag"># test</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/16/mybatis/mybatis——基本配置（1）/" rel="next" title="mybatis 基本配置(1)">
+                <i class="fa fa-chevron-left"></i> mybatis 基本配置(1)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/01/java/jvm/java基础-类和对象的初始化/" rel="prev" title="java基础-类和对象的初始化">
+                java基础-类和对象的初始化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Powermock的特长"><span class="nav-number">1.</span> <span class="nav-text">Powermock的特长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mock"><span class="nav-number">2.</span> <span class="nav-text">mock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#do-when-then"><span class="nav-number">3.</span> <span class="nav-text">do..when..then</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#verify"><span class="nav-number">4.</span> <span class="nav-text">verify</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RunWith-PowerMockRunner-class-、-PrepareForTest-xxx-class"><span class="nav-number">5.</span> <span class="nav-text">@RunWith(PowerMockRunner.class)、@PrepareForTest(xxx.class)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mock局部变量"><span class="nav-number">6.</span> <span class="nav-text">mock局部变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mock-static方法"><span class="nav-number">7.</span> <span class="nav-text">mock static方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spy"><span class="nav-number">8.</span> <span class="nav-text">spy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mock-private-方法"><span class="nav-number">9.</span> <span class="nav-text">mock private 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doReturn-when-VS-thenReturn-when"><span class="nav-number">10.</span> <span class="nav-text">doReturn/when VS thenReturn/when</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mock-void-方法"><span class="nav-number">11.</span> <span class="nav-text">mock void 方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

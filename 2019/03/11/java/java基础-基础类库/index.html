@@ -1,37 +1,812 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="系统相关System 类System 类代表当前 Java 程序的运行平台，程序不能创建 System 类的对象，但是 System 类提供了一些类变量和类方法供使用。 System 类提供了标准输入输出和错误输出的类变量（System.in/System.out/System.err)，并提供了一些静态方法用于访问静环境变量、系统属性，还提供了加载文件和动态链接库的方法。  Map&amp;lt;Str">
+<meta name="keywords" content="java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础-基础类库">
+<meta property="og:url" content="http://yoursite.com/2019/03/11/java/java基础-基础类库/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="系统相关System 类System 类代表当前 Java 程序的运行平台，程序不能创建 System 类的对象，但是 System 类提供了一些类变量和类方法供使用。 System 类提供了标准输入输出和错误输出的类变量（System.in/System.out/System.err)，并提供了一些静态方法用于访问静环境变量、系统属性，还提供了加载文件和动态链接库的方法。  Map&amp;lt;Str">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/copy.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础-基础类库">
+<meta name="twitter:description" content="系统相关System 类System 类代表当前 Java 程序的运行平台，程序不能创建 System 类的对象，但是 System 类提供了一些类变量和类方法供使用。 System 类提供了标准输入输出和错误输出的类变量（System.in/System.out/System.err)，并提供了一些静态方法用于访问静环境变量、系统属性，还提供了加载文件和动态链接库的方法。  Map&amp;lt;Str">
+<meta name="twitter:image" content="http://yoursite.com/pics/copy.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/11/java/java基础-基础类库/">
+
+
+
+
+
+  <title>java基础-基础类库 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/java/java基础-基础类库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础-基础类库</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-11T21:14:34+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="系统相关"><a href="#系统相关" class="headerlink" title="系统相关"></a>系统相关</h1><h2 id="System-类"><a href="#System-类" class="headerlink" title="System 类"></a>System 类</h2><p><code>System</code> 类代表当前 Java 程序的运行平台，程序不能创建 <code>System</code> 类的对象，但是 <code>System</code> 类提供了一些类变量和类方法供使用。</p>
+<p><code>System</code> 类提供了标准输入输出和错误输出的类变量（<code>System.in</code>/<code>System.out</code>/<code>System.err</code>)，并提供了一些静态方法用于访问静环境变量、系统属性，还提供了加载文件和动态链接库的方法。</p>
+<ul>
+<li><code>Map&lt;String,String&gt; getEnv()</code>:获取所有环境变量。</li>
+<li><code>String getEnv(String name)</code>:获取指定的环境变量。</li>
+<li><code>Properties getProperties()</code>:获取所有系统属性。</li>
+<li><code>Property getProperty(String name)</code>:获取指定名字的系统属性。</li>
+<li><code>long currentTimeMillis()</code>:返回当前时间与1970/1/1 00:00:00 的时间差，毫秒为单位。</li>
+<li><code>long nanoTime()</code>:同上，纳秒为单位。</li>
+<li><code>int identityHashCode(Object x)</code>:根据对象地址计算出对象的 hashCode 值。重写 <code>hashCode()</code> 不影响这个方法。</li>
+</ul>
+<h2 id="Runtime类"><a href="#Runtime类" class="headerlink" title="Runtime类"></a>Runtime类</h2><p><code>Runtime</code> 类代表 Java 程序运行时环境，每个 Java 程序都有一个与之关联的 <code>Runtime</code> 实例，应用程序通过该对象与其运行时环境相连。应用程序不能创建自己的 <code>Runtime</code> 实例，但可以通过类方法 <code>getRuntime()</code> 获取与之关联的 <code>Runtime</code> 对象。</p>
+<p>Runtime 类代表 Java 运行时环境，可以访问 JVM 的相关信息，如处理器数量、内存信息等。</p>
+<ul>
+<li><code>int availabeProcessors()</code> :处理器数量。</li>
+<li><code>long freeMemory()</code> :空闲内数。</li>
+<li><code>long totalMomery()</code> :总内存数。</li>
+<li><code>long maxMomery()</code> :可用最大内存。</li>
+<li><code>Process exec(String command)</code> :运行指定命令单独启动一个进程，返回启动进程的引用</li>
+</ul>
+<h1 id="常用类"><a href="#常用类" class="headerlink" title="常用类"></a>常用类</h1><h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><ul>
+<li><code>boolean equals(Object obj)</code>:判断指定对象与调用对象的引用是否相等，直接用 == 号比较两个对象。</li>
+<li><code>void finalize(Object obj)</code>:清理对象时的方法。</li>
+<li><code>Class&lt;?&gt; getClass()</code>:返回该对象的运行时类，真实类型。</li>
+<li><code>int hashCode()</code>:返回该对象的 hashcode 值，默认情况下根据对象的地址来计算（与 <code>System.identityHashCode()</code>一致），但很多类重写了该方法。</li>
+<li><code>int toString()</code>:返回该对象的运行时类名+@+十六进制的 hashcode 值。</li>
+<li><code>Object clone()</code>:复制当前对象（浅复制），返回当前对象的一个副本。<br><img src="/pics/copy.png" alt="浅复制"></li>
+</ul>
+<h2 id="Objects类"><a href="#Objects类" class="headerlink" title="Objects类"></a>Objects类</h2><p><code>Objects</code> 类提供了一些方法来操作对象（Object类），且这些方法大多是“空指针”安全的。就是说，如果你不能确定一个对象是否是 <code>null</code> ，如果贸然调用它的实例方法，就会引发 <code>NullPointerexception</code> ，但是如果使用 <code>Objects</code> 类提供的方法就不会。</p>
+<ul>
+<li><code>String toString(Object o)</code>:如果 o 为 <code>null</code>，则返回 “null”。</li>
+<li><code>int hashCode(Object o)</code>:如果 o 为 <code>null</code>，则返回 0。</li>
+<li><code>T requireNoNull(T o)</code>:如果 o 为 <code>null</code>，抛出异常，否则返回参数本身。</li>
+</ul>
+<h2 id="日期时间相关-Date-Calendar"><a href="#日期时间相关-Date-Calendar" class="headerlink" title="日期时间相关 Date/Calendar"></a>日期时间相关 Date/Calendar</h2><p><code>Calendar</code> 是抽象类，不能实例化，需要通过它的类方法 <code>getInstance()</code> 获取实例。可以传入 TimeZone 、 Locale 类来获取指定的 Calendar ，如果不指定，则使用默认的 TimeZone 、 Locale 来创建 Calendar 。</p>
+<p>两者的相互转换：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Calendar calendar = Calendar.getInstance();</span><br><span class="line">Date date = calendar.getTime();</span><br><span class="line"></span><br><span class="line">calendar.setTime(date);</span><br></pre></td></tr></table></figure></p>
+<p>Java 8 新增了 <code>java.time</code> 包，包含了许多与时间相关的类。</p>
+<h2 id="国际化（I18N）与本地化（L10N）"><a href="#国际化（I18N）与本地化（L10N）" class="headerlink" title="国际化（I18N）与本地化（L10N）"></a>国际化（I18N）与本地化（L10N）</h2><p>Java 程序的国际化主要通过如下三个类完成：</p>
+<ul>
+<li><code>java.util.ResourceBundle</code>:用于加载国家、语言资源包。</li>
+<li><code>java.util.Locale</code>:用于封装特定国家/区域、语言环境。</li>
+<li><code>java.text.MessageFormat</code>:用于格式化带占位符的字符串。<br>为了实现国际化，必须先提供资源文件。资源文件的内容是很多的 key-value 对， key会在程序中被引用，对应的 value 是显示的字符串。<br>资源文件的命名是有规范的：</li>
+<li>baseName_language_country.propertites</li>
+<li>baseName_language.propertites</li>
+<li>baseName.propertites<br>baseName是资源文件的基本名，可以随意指定；language 和 country 必须是 Java 支持的语言和国家，不能随意变化。</li>
+</ul>
+<ol>
+<li>新建 test.properties 文件，内容为 <code>hello=你好，{0}</code>;</li>
+<li>新建 test_en_US.properties文件，内容为 <code>hello=Welcome You,{0}</code>;</li>
+<li>使用JDK工具 native2ascii : native2ascii test.properties test_zh_CN.properties， 将非西欧文字转换成 Unicode 编码文件</li>
+<li>使用下边代码测试：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Locale locale = Locale.getDefault(Locale.Category.FORMAT);</span><br><span class="line">ResourceBundle bundle = ResourceBundle.getBundle(&quot;test&quot;,locale);</span><br><span class="line">String str = bundle.getString(&quot;hello);</span><br><span class="line">MessageFormat.format(str,&quot;wzz&quot;);</span><br><span class="line">System.out.println();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="属性文件加载"><a href="#属性文件加载" class="headerlink" title="属性文件加载"></a>属性文件加载</h2><p><code>Properties</code> 类可以方便的加载配置文件，加载文件后，相当于一个 key/value 都是 String 的 Map。</p>
+<ul>
+<li><code>String getProperty(String key)</code>:获取指定 key 的值。</li>
+<li><code>String getProperty(String key, String defaultValue)</code>:获取指定 key 的值， key 不存在时，返回默认值 defaultValue 。</li>
+<li><code>String setProperty(String key, String value)</code>:设置属性值。</li>
+<li><code>void load(InputStream in)</code>:从属性文件中追加 key-value 属性对到 Properties 对象中。</li>
+<li><code>void store(OutputStream out, String comments)</code>:将 Properties 对象中的 key-value 对输出到指定的属性文件中，并添加 comments 。不是追加，会覆盖整个文件内容。</li>
+</ul>
+<h3 id="Math类"><a href="#Math类" class="headerlink" title="Math类"></a>Math类</h3><ul>
+<li><code>double floor(double a)</code>: 向下取整</li>
+<li><code>double ceil(double a)</code>: 向上取整</li>
+<li><code>static double pow(double a, double b)</code>: 计算 a 的 b 次方</li>
+<li><code>int round(float a)</code>: 四舍五入值</li>
+<li><code>double random()</code>: （0，1）区间的随机值</li>
+<li><code>double abs(double a)</code>: 取绝对值</li>
+<li><code>int max(int a, int b)</code>: 取两者之间的最大值</li>
+<li><code>int min(int a, int b)</code>: 取两者之间的最小值</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/06/java/java基础-入门，数据类型和数组/" rel="next" title="java基础-入门，数据类型和数组">
+                <i class="fa fa-chevron-left"></i> java基础-入门，数据类型和数组
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/12/java/多线程/java基础-并发之AQS/" rel="prev" title="java基础-并发之AQS">
+                java基础-并发之AQS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统相关"><span class="nav-number">1.</span> <span class="nav-text">系统相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#System-类"><span class="nav-number">1.1.</span> <span class="nav-text">System 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime类"><span class="nav-number">1.2.</span> <span class="nav-text">Runtime类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常用类"><span class="nav-number">2.</span> <span class="nav-text">常用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object类"><span class="nav-number">2.1.</span> <span class="nav-text">Object类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Objects类"><span class="nav-number">2.2.</span> <span class="nav-text">Objects类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日期时间相关-Date-Calendar"><span class="nav-number">2.3.</span> <span class="nav-text">日期时间相关 Date/Calendar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#国际化（I18N）与本地化（L10N）"><span class="nav-number">2.4.</span> <span class="nav-text">国际化（I18N）与本地化（L10N）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#属性文件加载"><span class="nav-number">2.5.</span> <span class="nav-text">属性文件加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Math类"><span class="nav-number">2.5.1.</span> <span class="nav-text">Math类</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

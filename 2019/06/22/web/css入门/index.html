@@ -1,37 +1,935 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="css web,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CSS 语句规则集通过在每个声明块前加上选择器（selector）来将一组声明块应用到选择器选择的元素上，选择器是一种模式，它能在页面上匹配一些元素。这将使相关的声明块仅被应用到被选择的元素上。选择器加上声明块被称为规则集（ruleset），通常简称规则（rule）。 一个元素可以被多个选择器所匹配，因此，一个给定的属性可能被多个规则设置多次。 CSS 定义了哪个规则比其它规则更具优先级，则更具优">
+<meta name="keywords" content="css web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS 综述">
+<meta property="og:url" content="http://yoursite.com/2019/06/22/web/css入门/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="CSS 语句规则集通过在每个声明块前加上选择器（selector）来将一组声明块应用到选择器选择的元素上，选择器是一种模式，它能在页面上匹配一些元素。这将使相关的声明块仅被应用到被选择的元素上。选择器加上声明块被称为规则集（ruleset），通常简称规则（rule）。 一个元素可以被多个选择器所匹配，因此，一个给定的属性可能被多个规则设置多次。 CSS 定义了哪个规则比其它规则更具优先级，则更具优">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/css-rule.jpg">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS 综述">
+<meta name="twitter:description" content="CSS 语句规则集通过在每个声明块前加上选择器（selector）来将一组声明块应用到选择器选择的元素上，选择器是一种模式，它能在页面上匹配一些元素。这将使相关的声明块仅被应用到被选择的元素上。选择器加上声明块被称为规则集（ruleset），通常简称规则（rule）。 一个元素可以被多个选择器所匹配，因此，一个给定的属性可能被多个规则设置多次。 CSS 定义了哪个规则比其它规则更具优先级，则更具优">
+<meta name="twitter:image" content="http://yoursite.com/pics/css-rule.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/22/web/css入门/">
+
+
+
+
+
+  <title>CSS 综述 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/22/web/css入门/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS 综述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-22T18:03:24+08:00">
+                2019-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/css/" itemprop="url" rel="index">
+                    <span itemprop="name">css</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CSS-语句"><a href="#CSS-语句" class="headerlink" title="CSS 语句"></a>CSS 语句</h2><h3 id="规则集"><a href="#规则集" class="headerlink" title="规则集"></a>规则集</h3><p>通过在每个声明块前加上选择器（selector）来将一组声明块应用到选择器选择的元素上，选择器是一种模式，它能在页面上匹配一些元素。这将使相关的声明块仅被应用到被选择的元素上。选择器加上声明块被称为<strong>规则集（ruleset）</strong>，通常简称<strong>规则（rule）</strong>。<br><img src="/pics/css-rule.jpg" alt="规则"></p>
+<p>一个元素可以被多个选择器所匹配，因此，一个给定的属性可能被多个规则设置多次。 CSS 定义了哪个规则比其它规则更具优先级，则更具优先级的规则必定被应用：这被称为<strong>层叠算法（cascade algorithm）</strong>，关于层叠算法的更多内容和运作原理见层叠和继承。</p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="@-规则"></a>@-规则</h3><p><strong>@-规则(At-rules)</strong>在CSS中被用来传递元数据、条件信息或其它描述性信息。它由（@）符号开始，紧跟着一个表明它是哪种规则的描述符，之后是这种规则的语法块，并最终由一个半角分号（;）结束。每种由描述符定义的@-规则，都有其特有的内部语法和语义。一些例子如下：</p>
+<ul>
+<li>@charset 和 @import （元数据）</li>
+<li>@media 或 @document （条件信息，又被称为嵌套语句，见下方。)</li>
+<li>@font-face （描述性信息）<br>具体语法示例：<br><code>@import &#39;custom.css&#39;; //该@-规则向当前 CSS 导入其它 CSS 文件</code></li>
+</ul>
+<h3 id="嵌套语句"><a href="#嵌套语句" class="headerlink" title="嵌套语句"></a>嵌套语句</h3><p><strong>嵌套语句</strong> 是@-规则中的一种，它的语法是 CSS 规则的嵌套块，只有在特定条件匹配时才会应用到文档上。特定条件如下：</p>
+<ul>
+<li>@media 只有在运行浏览器的设备匹配其表达条件时才会应用该@-规则的内容；</li>
+<li>@supports 只有浏览器确实支持被测功能时才会应用该@-规则的内容；</li>
+<li>@document 只有当前页面匹配一些条件时才会应用该@-规则的内容。</li>
+</ul>
+<p>任何不是规则集或@-规则或嵌套语句的 CSS 语句都是无效的，并会因此被忽略。</p>
+<h2 id="CSS-选择器"><a href="#CSS-选择器" class="headerlink" title="CSS 选择器"></a>CSS 选择器</h2><p>选择器可以被分为以下类别：</p>
+<ul>
+<li>简单选择器（Simple selectors）：通过元素类型、class 或 id 匹配一个或多个元素。</li>
+<li>属性选择器（Attribute selectors）：通过 属性 / 属性值 匹配一个或多个元素。</li>
+<li>伪类（Pseudo-classes）：匹配处于确定状态的一个或多个元素，比如被鼠标指针悬停的元素，或当前被选中或未选中的复选框，或元素是DOM树中一父节点的第一个子节点。</li>
+<li>伪元素（Pseudo-elements）:匹配处于相关的确定位置的一个或多个元素，例如每个段落的第一个字，或者某个元素之前生成的内容。 </li>
+<li>组合器（Combinators）：这里不仅仅是选择器本身，还有以有效的方式组合两个或更多的选择器用于非常特定的选择的方法。例如，你可以只选择divs的直系子节点的段落，或者直接跟在headings后面的段落。</li>
+<li>多重选择器（Multiple selectors）：这些也不是单独的选择器；这个思路是将以逗号分隔开的多个选择器放在一个CSS规则下面， 以将一组声明应用于由这些选择器选择的所有元素。</li>
+</ul>
+<h3 id="简单选择器"><a href="#简单选择器" class="headerlink" title="简单选择器"></a>简单选择器</h3><p>“简单”选择器，之所以这么称呼它是因为它们基于元素的类型（或其 class或 id）直接匹配文档的一个或多个元素。</p>
+<h4 id="类型选择器（又名元素选择器）"><a href="#类型选择器（又名元素选择器）" class="headerlink" title="类型选择器（又名元素选择器）"></a>类型选择器（又名元素选择器）</h4><p>此选择器只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。这是选择所有指定类型的最简单方式。</p>
+<h4 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h4><p>类选择器由一个点“.”以及类后面的类名组成。类名是在HTML class文档元素属性中没有空格的任何值。由你自己选择一个名字。同样值得一提的是，文档中的多个元素可以具有相同的类名，而单个元素可以有多个类名(以空格分开多个类名的形式书写)。</p>
+<h4 id="ID-选择器节"><a href="#ID-选择器节" class="headerlink" title="ID 选择器节"></a>ID 选择器节</h4><p>ID选择器是由一个哈希/磅符号 (#)，后面跟着给定元素的ID名称组成的。 任何元素都可以使用id属性设置唯一的ID名称。 由你自己决定选择一个ID名称是什么。 这是选择单个元素的最有效的方式。</p>
+<p>注意：一个ID名称必须在文档中是唯一的。关于重复ID的行为是不可预测的，比如一些浏览器只是计入第一个实例，其余的将被忽略</p>
+<h4 id="通用选择器"><a href="#通用选择器" class="headerlink" title="通用选择器"></a>通用选择器</h4><p>通用选择（*）是最终的王牌。它允许选择在一个页面中的所有元素。由于给每个元素应用同样的规则几乎没有什么实际价值，更常见的做法是与其他选择器结合使用。</p>
+<h3 id="属性选择器"><a href="#属性选择器" class="headerlink" title="属性选择器"></a>属性选择器</h3><p>属性选择器是一种特殊类型的选择器，它根据元素的 属性 和属性值来匹配元素。它们的通用语法由方括号 ([]) 组成，其中包含属性名称，后跟可选条件以匹配属性的值。 属性选择器可以根据其匹配属性值的方式分为两类： </p>
+<ul>
+<li>存在和值属性选择器</li>
+<li>子串值属性选择器。</li>
+</ul>
+<h4 id="存在和值（Presence-and-value）属性选择器"><a href="#存在和值（Presence-and-value）属性选择器" class="headerlink" title="存在和值（Presence and value）属性选择器"></a>存在和值（Presence and value）属性选择器</h4><p>这些属性选择器尝试匹配精确的属性值：</p>
+<ul>
+<li>[attr]：该选择器选择包含 attr 属性的所有元素，不论 attr 的值为何。</li>
+<li>[attr=val]：该选择器仅选择 attr 属性被赋值为 val 的所有元素。</li>
+<li>[attr~=val]：该选择器仅选择具有 attr 属性的元素，而且要求 val 值是 attr 值包含的被空格分隔的取值列表里中的一个。</li>
+</ul>
+<h4 id="子串值（Substring-value）属性选择器"><a href="#子串值（Substring-value）属性选择器" class="headerlink" title="子串值（Substring value）属性选择器"></a>子串值（Substring value）属性选择器</h4><p>这种情况的属性选择器也被称为“伪正则选择器”，因为它们提供类似 regular expression 的灵活匹配方式（但请注意，这些选择器并不是真正的正则表达式）：</p>
+<ul>
+<li>[attr|=val] : 选择attr属性的值是 val 或值以 val- 开头的元素（注意，这里的 “-” 不是一个错误，这是用来处理语言编码的）。</li>
+<li>[attr^=val] : 选择attr属性的值以 val 开头（包括 val）的元素。</li>
+<li>[attr$=val] : 选择attr属性的值以 val 结尾（包括 val）的元素。</li>
+<li>[attr*=val] : 选择attr属性的值中包含子字符串 val 的元素（一个子字符串就是一个字符串的一部分而已，例如，”cat“ 是 字符串 ”caterpillar“ 的子字符串）。</li>
+</ul>
+<h3 id="伪选择器"><a href="#伪选择器" class="headerlink" title="伪选择器"></a>伪选择器</h3><p>伪选择器 。该选择器不是选择元素，而是元素的某些部分，或仅在某些特定上下文中存在的元素。它们有两种主要类型 ：</p>
+<ul>
+<li>伪类</li>
+<li>伪元素。</li>
+</ul>
+<h4 id="伪类（Pseudo-class）"><a href="#伪类（Pseudo-class）" class="headerlink" title="伪类（Pseudo-class）"></a>伪类（Pseudo-class）</h4><p>一个 CSS  伪类（pseudo-class） 是一个以冒号(:)作为前缀，被添加到一个选择器末尾的关键字，当你希望样式在特定状态下才被呈现到指定的元素时，你可以往元素的选择器后面加上对应的伪类（pseudo-class）。你可能希望某个元素在处于某种状态下呈现另一种样式，例如当鼠标悬停在元素上面时，或者当一个复选框被禁用或被勾选时，又或者当一个元素是它在 DOM 树中父元素的第一个子元素时。下面是一些伪类示例：</p>
+<ul>
+<li>:active</li>
+<li>:any</li>
+<li>:checked</li>
+<li>:default</li>
+<li>:dir()</li>
+</ul>
+<h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4><p>伪元素（Pseudo-element）跟伪类很像，但它们又有不同的地方。它们都是关键字，但这次伪元素前缀是两个冒号 (::) ， 同样是添加到选择器后面去选择某个元素的某个部分。</p>
+<ul>
+<li>::after</li>
+<li>::before</li>
+<li>::first-letter</li>
+<li>::first-line</li>
+<li>::selection</li>
+<li>::backdrop</li>
+</ul>
+<h3 id="组合器和选择器组"><a href="#组合器和选择器组" class="headerlink" title="组合器和选择器组"></a>组合器和选择器组</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th style="text-align:right">组合器</th>
+<th style="text-align:right">选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>选择器组</td>
+<td style="text-align:right">A,B</td>
+<td style="text-align:right">匹配满足A（和/或）B的任意元素（参见下方 同一规则集上的多个选择器）.</td>
+</tr>
+<tr>
+<td>后代选择器</td>
+<td style="text-align:right">A B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A的后代结点（B是A的子节点，或者A的子节点的子节点）</td>
+</tr>
+<tr>
+<td>子选择器</td>
+<td style="text-align:right">A &gt; B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A的直接子节点</td>
+</tr>
+<tr>
+<td>相邻兄弟选择器</td>
+<td style="text-align:right">A + B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A的下一个兄弟节点（AB有相同的父结点，并且B紧跟在A的后面）</td>
+</tr>
+<tr>
+<td>通用兄弟选择器</td>
+<td style="text-align:right">A ~ B</td>
+<td style="text-align:right">匹配B元素，满足条件：B是A之后的任意一个兄弟节点（AB有相同的父节点，B在A之后，但不一定是紧挨着A）</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="CSS数值与单位"><a href="#CSS数值与单位" class="headerlink" title="CSS数值与单位"></a>CSS数值与单位</h2><h2 id="层叠"><a href="#层叠" class="headerlink" title="层叠"></a>层叠</h2><p>当有多个选择器匹配到同一个元素上时，哪个选择器的 CSS 规则最终会应用到元素上？<br>什么选择器在层叠中胜出取决于三个因素（这些都是按重量级顺序排列的——前面的的一种会否决后一种）：</p>
+<ol>
+<li>重要性（Importance）</li>
+<li>专用性（Specificity）</li>
+<li>源代码次序（Source order）</li>
+</ol>
+<h3 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h3><p>在CSS中，有一个特别的语法可以让一条规则总是优先于其他规则：<code>!important</code> 。把它加在属性值的后面可以使这条声明有无比强大的力量。<br>相互冲突的声明将按以下顺序适用，后一种将覆盖先前的声明：</p>
+<ol>
+<li>在用户代理样式表的声明 (例如：浏览器在没有其他声明的默认样式).</li>
+<li>用户样式表中的普通声明（由用户设置的自定义样式）。</li>
+<li>作者样式表中的普通声明（这是我们设置的样式，Web开发人员）。</li>
+<li>作者样式表中的重要声明</li>
+<li>用户样式表中的重要声明</li>
+</ol>
+<h3 id="专用性"><a href="#专用性" class="headerlink" title="专用性"></a>专用性</h3><p>一个选择器具有的专用性的量是用四种不同的值（或组件）来衡量的，它们可以被认为是千位，百位，十位和个位——在四个列中的四个简单数字：</p>
+<ol>
+<li>千位：如果声明是在style 属性中该列加1分（这样的声明没有选择器，所以它们的专用性总是1000。）否则为0。</li>
+<li>百位：在整个选择器中每包含一个ID选择器就在该列中加1分。</li>
+<li>十位：在整个选择器中每包含一个类选择器、属性选择器、或者伪类就在该列中加1分。</li>
+<li>个位：在整个选择器中每包含一个元素选择器或伪元素就在该列中加1分。<br>通用选择器 (*), 复合选择器 (+, &gt;, ~, ‘ ‘) 和否定伪类 (:not) 在专用性中无影响。如果多个选择器具有相同的重要性和专用性，则选择哪一个选择器取决于 Source order.</li>
+</ol>
+<p>下表显示了几个示例。试着通过这些，并确保你理解他们为什么具有我们给予他们的专用性。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>选择器</th>
+<th>千位</th>
+<th>百位</th>
+<th>十位</th>
+<th>个位</th>
+<th>合计值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>h1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0001</td>
+</tr>
+<tr>
+<td>#indentifier</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>h1 + p::first-letter</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0003</td>
+</tr>
+<tr>
+<td>li &gt; a[href*=”zh-CN”] &gt; .inline-warning</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>0022</td>
+</tr>
+<tr>
+<td>没有选择器, 规则在一个元素的 &lt;style&gt; 属性里</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>在考虑所有这些层叠理论和什么样式优先于其他样式被应用时，你应该记住的一件事是，所有这些都发生在属性级别上——属性覆盖其他属性，但你不会让整个规则凌驾于其他规则之上。<br>当多个CSS规则匹配相同的元素时，它们都被应用到该元素中。只有在这之后，任何相互冲突的属性才会被评估，以确定哪种风格会战胜其他类型。</p>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p>CSS为处理继承提供了四种特殊的通用属性值：</p>
+<ul>
+<li>inherit： 该值将应用到选定元素的属性值设置为与其父元素一样。</li>
+<li>initial ：该值将应用到选定元素的属性值设置为与浏览器默认样式表中该元素设置的值一样。如果浏览器默认样式表中没有设置值，并且该属性是自然继承的，那么该属性值就被设置为 inherit。</li>
+<li>unset ：该值将属性重置为其自然值，即如果属性是自然继承的，那么它就表现得像 inherit，否则就是表现得像 initial。</li>
+<li>revert ：如果当前的节点没有应用任何样式，则将该属性恢复到它所拥有的值。换句话说，属性值被设置成自定义样式所定义的属性（如果被设置）， 否则属性值被设置成用户代理的默认样式。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css-web/" rel="tag"># css web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/linux/linux 权限/" rel="next" title="Linux权限">
+                <i class="fa fa-chevron-left"></i> Linux权限
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/22/web/css中的BFC/" rel="prev" title="CSS 之 BFC">
+                CSS 之 BFC <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-语句"><span class="nav-number">1.</span> <span class="nav-text">CSS 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#规则集"><span class="nav-number">1.1.</span> <span class="nav-text">规则集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#规则"><span class="nav-number">1.2.</span> <span class="nav-text">@-规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌套语句"><span class="nav-number">1.3.</span> <span class="nav-text">嵌套语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS-选择器"><span class="nav-number">2.</span> <span class="nav-text">CSS 选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单选择器"><span class="nav-number">2.1.</span> <span class="nav-text">简单选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类型选择器（又名元素选择器）"><span class="nav-number">2.1.1.</span> <span class="nav-text">类型选择器（又名元素选择器）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#类选择器"><span class="nav-number">2.1.2.</span> <span class="nav-text">类选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ID-选择器节"><span class="nav-number">2.1.3.</span> <span class="nav-text">ID 选择器节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通用选择器"><span class="nav-number">2.1.4.</span> <span class="nav-text">通用选择器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性选择器"><span class="nav-number">2.2.</span> <span class="nav-text">属性选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存在和值（Presence-and-value）属性选择器"><span class="nav-number">2.2.1.</span> <span class="nav-text">存在和值（Presence and value）属性选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子串值（Substring-value）属性选择器"><span class="nav-number">2.2.2.</span> <span class="nav-text">子串值（Substring value）属性选择器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪选择器"><span class="nav-number">2.3.</span> <span class="nav-text">伪选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#伪类（Pseudo-class）"><span class="nav-number">2.3.1.</span> <span class="nav-text">伪类（Pseudo-class）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#伪元素"><span class="nav-number">2.3.2.</span> <span class="nav-text">伪元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组合器和选择器组"><span class="nav-number">2.4.</span> <span class="nav-text">组合器和选择器组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS数值与单位"><span class="nav-number">3.</span> <span class="nav-text">CSS数值与单位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#层叠"><span class="nav-number">4.</span> <span class="nav-text">层叠</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重要性"><span class="nav-number">4.1.</span> <span class="nav-text">重要性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专用性"><span class="nav-number">4.2.</span> <span class="nav-text">专用性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承"><span class="nav-number">4.3.</span> <span class="nav-text">继承</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

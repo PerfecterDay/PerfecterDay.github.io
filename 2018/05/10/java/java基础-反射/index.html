@@ -1,37 +1,775 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="反射,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="反射 JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取类的信息以及动态调用对象的方法的功能称为java语言的反射机制。 要想解剖一个类,必须先要获取到该类的字节码文件对象，进而使用的Class类中的方法解剖类。所以先要获取到一个字节码文件对应的Class类型的对象。 Class对象反射把一个java类">
+<meta name="keywords" content="反射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java基础-反射">
+<meta property="og:url" content="http://yoursite.com/2018/05/10/java/java基础-反射/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="反射 JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取类的信息以及动态调用对象的方法的功能称为java语言的反射机制。 要想解剖一个类,必须先要获取到该类的字节码文件对象，进而使用的Class类中的方法解剖类。所以先要获取到一个字节码文件对应的Class类型的对象。 Class对象反射把一个java类">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/ClassObject.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java基础-反射">
+<meta name="twitter:description" content="反射 JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取类的信息以及动态调用对象的方法的功能称为java语言的反射机制。 要想解剖一个类,必须先要获取到该类的字节码文件对象，进而使用的Class类中的方法解剖类。所以先要获取到一个字节码文件对应的Class类型的对象。 Class对象反射把一个java类">
+<meta name="twitter:image" content="http://yoursite.com/pics/ClassObject.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/10/java/java基础-反射/">
+
+
+
+
+
+  <title>java基础-反射 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/10/java/java基础-反射/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java基础-反射</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-10T20:08:35+08:00">
+                2018-05-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><hr>
+<p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种动态获取类的信息以及动态调用对象的方法的功能称为java语言的反射机制。</p>
+<p>要想解剖一个类,必须先要获取到该类的字节码文件对象，进而使用的Class类中的方法解剖类。所以先要获取到一个字节码文件对应的Class类型的对象。</p>
+<h2 id="Class对象"><a href="#Class对象" class="headerlink" title="Class对象"></a>Class对象</h2><p>反射把一个java类字节码加载到内存并构造成一个Class类型的对象，并将类中的属性、方法等各种成分映射成相应的Java对象。</p>
+<p>一个类有：成员变量、方法、构造方法、包等等信息，利用反射技术可以对一个类进行解剖，把各个组成部分映射成一个个对象。（其实：一个类中这些成员方法、构造方法等在Java中都有一个专门的类来描述）。如图是类的正常加载过程：反射的原理在于class对象。<br>熟悉一下加载：Class对象的由来是将class字节码文件读入内存，并为之创建一个Class对象。<br><img src="/pics/ClassObject.png" alt="字节码文件加载实例化Class对象"></p>
+<h2 id="java-lang-Class类"><a href="#java-lang-Class类" class="headerlink" title="java.lang.Class类"></a>java.lang.Class类</h2><p>Class类是对java字节码文件的抽象，每个字节码文件加载到jvm后，jvm都会为其生成一个Class类的实例来描述该字节码文件，且每个类或接口的字节码文件只会生成一个Class类的实例。Class类的定义如下：</p>
+<pre><code>public final class Class&lt;T&gt; implements java.io.Serializable,
+                              GenericDeclaration,
+                              Type,
+                              AnnotatedElement{...}
+</code></pre><p>Class没有公共构造方法。Class对象是在加载类时由Java虚拟机以及通过调用类加载器中的defineClass方法自动构造的。也就是说不需要我们自己去处理创建，JVM已经帮我们创建好了。</p>
+<h2 id="获取Class对象的三种方式"><a href="#获取Class对象的三种方式" class="headerlink" title="获取Class对象的三种方式"></a>获取Class对象的三种方式</h2><ul>
+<li>调用某个对象的getClass()方法会返回该对象所属类的Class对象实例，getClass是Object类的方法。</li>
+<li>任何数据类型（即类，包括基本数据类型）都有一个“静态”的class属性。</li>
+<li>Class类的静态方法：forName(String className)。</li>
+</ul>
+<h2 id="Class类的方法"><a href="#Class类的方法" class="headerlink" title="Class类的方法"></a>Class类的方法</h2><h3 id="获取构造方法的方法"><a href="#获取构造方法的方法" class="headerlink" title="获取构造方法的方法"></a>获取构造方法的方法</h3><h4 id="getgetConstructors-、getConstructor-Class-lt-gt-…-parameterTypes-获取公有访问级别的构造方法"><a href="#getgetConstructors-、getConstructor-Class-lt-gt-…-parameterTypes-获取公有访问级别的构造方法" class="headerlink" title="getgetConstructors()、getConstructor(Class&lt;?&gt;… parameterTypes)获取公有访问级别的构造方法"></a>getgetConstructors()、getConstructor(Class&lt;?&gt;… parameterTypes)获取公有访问级别的构造方法</h4><ul>
+<li>getgetConstructors()可以获取到该类的所有公有构造方法构造方法组成的数组：Constructor[]。</li>
+<li>getConstructor(Class&lt;?&gt;… parameterTypes)可以获取到参数类型为parameterTypes指定的公有构造方法的Constructor实例对象。</li>
+</ul>
+<h4 id="getDeclaredConstructors-、getDeclaredConstructor-Class-lt-gt-…-parameterTypes-获取所有访问级别的构造方法"><a href="#getDeclaredConstructors-、getDeclaredConstructor-Class-lt-gt-…-parameterTypes-获取所有访问级别的构造方法" class="headerlink" title="getDeclaredConstructors()、getDeclaredConstructor(Class&lt;?&gt;… parameterTypes)获取所有访问级别的构造方法"></a>getDeclaredConstructors()、getDeclaredConstructor(Class&lt;?&gt;… parameterTypes)获取所有访问级别的构造方法</h4><ul>
+<li>getDeclaredConstructors()可以获取到所有的构造方法(包括：私有、受保护、默认、公有)组成的数组：Constructor[]。</li>
+<li>getDeclaredConstructor(Class&lt;?&gt;… parameterTypes)可以获取到参数类型为parameterTypes指定的所有构造方法(包括：私有、受保护、默认、公有)的Constructor实例对象。</li>
+</ul>
+<h4 id="newInstance-Object…-initargs-调用构造方法"><a href="#newInstance-Object…-initargs-调用构造方法" class="headerlink" title="newInstance(Object… initargs)调用构造方法"></a>newInstance(Object… initargs)调用构造方法</h4><p>Constructor对象表示的构造方法来创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例。</p>
+<h3 id="获取成员变量并使用"><a href="#获取成员变量并使用" class="headerlink" title="获取成员变量并使用"></a>获取成员变量并使用</h3><h4 id="getFields-、getField-String-name-获取公有访问级别的属性"><a href="#getFields-、getField-String-name-获取公有访问级别的属性" class="headerlink" title="getFields()、getField(String name)获取公有访问级别的属性"></a>getFields()、getField(String name)获取公有访问级别的属性</h4><ul>
+<li>getFields()方法获取类的所有公有访问级别的属性，返回一个属性数组:Field[]。</li>
+<li>getField(String name)方法获取名字为name的公有属性，返回属性对象：Field。</li>
+</ul>
+<h4 id="getDeclaredFields-、getDeclaredField-String-name-获取所有访问级别的属性"><a href="#getDeclaredFields-、getDeclaredField-String-name-获取所有访问级别的属性" class="headerlink" title="getDeclaredFields()、getDeclaredField(String name)获取所有访问级别的属性"></a>getDeclaredFields()、getDeclaredField(String name)获取所有访问级别的属性</h4><ul>
+<li>getDeclaredFields()方法获取所有的属性(包括：私有、受保护、默认、公有)，返回一个属性数组:Field[]。</li>
+<li>getDeclaredField(String name)方法获取名字为name的所有的属性(包括：私有、受保护、默认、公有)，返回属性对象：Field。</li>
+</ul>
+<h4 id="属性赋值"><a href="#属性赋值" class="headerlink" title="属性赋值"></a>属性赋值</h4><p>Field类的set(Object object,Object value)方法，可以为object对象的对应属性设置为value值。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/反射/" rel="tag"># 反射</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/06/java/java基础-注解/" rel="next" title="java基础-注解">
+                <i class="fa fa-chevron-left"></i> java基础-注解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/10/java/java基础-动态代理/" rel="prev" title="java基础-动态代理">
+                java基础-动态代理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射"><span class="nav-number">1.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class对象"><span class="nav-number">1.1.</span> <span class="nav-text">Class对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java-lang-Class类"><span class="nav-number">1.2.</span> <span class="nav-text">java.lang.Class类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取Class对象的三种方式"><span class="nav-number">1.3.</span> <span class="nav-text">获取Class对象的三种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class类的方法"><span class="nav-number">1.4.</span> <span class="nav-text">Class类的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取构造方法的方法"><span class="nav-number">1.4.1.</span> <span class="nav-text">获取构造方法的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getgetConstructors-、getConstructor-Class-lt-gt-…-parameterTypes-获取公有访问级别的构造方法"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">getgetConstructors()、getConstructor(Class&lt;?&gt;… parameterTypes)获取公有访问级别的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getDeclaredConstructors-、getDeclaredConstructor-Class-lt-gt-…-parameterTypes-获取所有访问级别的构造方法"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">getDeclaredConstructors()、getDeclaredConstructor(Class&lt;?&gt;… parameterTypes)获取所有访问级别的构造方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newInstance-Object…-initargs-调用构造方法"><span class="nav-number">1.4.1.3.</span> <span class="nav-text">newInstance(Object… initargs)调用构造方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取成员变量并使用"><span class="nav-number">1.4.2.</span> <span class="nav-text">获取成员变量并使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#getFields-、getField-String-name-获取公有访问级别的属性"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">getFields()、getField(String name)获取公有访问级别的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getDeclaredFields-、getDeclaredField-String-name-获取所有访问级别的属性"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">getDeclaredFields()、getDeclaredField(String name)获取所有访问级别的属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#属性赋值"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">属性赋值</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

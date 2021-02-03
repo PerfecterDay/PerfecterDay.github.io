@@ -1,37 +1,820 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="spring-security,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="spring-security 整体架构上图中  Bean Filter 实际上是 FilterChainProxy 。 Spring security 的配置由两个关键步骤组成：注册过滤器和创建安全规则。Spring security 提供了 AbstractSecurityWebApplicationInitializer 类来注册过滤器，我们只要继承该类即可实现过滤器的注册。使用 sprin">
+<meta name="keywords" content="spring-security">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring security">
+<meta property="og:url" content="http://yoursite.com/2018/10/10/spring security/spring-security/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="spring-security 整体架构上图中  Bean Filter 实际上是 FilterChainProxy 。 Spring security 的配置由两个关键步骤组成：注册过滤器和创建安全规则。Spring security 提供了 AbstractSecurityWebApplicationInitializer 类来注册过滤器，我们只要继承该类即可实现过滤器的注册。使用 sprin">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/spring-security.png">
+<meta property="og:image" content="http://yoursite.com/pics/securitycontextholder.png">
+<meta property="og:image" content="http://yoursite.com/pics/provider_manager.png">
+<meta property="og:image" content="http://yoursite.com/pics/AbstractAuthenticationProcessingFilter.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring security">
+<meta name="twitter:description" content="spring-security 整体架构上图中  Bean Filter 实际上是 FilterChainProxy 。 Spring security 的配置由两个关键步骤组成：注册过滤器和创建安全规则。Spring security 提供了 AbstractSecurityWebApplicationInitializer 类来注册过滤器，我们只要继承该类即可实现过滤器的注册。使用 sprin">
+<meta name="twitter:image" content="http://yoursite.com/pics/spring-security.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/10/spring security/spring-security/">
+
+
+
+
+
+  <title>spring security | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/spring security/spring-security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spring security</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T11:24:48+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring-security/" itemprop="url" rel="index">
+                    <span itemprop="name">spring-security</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="spring-security-整体架构"><a href="#spring-security-整体架构" class="headerlink" title="spring-security 整体架构"></a>spring-security 整体架构</h3><p><img src="/pics/spring-security.png" alt><br>上图中  Bean Filter 实际上是 FilterChainProxy 。</p>
+<p>Spring security 的配置由两个关键步骤组成：注册过滤器和创建安全规则。<br>Spring security 提供了 <code>AbstractSecurityWebApplicationInitializer</code> 类来注册过滤器，我们只要继承该类即可实现过滤器的注册。<br>使用 springboot 时，只要添加 <code>spring-boot-starter-security</code> 依赖，就会自动配置：</p>
+<ol>
+<li>一个名为 <code>springSecurityFilterChain</code> 的 Filter 类型的 bean，这个 bean 负责所有安全相关的功能</li>
+<li>生成一个名为 <code>UserDetailsService</code> 的 bean ,且会配置一个名为 user ，密码随机（会打印在控制台）的用户</li>
+<li>会把 <code>springSecurityFilterChain</code> 的 Filter 注册到 servlet 容器中以实现拦截功能</li>
+</ol>
+<p>注册过滤器后，需要对 Spring security 进行安全规则的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@EnableWebSecurity</span><br><span class="line">public class WebSecurityConfigure extends WebSecurityConfigurerAdapter &#123;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    protected void configure(HttpSecurity http) throws Exception &#123;</span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                .antMatchers(&quot;/admin/api/**&quot;).hasRole(&quot;admin&quot;)</span><br><span class="line">                .antMatchers(&quot;/user/api/**&quot;).hasRole(&quot;user&quot;)</span><br><span class="line">                .antMatchers(&quot;/app/api/**&quot;).permitAll()</span><br><span class="line">                .anyRequest()</span><br><span class="line">                .authenticated()</span><br><span class="line">                .and()</span><br><span class="line">                .formLogin(form -&gt; form</span><br><span class="line">                .loginPage(&quot;/login&quot;)  //自定义认证表单</span><br><span class="line">                .permitAll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void configure(AuthenticationManagerBuilder auth) throws Exception &#123;</span><br><span class="line">        auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserDetailsService userDetailsService()&#123;</span><br><span class="line">        InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();</span><br><span class="line">        inMemoryUserDetailsManager.createUser(User.withUsername(&quot;user1&quot;).password(new BCryptPasswordEncoder().encode(&quot;test&quot;)).roles(&quot;suer&quot;).build());</span><br><span class="line">        inMemoryUserDetailsManager.createUser(User.withUsername(&quot;admin&quot;).password(new BCryptPasswordEncoder().encode(&quot;admin&quot;)).roles(&quot;admin&quot;).build());</span><br><span class="line">        return inMemoryUserDetailsManager;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>@EnableWebSecurity/@EnableWebMvcSecurity</code> 注解分别用来启用 Spring security web 和 spring mvc 的集成。使用这两个注解的类必须实现 <code>WebSecurityConfigurer</code>接口或者继承 <code>WebSecurityConfigurerAdapter</code> 类。</p>
+<h3 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h3><ol>
+<li><code>SecurityContextHolder</code><br>Spring security 用来存储认证过的用户的详细信息的地方。<br><img src="/pics/securitycontextholder.png" alt><br>Spring security 不关心 <code>SecurityContextHolder</code> 是如何生成的，如果其中有值，就会被当成当前认证过的用户。所以，我们可以直接对其进行赋值来生成一个认证过的用户。</li>
+<li><code>SecurityContext</code><br>从 <code>SecurityContextHolder</code> 获得的保存了当前认证过的用户的 <code>Authentication</code> </li>
+<li><code>Authentication</code><br>可以看做是 <code>AuthenticationManager</code> 的输入用来提供认证用的凭据信息，或者是当前 SecurityContext 中的认证过的用户。 <code>Authentication</code> 包含以下信息：<ol>
+<li><code>principal</code> : 用户标识（用户名/ID…）</li>
+<li><code>credentials</code>: 通常是密码</li>
+<li><code>authorities</code>: 授予的权限，比如角色/scope…</li>
+</ol>
+</li>
+<li><code>GrantedAuthority</code><br>代表<code>Authentication</code> 的授权信息,标识用户有哪些权限。可以使用 <code>Authentication.getAuthorities()</code>获取到。</li>
+<li><code>AuthenticationManager</code><br>定义了 Spring Security 的 Filters 如何来执行认证逻辑的 API，它会返回一个 <code>Authentication</code>对象，这个对象会设置到 <code>SecurityContextHolder</code> 中。</li>
+<li><code>ProviderManager</code><br><code>AuthenticationManager</code> 的最常见实现，里边有一个 <code>List&lt;AuthenticationProvider&gt;</code> 列表。它会遍历这个列表中的每个 <code>AuthenticationProvider</code> 来执行认证逻辑。直到找到一个能够执行认证的 <code>AuthenticationProvider</code>。<br><img src="/pics/provider_manager.png" alt></li>
+<li><code>AuthenticationProvider</code><br>被 <code>ProviderManager</code> 用来执行特定类型的认证的，比如 <code>DaoAuthenticationProvider</code> 支持基于 username/password 的认证，而 <code>JwtAuthenticationProvider</code> 支持 JWT token 的认证.</li>
+<li>Request Credentials with AuthenticationEntryPoint<br>请求客户端提供认证凭据的认证入口点，通常是返回一个 HTTP 相应给客户端，要求客户端提供认证凭据。</li>
+<li><code>AbstractAuthenticationProcessingFilter</code><br>一个用来做认证的 Filter 的基类。<br><img src="/pics/AbstractAuthenticationProcessingFilter.png" alt><ol>
+<li>当用户提交认证凭据后， <code>AbstractAuthenticationProcessingFilter</code> 会根据 <code>HttpRequest</code> 创建一个用来做认证的 <code>Authentication</code> 对象，具体的 <code>Authentication</code> 取决于 <code>AbstractAuthenticationProcessingFilter</code>的子类，比如 <code>UsernamePasswordAuthenticationFilter</code> 会创建一个 <code>UsernamePasswordAuthenticationToken</code>.</li>
+<li><code>Authentication</code>会被传递给 <code>AuthenticationManager</code> 来做认证</li>
+<li>如果认证失败<ul>
+<li>会清空 <code>SecurityContextHolder</code> </li>
+<li><code>RememberMeServices.loginFail</code> 会被调用，如果配置了 remember me 功能的话</li>
+<li><code>AuthenticationFailureHandler</code> 会被调用</li>
+</ul>
+</li>
+<li>如果认证成功<ul>
+<li><code>SessionAuthenticationStrategy</code> 会被通知一个新的登录</li>
+<li><code>Authentication</code>会被设置到 <code>SecurityContextHolder</code>，后边 <code>SecurityContextPersistenceFilter</code> 会把 <code>SecurityContext</code> 保存到 <code>HttpSession</code>中</li>
+<li><code>RememberMeServices.loginSuccess</code> 会被调用，如果配置了 remember me 功能的话</li>
+<li><code>ApplicationEventPublisher</code>会发布 <code>InteractiveAuthenticationSuccessEvent</code>事件</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p>常用授权注解：</p>
+<ul>
+<li><code>@DeclareRoles</code>: 它不在 Spring Security 环境中使用，它提供类一种列出所有应用程序使用的角色的方式。</li>
+<li><code>@DenyAll</code>: 将禁止所有访问</li>
+<li><code>@PermitAll</code>: 与 @DenyAll 相反，表示所有人都可以执行该方法。</li>
+<li><code>@RolesAllowed</code>: 只有拥有指定角色中的一个，才能执行方法。可以标注在类或者方法上。</li>
+<li><code>@RunAs</code>: 指示容器使用一个不同的用户运行该方法。只在 Java EE 中支持，Spring Security 不支持。</li>
+<li><code>@PreAuthorize</code>: 注解中指定的安全表达式将在方法执行前执行。该表达式可以通过在参数名前添加#的方式引用任意的方法参数，并可以调用方法参数的方法和访问参数的属性。如果表达式的结果为真，则会执行方法，否则不执行并抛出 AccessDeniedException 异常。</li>
+<li><code>@PostAuthorize</code>: 注解中指定的安全表达式将在方法执行后执行，不能访问方法参数，但是可以用变量名returnObject 访问方法的返回值。</li>
+<li><code>@PostFilter</code>: 可以过滤方法的返回值 ，只有返回值是集合或者数组类型时才能使用。集合中的每个元素都会执行一次表达式，可以使用 filterObject 引用每个元素。表达式结果为假的元素会从集合中移除。</li>
+<li><code>@PretFilter</code>:  与@PostFilter类似，不过它作用于方法参数而不是返回值。</li>
+</ul>
+<h4 id="授权原理"><a href="#授权原理" class="headerlink" title="授权原理"></a>授权原理</h4><ol>
+<li><p>访问决策投票者<br>访问决策投票者是决策制定过程中的重要参与者。一个典型的 Spring Security 配置将包含几个投票者，他们都是 <code>AccessDecisionVoter</code> 的实现。当投票者发表自己的意见表示是否为访问授权时，它根据投票者得到的特定信息进行投票。如果它未得到足够的信息，无法做出合理的投票时，它将在它的 <code>vote</code> 方法中返回 <code>AccessDecisionVoter.ACCESS_ABSTAIN</code> ，从而放弃投票。如果它获得了足够的信息并相信应该为访问授权，那么它将返回 <code>AccessDecisionVoter.GRANTED</code> ，否则，如果不同意授权则返回 <code>AccessDecisionVoter.DENIED</code> 。<br>现在有几个可用的 <code>AccessDecisionVoter</code> 实现：</p>
+<ul>
+<li><code>org.springframework.security.acls.AclEntryVoter</code>：根据 Spring security 的访问控列表进行投票。如果被访问的资源没有使用 <code>hasPermission</code> 表达式函数进行保护，那么 AclEntryVoter 将放弃投票。该投票者不是自动配置的，实际上可能永远也不会使用它。</li>
+<li><code>org.springframework.security.access.vote.AuthenticatedVoter</code>：被用作一种特殊情况下的角色: <code>IS_AUTHENTICATED_ANONYMOUSLY</code> 、<code>IS_AUTHENTICATED_REMEMBERED</code> 、 <code>IS_AUTHENTICATED_FULLY</code>。如果资源并未使用这些角色进行保护，那么 AuthenticatedVoter 将会放弃投票</li>
+<li><code>org.springframework.security.access.annotation.Jsr250Voter</code>: 将为所有使用了 Common Annotations API(JSR 250)进行保护的方法进行投票。只有启用了对 JSR 250 注解的支持，该投票者才可用。只有方法上标注了 JSR 250注解时，它才会投票。</li>
+<li><code>org.springframework.security.access.prepost.PreInvocationAuthorizationAdviceVoter</code>: 将根据 <code>@PreAuthorize</code> 和<code>@PretFilter</code> 注解进行投票。只有启用执行前和执行后注解时才会启用它。对于非方法资源或者方法（或者它的类或接口）上不存在注解，它将会弃权。 <code>@PostAuthorize</code> 和 <code>@PostFilter</code> 没有投票者，因为投票者只在资源访问前使用， Spring security 将把这些注解当做特殊情况处理。</li>
+<li><code>org.springframework.security.access.vote.RoleHierarchyVoter</code>：使用角色层次系统做出决策，如果启用了角色层次吸引，就必须手动创建它。如果被保护的资源商不存在角色层次限制，那么它将弃权。</li>
+<li><code>org.springframework.security.access.vote.RoleVoter</code>：将为使用非表达式 URL 限制、方法切点限制或者 <code>@Secured</code> 注解保护的资源投票，其它情况它会弃权。只有一个或多个被列出的“角色”都是用了 ROLE—— 前缀时，它才会投票。</li>
+<li><code>org.springframework.security.web.access.expression.WebExpressionVoter</code>：将根据表达式保护 URL 资源做出它的决策。对于方法保护决策和不使用表达式保护的特定 URL，它会弃权。</li>
+</ul>
+</li>
+<li><p>访问决策管理器<br>正如前面所述，现在有几个可用的内建投票者，并且多个投票者可能同时被启用。多个投票者在特定的访问决策上可能都给出了非弃权的意见，那么如何解决这些差异呢？ Spring security 使用访问决策管理器协调这些投票者投出的选票，并将他们转换成访问请求的最终决策。</p>
+<p>Spring security 有3个标准的 <code>AccessDecisionManager</code> 实现。默认情况下，所有投票者都弃权时访问将被拒绝，但没个标准实现都提供一个设置，用于决定在这种场景下是否授权访问。</p>
+<ol>
+<li>由赞成结果决定<br><code>org.springframework.security.access.vote.AffirmativeBased</code>是默认的配置，也是最简单的决策管理器。只要有一个非弃权的投票者赞成，该决策管理者就授权访问。即使有其它投票者拒绝访问。</li>
+<li>由协商决定<br><code>org.springframework.security.access.vote.ConsensusBased</code>决策管理器基于简单的多数原则，如果51%的非弃权投票者赞成就授予访问权限。</li>
+<li>由全体决定<br><code>org.springframework.security.access.vote.UnanimousBased</code>，它要求所有的非弃权投票则都投赞成票，否则将拒绝访问请求。</li>
+</ol>
+<p>要配置一个 <code>AccessDecisionManager</code>，只需要声明一个标注了 <code>@Configuration</code> 的配置类，让该类扩展 <code>GlobalMethodSecurityConfiguration</code> 类，并且覆盖 <code>accessDecisionManager</code> 方法返回一个 <code>ConsensusBased</code>、<code>UnanimousBased</code>或者一些自定义的实现。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring-security/" rel="tag"># spring-security</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/10/springboot/springboot配置文件加载及常规配置/" rel="next" title="springboot配置文件加载及常见配置">
+                <i class="fa fa-chevron-left"></i> springboot配置文件加载及常见配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/23/sql/msyql/mysql查询历史sql记录/" rel="prev" title="mysql 历史sql查询">
+                mysql 历史sql查询 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#spring-security-整体架构"><span class="nav-number">1.</span> <span class="nav-text">spring-security 整体架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#认证"><span class="nav-number">2.</span> <span class="nav-text">认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权"><span class="nav-number">3.</span> <span class="nav-text">授权</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#授权原理"><span class="nav-number">3.1.</span> <span class="nav-text">授权原理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

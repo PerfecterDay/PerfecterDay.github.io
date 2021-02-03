@@ -1,37 +1,816 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="maven,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Maven 约定项目的主代码位于 src/main/java 目录，测试代码位于 src/test/java 目录；测试代码只会在运行测试时才会用到，打包时不会打包。 Maven 坐标与依赖配置Maven定义了一组规则：任何一个构件都可以使用Maven坐标唯一标识，Maven坐标的元素包括：（groupId、artifactId、version，必须定义）、packaging（可选）、classi">
+<meta name="keywords" content="maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="maven 总结">
+<meta property="og:url" content="http://yoursite.com/2019/08/24/maven/maven总结/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Maven 约定项目的主代码位于 src/main/java 目录，测试代码位于 src/test/java 目录；测试代码只会在运行测试时才会用到，打包时不会打包。 Maven 坐标与依赖配置Maven定义了一组规则：任何一个构件都可以使用Maven坐标唯一标识，Maven坐标的元素包括：（groupId、artifactId、version，必须定义）、packaging（可选）、classi">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/maven-scope.png">
+<meta property="og:image" content="http://yoursite.com/pics/maven-dep-propogation.png">
+<meta property="og:image" content="http://yoursite.com/pics/maven-repo.png">
+<meta property="og:image" content="http://yoursite.com/pics/mvn-goal.png">
+<meta property="og:updated_time" content="2021-02-03T14:51:40.768Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="maven 总结">
+<meta name="twitter:description" content="Maven 约定项目的主代码位于 src/main/java 目录，测试代码位于 src/test/java 目录；测试代码只会在运行测试时才会用到，打包时不会打包。 Maven 坐标与依赖配置Maven定义了一组规则：任何一个构件都可以使用Maven坐标唯一标识，Maven坐标的元素包括：（groupId、artifactId、version，必须定义）、packaging（可选）、classi">
+<meta name="twitter:image" content="http://yoursite.com/pics/maven-scope.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/08/24/maven/maven总结/">
+
+
+
+
+
+  <title>maven 总结 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/24/maven/maven总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">maven 总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-24T10:33:28+08:00">
+                2019-08-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/maven/" itemprop="url" rel="index">
+                    <span itemprop="name">maven</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Maven 约定项目的主代码位于 src/main/java 目录，测试代码位于 src/test/java 目录；测试代码只会在运行测试时才会用到，打包时不会打包。</p>
+<h3 id="Maven-坐标与依赖配置"><a href="#Maven-坐标与依赖配置" class="headerlink" title="Maven 坐标与依赖配置"></a>Maven 坐标与依赖配置</h3><p>Maven定义了一组规则：任何一个构件都可以使用Maven坐标唯一标识，Maven坐标的元素包括：（groupId、artifactId、version，必须定义）、packaging（可选）、classifier（不能直接定义，由插件帮助生成）。</p>
+<h4 id="依赖范围"><a href="#依赖范围" class="headerlink" title="依赖范围"></a>依赖范围</h4><p>Maven 在编译主代码时会使用一套 classpath1 ，在编译和运行测试代码时，会用到另外一套 classpath2 ，最后，打包（运行）Maven 项目时又是另外一套classpath3 。 实际上 Maven 依赖的 scope 就是用来控制 Maven 依赖与这三种 classpath 的关系的，Scope可以取如下值：</p>
+<ul>
+<li>compile : 默认值，会把依赖加入到上述三种 classpath 中</li>
+<li>test : 只在编译、执行测试代码时有效，即上述第二种 classpath2</li>
+<li>provided : 对于编译和测试时有效，但是运行时无效（不会打包），即会加到 classpath1/classpath2 中</li>
+<li>runtime : 对于测试和运行 classpath 有效，编译主代码时无效</li>
+<li>system : 系统依赖范围，与 provided 依赖范围完全一致<br><img src="/pics/maven-scope.png" alt></li>
+</ul>
+<h4 id="依赖范围与传递性依赖"><a href="#依赖范围与传递性依赖" class="headerlink" title="依赖范围与传递性依赖"></a>依赖范围与传递性依赖</h4><p>A依赖B，B依赖C，则A依赖C；我们称 A与B是第一直接依赖，B与C是第二直接依赖， A与C是传递性依赖；下表中最左第一列是第一直接依赖范围，表头是第二直接依赖范围，表格中代表结果的传递性依赖范围。<br><img src="/pics/maven-dep-propogation.png" alt></p>
+<h4 id="依赖调解"><a href="#依赖调解" class="headerlink" title="依赖调解"></a>依赖调解</h4><p>当依赖冲突时，例如：<br>A-&gt;B-&gt;C-&gt;X(1.0)/A-&gt;D-&gt;X(2.0)<br>依赖调解第一原则：路径最近者优先。上例中 X(1.0) 路径长为3，而X(2.0)长为2，所以X(2.0)会被解析引用。<br>A-B-&gt;Y(1.0)/A-&gt;C-&gt;Y(2.0)<br>依赖路径长途相同时，要靠依赖调解第二原则：第一声明优先。B先声明，则用Y(1.0)；C先声明的话就用Y(2.0)。</p>
+<h4 id="可选依赖"><a href="#可选依赖" class="headerlink" title="可选依赖"></a>可选依赖</h4><p>A-&gt;B/B-&gt;X(optional)/B-&gt;Y(optional): A不会依赖 X和Y。</p>
+<h4 id="排除依赖"><a href="#排除依赖" class="headerlink" title="排除依赖"></a>排除依赖</h4><p>当我们想去掉某些传递性依赖时，可以使用 exclusions :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.ebayinc.platform.mayfly&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;mayfly-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;exclusions&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;uKernelCore&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;com.ebay.kernel&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">        &lt;exclusion&gt;</span><br><span class="line">            &lt;artifactId&gt;netty-common&lt;/artifactId&gt;</span><br><span class="line">            &lt;groupId&gt;io.netty&lt;/groupId&gt;</span><br><span class="line">        &lt;/exclusion&gt;</span><br><span class="line">    &lt;/exclusions&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure></p>
+<p>exclusion 中只需要指出 groupId 和 artifactId 。</p>
+<h3 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h3><p><img src="/pics/maven-repo.png" alt><br>在 settings 文件中，使用 repository 元素配置远程仓库，id为 central 是中央仓库；如果仓库需要认证，使用 server 元素配置认证信息，repository 与 server 之间通过id关联，即 server 配置的是 id 相同的 repository 的认证信息。</p>
+<h4 id="从仓库解析依赖的机制"><a href="#从仓库解析依赖的机制" class="headerlink" title="从仓库解析依赖的机制"></a>从仓库解析依赖的机制</h4><ol>
+<li>当依赖范围是 system 的时候， Maven 直接从本地文件系统解析构件</li>
+<li>根据依赖坐标计算仓库路径后，尝试直接从本地仓库寻找构件，如果发现相应构件，则解析成功</li>
+<li>在在本地仓库不存在相应构件的情况下，如果依赖的版本是显示的发布版本（非SNAPSHOT/RELEASE/LATEST）构件，则遍历所有的远程仓库，发现后，下载并解析使用。</li>
+<li>如果依赖的版本是 RELEASE 或者 LATEST，则基于更新策略读取所有远程仓库的元数据 <code>groupid/artifactid/maven-metadata.xml</code>，将其与本地仓库的对应元数据合并后，计算出 RELEASE 或者 LATEST 真实的值，然后基于这个真实的值检查本地和远程仓库。</li>
+<li>如果依赖版本是 SNAPSHOT ，则基于更新策略读取所有远程仓库的元数据 <code>groupid/artifactid/maven-metadata.xml</code>，将其与本地仓库的对应元数据合并后，得到最新快照版本的值，然后基于该值检查本地仓库，或者从远程仓库下载。</li>
+<li>如果解析得到的构件版本是时间戳格式的快照，如1.4.1-20201103.132350-123，则复制其时间戳格式的文件至非时间戳格式，如 SNAPSHOT，并使用该非时间戳格式的构件。</li>
+</ol>
+<h4 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h4><p>如果仓库X可以提供仓库Y存储的所有内容，那么就可以认为X是Y的一个镜像。如果在 seetings 中用 mirror 配置X是Y的镜像，那么所有到Y的请求都会转至该镜像仓库。镜像仓库会完全屏蔽被镜像的仓库，如果镜像仓库停止服务，Maven仍然无法访问被镜像仓库。</p>
+<h3 id="生命周期和插件"><a href="#生命周期和插件" class="headerlink" title="生命周期和插件"></a>生命周期和插件</h3><p>三套相互独立的生命周期： </p>
+<ul>
+<li>clean: 清理项目，包含 pre-calen 、 clean 、 post-clean 三个阶段</li>
+<li>default: 构建项目，阶段很多</li>
+<li>site: 建立项目站点，pre-site 、 site 、 post-site 、 site-deploy 四个阶段<br>每个生命周期包含一些阶段，这些阶段是有顺序的，并且后边的阶段会依赖前边的阶段，因此执行后边的阶段，前边依赖的阶段也会执行，用户和Maven最直接的交互方式就是调用这些生命周期的阶段。<br>三套生命周期之间是相互独立的，也就是说调用不同生命周期中的阶段不会对其它生命周期有影响，更不会执行其它生命周期内的阶段。</li>
+</ul>
+<h4 id="插件目标"><a href="#插件目标" class="headerlink" title="插件目标"></a>插件目标</h4><p><img src="/pics/mvn-goal.png" alt><br>可以在 pom 的 build&gt;plugins&gt;plugin&gt;executions&gt;execution 下为某个插件目标绑定到特定的生命周期阶段上。当多个目标绑定到同一个阶段时，插件的声明顺序会决定目标执行的先后顺序。<br>mvn [options] <plugin:goal> <phase><br>Maven不仅可以执行生命周期的阶段，进而执行绑定在这些阶段上的目标，而且可以直接执行某些插件目标。</phase></plugin:goal></p>
+<h3 id="聚合与继承"><a href="#聚合与继承" class="headerlink" title="聚合与继承"></a>聚合与继承</h3><h4 id="聚合-多模块"><a href="#聚合-多模块" class="headerlink" title="聚合(多模块)"></a>聚合(多模块)</h4><p>当我们的两个Maven项目是相关的，共同作用以构成一个更大的项目，我们可以把他们称为更大项目的模块。如 regs-api/regs-serve/regs-ft。一个简单的需求就是：我们想要一次构建两个模块而不是分别进入到不同模块目录下执行 mvn 命令。Maven 聚合就是为这一需求服务的。<br>首先，需要创建另一个模块，并且 packaging 类型必须是 POM ，然后，在 pom 文件中配置 modules，每个 module 的值都是一个相对于当前 pom 的<strong>目录</strong>。聚合模块通常只包含一个 pom.xml 文件，没有源码资源等目录。</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>当多个模块之间有许多重复的配置时，可以将他们抽取出来作为一个父模块供这些模块继承共享。父模块的打包类型也必须是 pom，而且不需要源代码之类的目录。子模块继承时，使用 parent 元素指定父模块， parent下的 groupId、artifactId、version 制定了父模块的坐标， relativePath 指定父模块 pom 文件相对与本 pom 的路径，默认值是 ../pom.xml，即上层目录中的 pom.xml ，maven 会首先根据 relativePath 查找父 POM， 如果找不到，再从本地仓库查找 。</p>
+<p>父 pom 中一些配置元素是可以被继承的，下边是一个完整的列表：</p>
+<ul>
+<li>groupId ：项目组 ID ，项目坐标的核心元素；  </li>
+<li>version ：项目版本，项目坐标的核心元素；  </li>
+<li>description ：项目的描述信息；  </li>
+<li>organization ：项目的组织信息；  </li>
+<li>inceptionYear ：项目的创始年份；  </li>
+<li>url ：项目的 url 地址  </li>
+<li>develoers ：项目的开发者信息；  </li>
+<li>contributors ：项目的贡献者信息；  </li>
+<li>distributionManagerment ：项目的部署信息；  </li>
+<li>issueManagement ：缺陷跟踪系统信息；  </li>
+<li>ciManagement ：项目的持续继承信息；  </li>
+<li>scm ：项目的版本控制信息；  </li>
+<li>mailingListserv ：项目的邮件列表信息；  </li>
+<li>properties ：自定义的 Maven 属性；  </li>
+<li>dependencies ：项目的依赖配置；  </li>
+<li>dependencyManagement ：项目的依赖管理配置；  </li>
+<li>repositories ：项目的仓库配置；  </li>
+<li>build ：包括项目的源码目录配置、输出目录配置、插件配置、插件管理配置等；  </li>
+<li>reporting ：包括项目的报告输出目录配置、报告插件配置等。 </li>
+</ul>
+<h5 id="继承下的依赖"><a href="#继承下的依赖" class="headerlink" title="继承下的依赖"></a>继承下的依赖</h5><p>当模块A和B都依赖了一些共同的 jar，可以将这些共同的依赖放到父模块的依赖配置下，这样子模块就不用添加这些配置直接继承即可。但是，这样的话，以后新加的子模块C都会依赖这些A和B的依赖，有可能对C是没用的。<br>可以使用 dependencyManagement 统一管理这些共同依赖， dependencyManagement 下的依赖不会引入实际的依赖（打包不打），但是可以为一些依赖项配置好版本，这样子元素要使用某一项依赖时，只需要直接添加 groupId、artifactId 的 dependency，版本就是父模块中的版本，当然也可以写上 version ，这样会使用子模块中的版本（类似覆盖）。与 dependencyManagement 还有 pluginManagement 。</p>
+<h4 id="聚合与继承的关系"><a href="#聚合与继承的关系" class="headerlink" title="聚合与继承的关系"></a>聚合与继承的关系</h4><p>聚合与继承的目的是完全不同的，聚合是为了方便快速的构建多个项目，后者主要是为了消除重复的配置。两者其实没有什么关系，如果非要说两者的共同点，那就是两者的 packaging 类型都必须是 pom ,同时，聚合模块与父模块中除了 pom.xml 文件没有其他内容。<br>但是实际使用中，大多数 POM 可以既是父 POM 又是聚合 POM 。</p>
+<h3 id="Maven-测试"><a href="#Maven-测试" class="headerlink" title="Maven 测试"></a>Maven 测试</h3><p>Maven 测试主要是通过 maven-surefire-plugin 插件来完成，它能很好的支持 Junit 和 TestNG 测试框架。Maven test 阶段被定义为“使用测试框架完成测试”，默认情况下，正是与 maven-surefire-plugin 的 test 目标相绑定的。默认情况下，maven-surefire-plugin test 目标会自动执行测试源码路径下（src/test/java/）下所有符合下述命名模式的类：</p>
+<ol>
+<li><em>*/Test\</em>.java :任何子目录下以Test开头的Java类</li>
+<li><em>*/</em>Test.java :任何子目录下以Test结尾的Java类</li>
+<li><em>*/\</em>TestCase.java :任何子目录下以TestCase结尾的Java类<br>只要以上述模式命名测试类，Maven 就能自动运行它们。<br>Maven 也支持通过命令行动态指定要运行的某个或某几个测试用例：通过 test 参数指定。</li>
+</ol>
+<ul>
+<li>mvn test -Dtest=RandomGeneratorTest</li>
+<li>mvn test -Dtest=Random*Test</li>
+<li>mvn test -Dtest=Random*Test,OnceTest</li>
+</ul>
+<p>符合上述命名模式的Java测试用例会被自动执行，另外，还可以通过配置来包含或者排除某些测试用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6&lt;/version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;useFile&gt;false&lt;/useFile&gt;</span><br><span class="line">        &lt;includes&gt;</span><br><span class="line">            &lt;!-- This is not a mistake. Has to be .java even though its a groovy file. Without it, tests won&apos;t run.--&gt;</span><br><span class="line">            &lt;include&gt;**/*Spec.java&lt;/include&gt;</span><br><span class="line">            &lt;include&gt;**/*Tests.java&lt;/include&gt;</span><br><span class="line">        &lt;/includes&gt;</span><br><span class="line">        &lt;excludes&gt;</span><br><span class="line">            &lt;exclude&gt;RandomGeneratorTest&lt;/exclude&gt;</span><br><span class="line">        &lt;/excludes&gt;</span><br><span class="line">        &lt;skipTests&gt;true/false&lt;/skipTests&gt;</span><br><span class="line">        &lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure></p>
+<p>如果是 TestNG 测试，则可以在目录下创建一个称为 suite 的 xml 文件来配置测试用例的运行，具体配置要看 TestNG 的文档。另外，还需要在 maven-surefire-plugin 插件中配置使用该 suite 文件来运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;2.6&lt;/version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">      &lt;suiteXmlFile&gt;testng.xml&lt;/suiteXmlFile&gt;</span><br><span class="line">      &lt;groups&gt;group1,group2&lt;groups&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure></p>
+<p>也可以用 mvn test -DsuiteXmlFile=testng.xml 参数在命令行中指定 suite 配置文件。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/maven/" rel="tag"># maven</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/18/java/IO/java基础-序列化/" rel="next" title="Java基础-序列化">
+                <i class="fa fa-chevron-left"></i> Java基础-序列化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/25/java/IO/java基础-网络编程基础/" rel="prev" title="java基础-网络编程基础">
+                java基础-网络编程基础 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven-坐标与依赖配置"><span class="nav-number">1.</span> <span class="nav-text">Maven 坐标与依赖配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖范围"><span class="nav-number">1.1.</span> <span class="nav-text">依赖范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖范围与传递性依赖"><span class="nav-number">1.2.</span> <span class="nav-text">依赖范围与传递性依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖调解"><span class="nav-number">1.3.</span> <span class="nav-text">依赖调解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可选依赖"><span class="nav-number">1.4.</span> <span class="nav-text">可选依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排除依赖"><span class="nav-number">1.5.</span> <span class="nav-text">排除依赖</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库"><span class="nav-number">2.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#从仓库解析依赖的机制"><span class="nav-number">2.1.</span> <span class="nav-text">从仓库解析依赖的机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#镜像"><span class="nav-number">2.2.</span> <span class="nav-text">镜像</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生命周期和插件"><span class="nav-number">3.</span> <span class="nav-text">生命周期和插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插件目标"><span class="nav-number">3.1.</span> <span class="nav-text">插件目标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合与继承"><span class="nav-number">4.</span> <span class="nav-text">聚合与继承</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合-多模块"><span class="nav-number">4.1.</span> <span class="nav-text">聚合(多模块)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#继承"><span class="nav-number">4.2.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#继承下的依赖"><span class="nav-number">4.2.1.</span> <span class="nav-text">继承下的依赖</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚合与继承的关系"><span class="nav-number">4.3.</span> <span class="nav-text">聚合与继承的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Maven-测试"><span class="nav-number">5.</span> <span class="nav-text">Maven 测试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

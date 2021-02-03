@@ -1,37 +1,811 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="sql,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="锁的种类给数据项加锁的方式有多种，我们只考虑两种：  共享的(shared)：如果事务Ti获得了数据项Q上的共享型锁(shared-mode-lock)(记为S),则Ti可读但不能写Q 排它的(exclusive)：如果事务Ti获得了数据项Q上的排它型锁(exclusive-mode-lock)(记为X),则Ti可读但不能写Q。这两种类型的锁可以让并发的多个事务读取同一个数据项Q，但是同时只能有一">
+<meta name="keywords" content="sql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于锁的协议">
+<meta property="og:url" content="http://yoursite.com/2018/06/12/sql/数据库并发控制-基于锁的协议/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="锁的种类给数据项加锁的方式有多种，我们只考虑两种：  共享的(shared)：如果事务Ti获得了数据项Q上的共享型锁(shared-mode-lock)(记为S),则Ti可读但不能写Q 排它的(exclusive)：如果事务Ti获得了数据项Q上的排它型锁(exclusive-mode-lock)(记为X),则Ti可读但不能写Q。这两种类型的锁可以让并发的多个事务读取同一个数据项Q，但是同时只能有一">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/transaction-demo.png">
+<meta property="og:image" content="http://yoursite.com/pics/scheldue-1.png">
+<meta property="og:image" content="http://yoursite.com/pics/transaction-demo2.png">
+<meta property="og:image" content="http://yoursite.com/pics/transaction-demo3.png">
+<meta property="og:image" content="http://yoursite.com/pics/scheldue-2.png">
+<meta property="og:image" content="http://yoursite.com/pics/casscade-rollback.png">
+<meta property="og:image" content="http://yoursite.com/pics/mvcc.png">
+<meta property="og:image" content="http://yoursite.com/pics/mvcc-demo.png">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.217Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于锁的协议">
+<meta name="twitter:description" content="锁的种类给数据项加锁的方式有多种，我们只考虑两种：  共享的(shared)：如果事务Ti获得了数据项Q上的共享型锁(shared-mode-lock)(记为S),则Ti可读但不能写Q 排它的(exclusive)：如果事务Ti获得了数据项Q上的排它型锁(exclusive-mode-lock)(记为X),则Ti可读但不能写Q。这两种类型的锁可以让并发的多个事务读取同一个数据项Q，但是同时只能有一">
+<meta name="twitter:image" content="http://yoursite.com/pics/transaction-demo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/12/sql/数据库并发控制-基于锁的协议/">
+
+
+
+
+
+  <title>基于锁的协议 | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/12/sql/数据库并发控制-基于锁的协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于锁的协议</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T14:46:11+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="锁的种类"><a href="#锁的种类" class="headerlink" title="锁的种类"></a>锁的种类</h2><p>给数据项加锁的方式有多种，我们只考虑两种：</p>
+<ol>
+<li><strong>共享的(shared)</strong>：如果事务T<sub>i</sub>获得了数据项Q上的共享型锁(shared-mode-lock)(记为S),则T<sub>i</sub>可读但不能写Q</li>
+<li><strong>排它的(exclusive)</strong>：如果事务T<sub>i</sub>获得了数据项Q上的排它型锁(exclusive-mode-lock)(记为X),则T<sub>i</sub>可读但不能写Q。<br>这两种类型的锁可以让并发的多个事务读取同一个数据项Q，但是同时只能有一个事务进行写操作。</li>
+</ol>
+<p>我们要求每个事务都要根据自己将对数据项Q执行的操作申请适当的锁。这个申请发送给并发控制管理器，事务只有在并发控制管理器授予所需锁后才能继续其操作。</p>
+<h2 id="锁的相容性"><a href="#锁的相容性" class="headerlink" title="锁的相容性"></a>锁的相容性</h2><p>对于给定的一个锁类型集合，我们可以在此集合之上定义一个<strong>相容函数</strong>：令A与B是集合中任意的两个锁类型，假设事务T<sub>i</sub>请求对数据项Q加A类锁，而事务T<sub>j</sub>(T<sub>i</sub> &ne;T<sub>j</sub>)当前在数据项Q上拥有B类型的锁。如果此时T<sub>i</sub>可以立即获得数据项Q上的A类锁，我们说A类型锁与B类型锁是<strong>相容的</strong>。</p>
+<p>根据上述定义，共享锁和排它锁的相容性关系如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">S</th>
+<th style="text-align:right">X</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S</td>
+<td style="text-align:center">true</td>
+<td style="text-align:right">false</td>
+</tr>
+<tr>
+<td>X</td>
+<td style="text-align:center">false</td>
+<td style="text-align:right">false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>要访问一个数据项，事务T<sub>i</sub>必须先给该数据项加锁。如果该数据项已经被另一个事务加上了一个<strong>不相容</strong>的锁，则在所有其它事务持有的不相容锁释放之前，并发管理器不会授予该事物锁。因此T<sub>i</sub>必须等待所有其它事务持有的不相容类型锁被释放。</p>
+<h2 id="锁释放的时机"><a href="#锁释放的时机" class="headerlink" title="锁释放的时机"></a>锁释放的时机</h2><p>下边是一个从账户B转账$50到账户A的事务：<br><img src="/pics/transaction-demo.png" alt="事务"><br>下边是一个调度：<br><img src="/pics/scheldue-1.png" alt="事务"><br>因为T<sub>1</sub>过早的释放了锁，从而导致T<sub>2</sub>看到了不一致的转态。所以锁释放的时机是一个需要考虑的问题。</p>
+<h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><p>假定事务结束后才释放锁。<br><img src="/pics/transaction-demo2.png" alt="事务"><br><img src="/pics/transaction-demo3.png" alt="事务"><br>下边这个调度：<br><img src="/pics/scheldue-2.png" alt="事务"><br>上边这个调度会导致死锁。</p>
+<h2 id="封锁协议"><a href="#封锁协议" class="headerlink" title="封锁协议"></a>封锁协议</h2><p>一方面，如果我们不使用锁，或者使用锁时，在不恰当的时间释放锁，可能会进入数据<strong>不一致</strong>的状态。另一方面，如果在持有某数据项的锁时申请另一个数据项的锁，则可能会发生<strong>死锁</strong>。一般来说，产生死锁比进入不一致状态要好，因为可以通过回滚事务解决死锁，而不一致状态可能会引起现实应用中的问题，不一致状态是与业务相关的，是程序员负责的，是数据库不能处理的。</p>
+<p>因此，我们必须要求系统中的每一个事务遵循称为<strong>封锁协议</strong>的一组规则，这些规则规定事务何时对数据项进行加锁、解锁。封锁协议限制了可能的调度数目。意思是说这组规则过滤了一些可能会产生死锁或不一致状态的调度，比如一个好的调度会杜绝上述产生死锁的调度。</p>
+<p>我们给出下面几个定义：</p>
+<ol>
+<li>令{T<sub>0</sub>,T<sub>1</sub>,…..T<sub>n</sub>}是参与调度S的一个事务集合，如果存在数据项Q，使得T<sub>i</sub>在Q上持有A类锁，后来，T<sub>j</sub>在Q上持有B类锁，且A、B不相容，则我们称为T<sub>i</sub><strong>先于</strong>T<sub>j</sub>，记为T<sub>i</sub>&rarr;T<sub>j</sub>。<br>这一<strong>居先</strong>意味着，在任何等价的串行调度中，T<sub>i</sub>一定先于T<sub>j</sub>。</li>
+<li>如果调度S是这些遵从封锁协议规则的事务集合的可能调度之一，我们称S调度在给定的封锁协议下是合法的。</li>
+<li>当且仅当所有的合法调度都是冲突可串行化的时候，我们称这个封锁协议<strong>保证</strong>了冲突可串行化；换句话说，对于任何合法的调度，其关联的先于关系&rarr;是无环的。</li>
+</ol>
+<p>定义了这么多的概念，无非是想找到一种<strong>封锁协议</strong>，使得在这种协议的规则之下，所有的合法事务调度都能成为冲突可串行化的，找到这种协议，我们就解决了死锁问题了。</p>
+<h2 id="锁的授予"><a href="#锁的授予" class="headerlink" title="锁的授予"></a>锁的授予</h2><p>可能会存在一个事务总是不能获取到某个数据项的锁，从而永远不可能取的进展，我们成为<strong>饿死</strong>。</p>
+<p>我们可以通过如下方式授权加锁来避免事务饿死：当事务T<sub>i</sub>申请对数据项Q加M型锁时，并发控制管理器授权加锁的条件是：</p>
+<ol>
+<li>不存在数据项Q上持有与M型锁不相容锁的其它事务；</li>
+<li>不存在等待数据项Q加锁且先于T<sub>i</sub>申请加锁的事务。</li>
+</ol>
+<h2 id="两阶段封锁协议"><a href="#两阶段封锁协议" class="headerlink" title="两阶段封锁协议"></a>两阶段封锁协议</h2><p>保证可串行化的一个协议是<strong>两阶段封锁协议</strong>。该协议要求每个事务分两个阶段提出加锁和解锁申请：</p>
+<ol>
+<li><strong>增长阶段</strong>：事务可以获得锁，但不能释放锁。</li>
+<li><strong>缩减阶段</strong>：事务可以释放锁，但不能获得新锁。<br>对于任何事务，在调度中该事务获得其最后加锁位置(即增长阶段的结束点)称为事务的封锁点。这样多个事务可以根据其封锁点进行排序，实际上，这个顺序就是事务的一个可串行化顺序。</li>
+</ol>
+<p>值得注意的是，两阶段封锁协议并不保证死锁不会发生。看上文中的图，T<sub>3</sub>与T<sub>4</sub>是两阶段的，但在调度2中确发生了死锁。</p>
+<h2 id="严格两阶段封锁协议"><a href="#严格两阶段封锁协议" class="headerlink" title="严格两阶段封锁协议"></a>严格两阶段封锁协议</h2><p>考虑下面的这个调度：<br><img src="/pics/casscade-rollback.png" alt="级联回滚"><br>在事务T<sub>7</sub>的read(A)步骤之后事务T<sub>5</sub>发生故障，从而导致T<sub>6</sub>与T<sub>7</sub>发生级联回滚。</p>
+<p>级联回滚可以通过将两阶段封锁修改为<strong>严格两阶段封锁协议</strong>加以避免。这个协议除了要求封锁是两阶段的之外，还要求事务持有的所有排它锁必须在事务提交之后方可释放。这个要求保证未提交事务缩写的任何数据在事务提交之前均以排它方式加锁，防止其它事务读这些数据。</p>
+<h2 id="强两阶段封锁协议"><a href="#强两阶段封锁协议" class="headerlink" title="强两阶段封锁协议"></a>强两阶段封锁协议</h2><h2 id="Innodb-多版本并发控制（MVCC）"><a href="#Innodb-多版本并发控制（MVCC）" class="headerlink" title="Innodb 多版本并发控制（MVCC）"></a>Innodb 多版本并发控制（MVCC）</h2><p>Mysql Innodb 引擎通过多版本并发控制（MVCC，multi version concurrency control)的方式来读取数据库行。假如有一个事务要读取某行数据，此时改行数据正好在执行 delete 或者 update 操作，这时事务不会等待行上的锁释放，而是去读取该行的一个快照数据。快照数据是指该行的之前版本的数据，是通过 undo 段来实现的。<br><img src="/pics/mvcc.png" alt="非锁定一致性读"><br>在 read committed 和 repeatable read 事务隔离级别下， Innodb 使用非锁定的一致性读。但是两者有所不同，在 read committed 级别下，总是读取最新版本的数据，就是说该事务执行过程中，如果锁定该行的事务（另一个并发事务）提交了，会读取新的版本，可能与事务开始时读的版本数据不同。但是在 repeatable read 级别下，总是读取事务开始时的版本数据，就是说即使锁定该行的事务提交了，该事务也不会读取最新版本而是依旧读取事务开始时读取的版本。<br><img src="/pics/mvcc-demo.png" alt="并发实例"></p>
+<p>一致性锁定读：  </p>
+<ul>
+<li>select …. for update 会对读取的数据加一个排他锁，其他事务不能对其加任何锁，若要加就会被阻塞。</li>
+<li>select …. lock in share mode  会对读取的数据加一个共享锁，其他事务可以加共享锁。<br>上述语句必须在一个事务中执行，事务结束时（提交或回滚）会释放锁。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sql/" rel="tag"># sql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/12/分布式/分布式锁/" rel="next" title="分布式锁的几种方案">
+                <i class="fa fa-chevron-left"></i> 分布式锁的几种方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/14/sql/初级SQL/" rel="prev" title="初级 SQL">
+                初级 SQL <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的种类"><span class="nav-number">1.</span> <span class="nav-text">锁的种类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的相容性"><span class="nav-number">2.</span> <span class="nav-text">锁的相容性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁释放的时机"><span class="nav-number">3.</span> <span class="nav-text">锁释放的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">4.</span> <span class="nav-text">死锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封锁协议"><span class="nav-number">5.</span> <span class="nav-text">封锁协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁的授予"><span class="nav-number">6.</span> <span class="nav-text">锁的授予</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两阶段封锁协议"><span class="nav-number">7.</span> <span class="nav-text">两阶段封锁协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#严格两阶段封锁协议"><span class="nav-number">8.</span> <span class="nav-text">严格两阶段封锁协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强两阶段封锁协议"><span class="nav-number">9.</span> <span class="nav-text">强两阶段封锁协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Innodb-多版本并发控制（MVCC）"><span class="nav-number">10.</span> <span class="nav-text">Innodb 多版本并发控制（MVCC）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

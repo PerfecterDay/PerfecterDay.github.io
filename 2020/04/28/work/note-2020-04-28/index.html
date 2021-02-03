@@ -1,37 +1,779 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
 
-{% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
-{% block page_class %}page-post-detail{% endblock %}
+  
 
 
-{% block content %}
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="paypal,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Testenv 创建testenv: testenv create 10d --backed-by msmaster.qa.paypal.com 增加生存时间:testenv ttl extend te-testenv-001 1h 减少生存时间:testenv ttl reduce te-testenv-001 1h clone testenv :testenv clone te-testenv">
+<meta name="keywords" content="paypal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TestEnv&#x2F;DataTrack&#x2F;AMQ">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/work/note-2020-04-28/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="Testenv 创建testenv: testenv create 10d --backed-by msmaster.qa.paypal.com 增加生存时间:testenv ttl extend te-testenv-001 1h 减少生存时间:testenv ttl reduce te-testenv-001 1h clone testenv :testenv clone te-testenv">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/pics/2D_Message_Grid.png">
+<meta property="og:updated_time" content="2020-12-19T03:37:25.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TestEnv&#x2F;DataTrack&#x2F;AMQ">
+<meta name="twitter:description" content="Testenv 创建testenv: testenv create 10d --backed-by msmaster.qa.paypal.com 增加生存时间:testenv ttl extend te-testenv-001 1h 减少生存时间:testenv ttl reduce te-testenv-001 1h clone testenv :testenv clone te-testenv">
+<meta name="twitter:image" content="http://yoursite.com/pics/2D_Message_Grid.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/28/work/note-2020-04-28/">
+
+
+
+
+
+  <title>TestEnv/DataTrack/AMQ | Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
   <div id="posts" class="posts-expand">
-    {{ post_template.render(page) }}
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/28/work/note-2020-04-28/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TestEnv/DataTrack/AMQ</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-28T22:58:26+08:00">
+                2020-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/paypal/" itemprop="url" rel="index">
+                    <span itemprop="name">paypal</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Testenv"><a href="#Testenv" class="headerlink" title="Testenv"></a>Testenv</h3><ol>
+<li>创建testenv: <code>testenv create 10d --backed-by msmaster.qa.paypal.com</code></li>
+<li>增加生存时间:<code>testenv ttl extend te-testenv-001 1h</code></li>
+<li>减少生存时间:<code>testenv ttl reduce te-testenv-001 1h</code></li>
+<li>clone testenv :<code>testenv clone te-testenv-001 5h --backed-by msrelease.qa.paypal.com</code></li>
+<li>查看testEnv列表: <code>testenv list</code>, <code>testenv list --operable</code></li>
+<li>查看某个 testenv 详细信息：<code>testenv desc te-testenv-001</code></li>
+<li>删除testEnv:<code>testenv delete te-testenv-001</code></li>
+<li>生成配置文件：<code>testenv spec generate te-testenv-001 &gt; te-testenv-001-spec.yml</code></li>
+<li>安装app: <code>testenv app install te-alm-xxx amqriskexternalgwd:1.0.3_SNAPSHOT_20200428020842519</code></li>
+<li>查看app详细信息：<code>testenv app desc te-alm-xxx amqriskexternalgwd</code></li>
+<li>卸载app：<code>testenv app uninstall te-testenv-001 hermesnodeweb,mfsissuanceserv</code></li>
+<li>拷贝testenv某个app内的文件到本地：<code>testenv scp te-zhongzwang-2462_riskexternalgateway_0:path_to_file ~/Downloads</code></li>
+<li>运行batch：<code>testenv app run ${testenv_box_name} batch-risk-externalgateway:${build_version} --command &quot;${job_name}&quot;</code></li>
+<li>查看运行的job:<code>estenv job list te-alm-xxx</code></li>
+<li>查看job的详细信息：<code>testenv job desc 0dd7104f-aff5-4f2f-a319-9e7ad4c6e2de</code></li>
+</ol>
+<h3 id="DataTrack"><a href="#DataTrack" class="headerlink" title="DataTrack"></a>DataTrack</h3><p>DataTrack里查看所有表：<code>select * from all_tables where table_name like &#39;%RISKVERI%&#39;;</code></p>
+<h3 id="AMQ"><a href="#AMQ" class="headerlink" title="AMQ"></a>AMQ</h3><ol>
+<li>查看cdb的配置：<code>ssh hyperlvs31.qa.paypal.com /usr/local/bin/cdbdump &lt; ~/Downloads/RISKVERIFICATION_amq.cdb | sed &#39;s/.*://&#39; | sed &#39;s/-&gt;/ = /&#39; |sed \$d | sed \$d</code></li>
+<li>利用远程stage机器制作cdb文件：<code>ssh hyperlvs31.qa.paypal.com /usr/local/bin/cdbmake3 - &lt; /amqcommon/queue/RAPTOR_amq.txt &gt; /amqcommon/queue/RAPTOR_amq.cdb</code></li>
+</ol>
+<p>导出docker镜像中的文件：</p>
+<ol>
+<li><code>docker run -v &quot;$HOME/amqcommon/queue:/amqcommon/STAGE2/amqcommon/queue&quot; --rm -it dockerhub.paypalcorp.com/paas/amqcommon</code></li>
+<li>then symlink to root sudo ln -s ~/amqcommon /amqcommon</li>
+</ol>
+<p>Publisher and Message:<br>AMQ 是基于数据库的，Publisher 将消息插入到数据库queue的表中，Subscriber 从表中读取消息。</p>
+<p>Publisher 在publish 消息的时候，会指定一个 dequeue 时间，在这个时间之前，消费者是“看不到”这个消息的，也因为这样消息出队顺序不是按照入队顺序有序的，而是根据 dequeue time 顺序。另外，每个消息会分配一个 sub-queue id，每个queuue有一个参数<code>xxx_subqueue_max</code>来设置最大sub-queue id，Publisher 在publish 消息的时候会随机指定一个不大于该值的ID。因此一条消息可以根据 （message type，dequeue time, sub-queue id）来区分，如下图（不同颜色代表不同的message_type）：<br><img src="/pics/2D_Message_Grid.png" height="50%" width="50%"><br>为了避免这些值都相同，还会为每条message指定一个 message id，因此，(message type, dequeue time, sub-queue id, message id)唯一标识一条消息。</p>
+<p>Job划分：<br>消息最终会划分到job中，一个job最终会对应到一个消息的集合。在数据库表中，每个 job 有下边四列：</p>
+<ol>
+<li>START_TIME：起始 dequeue time</li>
+<li>END_TIME: 结束 dequeue time</li>
+<li>START_SUBQ：起始 sub-queue id</li>
+<li>END_SUBQ： 结束 sub-queue id<br>这样每个job就会划分处理queue中的一部分消息，如上图中，每个小方格代表一个job。然后，每个job会被一个 subscriber的worker领取并执行。假如某个component订阅了一个queue中一个 messageType，但是component是多线程并发消费消息的而且水平部署了多个，那么如何避免这么多线程同时消费同一个message呢？使用job划分的方式可以达到这点。</li>
+</ol>
+<p>AMQ 表：<br><a href="https://engineering.paypalcorp.com/confluence/display/AMQue/AMQ+Tables" target="_blank" rel="noopener">https://engineering.paypalcorp.com/confluence/display/AMQue/AMQ+Tables</a></p>
+<p>修改raptor运行端口：(vm options)-&gt;<code>-Dapplication.nonssl.port=8081 -Dapplication.ssl.port=8442 -Dadmin.port=8082</code><br><a href="https://engineering.paypalcorp.com/raptor/doc/RaptorSvcs/latest/docs/mds/HTCustomizeContainerConfiguration.md" target="_blank" rel="noopener">https://engineering.paypalcorp.com/raptor/doc/RaptorSvcs/latest/docs/mds/HTCustomizeContainerConfiguration.md</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/paypal/" rel="tag"># paypal</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/26/docker/docker-compose/" rel="next" title="docker-compose">
+                <i class="fa fa-chevron-left"></i> docker-compose
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/14/maven/maven插件开发和archetype/" rel="prev" title="maven plugin 开发和 archetype">
+                maven plugin 开发和 archetype <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
 
     <div class="post-spread">
-      {% if theme.jiathis %}
-        {% include '_partials/share/jiathis.swig' %}
-      {% elseif theme.baidushare %}
-        {% include '_partials/share/baidushare.swig' %}
-      {% elseif theme.add_this_id %}
-        {% include '_partials/share/add-this.swig' %}
-      {% elseif theme.duoshuo_shortname and theme.duoshuo_share %}
-        {% include '_partials/share/duoshuo_share.swig' %}
-      {% endif %}
+      
     </div>
   </div>
 
-{% endblock %}
 
-{% block sidebar %}
-  {{ sidebar_template.render(true) }}
-{% endblock %}
+          </div>
+          
 
-{% block script_extra %}
-  {% include '_scripts/pages/post-details.swig' %}
-{% endblock %}
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Testenv"><span class="nav-number">1.</span> <span class="nav-text">Testenv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DataTrack"><span class="nav-number">2.</span> <span class="nav-text">DataTrack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AMQ"><span class="nav-number">3.</span> <span class="nav-text">AMQ</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

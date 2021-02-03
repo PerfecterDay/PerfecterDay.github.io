@@ -1,23 +1,4771 @@
-{% extends '_layout.swig' %}
-{% import '_macro/post.swig' as post_template %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
+<!DOCTYPE html>
 
-{% block title %}{{ config.title }}{% if theme.index_with_subtitle and config.subtitle %} - {{config.subtitle }}{% endif %}{% endblock %}
 
-{% block page_class %}
-  {% if is_home() %}page-home{% endif -%}
-{% endblock %}
 
-{% block content %}
+  
+
+
+<html class="theme-next muse use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="学习笔记">
+<meta name="keywords" content="java sql vue web python">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coder_Wang&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+<meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="学习笔记">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coder_Wang&#39;s blog">
+<meta name="twitter:description" content="学习笔记">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/3/">
+
+
+
+
+
+  <title>Coder_Wang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coder_Wang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
-      {{ post_template.render(post, true) }}
-    {% endfor %}
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/01/spring/spring_mvc/spring mvc请求参数校验/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/01/spring/spring_mvc/spring mvc请求参数校验/" itemprop="url">spring mvc 请求参数校验及统一异常处理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-01T21:34:35+08:00">
+                2020-08-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">MVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="请求参数验证"><a href="#请求参数验证" class="headerlink" title="请求参数验证"></a>请求参数验证</h2><h3 id="JSR-303"><a href="#JSR-303" class="headerlink" title="JSR-303"></a>JSR-303</h3><p>JSR-303是Java为Bean数据合法性校验提供的标准框架，它定义了一套可标注在成员变量，属性方法上的校验注解。<br>Hibernate Validation提供了这套标准的实现，在我们引入Spring boot starter validation的时候，默认会引入Hibernate Validation。</p>
+<h3 id="Spring-使用-validation-的步骤"><a href="#Spring-使用-validation-的步骤" class="headerlink" title="Spring 使用  validation 的步骤"></a>Spring 使用  validation 的步骤</h3><ol>
+<li><p>为业务对象bean 添加相应的验证注解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Data</span><br><span class="line">public class User &#123;</span><br><span class="line"> // 名字不允许为空，并且名字的长度在2位到30位之间</span><br><span class="line"> // 如果名字的长度校验不通过，那么提示错误信息</span><br><span class="line"> @NotNull</span><br><span class="line"> @Size(min=2, max=30,message = &quot;请检查名字的长度是否有问题&quot;)</span><br><span class="line"> private String name;</span><br><span class="line"></span><br><span class="line"> // 不允许为空，并且年龄的最小值为18</span><br><span class="line"> @NotNull</span><br><span class="line"> @Min(18)</span><br><span class="line"> private Integer age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>控制器内对验证对象前加上 @Valid 注解，验证结果会返回到 BindingResult 对象中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 1. 要校验的参数前，加上@Valid注解</span><br><span class="line"> // 2. 紧随其后的，跟上一个BindingResult来存储校验信息</span><br><span class="line"> @RequestMapping(&quot;/test1&quot;)</span><br><span class="line"> public Object test1(@Valid User user,BindingResult bindingResult) &#123;</span><br><span class="line"> //如果检验出了问题，就返回错误信息</span><br><span class="line"> // 这里我们返回的是全部的错误信息，实际中可根据bindingResult的方法根据需要返回自定义的信息。</span><br><span class="line"> // 通常的解决方案为：JSR-303 + 全局ExceptionHandler</span><br><span class="line"> if (bindingResult.hasErrors())&#123;</span><br><span class="line">  return bindingResult.getAllErrors();</span><br><span class="line"> &#125;</span><br><span class="line"> return &quot;OK&quot;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="常见的校验注解"><a href="#常见的校验注解" class="headerlink" title="常见的校验注解"></a>常见的校验注解</h3><p>JSR-303 提供的标准注解：</p>
+<ul>
+<li>@Null 被注释的元素必须为 null</li>
+<li>@NotNull 被注释的元素必须不为 null</li>
+<li>@AssertTrue 被注释的元素必须为 true</li>
+<li>@AssertFalse 被注释的元素必须为 false</li>
+<li>@Min(value) 被注释的元素必须是一个数字，其值必须大于等于指定的最小值</li>
+<li>@Max(value) 被注释的元素必须是一个数字，其值必须小于等于指定的最大值</li>
+<li>@DecimalMin(value) 被注释的元素必须是一个数字，其值必须大于等于指定的最小值</li>
+<li>@DecimalMax(value) 被注释的元素必须是一个数字，其值必须小于等于指定的最大值</li>
+<li>@Size(max=, min=) 被注释的元素的大小必须在指定的范围内</li>
+<li>@Digits (integer, fraction) 被注释的元素必须是一个数字，其值必须在可接受的范围内</li>
+<li>@Past 被注释的元素必须是一个过去的日期</li>
+<li>@Future 被注释的元素必须是一个将来的日期</li>
+<li>@Pattern(regex=,flag=) 被注释的元素必须符合指定的正则表达式</li>
+</ul>
+<p>Hibernate Validator提供的校验注解：</p>
+<ul>
+<li>@NotBlank(message =) 验证字符串非null，且长度必须大于0</li>
+<li>@Email 被注释的元素必须是电子邮箱地址</li>
+<li>@Length(min=,max=) 被注释的字符串的大小必须在指定的范围内</li>
+<li>@NotEmpty 被注释的字符串的必须非空</li>
+<li>@Range(min=,max=,message=) 被注释的元素必须在合适的范围内</li>
+</ul>
+<h3 id="自定义校验注解"><a href="#自定义校验注解" class="headerlink" title="自定义校验注解"></a>自定义校验注解</h3><p>有时候，第三方库中并没有我们想要的校验类型，好在系统提供了很好的扩展能力，我们可以自定义检验。<br>比如，我们想校验用户的手机格式，写手机号码校验器</p>
+<p>1、编写校验注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 我们可以直接拷贝系统内的注解如@Min，复制到我们新的注解中，然后根据需要修改。</span><br><span class="line">@Target(&#123;METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER&#125;)</span><br><span class="line">@Retention(RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">//注解的实现类。</span><br><span class="line">@Constraint(validatedBy = &#123;IsMobileValidator.class&#125;)</span><br><span class="line">public @interface IsMobile &#123;</span><br><span class="line"> //校验错误的默认信息</span><br><span class="line"> String message() default &quot;手机号码格式有问题&quot;;</span><br><span class="line"> //是否强制校验</span><br><span class="line"> boolean isRequired() default false;</span><br><span class="line"> Class&lt;?&gt;[] groups() default &#123;&#125;;</span><br><span class="line"> Class&lt;? extends Payload&gt;[] payload() default &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2、编写具体的实现类<br>我们知道注解只是一个标记，真正的逻辑还要在特定的类中实现，上一步的注解指定了实现校验功能的类为 <code>IsMobileValidator</code> 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">// 自定义注解一定要实现ConstraintValidator接口奥，里面的两个参数</span><br><span class="line">// 第一个为 具体要校验的注解</span><br><span class="line">// 第二个为 校验的参数类型</span><br><span class="line">public class IsMobileValidator implements ConstraintValidator&lt;IsMobile, String&gt; &#123;</span><br><span class="line"></span><br><span class="line"> private boolean required = false;</span><br><span class="line"></span><br><span class="line"> private static final Pattern mobile_pattern = Pattern.compile(&quot;1\\d&#123;10&#125;&quot;);</span><br><span class="line"> //工具方法，判断是否是手机号</span><br><span class="line"> public static boolean isMobile(String src) &#123;</span><br><span class="line">  if (StringUtils.isEmpty(src)) &#123;</span><br><span class="line">   return false;</span><br><span class="line">  &#125;</span><br><span class="line">  Matcher m = mobile_pattern.matcher(src);</span><br><span class="line">  return m.matches();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public void initialize(IsMobile constraintAnnotation) &#123;</span><br><span class="line">  required = constraintAnnotation.isRequired();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @Override</span><br><span class="line"> public boolean isValid(String phone, ConstraintValidatorContext constraintValidatorContext) &#123;</span><br><span class="line">  //是否为手机号的实现</span><br><span class="line">  if (required) &#123;</span><br><span class="line">   return isMobile(phone);</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">   if (StringUtils.isEmpty(phone)) &#123;</span><br><span class="line">    return true;</span><br><span class="line">   &#125; else &#123;</span><br><span class="line">    return isMobile(phone);</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="统一异常处理"><a href="#统一异常处理" class="headerlink" title="统一异常处理"></a>统一异常处理</h2><p>Spring 统一异常处理有 3 种方式，分别为：</p>
+<ol>
+<li>使用 @ ExceptionHandler 注解</li>
+<li>实现 HandlerExceptionResolver 接口</li>
+<li>使用 @controlleradvice 注解</li>
+</ol>
+<h3 id="使用-ExceptionHandler-注解"><a href="#使用-ExceptionHandler-注解" class="headerlink" title="使用 @ExceptionHandler 注解"></a>使用 @ExceptionHandler 注解</h3><p>使用该注解有一个不好的地方就是：进行异常处理的方法必须与出错的方法在同一个Controller里面。使用如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">@Controller      </span><br><span class="line">public class GlobalController &#123;               </span><br><span class="line"> </span><br><span class="line">   /**    </span><br><span class="line">     * 用于处理异常的    </span><br><span class="line">     * @return    </span><br><span class="line">     */      </span><br><span class="line">    @ExceptionHandler(&#123;MyException.class&#125;)       </span><br><span class="line">    public String exception(MyException e) &#123;       </span><br><span class="line">        System.out.println(e.getMessage());       </span><br><span class="line">        e.printStackTrace();       </span><br><span class="line">        return &quot;exception&quot;;       </span><br><span class="line">    &#125;       </span><br><span class="line"> </span><br><span class="line">    @RequestMapping(&quot;test&quot;)       </span><br><span class="line">    public void test() &#123;       </span><br><span class="line">        throw new MyException(&quot;出错了！&quot;);       </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种方式最大的缺陷就是不能全局控制异常。每个类都要写一遍。但是这种方法对普通的 Controller 和 RestController 都可以使用。</p>
+<h3 id="实现-HandlerExceptionResolver-接口并注册到-bean-容器"><a href="#实现-HandlerExceptionResolver-接口并注册到-bean-容器" class="headerlink" title="实现 HandlerExceptionResolver 接口并注册到 bean 容器"></a>实现 HandlerExceptionResolver 接口并注册到 bean 容器</h3><p>这种方式可以进行全局的异常控制，但是只对普通的 Controller 有效，对于 RestController 无效。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class UnifiedExceptionResolver implements HandlerExceptionResolver &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        ModelAndView modelAndView = new ModelAndView();</span><br><span class="line">        modelAndView.addObject(&quot;exception&quot;,e);</span><br><span class="line">        return modelAndView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同时使用 HandlerExceptionResolver 和 @ExceptionHandler 注解时，@ExceptionHandler 会覆盖 HandlerExceptionResolver 。</p>
+<h3 id="使用-ControllerAdvice-ExceptionHandler-注解"><a href="#使用-ControllerAdvice-ExceptionHandler-注解" class="headerlink" title="使用 @ControllerAdvice+ @ExceptionHandler 注解"></a>使用 @ControllerAdvice+ @ExceptionHandler 注解</h3><p>上文说到 @ ExceptionHandler 需要进行异常处理的方法必须与出错的方法在同一个Controller里面。那么当代码加入了 @ControllerAdvice，则不需要必须在同一个 controller 中了。这也是 Spring 3.2 带来的新特性。从名字上可以看出大体意思是控制器增强。 也就是说，@controlleradvice + @ ExceptionHandler 也可以实现全局的异常捕捉，请确保此WebExceptionHandle 类能被扫描到并装载进 Spring 容器中。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">@ControllerAdvice</span><br><span class="line">@ResponseBody</span><br><span class="line">public class WebExceptionHandler &#123;</span><br><span class="line">    private static Logger logger = LoggerFactory.getLogger(WebExceptionHandle.class);</span><br><span class="line">    /**</span><br><span class="line">     * 400 - Bad Request</span><br><span class="line">     */</span><br><span class="line">    @ResponseStatus(HttpStatus.BAD_REQUEST)</span><br><span class="line">    @ExceptionHandler(HttpMessageNotReadableException.class)</span><br><span class="line">    public ServiceResponse handleHttpMessageNotReadableException(HttpMessageNotReadableException e) &#123;</span><br><span class="line">        logger.error(&quot;参数解析失败&quot;, e);</span><br><span class="line">        return ServiceResponseHandle.failed(&quot;could_not_read_json&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">     /**</span><br><span class="line">     * 405 - Method Not Allowed</span><br><span class="line">     */</span><br><span class="line">    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)</span><br><span class="line">    @ExceptionHandler()</span><br><span class="line">    public ServiceResponse handleHttpRequestMethodNotSupportedException(HttpRequestMethodNotSupportedException e) &#123;</span><br><span class="line">        logger.error(&quot;不支持当前请求方法&quot;, e);</span><br><span class="line">        return ServiceResponseHandle.failed(&quot;request_method_not_supported&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 500 - Internal Server Error</span><br><span class="line">     */</span><br><span class="line">    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)</span><br><span class="line">    @ExceptionHandler(Exception.class)</span><br><span class="line">    public ServiceResponse handleException(Exception e) &#123;</span><br><span class="line">        if (e instanceof BusinessException)&#123;</span><br><span class="line">            return ServiceResponseHandle.failed(&quot;BUSINESS_ERROR&quot;, e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        logger.error(&quot;服务运行异常&quot;, e);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        return ServiceResponseHandle.failed(&quot;server_error&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果 @ExceptionHandler 注解中未声明要处理的异常类型，则默认为参数列表中的异常类型。参见上面的 405 异常处理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/27/spring/spring_mvc/spring mvc中RequestMappingHandlerAdapter分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/27/spring/spring_mvc/spring mvc中RequestMappingHandlerAdapter分析/" itemprop="url">spring mvc 中 RequestMappingHandlerAdapter 分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T21:54:23+08:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">MVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="handleInternal-方法"><a href="#handleInternal-方法" class="headerlink" title="handleInternal 方法"></a>handleInternal 方法</h2><p>在 handleInternal 方法中最主要的是调用 invokeHandlerMethod 方法。</p>
+<h2 id="invokeHandlerMethod-方法"><a href="#invokeHandlerMethod-方法" class="headerlink" title="invokeHandlerMethod 方法"></a>invokeHandlerMethod 方法</h2><p>此方法是整个类的核心方法，大部分处理流程在这个方法中完成。</p>
+<pre><code>WebDataBinderFactory binderFactory = getDataBinderFactory(handlerMethod);
+ModelFactory modelFactory = getModelFactory(handlerMethod, binderFactory);
+ServletInvocableHandlerMethod invocableMethod = createInvocableHandlerMethod(handlerMethod);
+if (this.argumentResolvers != null) {
+    invocableMethod.setHandlerMethodArgumentResolvers(this.argumentResolvers);
+}
+if (this.returnValueHandlers != null) {
+    invocableMethod.setHandlerMethodReturnValueHandlers(this.returnValueHandlers);
+}
+invocableMethod.setDataBinderFactory(binderFactory);
+invocableMethod.setParameterNameDiscoverer(this.parameterNameDiscoverer);
+ModelAndViewContainer mavContainer = new ModelAndViewContainer();
+......
+invocableMethod.invokeAndHandle(webRequest, mavContainer);
+</code></pre><p>有几个重要的对象 <code>WebDataBinderFactory</code> , <code>ModelFactory</code> , <code>ModelAndViewContainer</code> ,<code>ServletInvocableHandlerMethod</code> 。</p>
+<p>ServletInvocableHandlerMethod.invokeAndHandle -&gt; InvocableHandlerMethod.invokeForRequest -&gt;<br>    Object[] args = InvocableHandlerMethod.getMethodArgumentValues -&gt;                 args[i] = HandlerMethodArgumentResolverComposite.resolveArgument(parameter, mavContainer, request, this.dataBinderFactory);<br>    -&gt;ModelAttributeMethodProcessor.resolveArgument()<br>                    WebDataBinder binder = binderFactory.createBinder(webRequest, attribute, name);<br>                    bindRequestParameters(binder, webRequest);<br>                    validateIfApplicable(binder, parameter);-&gt; validator.validate();<br>                    return args;</p>
+<pre><code>return doInvoke(args);        
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/03/spring/spring_aop/spring AOP知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/03/spring/spring_aop/spring AOP知识/" itemprop="url">spring AOP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T10:35:25+08:00">
+                2018-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/AOP/" itemprop="url" rel="index">
+                    <span itemprop="name">AOP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Spring-AOP知识总结"><a href="#Spring-AOP知识总结" class="headerlink" title="Spring AOP知识总结"></a>Spring AOP知识总结</h1><h2 id="实现机制"><a href="#实现机制" class="headerlink" title="实现机制"></a>实现机制</h2><ol>
+<li>动态代理<br> 引入动态代理后，我们可以将横切关注点逻辑（增强）封装到动态代理的 InvocationHandler 接口中，然后在运行期间，根据横切关注点的需要织入的模块位置，将横切逻辑织入到相应的代理类中。这种方式的缺点是所有要织入横切逻辑的模块类都要实现相应的接口，因为动态代理只对接口有效。</li>
+<li>动态字节码增强<br> 使用ASM或者CGLIB等Java工具库，在程序运行期间，动态生成字节码文件，为需要织入横切逻辑的模块类动态生成相应的子类，将横切逻辑加到这些子类中。这样就可以克服动态代理需要实现接口的限制，不过字节码增强无法扩展final类和final方法。</li>
+</ol>
+<h2 id="概念术语"><a href="#概念术语" class="headerlink" title="概念术语"></a>概念术语</h2><h3 id="连接点-join-point"><a href="#连接点-join-point" class="headerlink" title="连接点(join point)"></a>连接点(join point)</h3><p>程序运行中的一些时间点, 例如一个方法的执行，构造方法的调用，属性设置及获取，或者是一个异常的处理等.但是在 Spring AOP 中, <code>join point</code> 总是方法的执行点, 即只支持方法连接点,不可以在类上增强。</p>
+<h3 id="切点-point-cut"><a href="#切点-point-cut" class="headerlink" title="切点(point cut)"></a>切点(point cut)</h3><p>匹配 <code>join point</code> 的谓词(a predicate that matches join points).<br><code>Advice</code> 是和特定的 <code>point cut</code> 关联的, 并且在 <code>point cut</code> 相匹配的 <code>join point</code> 中执行.<br>在 Spring 中, 所有的方法都可以认为是 <code>joinpoint</code>, 但是我们并不希望在所有的方法上都添加 <code>Advice</code>, 而 <code>pointcut</code> 的作用就是提供一组规则(使用 AspectJ pointcut expression language 来描述) 来匹配<code>joinpoint</code>, 给满足规则的 <code>joinpoint</code> 添加 <code>Advice</code>.</p>
+<p>简而言之，切点就是用来筛选哪些连接点需要织入增强代码的。<br>Pointcut接口的声明如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public interface  &#123;</span><br><span class="line">    Pointcut TRUE = TruePointcut.INSTANCE;</span><br><span class="line"></span><br><span class="line">    ClassFilter getClassFilter();</span><br><span class="line"></span><br><span class="line">    MethodMatcher getMethodMatcher();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ClassFilter 和 MethodMatcher 分别用于匹配将被织入横切逻辑的对象和相应的方法，即类型匹配和方法匹配。<br><img src="/pics/Pointcut.png" alt="Spring 中 Pointcut 定义"><br>常见的 Pointcut:</p>
+<ol>
+<li>NameMatchMethodPointcut</li>
+<li>JdkRegexpMethodPointcut</li>
+<li>AnnotationMatchingPointcut</li>
+<li>ComposablePointcut</li>
+</ol>
+<h3 id="关于join-point-和-point-cut-的区别"><a href="#关于join-point-和-point-cut-的区别" class="headerlink" title="关于join point 和 point cut 的区别"></a>关于<code>join point</code> 和 <code>point cut</code> 的区别</h3><p>在 Spring AOP 中, 所有的方法执行都是 <code>join point</code>. 而 <code>point cut</code> 是一个描述信息, 它修饰的是 <code>join point</code>, 通过 <code>point cut</code>, 我们就可以确定哪些 <code>join point</code> 可以被织入 Advice. 因此 <code>join point</code> 相当于数据库中的记录， 而 <code>point cut</code> 相当于带有查询条件查询出来的记录。<br><code>advice</code> 是在 <code>join point</code>上执行的, 而 <code>point cut</code> 规定了哪些 <code>join point</code> 可以执行哪些 <code>advice</code>.</p>
+<h3 id="增强（-Advice"><a href="#增强（-Advice" class="headerlink" title="增强（ Advice )"></a>增强（ Advice )</h3><p>按照Advice实例能否在目标对象类的所有实例间共享这一标准，可以将Advice分为 per-class 和 per-instance 类型：</p>
+<ul>
+<li><p>per-class类型的 Advice，可以在所有目标类对象之间共享，不会保存任何目标对象的状态或者添加新特性。</p>
+<ol>
+<li>Before Advice: 在连接点指定位置之前执行的增强类型。</li>
+<li>After Advice: 在连接点指定位置之后执行的增强类型，该类型还有三种子类型：<ol>
+<li>After returning advice: 只有切点处执行流程正常完成后，才会执行</li>
+<li>After throwing advice: 只有切点处执行流程抛出异常的情况下，才会执行</li>
+<li>After advice: 不管切点是正常执行还是异常了都会执行，相当于 finally 块一样。</li>
+</ol>
+</li>
+<li>Around Advice（Interceptor）: 可以在切点之前和之后都指定相应的逻辑，甚至于中断或者忽略切点原来的程序流程的执行<br><img src="/pics/Advice.png" alt="Spring 中 Advice 继承类图"></li>
+</ol>
+</li>
+<li>per-instance类型的 Advice，Advice对象不会在目标类对象的实例之间共享。不同的目标对象创建不同的Advice实例。<br>Introduction: 可以为原有的对象添加新的特性或者行为,Spring中主要使用 IntroductionInterceptor 接口来实现。<br><img src="/pics/aop-introduction.png" alt></li>
+</ul>
+<h3 id="切面-aspect"><a href="#切面-aspect" class="headerlink" title="切面 (aspect)"></a>切面 (aspect)</h3><p><code>aspect</code> 由 <code>pointcut</code> 和 <code>advice</code> 组成, 它既包含了横切逻辑(增强)的定义, 也包括了切点的定义. Spring AOP就是负责实施切面的框架, 它将切面所定义的横切逻辑织入到切面所指定的连接点中.<br>AOP的工作重心在于如何将增强织入目标对象的连接点上, 这里包含两个工作:</p>
+<ol>
+<li>如何通过 <code>pointcut</code> 和 <code>advice</code> 定位到特定的 joinpoint 上</li>
+<li>如何在 <code>advice</code> 中编写切面代码.</li>
+</ol>
+<p>Spring 中使用 org.springframework.aop.Advisor 接口表示切面。可以划分为 PointcutAdvisor 和 IntroductionAdvisor 两个分支。</p>
+<ol>
+<li>PointcutAdvisor<br> <img src="/pics/Advisor.png" alt="Spring 中 Advisor 类图"></li>
+<li>IntroductionAdvisor<br> IntroductionAdvisor 的类层次比较简单，只有一个 DefaultIntroductionAdvisor 的默认实现。</li>
+</ol>
+<h3 id="织入-Weaving"><a href="#织入-Weaving" class="headerlink" title="织入(Weaving)"></a>织入(Weaving)</h3><p>将 aspect 和其他对象连接起来, 并创建 adviced object 的过程.</p>
+<p>根据不同的实现技术, AOP织入有三种方式:</p>
+<ul>
+<li>编译器织入, 这要求有特殊的Java编译器.AspectJ的 ajc 编译器</li>
+<li>类装载期织入, 这需要有特殊的类装载器. Jboss AOP 自定义的 ClassLoader</li>
+<li>动态代理织入, 在运行期为目标类添加增强(Advice)生成代理类的方式.</li>
+</ul>
+<p>Spring 采用动态代理织入, 而AspectJ采用编译器织入和类装载期织入。<br>上述所有的概念可以由下面这张图大致概括：<br><img src="/pics/spring-aop.png" alt height="60%" width="60%"></p>
+<h2 id="Spring-AOP-的织入"><a href="#Spring-AOP-的织入" class="headerlink" title="Spring AOP 的织入"></a>Spring AOP 的织入</h2><p>AspectJ使用 ajc 编译器作为它的织入器，Jboss AOP 自定义的ClassLoader作为织入器， Spring AOP 中使用 ProxyFactory 作为织入器。使用 ProxyFactory 很简单，只需要以下3步：</p>
+<ol>
+<li>第一就是告诉它你要织入的目标对象：可以在构造函数中直接传入，也可以用setter方法设置</li>
+<li>第二就是告诉它要应用到目标对象的Aspect(Advisor)或者直接告诉它Advice：addAdvisor()/addAdvice()</li>
+<li>最后直接调用 ProxyFactory 的 getProxy() 方法就可以获得增强的代理对象<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ProxyFactory proxyFactory = new ProxyFactory(targetObj);</span><br><span class="line">//或者 proxyFactory.setTarget(targetObj);</span><br><span class="line">proxyFactory.addAdvisor(advisor);</span><br><span class="line">//或者 proxyFactory.addAdvice(advice);</span><br><span class="line">Object proxy = proxyFactory.getProxy();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>默认情况下，如果目标对象实现了接口， ProxyFactory 会使用 JDK 的动态代理生成代理对象，下述三种情况会使用基于类的代理：</p>
+<ol>
+<li>目标类没有实现任何接口，忽略 proxyTargetClass 的值</li>
+<li>如果 ProxyFactory 的 proxyTargetClass 属性为 true</li>
+<li>如果 ProxyFactory 的 optimize 属性为 true</li>
+</ol>
+<p>上述方式主要是对于编程式AOP的支持。另外，为了支持容器，Spring提供了 ProxyFactoryBean 来支持配置式的AOP。</p>
+<h3 id="Spring-AOP-的自动织入"><a href="#Spring-AOP-的自动织入" class="headerlink" title="Spring AOP 的自动织入"></a>Spring AOP 的自动织入</h3><p>Spring 提供了自动代理机制，让容器自动生成代理，把开发人员从繁琐的配置工作中解放出来。在内部，Spring 使用 BeanPostProcessor 自动完成这项工作。只要提供一个 BeanPostProcessor，这个 BeanPostProcessor 在对象实例化时，为符合条件的 bean 生成代理对象并返回，而不是返回实例化的目标 bean 本身，可以用下述伪代码表示大致过程：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">for(bean in beanfactory)&#123;</span><br><span class="line">    if(如果要为该bean 生成代理对象)&#123;</span><br><span class="line">        Object proxy = createProxy(bean);</span><br><span class="line">        return proxy;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        Object instance = createInstance(bean);</span><br><span class="line">        return instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="/pics/ProxyCreator.png" alt="Spring 中 ProxyCreator 类图"></p>
+<h2 id="AspectJ-支持"><a href="#AspectJ-支持" class="headerlink" title="@AspectJ 支持"></a>@AspectJ 支持</h2><p>@AspectJ 是一种使用 Java 注解来实现 AOP 的编码风格.<br>@AspectJ 风格的 AOP 是 AspectJ Project 在 AspectJ 5 中引入的, 并且 Spring 也支持@AspectJ 的 AOP 风格.</p>
+<h3 id="使能-AspectJ-支持"><a href="#使能-AspectJ-支持" class="headerlink" title="使能 @AspectJ 支持"></a>使能 @AspectJ 支持</h3><p><code>@AspectJ</code> 可以以 XML 的方式或以注解的方式来使能, 并且不论以哪种方式使能@ASpectJ, 我们都必须保证 aspectjweaver.jar 在 classpath 中.</p>
+<p>使用 Java Configuration 方式使能@AspectJ</p>
+<pre><code>@Configuration
+@EnableAspectJAutoProxy
+public class AppConfig {
+}
+</code></pre><p>使用 XML 方式使能@AspectJ</p>
+<pre><code>&lt;aop:aspectj-autoproxy/&gt;
+</code></pre><h3 id="定义aspect-切面"><a href="#定义aspect-切面" class="headerlink" title="定义aspect(切面)"></a>定义aspect(切面)</h3><p>当使用注解 <code>@Aspect</code> 标注一个 Bean 后, 那么 Spring 框架会自动收集这些 Bean, 并添加到 Spring AOP 中, 例如:</p>
+<pre><code>@Component
+@Aspect
+public class MyTest {
+}
+</code></pre><p>注意, 仅仅使用@Aspect 注解, 并不能将一个 Java 对象转换为 Bean, 因此我们还需要使用类似 @Component 之类的注解.<br>注意, 如果一个类被@Aspect标注, 则这个类就不能是其他 aspect 的 <strong>advised object</strong> 了, 因为使用 @Aspect 后, 这个类就会被排除在 auto-proxying 机制之外.</p>
+<h3 id="声明-pointcut"><a href="#声明-pointcut" class="headerlink" title="声明 pointcut"></a>声明 pointcut</h3><p>一个 pointcut 的声明由两部分组成:</p>
+<ul>
+<li>一个方法签名, 包括方法名和相关参数</li>
+<li>一个 pointcut 表达式, 用来指定哪些方法执行是我们感兴趣的(即因此可以织入 advice).</li>
+</ul>
+<p>在@AspectJ风格的AOP中, 我们使用一个方法来描述 pointcut, 即:</p>
+<pre><code>@Pointcut(&quot;execution(* com.xys.service.UserService.*(..))&quot;) // 切点表达式
+private void dataAccessOperation() {} // 切点前面
+</code></pre><p>这个方法必须无返回值.<br>这个方法本身就是 pointcut signature, pointcut 表达式使用@Pointcut 注解指定.<br>上面我们简单地定义了一个 pointcut, 这个 pointcut 所描述的是: 匹配所有在包 com.xys.service.UserService 下的所有方法的执行.</p>
+<h3 id="切点标志符-designator"><a href="#切点标志符-designator" class="headerlink" title="切点标志符(designator)"></a>切点标志符(designator)</h3><p>AspectJ5的切点表达式由标志符(designator)和操作参数组成. 如 “execution( greetTo(..))” 的切点表达式, execution 就是标志符, 而圆括号里的 greetTo(..) 就是操作参数.</p>
+<ol>
+<li><p>execution</p>
+<p> 匹配 join point 的执行, 例如 “execution(* hello(..))” 表示匹配所有目标类中的 hello() 方法. 这个是最基本的 pointcut 标志符.</p>
+</li>
+<li><p>within</p>
+<p> 匹配特定包下的所有 join point, 例如 within(com.xys.*) 表示 com.xys 包中的所有连接点, 即包中的所有类的所有方法. 而 within(com.xys.service.*Service) 表示在 com.xys.service 包中所有以 Service 结尾的类的所有的连接点.</p>
+</li>
+<li><p>this 与 target</p>
+<p> this 的作用是匹配一个 bean, 这个 bean(Spring AOP proxy) 是一个给定类型的实例(instance of). 而 target 匹配的是一个目标对象(target object, 即需要织入 advice 的原始的类), 此对象是一个给定类型的实例(instance of).</p>
+</li>
+<li><p>bean</p>
+<p> 匹配 bean 名字为指定值的 bean 下的所有方法, 例如:</p>
+<p> bean(*Service) // 匹配名字后缀为 Service 的 bean 下的所有方法<br> bean(myService) // 匹配名字为 myService 的 bean 下的所有方法</p>
+</li>
+<li><p>args</p>
+<p> 匹配参数满足要求的的方法.<br> 例如:</p>
+<pre><code> @Pointcut(&quot;within(com.xys.demo2.*)&quot;)
+ public void pointcut2() {
+ }
+
+ @Before(value = &quot;pointcut2()  &amp;&amp;  args(name)&quot;)
+ public void doSomething(String name) {
+     logger.info(&quot;---page: {}---&quot;, name);
+ }
+
+ @Service
+ public class NormalService {
+     private Logger logger = LoggerFactory.getLogger(getClass());
+
+     public void someMethod() {
+         logger.info(&quot;---NormalService: someMethod invoked---&quot;);
+     }
+</code></pre></li>
+</ol>
+<pre><code>        public String test(String name) {
+            logger.info(&quot;---NormalService: test invoked---&quot;);
+            return &quot;服务一切正常&quot;;
+        }
+    }
+当 NormalService.test 执行时, 则 advice doSomething 就会执行, test 方法的参数 name 就会传递到 doSomething 中.
+</code></pre><p>常用例子:</p>
+<pre><code> // 匹配只有一个参数 name 的方法
+@Before(value = &quot;aspectMethod()  &amp;&amp;  args(name)&quot;)
+public void doSomething(String name) {
+}
+// 匹配第一个参数为 name 的方法
+@Before(value = &quot;aspectMethod()  &amp;&amp;  args(name, ..)&quot;)
+public void doSomething(String name) {
+}
+
+// 匹配第二个参数为 name 的方法
+Before(value = &quot;aspectMethod()  &amp;&amp;  args(*, name, ..)&quot;)
+public void doSomething(String name) {
+}
+</code></pre><ol>
+<li><p>@annotation</p>
+<p>匹配由指定注解所标注的方法, 例如:</p>
+<pre><code>@Pointcut(&quot;@annotation(com.xys.demo1.AuthChecker)&quot;)
+public void pointcut() {
+}
+</code></pre><p>则匹配由注解 AuthChecker 所标注的方法.</p>
+</li>
+</ol>
+<h3 id="常见的切点表达式"><a href="#常见的切点表达式" class="headerlink" title="常见的切点表达式"></a>常见的切点表达式</h3><ul>
+<li><p>匹配方法签名</p>
+<pre><code>  // 匹配指定包中的所有的方法
+  execution(* com.xys.service.*(..))
+
+  // 匹配当前包中的指定类的所有方法
+  execution(* UserService.*(..))
+
+  // 匹配指定包中的所有 public 方法
+  execution(public * com.xys.service.*(..))
+
+  // 匹配指定包中的所有 public 方法, 并且返回值是 int 类型的方法
+  execution(public int com.xys.service.*(..))
+
+  // 匹配指定包中的所有 public 方法, 并且第一个参数是 String, 返回值是 int 类型的方法
+  execution(public int com.xys.service.*(String name, ..))
+</code></pre></li>
+<li><p>匹配类型签名</p>
+<pre><code>  // 匹配指定包中的所有的方法, 但不包括子包
+  within(com.xys.service.*)
+
+  // 匹配指定包中的所有的方法, 包括子包
+  within(com.xys.service..*)
+
+  // 匹配当前包中的指定类中的方法
+  within(UserService)
+</code></pre></li>
+</ul>
+<pre><code>    // 匹配一个接口的所有实现类中的实现的方法
+    within(UserDao+)
+</code></pre><ul>
+<li>匹配 Bean 名字</li>
+<li><pre><code>  // 匹配以指定名字结尾的 Bean 中的所有方法
+  bean(*Service)
+</code></pre></li>
+<li><p>切点表达式组合</p>
+<pre><code>  // 匹配以 Service 或 ServiceImpl 结尾的 bean
+  bean(*Service || *ServiceImpl)
+
+  // 匹配名字以 Service 结尾, 并且在包 com.xys.service 中的 bean
+  bean(*Service) &amp;&amp; within(com.xys.service.*)
+</code></pre></li>
+</ul>
+<h3 id="声明-advice"><a href="#声明-advice" class="headerlink" title="声明 advice"></a>声明 advice</h3><p>advice 是和一个 pointcut 表达式关联在一起的, 并且会在匹配的 join point 的方法执行的前/后/周围 运行. pointcut 表达式可以是简单的一个 pointcut 名字的引用, 或者是完整的 pointcut 表达式.<br>下面我们以几个简单的 advice 为例子, 来看一下一个 advice 是如何声明的.</p>
+<h4 id="Before-advice"><a href="#Before-advice" class="headerlink" title="Before advice"></a>Before advice</h4><pre><code>/**
+ * @author xiongyongshun
+ * @version 1.0
+ * @created 16/9/9 13:13
+ */
+@Component
+@Aspect
+public class BeforeAspectTest {
+    // 定义一个 Pointcut, 使用 切点表达式函数 来描述对哪些 Join point 使用 advise.
+    @Pointcut(&quot;execution(* com.xys.service.UserService.*(..))&quot;)
+    public void dataAccessOperation() {
+    }
+}
+
+@Component
+@Aspect
+public class AdviseDefine {
+    // 定义 advise
+    @Before(&quot;com.xys.aspect.PointcutDefine.dataAccessOperation()&quot;)
+    public void doBeforeAccessCheck(JoinPoint joinPoint) {
+        System.out.println(&quot;*****Before advise, method: &quot; + joinPoint.getSignature().toShortString() + &quot; *****&quot;);
+    }
+}
+</code></pre><p>这里, @Before 引用了一个 pointcut, 即 “com.xys.aspect.PointcutDefine.dataAccessOperation()” 是一个 pointcut 的名字.<br>如果我们在 advice 在内置 pointcut, 则可以:</p>
+<pre><code>@Component
+@Aspect
+public class AdviseDefine {
+    // 将 pointcut 和 advice 同时定义
+    @Before(&quot;within(com.xys.service..*)&quot;)
+    public void doAccessCheck(JoinPoint joinPoint) {
+        System.out.println(&quot;*****doAccessCheck, Before advise, method: &quot; + joinPoint.getSignature().toShortString() + &quot; *****&quot;);
+    }
+}
+</code></pre><h4 id="around-advice"><a href="#around-advice" class="headerlink" title="around advice"></a>around advice</h4><p>around advice 比较特别, 它可以在一个方法的之前之前和之后添加不同的操作, 并且甚至可以决定何时, 如何, 是否调用匹配到的方法.</p>
+<pre><code>@Component
+@Aspect
+public class AdviseDefine {
+    // 定义 advise
+    @Around(&quot;com.xys.aspect.PointcutDefine.dataAccessOperation()&quot;)
+    public Object doAroundAccessCheck(ProceedingJoinPoint pjp) throws Throwable {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start();
+        // 开始
+        Object retVal = pjp.proceed(); 
+        stopWatch.stop();
+        // 结束
+        System.out.println(&quot;invoke method: &quot; + pjp.getSignature().getName() + &quot;, elapsed time: &quot; + stopWatch.getTotalTimeMillis());
+        return retVal;
+    }
+}
+</code></pre><p>around advice 和前面的 before advice 差不多, 只是我们把注解 @Before 改为了 @Around 了.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/06/shiro/shiro中的Subject分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/06/shiro/shiro中的Subject分析/" itemprop="url">shiro中的Subject分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-06T17:56:30+08:00">
+                2018-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的Subject分析"><a href="#shiro中的Subject分析" class="headerlink" title="shiro中的Subject分析"></a>shiro中的Subject分析</h1><p>shiro中的Subject对象代表主体，代表了当前“用户”，这个用户不一定是一个具体的人，与当前应用交互的任何东西都是Subject，如网络爬虫，机器人等；即一个抽象概念；所有 Subject 都绑定到 SecurityManager，与 Subject 的所有交互都会委托给 SecurityManager；可以把 Subject 认为是一个门面；SecurityManager 才是实际的执行者。</p>
+<p>也就是说对于我们而言，最简单的一个 Shiro 应用：<br>1、 应用代码通过 Subject 来进行认证和授权，而 Subject 又委托给 SecurityManager；<br>2、 我们需要给 Shiro 的 SecurityManager 注入 Realm，从而让 SecurityManager 能得到合法的用户及其权限进行判断。</p>
+<h2 id="Subject接口"><a href="#Subject接口" class="headerlink" title="Subject接口"></a><code>Subject</code>接口</h2><pre><code>public interface Subject {
+    Object getPrincipal();
+    PrincipalCollection getPrincipals();
+    boolean isPermitted(String var1);
+    boolean hasRole(String var1);
+    boolean[] hasRoles(List&lt;String&gt; var1);
+    boolean hasAllRoles(Collection&lt;String&gt; var1);
+    void checkRole(String var1) throws AuthorizationException;
+    void login(AuthenticationToken var1) throws AuthenticationException;
+    boolean isAuthenticated();
+    boolean isRemembered();
+    Session getSession();
+    void logout();
+    &lt;V&gt; V execute(Callable&lt;V&gt; var1) throws ExecutionException;
+    void execute(Runnable var1);
+    &lt;V&gt; Callable&lt;V&gt; associateWith(Callable&lt;V&gt; var1);
+    Runnable associateWith(Runnable var1);
+    void runAs(PrincipalCollection var1) throws NullPointerException, IllegalStateException;
+    boolean isRunAs();
+    PrincipalCollection getPreviousPrincipals();
+    PrincipalCollection releaseRunAs();
+    public static class Builder {
+        private final SubjectContext subjectContext;
+        private final SecurityManager securityManager;
+        public Builder() {
+            this(SecurityUtils.getSecurityManager());
+        }
+        public Builder(SecurityManager securityManager) {
+            if (securityManager == null) {
+            } else {
+                this.securityManager = securityManager;
+                this.subjectContext = this.newSubjectContextInstance();
+                if (this.subjectContext == null) {
+                    throw new IllegalStateException(&quot;Subject instance returned from &#39;newSubjectContextInstance&#39; cannot be null.&quot;);
+                } else {
+                    this.subjectContext.setSecurityManager(securityManager);
+                }
+            }
+        }
+        protected SubjectContext newSubjectContextInstance() {
+            return new DefaultSubjectContext();
+        }
+        protected SubjectContext getSubjectContext() {
+            return this.subjectContext;
+        }
+        public Subject.Builder sessionId(Serializable sessionId) {
+            if (sessionId != null) {
+                this.subjectContext.setSessionId(sessionId);
+            }
+
+            return this;
+        }
+        public Subject.Builder host(String host) {
+            if (StringUtils.hasText(host)) {
+                this.subjectContext.setHost(host);
+            }
+
+            return this;
+        }
+
+        public Subject.Builder session(Session session) {
+            if (session != null) {
+                this.subjectContext.setSession(session);
+            }
+
+            return this;
+        }
+
+        public Subject.Builder principals(PrincipalCollection principals) {
+            if (!CollectionUtils.isEmpty(principals)) {
+                this.subjectContext.setPrincipals(principals);
+            }
+
+            return this;
+        }
+
+        public Subject.Builder sessionCreationEnabled(boolean enabled) {
+            this.subjectContext.setSessionCreationEnabled(enabled);
+            return this;
+        }
+
+        public Subject.Builder authenticated(boolean authenticated) {
+            this.subjectContext.setAuthenticated(authenticated);
+            return this;
+        }
+
+        public Subject.Builder contextAttribute(String attributeKey, Object attributeValue) {
+            if (attributeKey == null) {
+                String msg = &quot;Subject context map key cannot be null.&quot;;
+                throw new IllegalArgumentException(msg);
+            } else {
+                if (attributeValue == null) {
+                    this.subjectContext.remove(attributeKey);
+                } else {
+                    this.subjectContext.put(attributeKey, attributeValue);
+                }
+
+                return this;
+            }
+        }
+
+        public Subject buildSubject() {
+            return this.securityManager.createSubject(this.subjectContext);
+        }
+    }
+}
+</code></pre><h2 id="DelegatingSubject"><a href="#DelegatingSubject" class="headerlink" title="DelegatingSubject"></a><code>DelegatingSubject</code></h2><pre><code>public class DelegatingSubject implements Subject {
+    private static final String RUN_AS_PRINCIPALS_SESSION_KEY =
+            DelegatingSubject.class.getName() + &quot;.RUN_AS_PRINCIPALS_SESSION_KEY&quot;;
+    protected PrincipalCollection principals;
+    protected boolean authenticated; //代表是否是认证过的
+    protected String host;
+    protected Session session; //session对象
+    /**
+     * @since 1.2
+     */
+    protected boolean sessionCreationEnabled;
+    protected transient SecurityManager securityManager;//委托对象
+    .....
+}
+</code></pre><p><code>Subject</code>对象上的操作大部分都委托给<code>SecurityManager</code>域对象进行，包括认证、授权等：<br>授权：</p>
+<pre><code>public boolean isPermitted(String permission) {
+    return hasPrincipals() &amp;&amp; securityManager.isPermitted(getPrincipals(), permission);
+}
+</code></pre><p>登录认证：</p>
+<pre><code>public void login(AuthenticationToken token) throws AuthenticationException {
+    clearRunAsIdentitiesInternal();
+    Subject subject = securityManager.login(this, token);
+    PrincipalCollection principals;
+    String host = null;
+    .....
+}
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/shiro/shiro中的ShiroFilterFactoryBean分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/shiro/shiro中的ShiroFilterFactoryBean分析/" itemprop="url">shiro中的ShiroFilterFactoryBean分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T15:54:32+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的ShiroFilterFactoryBean分析"><a href="#shiro中的ShiroFilterFactoryBean分析" class="headerlink" title="shiro中的ShiroFilterFactoryBean分析"></a>shiro中的<code>ShiroFilterFactoryBean</code>分析</h1><p>shiro中的<code>ShiroFilterFactoryBean</code>是配置shiro拦截主要对象，从名字可以看出它是一个工厂类，看一下它的定义：</p>
+<pre><code>public class ShiroFilterFactoryBean implements FactoryBean, BeanPostProcessor {
+    private SecurityManager securityManager;
+    private Map&lt;String, Filter&gt; filters = new LinkedHashMap();
+    private Map&lt;String, String&gt; filterChainDefinitionMap = new LinkedHashMap();
+    private String loginUrl;
+    private String successUrl;
+    private String unauthorizedUrl;
+    private AbstractShiroFilter instance;
+}
+</code></pre><p><code>ShiroFilterFactoryBean</code>中有一个<code>SecurityManager</code>域，用两个<code>Map</code>保存自定义的<code>Filter</code>和拦截器链的配置。</p>
+<p>定义一个FactoryBean时，其实真正生成bean的是<code>getObject</code>方法，看一下<code>ShiroFilterFactoryBean</code>的<code>getObject</code>方法：</p>
+<pre><code>public Object getObject() throws Exception {
+    if(this.instance == null) {
+        this.instance = this.createInstance();
+    }
+    return this.instance;
+}
+
+protected AbstractShiroFilter createInstance() throws Exception {
+    SecurityManager securityManager = this.getSecurityManager();
+    String manager1;
+    if(securityManager == null) {
+       ....
+    } else if(!(securityManager instanceof WebSecurityManager)) {
+        ....
+    } else {
+        FilterChainManager manager = this.createFilterChainManager();
+        PathMatchingFilterChainResolver chainResolver = new PathMatchingFilterChainResolver();
+        chainResolver.setFilterChainManager(manager);
+        return new ShiroFilterFactoryBean.SpringShiroFilter((WebSecurityManager)securityManager, chainResolver);
+    }
+}
+</code></pre><p>可见<code>ShiroFilterFactoryBean</code>的主要功能是生成一个<code>SpringShiroFilter</code>对象Bean.在创建Benn的过程中，分别创建了<code>FilterChainManager</code>、<code>PathMatchingFilterChainResolver</code>对象。</p>
+<p>看一下<code>FilterChainManager</code>的创建过程:</p>
+<pre><code>protected FilterChainManager createFilterChainManager() {
+    DefaultFilterChainManager manager = new DefaultFilterChainManager();
+    Map defaultFilters = manager.getFilters();
+    Iterator filters = defaultFilters.values().iterator();
+
+    while(filters.hasNext()) {
+        Filter chains = (Filter)filters.next();
+        this.applyGlobalPropertiesIfNecessary(chains);
+    }
+
+    Map filters1 = this.getFilters();
+    String entry1;
+    Filter url;
+    if(!CollectionUtils.isEmpty(filters1)) {
+        for(Iterator chains1 = filters1.entrySet().iterator(); chains1.hasNext(); manager.addFilter(entry1, url, false)) {
+            Entry entry = (Entry)chains1.next();
+            entry1 = (String)entry.getKey();
+            url = (Filter)entry.getValue();
+            this.applyGlobalPropertiesIfNecessary(url);
+            if(url instanceof Nameable) {
+                ((Nameable)url).setName(entry1);
+            }
+        }
+    }
+
+    Map chains2 = this.getFilterChainDefinitionMap();
+    if(!CollectionUtils.isEmpty(chains2)) {
+        Iterator entry2 = chains2.entrySet().iterator();
+
+        while(entry2.hasNext()) {
+            Entry entry3 = (Entry)entry2.next();
+            String url1 = (String)entry3.getKey();
+            String chainDefinition = (String)entry3.getValue();
+            manager.createChain(url1, chainDefinition);
+        }
+    }
+
+    return manager;
+}
+</code></pre><p>注意一下这句for循环语句：</p>
+<pre><code>for(Iterator chains1 = filters1.entrySet().iterator(); chains1.hasNext(); manager.addFilter(entry1, url, false){...}
+</code></pre><p>这段代码会把<code>ShiroFilterFactoryBean</code>的<code>filters</code>域中保存的拦截器添加到生成的<code>DefaultFilterChainManager</code>对象的<code>filters</code>域。</p>
+<p>接着，会解析<code>filterChainDefinitionMap</code>域，并根据其中的内容，生成拦截器链：</p>
+<pre><code>manager.createChain(url1, chainDefinition);
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/shiro/shiro中的SecurityManager分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/04/shiro/shiro中的SecurityManager分析/" itemprop="url">shiro中的SecurityManager分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-04T20:33:35+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的SecurityManager分析"><a href="#shiro中的SecurityManager分析" class="headerlink" title="shiro中的SecurityManager分析"></a>shiro中的<code>SecurityManager</code>分析</h1><h2 id="SecurityManager接口定义"><a href="#SecurityManager接口定义" class="headerlink" title="SecurityManager接口定义"></a><code>SecurityManager</code>接口定义</h2><p>SecurityManager是shiro中的核心管理类，是一个接口，首先看一下SecurityManager的定义：</p>
+<pre><code>public interface SecurityManager extends Authenticator, Authorizer, SessionManager {
+    Subject login(Subject var1, AuthenticationToken var2) throws AuthenticationException;
+    void logout(Subject var1);
+    Subject createSubject(SubjectContext var1);
+}
+</code></pre><p><code>Authenticator</code>、<code>Authorizer</code>、<code>SessionManager</code>都是shiro中另外几个组件。<code>Authenticator</code>是认证器，负责认证功能；<code>Authorizer</code>是鉴权器，负责权限鉴定功能；<code>SessionManager</code>负责session管理功能。后续分析各个模块的功能。</p>
+<h2 id="CachingSecurityManager实现了-SecurityManager"><a href="#CachingSecurityManager实现了-SecurityManager" class="headerlink" title="CachingSecurityManager实现了 SecurityManager"></a><code>CachingSecurityManager</code>实现了 <code>SecurityManager</code></h2><pre><code>public abstract class CachingSecurityManager implements SecurityManager, Destroyable, CacheManagerAware, EventBusAware{
+    private CacheManager cacheManager;//缓存管理器
+    private EventBus eventBus;
+    ....
+}
+</code></pre><p>该类增加了缓存管理和事件总线功能。</p>
+<h2 id="RealmSecurityManager继承自-CachingSecurityManager"><a href="#RealmSecurityManager继承自-CachingSecurityManager" class="headerlink" title="RealmSecurityManager继承自 CachingSecurityManager"></a><code>RealmSecurityManager</code>继承自 <code>CachingSecurityManager</code></h2><p>该类增加了一个<code>Collection&lt;Realm&gt;</code>类型的域，可以保存多个<code>Realm</code>对象。</p>
+<pre><code>public abstract class RealmSecurityManager extends CachingSecurityManager {
+    private Collection&lt;Realm&gt; realms;
+    .....
+}
+</code></pre><h2 id="AuthenticatingSecurityManager继承自-RealmSecurityManager"><a href="#AuthenticatingSecurityManager继承自-RealmSecurityManager" class="headerlink" title="AuthenticatingSecurityManager继承自 RealmSecurityManager"></a><code>AuthenticatingSecurityManager</code>继承自 <code>RealmSecurityManager</code></h2><p>该类增加了<code>Authenticator</code>域，使用该认证器可以实现认证功能。</p>
+<pre><code>public abstract class AuthenticatingSecurityManager extends RealmSecurityManager {
+    private Authenticator authenticator = new ModularRealmAuthenticator();
+    ....
+}
+</code></pre><p>并且，该类真正实现了Authenticator的AuthenticationInfo方法：</p>
+<pre><code>public AuthenticationInfo authenticate(AuthenticationToken token) throws AuthenticationException {
+    return this.authenticator.authenticate(token);
+}
+</code></pre><h2 id="AuthorizingSecurityManager继承自-AuthenticatingSecurityManager"><a href="#AuthorizingSecurityManager继承自-AuthenticatingSecurityManager" class="headerlink" title="AuthorizingSecurityManager继承自 AuthenticatingSecurityManager"></a><code>AuthorizingSecurityManager</code>继承自 <code>AuthenticatingSecurityManager</code></h2><p>与<code>AuthenticatingSecurityManager</code>该类增加了<code>Authorizer</code>域，使用该鉴权器可以实现权限验证功能。</p>
+<pre><code>public abstract class AuthorizingSecurityManager extends AuthenticatingSecurityManager {
+    private Authorizer authorizer = new ModularRealmAuthorizer();
+    ...
+}
+</code></pre><p>调用域对象<code>authorizer</code>的相应方法实现了<code>Authorizer</code>的所有接口方法。</p>
+<h2 id="SessionsSecurityManager继承自AuthorizingSecurityManager"><a href="#SessionsSecurityManager继承自AuthorizingSecurityManager" class="headerlink" title="SessionsSecurityManager继承自AuthorizingSecurityManager"></a><code>SessionsSecurityManager</code>继承自<code>AuthorizingSecurityManager</code></h2><pre><code>public abstract class SessionsSecurityManager extends AuthorizingSecurityManager {
+    private SessionManager sessionManager = new DefaultSessionManager();
+    ....
+}
+</code></pre><p>跟前两个类一样，通过增加一个<code>SessionManager</code>的域来实现<code>SessionManager</code>接口的功能。</p>
+<h2 id="DefaultSecurityManager继承自SessionsSecurityManager"><a href="#DefaultSecurityManager继承自SessionsSecurityManager" class="headerlink" title="DefaultSecurityManager继承自SessionsSecurityManager"></a><code>DefaultSecurityManager</code>继承自<code>SessionsSecurityManager</code></h2><pre><code>public class DefaultSecurityManager extends SessionsSecurityManager {
+    protected RememberMeManager rememberMeManager;
+    protected SubjectDAO subjectDAO;
+    protected SubjectFactory subjectFactory;
+    ....
+}
+</code></pre><p><code>subjectFactory</code>对象用来生成<code>subject</code>，<code>subjectDAO</code>用来保存<code>subject</code>,<code>rememberMeManager</code>实现rememberMe功能。</p>
+<p>当我们在程序中调用<code>subject.login(token)</code>方法，会调用<code>SecurityManager</code>的<code>login</code>方法：</p>
+<pre><code>public Subject login(Subject subject, AuthenticationToken token) throws AuthenticationException {
+   AuthenticationInfo info;
+   try {
+       info = this.authenticate(token);
+   } catch (AuthenticationException var7) {
+      ........
+   }
+   Subject loggedIn = this.createSubject(token, info, subject);
+   this.onSuccessfulLogin(token, info, loggedIn);
+   return loggedIn;
+</code></pre><p>   }<br>可见会调用<code>authenticate</code>方法，上文分析到，<code>authenticate</code>方法实际上会调用保存的<code>Authenticator</code>的<code>authenticate</code>方法，分析<code>Authenticator</code>会得知，其最终会调用<code>Realm</code>的<code>getAuthenticationInfo</code>方法。由此，将登陆操作和<code>Realm</code>对象关联起来了.并且，认证成功后，会利用认证信息和token及现在subject生成一个新的<code>Subject</code>的已认证对象：</p>
+<pre><code>   Subject loggedIn = this.createSubject(token, info, subject);
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/shiro/shiro中的Realm分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/shiro/shiro中的Realm分析/" itemprop="url">shiro中的Realm分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T22:26:30+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的Realm分析撒"><a href="#shiro中的Realm分析撒" class="headerlink" title="shiro中的Realm分析撒"></a>shiro中的Realm分析撒</h1><p><code>Realm</code>是shiro中定义认证和权限的地方。</p>
+<h2 id="Realm接口"><a href="#Realm接口" class="headerlink" title="Realm接口"></a><code>Realm</code>接口</h2><pre><code>public interface Realm {
+    String getName();
+    boolean supports(AuthenticationToken var1);//判断是否支持一个AuthenticationToken类型
+    AuthenticationInfo getAuthenticationInfo(AuthenticationToken var1) throws AuthenticationException;
+}
+</code></pre><h2 id="CachingRealm抽象类"><a href="#CachingRealm抽象类" class="headerlink" title="CachingRealm抽象类"></a><code>CachingRealm</code>抽象类</h2><pre><code>public abstract class CachingRealm implements Realm, Nameable, CacheManagerAware, LogoutAware {
+    private static final AtomicInteger INSTANCE_COUNT = new AtomicInteger();
+    private String name;
+    private boolean cachingEnabled = true;
+    private CacheManager cacheManager;
+}
+</code></pre><p>增加了<code>CacheManager</code>类型的域 <code>cacheManager</code>实现缓存功能。</p>
+<h2 id="AuthenticatingRealm类"><a href="#AuthenticatingRealm类" class="headerlink" title="AuthenticatingRealm类"></a><code>AuthenticatingRealm</code>类</h2><pre><code>public abstract class AuthenticatingRealm extends CachingRealm implements Initializable {
+    private static final Logger log = LoggerFactory.getLogger(AuthenticatingRealm.class);
+    private static final AtomicInteger INSTANCE_COUNT = new AtomicInteger();
+    private static final String DEFAULT_AUTHORIZATION_CACHE_SUFFIX = &quot;.authenticationCache&quot;;
+    private CredentialsMatcher credentialsMatcher;
+    private Cache&lt;Object, AuthenticationInfo&gt; authenticationCache;
+    private boolean authenticationCachingEnabled;
+    private String authenticationCacheName;
+    private Class&lt;? extends AuthenticationToken&gt; authenticationTokenClass;
+    ...
+}
+</code></pre><p>看其重写的<code>getAuthenticationInfo</code>方法：</p>
+<pre><code>public final AuthenticationInfo getAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+    AuthenticationInfo info = this.getCachedAuthenticationInfo(token);
+    if (info == null) {
+        info = this.doGetAuthenticationInfo(token);
+        if (token != null &amp;&amp; info != null) {
+            this.cacheAuthenticationInfoIfPossible(token, info);
+        }
+    } else {
+    }
+    if (info != null) {
+        this.assertCredentialsMatch(token, info);
+    } else {
+    }
+    return info;
+}
+</code></pre><p>首先尝试从缓存中获取<code>AuthenticationInfo</code>，如果缓存中没有，调用<code>doGetAuthenticationInfo</code>方法获取，获取到将其缓存起来。如果成功获取到，则会调用<code>assertCredentialsMatch</code>方法判断token和返回的信息是否匹配：</p>
+<pre><code>protected void assertCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) throws AuthenticationException {
+    CredentialsMatcher cm = this.getCredentialsMatcher();
+    if (cm != null) {
+        if (!cm.doCredentialsMatch(token, info)) {
+            String msg = &quot;Submitted credentials for token [&quot; + token + &quot;] did not match the expected credentials.&quot;;
+            throw new IncorrectCredentialsException(msg);
+        }
+    } else {
+        throw new AuthenticationException(&quot;A CredentialsMatcher must be configured in order to verify credentials during authentication.  If you do not wish for credentials to be examined, you can configure an &quot; + AllowAllCredentialsMatcher.class.getName() + &quot; instance.&quot;);
+    }
+}
+</code></pre><p>不匹配就报错。</p>
+<h2 id="AuthorizingRealm类"><a href="#AuthorizingRealm类" class="headerlink" title="AuthorizingRealm类"></a><code>AuthorizingRealm</code>类</h2><pre><code>public abstract class AuthorizingRealm extends AuthenticatingRealm implements Authorizer, Initializable, PermissionResolverAware, RolePermissionResolverAware {
+    private static final Logger log = LoggerFactory.getLogger(AuthorizingRealm.class);
+    private static final String DEFAULT_AUTHORIZATION_CACHE_SUFFIX = &quot;.authorizationCache&quot;;
+    private static final AtomicInteger INSTANCE_COUNT = new AtomicInteger();
+    private boolean authorizationCachingEnabled;
+    private Cache&lt;Object, AuthorizationInfo&gt; authorizationCache;
+    private String authorizationCacheName;
+    private PermissionResolver permissionResolver;
+    private RolePermissionResolver permissionRoleResolver;
+}
+</code></pre><p>增加了许多和权限解析相关的域。</p>
+<pre><code>protected AuthorizationInfo getAuthorizationInfo(PrincipalCollection principals) {
+    if (principals == null) {
+        return null;
+    } else {
+        AuthorizationInfo info = null;
+        Cache&lt;Object, AuthorizationInfo&gt; cache = this.getAvailableAuthorizationCache();
+        Object key;
+        if (cache != null) {
+            key = this.getAuthorizationCacheKey(principals);
+            info = (AuthorizationInfo)cache.get(key);
+        }
+        if (info == null) {
+            info = this.doGetAuthorizationInfo(principals);
+            if (info != null &amp;&amp; cache != null) {
+
+                key = this.getAuthorizationCacheKey(principals);
+                cache.put(key, info);
+            }
+        }
+        return info;
+    }
+}
+</code></pre><p>也是首先尝试从缓存获取权限信息，如果失败则调用<code>doGetAuthorizationInfo</code>方法获取权限信息，获取成功则将其存入缓存.</p>
+<p>此外，该类还实现了<code>Authorizer</code>接口中的方法。这些方法在<code>subject</code>对象调用鉴权相关的方法时会被调用，如<code>isPermitted</code>、<code>checkPermission</code>等方法。</p>
+<p>总结：</p>
+<ol>
+<li>当<code>subject</code>调用<code>login</code>方法时，会调用<code>Realm</code>中的<code>getAuthenticationInfo</code>或<code>doGetAuthenticationInfo</code>方法；</li>
+<li>当<code>subject</code>调用鉴权相关的方法时，会调用<code>Realm</code>中的<code>getAuthorizationInfo</code>或<code>doGetAuthenticationInfo</code>方法；</li>
+</ol>
+<p>大体的方向是<code>subject</code>—&gt;<code>securityManager</code>——&gt;<code>Authenticator</code>或者<code>Authorizer</code>—-&gt;<code>Realm</code>.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/shiro/shiro中的ProxiedFilterChain分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/shiro/shiro中的ProxiedFilterChain分析/" itemprop="url">shiro中的ProxiedFilterChain分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T17:30:10+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的ProxiedFilterChain分析"><a href="#shiro中的ProxiedFilterChain分析" class="headerlink" title="shiro中的ProxiedFilterChain分析"></a>shiro中的ProxiedFilterChain分析</h1><p>shiro中的过滤器链和Servlet中的FilterChain之间的关系是什么呢？就要看<code>ProxiedFilterChain</code>代理对象如何封装FilterChain了：</p>
+<pre><code>public class ProxiedFilterChain implements FilterChain {
+    private FilterChain orig;
+    private List&lt;Filter&gt; filters;
+    private int index = 0;
+
+
+    public ProxiedFilterChain(FilterChain orig, List&lt;Filter&gt; filters) {
+        if(orig == null) {
+            throw new NullPointerException(&quot;original FilterChain cannot be null.&quot;);
+        } else {
+            this.orig = orig;
+            this.filters = filters;
+            this.index = 0;
+        }
+    }
+
+    public void doFilter(ServletRequest request, ServletResponse response) throws IOException, ServletException {
+        if(this.filters != null &amp;&amp; this.filters.size() != this.index) {
+            if(log.isTraceEnabled()) {
+                log.trace(&quot;Invoking wrapped filter at index [&quot; + this.index + &quot;]&quot;);
+            }
+
+            ((Filter)this.filters.get(this.index++)).doFilter(request, response, this);
+        } else {
+            if(log.isTraceEnabled()) {
+                log.trace(&quot;Invoking original filter chain.&quot;);
+            }
+
+            this.orig.doFilter(request, response);
+        }
+
+    }
+}
+
+看源码很简单，`ProxiedFilterChain`用一个`FilterChain`类型域保存Servlet的原生过滤器链，用一个List&lt;Filter&gt;列表保存自定义过滤器链。
+
+重写`doFilter`方法中，首先执行自定义过滤器链，然后执行原生过滤器链.
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/shiro/shiro中的Filter继承层次分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/04/shiro/shiro中的Filter继承层次分析/" itemprop="url">shiro中的Filter继承层次分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-04T16:40:35+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的Filter继承层次分析"><a href="#shiro中的Filter继承层次分析" class="headerlink" title="shiro中的Filter继承层次分析"></a>shiro中的<code>Filter</code>继承层次分析</h1><p>首先看一下shiro中的拦截器继承类图：</p>
+<p><img src="/pics/shiro-filter-hierachy.png" alt="shiro拦截器类图"></p>
+<h2 id="AbstractFilter直接实现javax-servlet-Filter接口"><a href="#AbstractFilter直接实现javax-servlet-Filter接口" class="headerlink" title="AbstractFilter直接实现javax.servlet.Filter接口"></a><code>AbstractFilter</code>直接实现<code>javax.servlet.Filter</code>接口</h2><pre><code>public abstract class AbstractFilter extends ServletContextSupport implements Filter{
+    protected FilterConfig filterConfig;
+    ..........
+}
+</code></pre><p>该类有一个<code>javax.servlet.FilterConfig</code>类域，可以通过这个对象来获取Filter的一些信息。该对象由Servlet规范在调用Filter时，传递给Filter对象。</p>
+<p>该类重写了Filter的init()方法，</p>
+<pre><code>public final void init(FilterConfig filterConfig) throws ServletException {
+        this.setFilterConfig(filterConfig);  //获取传递过来的FilterConfig对象并保存
+        try {
+            //调用自定义的onFilterConfigSet方法，子类可重写此方法实现某些需求
+            this.onFilterConfigSet(); 
+        } catch (Exception var3) {
+            if(var3 instanceof ServletException) {
+                throw (ServletException)var3;
+            } else {
+                if(log.isErrorEnabled()) {
+                    log.error(&quot;Unable to start Filter: [&quot; + var3.getMessage() + &quot;].&quot;, var3);
+                }
+
+                throw new ServletException(var3);
+            }
+        }
+    }
+</code></pre><p><code>init()</code>方法会调用<code>onFilterConfigSet</code>方法，所以此方法是一个扩展点。</p>
+<h2 id="NameableFilter继承自AbstractFilter"><a href="#NameableFilter继承自AbstractFilter" class="headerlink" title="NameableFilter继承自AbstractFilter"></a><code>NameableFilter</code>继承自<code>AbstractFilter</code></h2><p>该类添加了一个String类型的name域，用来为Filter命名，此name与FilterConfig中的FilterName不同，属于shiro为Filter自定义的名字。</p>
+<h2 id="OncePerRequestFilter继承自NameableFilter"><a href="#OncePerRequestFilter继承自NameableFilter" class="headerlink" title="OncePerRequestFilter继承自NameableFilter"></a><code>OncePerRequestFilter</code>继承自<code>NameableFilter</code></h2><p>添加了如下域：</p>
+<pre><code>public static final String ALREADY_FILTERED_SUFFIX = &quot;.FILTERED&quot;;
+private boolean enabled = true;//代表该filter是否可用
+</code></pre><p>重写了<code>doFilter</code>方法：</p>
+<pre><code>public final void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        String alreadyFilteredAttributeName = this.getAlreadyFilteredAttributeName();
+        if(request.getAttribute(alreadyFilteredAttributeName) != null) {
+            filterChain.doFilter(request, response);
+        } else if(this.isEnabled(request, response) &amp;&amp; !this.shouldNotFilter(request)) {
+            request.setAttribute(alreadyFilteredAttributeName, Boolean.TRUE);
+            try {
+                this.doFilterInternal(request, response, filterChain);
+            } finally {
+                request.removeAttribute(alreadyFilteredAttributeName);
+            }
+        } else {
+            filterChain.doFilter(request, response);
+        }
+
+    }
+</code></pre><p>可以看出该方法首先获取一个字符串：</p>
+<pre><code>String alreadyFilteredAttributeName = this.getAlreadyFilteredAttributeName();
+</code></pre><p>该字符串是name+”.FILTERED”的一个字符串。<br>然后，用此String去调用requets.getAttribute(alreadyFilteredAttributeName)判断是否有值：</p>
+<ol>
+<li>如果有，代表该filter被执行过，直接调用<code>filterChain.doFilter(request, response);</code>执行filter链中的下一个。</li>
+<li>如果没有，判断<code>this.isEnabled(request, response) &amp;&amp; !this.shouldNotFilter(request)</code>，如果该filter可用，则将<code>alreadyFilteredAttributeName</code>加入到request的attribute中，并调用<code>doFilterInternal</code>方法。并在执行完后调用<code>request.removeAttribute(alreadyFilteredAttributeName);</code>方法清除调用过的标记。</li>
+<li>其它情况直接执行filter链中的下一个。</li>
+</ol>
+<h2 id="AdviceFilter继承自OncePerRequestFilter"><a href="#AdviceFilter继承自OncePerRequestFilter" class="headerlink" title="AdviceFilter继承自OncePerRequestFilter"></a><code>AdviceFilter</code>继承自<code>OncePerRequestFilter</code></h2><p>Advice是增强的意思，类似Spring AOP中的Advice.该类并没有添加其它域，只是重写了<code>doFilterInternal</code>方法，为其子类提供多个扩展点。</p>
+<pre><code>public void doFilterInternal(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
+        Exception exception = null;
+        try {
+            boolean e = this.preHandle(request, response);
+            if(log.isTraceEnabled()) {
+                log.trace(&quot;Invoked preHandle method.  Continuing chain?: [&quot; + e + &quot;]&quot;);
+            }
+            if(e) {
+                this.executeChain(request, response, chain);
+            }
+            this.postHandle(request, response);
+            if(log.isTraceEnabled()) {
+                log.trace(&quot;Successfully invoked postHandle method&quot;);
+            }
+        } catch (Exception var9) {
+            exception = var9;
+        } finally {
+            this.cleanup(request, response, exception);
+        }
+    }
+</code></pre><p>可以看出，<code>doFilterInternal</code>方法依次调用了<code>preHandle</code>、<code>executeChain</code>、<code>postHandle</code>方法。<code>executeChain</code>只是<code>chain.doFilter(request, response);</code>的封装，代表直接跳到下一个filter去执行。</p>
+<p><code>preHandle</code>,<code>postHandle</code>是扩展点，子类可以重写这两个方法。</p>
+<h2 id="PathMatchingFilter继承自AdviceFilter"><a href="#PathMatchingFilter继承自AdviceFilter" class="headerlink" title="PathMatchingFilter继承自AdviceFilter"></a><code>PathMatchingFilter</code>继承自<code>AdviceFilter</code></h2><p>该类添加了两个域：</p>
+<pre><code>protected PatternMatcher pathMatcher = new AntPathMatcher();
+protected Map&lt;String, Object&gt; appliedPaths = new LinkedHashMap();
+</code></pre><p><code>pathMatcher</code>是解析path路径的解析器，appliedPaths代表接收的路径。看下面代码分析。</p>
+<p>该类重写了<code>preHandle</code>方法：</p>
+<pre><code>protected boolean preHandle(ServletRequest request, ServletResponse response) throws Exception {
+    if(this.appliedPaths != null &amp;&amp; !this.appliedPaths.isEmpty()) {
+        Iterator var3 = this.appliedPaths.keySet().iterator();
+
+        String path;
+        do {
+            if(!var3.hasNext()) {
+                return true;
+            }
+
+            path = (String)var3.next();
+        } while(!this.pathsMatch(path, request));
+
+        log.trace(&quot;Current requestURI matches pattern \&#39;{}\&#39;.  Determining filter chain execution...&quot;, path);
+        Object config = this.appliedPaths.get(path);
+        return this.isFilterChainContinued(request, response, path, config);
+    } else {
+        if(log.isTraceEnabled()) {
+            log.trace(&quot;appliedPaths property is null or empty.  This Filter will passthrough immediately.&quot;);
+        }
+
+        return true;
+    }
+}
+</code></pre><p>该方法首先用键遍历<code>appliedPaths</code> Map中的对象，对比request的路径和遍历对象的值，直到找到一个匹配的路径，这个过程中会用到<code>pathMatcher</code>路径解析器。如果有某个路径匹配request路径，调用</p>
+<pre><code>Object config = this.appliedPaths.get(path);
+return this.isFilterChainContinued(request, response, path, config);
+</code></pre><p>获取对应path键的值，并调用<code>isFilterChainContinued</code>方法。</p>
+<pre><code>private boolean isFilterChainContinued(ServletRequest request, ServletResponse response, String path, Object pathConfig) throws Exception {
+        if(this.isEnabled(request, response, path, pathConfig)) {
+            ......
+            return this.onPreHandle(request, response, pathConfig);
+        } else {
+            ......
+            return true;
+        }
+    }
+</code></pre><p>该方法中调用了<code>onPreHandle</code>方法，此方法也是一个扩展点。</p>
+<h2 id="AccessControlFilter继承自PathMatchingFilter"><a href="#AccessControlFilter继承自PathMatchingFilter" class="headerlink" title="AccessControlFilter继承自PathMatchingFilter"></a><code>AccessControlFilter</code>继承自<code>PathMatchingFilter</code></h2><p>该类增加了四个域：</p>
+<pre><code>public static final String DEFAULT_LOGIN_URL = &quot;/login.jsp&quot;;
+public static final String GET_METHOD = &quot;GET&quot;;
+public static final String POST_METHOD = &quot;POST&quot;;
+private String loginUrl = &quot;/login.jsp&quot;;
+</code></pre><p>最重要的是重写了<code>onPreHandle</code>方法：</p>
+<pre><code>public boolean onPreHandle(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
+    return this.isAccessAllowed(request, response, mappedValue) || this.onAccessDenied(request, response, mappedValue);
+}
+</code></pre><p>注意这里的用法：短路算法。如果<code>isAccessAllowed</code>为真则后边<code>onAccessDenied</code>的不会执行，否则会执行<code>onAccessDenied</code>方法。</p>
+<p><code>isAccessAllowed</code>是个扩展点，子类可以重写此方法根据自身需求定义请求是否允许的判断功能。<code>onAccessDenied</code>也是个扩展点，子类可以重写此方法定义拒绝访问后的操作。</p>
+<p>此类中还定义<code>isLoginRequest</code>、<code>saveRequestAndRedirectToLogin</code>等方法，其中：</p>
+<pre><code>protected void saveRequest(ServletRequest request) {
+    WebUtils.saveRequest(request);
+}
+</code></pre><p>WebUtils中的saveRequest方法定义：</p>
+<pre><code>public static void saveRequest(ServletRequest request) {
+        Subject subject = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        HttpServletRequest httpRequest = toHttp(request);
+        SavedRequest savedRequest = new SavedRequest(httpRequest);
+        session.setAttribute(&quot;shiroSavedRequest&quot;, savedRequest);
+    }
+</code></pre><p>通过session保存了此次请求的信息。</p>
+<h2 id="AuthenticationFilter继承自AccessControlFilter"><a href="#AuthenticationFilter继承自AccessControlFilter" class="headerlink" title="AuthenticationFilter继承自AccessControlFilter"></a><code>AuthenticationFilter</code>继承自<code>AccessControlFilter</code></h2><p>该类主要是重写了<code>isAccessAllowed</code>方法：</p>
+<pre><code>protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+    Subject subject = this.getSubject(request, response);
+    return subject.isAuthenticated();
+}
+</code></pre><p>调用Subject的isAuthenticated()方法，返回该用户是否被认证过。</p>
+<h2 id="AuthenticatingFilter继承自AuthenticationFilter"><a href="#AuthenticatingFilter继承自AuthenticationFilter" class="headerlink" title="AuthenticatingFilter继承自AuthenticationFilter"></a><code>AuthenticatingFilter</code>继承自<code>AuthenticationFilter</code></h2><p>该类主要是用来实现认证登录的功能的，该类重写了<code>isAccessAllowed</code>方法：</p>
+<pre><code>protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+    return super.isAccessAllowed(request, response, mappedValue) || !this.isLoginRequest(request, response) &amp;&amp; this.isPermissive(mappedValue);
+}
+</code></pre><p>此外，该类还提供了<code>executeLogin</code>的登录方法：</p>
+<pre><code>protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
+    AuthenticationToken token = this.createToken(request, response);
+    if (token == null) {
+        String msg = &quot;createToken method implementation returned null. A valid non-null AuthenticationToken must be created in order to execute a login attempt.&quot;;
+        throw new IllegalStateException(msg);
+    } else {
+        try {
+            Subject subject = this.getSubject(request, response);
+            subject.login(token);
+            return this.onLoginSuccess(token, subject, request, response);
+        } catch (AuthenticationException var5) {
+            return this.onLoginFailure(token, var5, request, response);
+        }
+    }
+}
+</code></pre><p>子类可以在<code>onAccessDenied</code>方法之中调用<code>executeLogin</code>方法，即需要登录才能访问。表示执行登录操作。分析上述方法，可知登陆成功后，会执行<code>onLoginSuccess</code>方法，失败则执行<code>onLoginFailure</code>方法，这两个方法也是扩展点。</p>
+<h2 id="AbstractShiroFilter继承自OncePerRequestFilter"><a href="#AbstractShiroFilter继承自OncePerRequestFilter" class="headerlink" title="AbstractShiroFilter继承自OncePerRequestFilter"></a><code>AbstractShiroFilter</code>继承自<code>OncePerRequestFilter</code></h2><p>这个类是实现shiro中url拦截的主要功能类，此类增加了三个域：</p>
+<pre><code>public abstract class AbstractShiroFilter extends OncePerRequestFilter {
+    private WebSecurityManager securityManager;
+    private FilterChainResolver filterChainResolver;
+    private boolean staticSecurityManagerEnabled = false;
+}
+</code></pre><p>主要是前两个域：</p>
+<ul>
+<li><code>WebSecurityManager</code>：用来实现SecurityManager的所有功能.</li>
+<li><code>FilterChainResolver</code>：用来实现过滤器链解析功能。</li>
+</ul>
+<p><code>AbstractShiroFilter</code>重写了<code>doFilterInternal</code>方法：</p>
+<pre><code>protected void doFilterInternal(ServletRequest servletRequest, ServletResponse servletResponse, final FilterChain chain) throws ServletException, IOException {
+    Throwable t = null;
+        ....
+        final ServletRequest msg = this.prepareServletRequest(servletRequest, servletResponse, chain);
+        final ServletResponse response = this.prepareServletResponse(msg, servletResponse, chain);
+        WebSubject subject = this.createSubject(msg, response);
+        subject.execute(new Callable() {
+            public Object call() throws Exception {
+                AbstractShiroFilter.this.updateSessionLastAccessTime(msg, response);
+                AbstractShiroFilter.this.executeChain(msg, response, chain);
+                return null;
+            }
+        });
+   ....
+}
+</code></pre><p>主要是调用<code>updateSessionLastAccessTime</code>、<code>executeChain</code>两个方法，<code>updateSessionLastAccessTime</code>方法用来更新session，我们主要看一下<code>executeChain</code>方法：</p>
+<pre><code>protected void executeChain(ServletRequest request, ServletResponse response, FilterChain origChain) throws IOException, ServletException {
+    FilterChain chain = this.getExecutionChain(request, response, origChain);
+    chain.doFilter(request, response);
+}
+
+protected FilterChain getExecutionChain(ServletRequest request, ServletResponse response, FilterChain origChain) {
+    FilterChain chain = origChain;
+    FilterChainResolver resolver = this.getFilterChainResolver();
+    if(resolver == null) {
+        ....
+        return origChain;
+    } else {
+        FilterChain resolved = resolver.getChain(request, response, origChain);
+        if(resolved != null) {
+            chain = resolved;
+        } else {
+           ....
+        }
+        return chain;
+    }
+}
+</code></pre><p>可见，主要功能是使用<code>FilterChainResolver</code>域来解析出一个<code>FilterChain</code>对象，并调用<code>doFilter</code>方法.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/shiro/shiro中的FilterChainManager分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/04/shiro/shiro中的FilterChainManager分析/" itemprop="url">shiro中的FilterChainManager分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-04T22:33:40+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的FilterChainManager分析"><a href="#shiro中的FilterChainManager分析" class="headerlink" title="shiro中的FilterChainManager分析"></a>shiro中的<code>FilterChainManager</code>分析</h1><h2 id="FilterChainManager接口"><a href="#FilterChainManager接口" class="headerlink" title="FilterChainManager接口"></a><code>FilterChainManager</code>接口</h2><p><code>FilterChainManager</code>主要提供了管理<code>FilterChain</code>的功能。定义如下：</p>
+<pre><code>public interface FilterChainManager {
+    Map&lt;String, Filter&gt; getFilters();
+    NamedFilterList getChain(String var1);
+    boolean hasChains();
+    Set&lt;String&gt; getChainNames();
+    FilterChain proxy(FilterChain var1, String var2);
+    void addFilter(String var1, Filter var2);
+    void addFilter(String var1, Filter var2, boolean var3);
+    void createChain(String var1, String var2);
+    void addToChain(String var1, String var2);
+    void addToChain(String var1, String var2, String var3) throws ConfigurationException;
+}
+</code></pre><p><code>FilterChain</code>是 <code>javax.servlet</code>包下的标准对象类。</p>
+<h2 id="DefaultFilterChainManager"><a href="#DefaultFilterChainManager" class="headerlink" title="DefaultFilterChainManager"></a><code>DefaultFilterChainManager</code></h2><h3 id="DefaultFilterChainManager的域"><a href="#DefaultFilterChainManager的域" class="headerlink" title="DefaultFilterChainManager的域"></a><code>DefaultFilterChainManager</code>的域</h3><p>shiro中只有一个默认的<code>FilterChainManager</code>的实现，即<code>DefaultFilterChainManager</code>：</p>
+<pre><code>public class DefaultFilterChainManager implements FilterChainManager {
+    private FilterConfig filterConfig;
+    private Map&lt;String, Filter&gt; filters = new LinkedHashMap();
+    private Map&lt;String, NamedFilterList&gt; filterChains = new LinkedHashMap();
+    .....
+}
+</code></pre><p>其中，<code>NamedFilterList</code>类定义如下：</p>
+<pre><code>public interface NamedFilterList extends List&lt;Filter&gt; {
+    String getName();
+    FilterChain proxy(FilterChain var1);
+}
+</code></pre><p>可以看出，该类对标准的<code>FilterChain</code>进行了封装，将一个<code>FilterChain</code>对象和一个名字关联起来，名字通过<code>getName()</code>方法获取。</p>
+<h3 id="DefaultFilterChainManager的两个构造方法："><a href="#DefaultFilterChainManager的两个构造方法：" class="headerlink" title="DefaultFilterChainManager的两个构造方法："></a><code>DefaultFilterChainManager</code>的两个构造方法：</h3><pre><code>public DefaultFilterChainManager() {
+    this.addDefaultFilters(false);
+}
+
+public DefaultFilterChainManager(FilterConfig filterConfig) {
+    this.setFilterConfig(filterConfig);
+    this.addDefaultFilters(true);
+}
+</code></pre><p><code>addDefaultFilters</code>方法：</p>
+<pre><code>protected void addDefaultFilters(boolean init) {
+    DefaultFilter[] var2 = DefaultFilter.values();
+    int var3 = var2.length;
+    for(int var4 = 0; var4 &lt; var3; ++var4) {
+        DefaultFilter defaultFilter = var2[var4];
+        this.addFilter(defaultFilter.name(), defaultFilter.newInstance(), init, false);
+    }
+
+}
+</code></pre><p><code>addDefaultFilters</code>方法主要是遍历<code>DefaultFilter</code>枚举变量，获取每一个枚举值，实例化各个Filter对象，并调用<code>addFilter</code>方法。我们在配置url拦截时，使用的<code>anno</code>、<code>authc</code>等拦截器就是在此处生成的。</p>
+<p><code>DefaultFilter</code>是一个枚举类型，保存了shiro默认提供的一些Filter实现，并将其作为默认过滤器链使用：</p>
+<pre><code>public enum DefaultFilter {
+    anon(AnonymousFilter.class),
+    authc(FormAuthenticationFilter.class),
+    authcBasic(BasicHttpAuthenticationFilter.class),
+    logout(LogoutFilter.class),
+    noSessionCreation(NoSessionCreationFilter.class),
+    perms(PermissionsAuthorizationFilter.class),
+    port(PortFilter.class),
+    rest(HttpMethodPermissionFilter.class),
+    roles(RolesAuthorizationFilter.class),
+    ssl(SslFilter.class),
+    user(UserFilter.class);
+
+    private final Class&lt;? extends Filter&gt; filterClass;
+}
+</code></pre><h3 id="addFilter方法"><a href="#addFilter方法" class="headerlink" title="addFilter方法"></a><code>addFilter</code>方法</h3><p>我们接着看<code>addFilter</code>方法：</p>
+<pre><code>protected void addFilter(String name, Filter filter, boolean init, boolean overwrite) {
+    Filter existing = this.getFilter(name);
+    if(existing == null || overwrite) {
+        if(filter instanceof Nameable) {
+            ((Nameable)filter).setName(name);
+        }
+
+        if(init) {
+            this.initFilter(filter);
+        }
+
+        this.filters.put(name, filter);
+    }
+
+}
+</code></pre><p>此方法主要功能是将实例化的<code>Filter</code>对象保存到<code>filters</code>域，以其在<code>DefaultFilter</code>中的枚举名字为key，所以<code>filters</code>域主要是用来保存<code>Filter</code>对象的。</p>
+<h3 id="重要的createChain方法"><a href="#重要的createChain方法" class="headerlink" title="重要的createChain方法"></a>重要的<code>createChain</code>方法</h3><pre><code>public void createChain(String chainName, String chainDefinition) {
+    if(!StringUtils.hasText(chainName)) {
+        throw new NullPointerException(&quot;chainName cannot be null or empty.&quot;);
+    } else if(!StringUtils.hasText(chainDefinition)) {
+        throw new NullPointerException(&quot;chainDefinition cannot be null or empty.&quot;);
+    } else {
+        if(log.isDebugEnabled()) {
+            log.debug(&quot;Creating chain [&quot; + chainName + &quot;] from String definition [&quot; + chainDefinition + &quot;]&quot;);
+        }
+
+        String[] filterTokens = this.splitChainDefinition(chainDefinition);
+        String[] var4 = filterTokens;
+        int var5 = filterTokens.length;
+
+        for(int var6 = 0; var6 &lt; var5; ++var6) {
+            String token = var4[var6];
+            String[] nameConfigPair = this.toNameConfigPair(token);
+            this.addToChain(chainName, nameConfigPair[0], nameConfigPair[1]);
+        }
+
+    }
+}
+</code></pre><p>该方法首先调用了<code>splitChainDefinition</code>方法：</p>
+<pre><code>protected String[] splitChainDefinition(String chainDefinition) {
+    return StringUtils.split(chainDefinition, &#39;,&#39;, &#39;[&#39;, &#39;]&#39;, true, true);
+}
+</code></pre><p><code>StringUtils.split()</code>方法比较复杂，为了了解其功能，对其进行调试，如下图：<br><img src="/pics/20180605-shiro-split.png" alt="StringUtils.split方法调试图"><br>可知，其功能主要是根据分隔符，对字符串进行分割，指定符号进行分组，比如上面用一对中括号”[]”，中括号括起来的部分作为一个整体，不对其内的部分进行切分。</p>
+<p>获取到字符串数组后，调用了<code>toNameConfigPair</code>方法：</p>
+<pre><code>protected String[] toNameConfigPair(String token) throws ConfigurationException {
+    String msg;
+    try {
+        String[] e = token.split(&quot;\\[&quot;, 2);
+        msg = StringUtils.clean(e[0]);
+        if(msg == null) {
+         ....
+        } else {
+            String config = null;
+            if(e.length == 2) {
+                config = StringUtils.clean(e[1]);
+                config = config.substring(0, config.length() - 1);
+                config = StringUtils.clean(config);
+                if(config != null &amp;&amp; config.startsWith(&quot;\&quot;&quot;) &amp;&amp; config.endsWith(&quot;\&quot;&quot;)) {
+                    String stripped = config.substring(1, config.length() - 1);
+                    stripped = StringUtils.clean(stripped);
+                    if(stripped != null &amp;&amp; stripped.indexOf(34) == -1) {
+                        config = stripped;
+                    }
+                }
+            }
+
+            return new String[]{msg, config};
+        }
+    } catch (Exception var6) {
+       ....
+    }
+}
+</code></pre><p>然后调用<code>addToChain</code>方法：</p>
+<pre><code>public void addToChain(String chainName, String filterName, String chainSpecificFilterConfig) {
+    if(!StringUtils.hasText(chainName)) {
+        ....
+    } else {
+        Filter filter = this.getFilter(filterName);
+        if(filter == null) {
+            .....
+        } else {
+            this.applyChainConfig(chainName, filter, chainSpecificFilterConfig);
+            NamedFilterList chain = this.ensureChain(chainName);
+            chain.add(filter);
+        }
+    }
+}
+</code></pre><p>该方法主要功能是，根据传来的<code>filterName</code>从<code>filters</code>域中获取一个拦截器对象，获取失败则报错，所以如果是自定义的filter，要记得添加进去，可以通过<code>ShiroFilterFactoryBean</code>添加，<code>ShiroFilterFactoryBean</code>会将添加的filter添加到<code>FilterChainManager</code>的<code>filters</code>域中，在分析<code>ShiroFilterFactoryBean</code>时会讲到。</p>
+<p>然后，根据传来的<code>chainName</code>获取到<code>NamedFilterList</code>链，然后把获取到filter对象加入到该链中。</p>
+<p>看一下<code>ensureChain</code>方法：</p>
+<pre><code>protected NamedFilterList ensureChain(String chainName) {
+    Object chain = this.getChain(chainName);
+    if(chain == null) {
+        chain = new SimpleNamedFilterList(chainName);
+        this.filterChains.put(chainName, chain);
+    }
+
+    return (NamedFilterList)chain;
+}
+</code></pre><p>该方法用来在<code>filterChains</code>获取拦截链，如果没有，则生成一个<code>SimpleNamedFilterList</code>类型的拦截器链，并将其保存到<code>filterChains</code>中。<br><code>SimpleNamedFilterList</code>定义如下：</p>
+<pre><code>public class SimpleNamedFilterList implements NamedFilterList {
+    private String name;
+    private List&lt;Filter&gt; backingList;
+    .....
+}
+</code></pre><p>可见其本质就是用一个<code>List</code>来保存<code>Filter</code>类型的对象，进行拦截的时候依次调用各个拦截器的方法。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/shiro/shiro中的Authenticator认证器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/05/shiro/shiro中的Authenticator认证器/" itemprop="url">shiro中的Authenticator认证器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-05T19:46:30+08:00">
+                2018-06-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/shiro/" itemprop="url" rel="index">
+                    <span itemprop="name">shiro</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="shiro中的Authenticator认证器"><a href="#shiro中的Authenticator认证器" class="headerlink" title="shiro中的Authenticator认证器"></a>shiro中的<code>Authenticator</code>认证器</h1><h2 id="Authenticator接口"><a href="#Authenticator接口" class="headerlink" title="Authenticator接口"></a><code>Authenticator</code>接口</h2><p><code>Authenticator</code>接口是shiro中用来实现认证功能的接口：</p>
+<pre><code>public interface Authenticator {
+    AuthenticationInfo authenticate(AuthenticationToken var1) throws AuthenticationException;
+}
+</code></pre><p>接口中只有一个<code>authenticate</code>方法。该方法接收一个<code>AuthenticationToken</code>类型的参数，返回一个<code>AuthenticationInfo</code>类型对象。</p>
+<h2 id="AbstractAuthenticator抽象类"><a href="#AbstractAuthenticator抽象类" class="headerlink" title="AbstractAuthenticator抽象类"></a><code>AbstractAuthenticator</code>抽象类</h2><pre><code>public abstract class AbstractAuthenticator implements Authenticator, LogoutAware {
+    private Collection&lt;AuthenticationListener&gt; listeners = new ArrayList();
+    ....
+}
+</code></pre><p>该类添加了<code>Collection&lt;AuthenticationListener&gt;</code>类型的listeners域，<code>AuthenticationListener</code>定义如下：</p>
+<pre><code>public interface AuthenticationListener {
+    void onSuccess(AuthenticationToken var1, AuthenticationInfo var2);
+
+    void onFailure(AuthenticationToken var1, AuthenticationException var2);
+
+    void onLogout(PrincipalCollection var1);
+}
+</code></pre><p>不难看出，该类主要是用来监听认证状态的功能。</p>
+<p>该类实现了<code>authenticate</code>方法：</p>
+<pre><code>public final AuthenticationInfo authenticate(AuthenticationToken token) throws AuthenticationException {
+        if (token == null) {
+        } else {
+            AuthenticationInfo info;
+            try {
+                info = this.doAuthenticate(token);
+            } catch (Throwable var8) {
+                try {
+                    this.notifyFailure(token, ae);
+                } catch (Throwable var7) {
+                  ....  
+                }
+
+                throw ae;
+            }
+            this.notifySuccess(token, info);
+            return info;
+        }
+    }
+protected abstract AuthenticationInfo doAuthenticate(AuthenticationToken var1) throws AuthenticationException;
+</code></pre><p>该方法调用了<code>doAuthenticate</code>方法，<code>doAuthenticate</code>是个抽象方法，子类可以实现此方法，自定义认证功能。调用<code>doAuthenticate</code>之后，根据调用状态会调用<code>notifyFailure</code>和<code>notifySuccess</code>方法：</p>
+<pre><code>protected void notifySuccess(AuthenticationToken token, AuthenticationInfo info) {
+        Iterator var3 = this.listeners.iterator();
+
+        while(var3.hasNext()) {
+            AuthenticationListener listener = (AuthenticationListener)var3.next();
+            listener.onSuccess(token, info);
+        }
+
+    }
+
+    protected void notifyFailure(AuthenticationToken token, AuthenticationException ae) {
+        Iterator var3 = this.listeners.iterator();
+
+        while(var3.hasNext()) {
+            AuthenticationListener listener = (AuthenticationListener)var3.next();
+            listener.onFailure(token, ae);
+        }
+
+    }
+</code></pre><p>这两个方法会调用<code>listeners</code>监听器中的相应方法。</p>
+<h2 id="ModularRealmAuthenticator继承自AbstractAuthenticator"><a href="#ModularRealmAuthenticator继承自AbstractAuthenticator" class="headerlink" title="ModularRealmAuthenticator继承自AbstractAuthenticator"></a><code>ModularRealmAuthenticator</code>继承自<code>AbstractAuthenticator</code></h2><pre><code>public class ModularRealmAuthenticator extends AbstractAuthenticator {
+    private Collection&lt;Realm&gt; realms;
+    private AuthenticationStrategy authenticationStrategy = new AtLeastOneSuccessfulStrategy();
+    ....
+}
+</code></pre><p>该类增加了<code>Collection&lt;Realm&gt;</code>和<code>AuthenticationStrategy</code>类型的两个域，前者将<code>Authenticator</code>和<code>Realm</code>接口关联起来，后者用于实现自定义的认证策略。</p>
+<p>看一下<code>doAuthenticate</code>方法：</p>
+<pre><code>protected AuthenticationInfo doAuthenticate(AuthenticationToken authenticationToken) throws AuthenticationException {
+        this.assertRealmsConfigured();
+        Collection&lt;Realm&gt; realms = this.getRealms();
+        return realms.size() == 1 ? this.doSingleRealmAuthentication((Realm)realms.iterator().next(), authenticationToken) : this.doMultiRealmAuthentication(realms, authenticationToken);
+    }
+</code></pre><p>该方法根据保存的<code>realms</code>的数量，去决定调用<code>doSingleRealmAuthentication</code>还是<code>doMultiRealmAuthentication</code>方法：</p>
+<pre><code>protected AuthenticationInfo doSingleRealmAuthentication(Realm realm, AuthenticationToken token) {
+    if (!realm.supports(token)) {
+       ... 失败
+    } else {
+        AuthenticationInfo info = realm.getAuthenticationInfo(token);
+        if (info == null) {
+           ...失败
+        } else {
+            return info;
+        }
+    }
+}
+</code></pre><p>单<code>realm</code>认证时，只是简单调用<code>realm</code>的<code>getAuthenticationInfo</code>方法，并以此决定认证成功还是失败。单<code>realm</code>时，<code>AuthenticationStrategy</code>并没有用到。只有在多<code>realm</code>认证时才会用到<code>AuthenticationStrategy</code>:</p>
+<pre><code>protected AuthenticationInfo doMultiRealmAuthentication(Collection&lt;Realm&gt; realms, AuthenticationToken token) {
+    AuthenticationStrategy strategy = this.getAuthenticationStrategy();
+    AuthenticationInfo aggregate = strategy.beforeAllAttempts(realms, token);
+    Iterator var5 = realms.iterator();
+    while(var5.hasNext()) {
+        Realm realm = (Realm)var5.next();
+        aggregate = strategy.beforeAttempt(realm, token, aggregate);
+        if (realm.supports(token)) {
+            AuthenticationInfo info = null;
+            try {
+                info = realm.getAuthenticationInfo(token);
+            } catch (Throwable var11) {
+               ...
+                }
+            }
+            aggregate = strategy.afterAttempt(realm, token, info, aggregate, t);
+        } else {
+        }
+    }
+    aggregate = strategy.afterAllAttempts(token, aggregate);
+    return aggregate;
+}
+</code></pre><p>使用<code>AuthenticationStrategy</code>可以控制在所有<code>realm</code>认证开始前、后以及在某个支持<code>realm</code>认证开始前后实现一些功能。因此可以控制在某个<code>realm</code>失败时该如何处理。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-迭代/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-迭代/" itemprop="url">python迭代</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h1><hr>
+<p>如果给定一个list、tuple、dict、set、str或者其它可迭代对象，我们可以通过for循环来遍历这个list或tuple，这种遍历我们称为迭代（Iteration）。</p>
+<h2 id="dict迭代"><a href="#dict迭代" class="headerlink" title="dict迭代"></a>dict迭代</h2><pre><code>d = {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3}
+for key in d:
+    print(key)
+a
+c
+b
+</code></pre><p>默认情况下，dict迭代的是key。如果要迭代value，可以用for value in d.values()，如果要同时迭代key和value，可以用for k, v in d.items()。</p>
+<h2 id="字符串迭代"><a href="#字符串迭代" class="headerlink" title="字符串迭代"></a>字符串迭代</h2><pre><code>for ch in &#39;ABC&#39;:
+    print(ch)
+A
+B
+C
+</code></pre><h2 id="判断是否可迭代"><a href="#判断是否可迭代" class="headerlink" title="判断是否可迭代"></a>判断是否可迭代</h2><p>通过collections模块的Iterable类型可以判断是否可迭代。</p>
+<pre><code> from collections import Iterable
+ isinstance(&#39;abc&#39;, Iterable) //True
+</code></pre><h2 id="索引下标访问"><a href="#索引下标访问" class="headerlink" title="索引下标访问"></a>索引下标访问</h2><p>Python内置的enumerate函数可以把一个list变成索引-元素对，这样就可以在for循环中同时迭代索引和元素本身：</p>
+<pre><code>for i, value in enumerate([&#39;A&#39;, &#39;B&#39;, &#39;C&#39;]):
+    print(i, value)
+
+0 A
+1 B
+2 C
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-访问限制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-访问限制/" itemprop="url">python访问控制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h1><hr>
+<p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线<strong>，在Python中，实例的变量名如果以</strong>开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问，所以，我们把Student类改一改：</p>
+<pre><code>class Student(object):
+
+    def __init__(self,name,score):
+        self.__name = name
+        self.__score = score
+
+    def print_score(self):
+        print(&quot;%s,$s&quot; % (self.__name,self.__score))
+</code></pre><p>改完后，对于外部代码来说，没什么变动，但是已经无法从外部访问实例变量.<strong>name和实例变量.</strong>score了：<br>    bart = Student(“bart”,90)<br>    bart.<strong>name<br>    Traceback (most recent call last):<br>      File “<stdin>“, line 1, in <module><br>    AttributeError: ‘Student’ object has no attribute ‘</module></stdin></strong>name’<br>如果外部要获取或者设置name和score属性，可以为在类中提供get_name、set_name和get_score、set_score方法，类似于java中的getter和setter方法。</p>
+<p>需要注意的是，在Python中，变量名类似<strong>xxx</strong>的，也就是以双下划线开头，并且以双下划线结尾的，是特殊变量，特殊变量是可以直接访问的，不是private变量，所以，不能用<strong>name</strong>、<strong>score</strong>这样的变量名定义私有变量。</p>
+<p>有些时候，你会看到以一个下划线开头的实例变量名，比如_name，这样的实例变量外部是可以访问的，但是，按照约定俗成的规定，当你看到这样的变量时，意思就是，“虽然我可以被访问，但是，请把我视为私有变量，不要随意访问”。</p>
+<p>双下划线开头的实例变量是不是一定不能从外部访问呢？其实也不是。不能直接访问<strong>name是因为Python解释器对外把</strong>name变量改成了_Student<strong>name，所以，仍然可以通过_Student</strong>name来访问__name变量：</p>
+<pre><code>bart._Student__name //bart
+</code></pre><p>但是强烈建议你不要这么干，因为不同版本的Python解释器可能会把__name改成不同的变量名。</p>
+<p>总的来说就是，Python本身没有任何机制阻止你干坏事，一切全靠自觉。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-获取对象信息/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-获取对象信息/" itemprop="url">python获取对象信息</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="获取对象信息"><a href="#获取对象信息" class="headerlink" title="获取对象信息"></a>获取对象信息</h1><hr>
+<p>当我们拿到一个对象的引用时，如何知道这个对象是什么类型、有哪些方法呢？</p>
+<h2 id="type-函数"><a href="#type-函数" class="headerlink" title="type()函数"></a>type()函数</h2><p>type()函数可以判断所有的基本类型和自定义的函数或者类。</p>
+<h2 id="isinstance-函数"><a href="#isinstance-函数" class="headerlink" title="isinstance()函数"></a>isinstance()函数</h2><p>判断某个实例是否是某个类型的实例。能够判断继承层次类型。</p>
+<h2 id="dir-函数"><a href="#dir-函数" class="headerlink" title="dir()函数"></a>dir()函数</h2><p>如果要获得一个对象的所有属性和方法，可以使用dir()函数，它返回一个包含字符串的list，比如，获得一个str对象的所有属性和方法：</p>
+<pre><code>dir(&#39;ABC&#39;)//[&#39;__add__&#39;, &#39;__class__&#39;,..., &#39;__subclasshook__&#39;, &#39;capitalize&#39;, &#39;casefold&#39;,..., &#39;zfill&#39;]
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-继承/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-继承/" itemprop="url">python继承</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><hr>
+<pre><code>class Animal(object):
+    def run(self):
+        print(&#39;Animal is running...&#39;)
+
+class Dog(Animal):
+    pass
+
+class Cat(Animal):
+    pass
+</code></pre><p>python继承类，只要在定义类时，在类名后边的小括号内写入继承的类名即可，可以有多个继承类，python支持多继承。子类获得父类的所有方法和属性。</p>
+<p>覆盖、多态与java类似。</p>
+<h2 id="静态语言-vs-动态语言"><a href="#静态语言-vs-动态语言" class="headerlink" title="静态语言 vs 动态语言"></a>静态语言 vs 动态语言</h2><p>对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。</p>
+<p>对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了：</p>
+<pre><code>class Timer(object):
+    def run(self):
+        print(&#39;Start...&#39;)
+</code></pre><p>这就是动态语言的“鸭子类型”，它并不要求严格的继承体系，一个对象只要“看起来像鸭子，走起路来像鸭子”，那它就可以被看做是鸭子。</p>
+<p>Python的“file-like object“就是一种鸭子类型。对真正的文件对象，它有一个read()方法，返回其内容。但是，许多对象，只要有read()方法，都被视为“file-like object“。许多函数接收的参数就是“file-like object“，你不一定要传入真正的文件对象，完全可以传入任何实现了read()方法的对象。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-类/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-类/" itemprop="url">python类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><hr>
+<h2 id="定义类"><a href="#定义类" class="headerlink" title="定义类"></a>定义类</h2><p>在python中，定义类是通过class关键字实现的：</p>
+<pre><code>class Student(object):
+    pass
+</code></pre><p>class后面紧接着是类名，即Student，类名通常是大写开头的单词，紧接着是(object)，表示该类是从哪个类继承下来的，继承的概念我们后面再讲，通常，如果没有合适的继承类，就使用object类，这是所有类最终都会继承的类。</p>
+<h2 id="定义属性"><a href="#定义属性" class="headerlink" title="定义属性"></a>定义属性</h2><h3 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h3><p>定义好了Student类，就可以根据Student类创建出Student的实例，创建实例是通过类名+()实现的：</p>
+<pre><code>studentA = Student()
+</code></pre><p>可以自由地给一个实例变量绑定属性，即使在定义类时并没有为该类定义属性。比如，给实例studentA绑定一个name属性：</p>
+<pre><code>studentA.name = &#39;A&#39;
+</code></pre><p>这样只是给该实例绑定了一个属性，Student类的其它实例并没有绑定name属性。由于类可以起到模板的作用，如果要给Student类的所有实例添加属性，可以在定义类，创建实例的时候，把一些我们认为必须绑定的属性强制填写进去。通过定义一个特殊的<strong>init</strong>方法，在创建实例的时候，就把name，score等属性绑上去：</p>
+<pre><code>class Student(object):
+
+    def __init__(self,name,score):
+        self.name = name
+        self.score = score
+</code></pre><p>注意到<strong>init</strong>方法的第一个参数永远是self，表示创建的实例本身，因此，在<strong>init</strong>方法内部，就可以把各种属性绑定到self，因为self就指向创建的实例本身。</p>
+<p>有了<strong>init</strong>方法，在创建实例的时候，就不能传入空的参数了，必须传入与<strong>init</strong>方法匹配的参数，但self不需要传，Python解释器自己会把实例变量传进去：</p>
+<pre><code>studentB = Student(&#39;B&#39;,90)
+</code></pre><p>和普通的函数相比，在类中定义的函数只有一点不同，就是第一个参数永远是实例变量self，并且，调用时，不用传递该参数。除此之外，类的方法和普通函数没有什么区别，所以，你仍然可以用默认参数、可变参数、关键字参数和命名关键字参数。</p>
+<h3 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h3><p>但是，如果Student类本身需要绑定一个属性呢？可以直接在class中定义属性，这种属性是类属性，归Student类所有：</p>
+<pre><code>class Student(object):
+    name = &#39;Student&#39;
+</code></pre><p>当我们定义了一个类属性后，这个属性虽然归类所有，但类的所有实例都可以访问到。</p>
+<h2 id="定义方法"><a href="#定义方法" class="headerlink" title="定义方法"></a>定义方法</h2><p>要定义一个方法，除了第一个参数是self外，其他和普通函数一样：</p>
+<pre><code>class Student(object):
+
+    def __init__(self, name, score):
+        self.name = name
+        self.score = score
+
+    def print_score(self):
+        print(&#39;%s: %s&#39; % (self.name, self.score))
+</code></pre><p>要调用一个方法，只需要在实例变量上直接调用，除了self不用传递，其他参数正常传入：</p>
+<pre><code>studentB.print_score()
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-生成器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-生成器/" itemprop="url">python生成器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="python生成器"><a href="#python生成器" class="headerlink" title="python生成器"></a>python生成器</h1><hr>
+<p>通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。</p>
+<p>所以，如果列表元素可以按照某种算法推算出来，那我们是否可以在循环的过程中不断推算出后续的元素呢？这样就不必创建完整的list，从而节省大量的空间。在Python中，这种一边循环一边计算的机制，称为生成器：generator。</p>
+<p>要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-模块/" itemprop="url">python模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="python模块"><a href="#python模块" class="headerlink" title="python模块"></a>python模块</h1><hr>
+<h2 id="模块组织定义"><a href="#模块组织定义" class="headerlink" title="模块组织定义"></a>模块组织定义</h2><p>在Python中，一个.py文件就称之为一个模块（Module）。任何模块代码的第一个字符串都被视为模块的文档注释。</p>
+<p>你也许还想到，如果不同的人编写的模块名相同怎么办？为了避免模块名冲突，Python又引入了按目录来组织模块的方法，称为包（Package）。</p>
+<p>举个例子，一个abc.py的文件就是一个名字叫abc的模块，一个xyz.py的文件就是一个名字叫xyz的模块。现在，假设我们的abc和xyz这两个模块名字与其他模块冲突了，于是我们可以通过包来组织模块，避免冲突。方法是选择一个顶层包名，比如mycompany，按照如下目录存放：</p>
+<pre><code>mycompany
+├─ __init__.py
+├─ abc.py
+└─ xyz.py
+</code></pre><p>引入了包以后，只要顶层的包名不与别人冲突，那所有模块都不会与别人冲突。现在，abc.py模块的名字就变成了mycompany.abc，类似的，xyz.py的模块名变成了mycompany.xyz。</p>
+<p>请注意，每一个包目录下面都会有一个<strong>init</strong>.py的文件，这个文件是必须存在的，否则，Python就把这个目录当成普通目录，而不是一个包。<strong>init</strong>.py可以是空文件，也可以有Python代码，因为<strong>init</strong>.py本身就是一个模块，而它的模块名就是mycompany。</p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>在一个模块中，我们可能会定义很多函数和变量，但有的函数和变量我们希望给别人使用，有的函数和变量我们希望仅仅在模块内部使用。在Python中，是通过_前缀来实现的。</p>
+<p>正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等；</p>
+<p>类似<strong>xxx</strong>这样的变量是特殊变量，可以被直接引用，但是有特殊用途，比如上面的<strong>author</strong>，<strong>name</strong>就是特殊变量，hello模块定义的文档注释也可以用特殊变量<strong>doc</strong>访问，我们自己的变量一般不要用这种变量名；</p>
+<p>类似_xxx和<strong>xxx这样的函数或变量就是非公开的（private），不应该被直接引用，比如_abc，</strong>abc等；</p>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<h2 id="导入模块"><a href="#导入模块" class="headerlink" title="导入模块"></a>导入模块</h2><p>要使用某个模块，要导入该模块：</p>
+<blockquote>
+<p>import xxx<br>导入模块以后，就可以使用xxx模块内的方法或变量了，xxx.test()…..</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-dict字典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-dict字典/" itemprop="url">python字典</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="dict字典"><a href="#dict字典" class="headerlink" title="dict字典"></a>dict字典</h1><hr>
+<p>Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。dict是无序的。</p>
+<h2 id="dict定义"><a href="#dict定义" class="headerlink" title="dict定义"></a>dict定义</h2><p>直接用{key1:value1,key2:value2…..}的形式可以定义一个字典：</p>
+<pre><code>d = {&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85}
+d[&#39;Michael&#39;] //95
+</code></pre><h2 id="dict加入新键值对"><a href="#dict加入新键值对" class="headerlink" title="dict加入新键值对"></a>dict加入新键值对</h2><pre><code>d[&#39;new&#39;]=&#39;new&#39; //d={&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85,&#39;new&#39;:&#39;new&#39;}
+</code></pre><h2 id="修改某个key的value"><a href="#修改某个key的value" class="headerlink" title="修改某个key的value"></a>修改某个key的value</h2><pre><code>d[&#39;new&#39;]=&#39;old&#39; //d={&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85,&#39;new&#39;:&#39;old&#39;}
+</code></pre><h2 id="判断key是否存在"><a href="#判断key是否存在" class="headerlink" title="判断key是否存在"></a>判断key是否存在</h2><p>通过in判断key是否存在：</p>
+<pre><code>&#39;new&#39; in d //true
+&#39;test&#39; in d //false
+</code></pre><p>访问不存在的key时，会报错。使用get()方法，可以返回None或指定值：</p>
+<pre><code>d[&#39;test&#39;] //KeyError
+d.get(&#39;test&#39;) //None
+d.get(&#39;test&#39;,-1) //-1
+</code></pre><h2 id="删除key"><a href="#删除key" class="headerlink" title="删除key"></a>删除key</h2><p>要删除一个key，用pop(key)方法，对应的value也会从dict中删除：</p>
+<pre><code>d.pop(&#39;new&#39;) //删除key new及对应的值
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-基本数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-基本数据类型/" itemprop="url">python基本数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="python基本数据类型"><a href="#python基本数据类型" class="headerlink" title="python基本数据类型"></a>python基本数据类型</h1><hr>
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>Python可以处理任意大小的整数，当然包括负整数，在程序中的表示方法和数学上的写法一模一样，例如：1，100，-8080，0，等等。</p>
+<p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用0x前缀和0-9，a-f表示，例如：0xff00，0xa5b4c3d2，等等。</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x109和12.3x108是完全相等的。浮点数可以用数学写法，如1.23，3.14，-9.01，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x109就是1.23e9，或者12.3e8，0.000012可以写成1.2e-5，等等。</p>
+<p>整数和浮点数(IEEE754)在计算机内部存储的方式是不同的，整数运算永远是精确的（除法难道也是精确的？是的），而浮点数运算则可能会有四舍五入的误差。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串是以单引号’或双引号”括起来的任意文本。字符串本身有单引号时，可以用双引号括起来，反之可以用单引号括起来如果既有单引号又有双引号,则必须用转义字符<strong>\</strong>来标识。</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>True或False。python是大小写敏感的，所以不能写成true、false。</p>
+<h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>None，代表一个特殊的空值，类似于java中的null。</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>所谓常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量:</p>
+<blockquote>
+<p>PI = 3.14159265359</p>
+</blockquote>
+<p>但事实上PI仍然是一个变量，Python根本没有任何机制保证PI不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量PI的值，也没人能拦住你。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
-  {% include '_partials/pagination.swig' %}
-{% endblock %}
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+  </nav>
 
-{% block sidebar %}
-  {{ sidebar_template.render(false) }}
-{% endblock %}
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Coder_Wang</p>
+              <p class="site-description motion-element" itemprop="description">学习笔记</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coder_Wang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
