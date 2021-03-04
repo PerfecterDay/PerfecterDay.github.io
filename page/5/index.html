@@ -243,6 +243,355 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/sql/msyql/mysql用户权限/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/21/sql/msyql/mysql用户权限/" itemprop="url">mysql 用户及权限管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T09:20:28+08:00">
+                2019-09-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p>mysql 用户信息存储在 mysql.user 表中。</p>
+<ol>
+<li>创建用户： <code>CREATE USER &#39;username&#39;@&#39;ip&#39; IDENTIFIED WITH mysql_native_password BY &#39;passowrd&#39;</code>;</li>
+<li>允许用户从任意IP登录：<code>update mysql.user set host=&#39;%&#39; where user=&#39;root&#39;;</code></li>
+<li>修改用户密码： <code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;你的密码&#39;;</code> mysql 8<br><code>update mysq.user set password=password(&#39;11111111&#39;) where xxx;</code> 8 以前的版本</li>
+<li>删除用户： <code>drop user testuser@&#39;localhost&#39;</code></li>
+<li>刷新用户权限：<code>flush privileges</code></li>
+</ol>
+<h3 id="授权与收回"><a href="#授权与收回" class="headerlink" title="授权与收回"></a>授权与收回</h3><p>SQL标准包括 select、insert、update、delete以及all权限。</p>
+<ol>
+<li>查看用户的权限：<code>show grants for &lt;user&gt;</code></li>
+<li><p>授权语句：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">grant &lt;权限列表&gt;</span><br><span class="line">on &lt;数据库/表/视图&gt;</span><br><span class="line">to &lt;用户/角色列表&gt;</span><br><span class="line"></span><br><span class="line">grant select on department to public,Amy,Simith;授予public,Amy,Simith 关于 department 的select 权限  </span><br><span class="line">grant all on *.* to admin; 授予admin所有权限  </span><br><span class="line">grant all on student.* to teacher;授予teacher所有student数据库相关的权限</span><br></pre></td></tr></table></figure>
+<p> public代表系统中所有的当前用户和将来的用户。</p>
+</li>
+<li><p>收回权限语句：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">revoke &lt;权限列表&gt;</span><br><span class="line">on &lt;关系名或视图名&gt;</span><br><span class="line">from &lt;用户/角色列表&gt;</span><br><span class="line"></span><br><span class="line">revoke select on department from Amy,Simith</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/sql/msyql/mysql查询历史sql记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/23/sql/msyql/mysql查询历史sql记录/" itemprop="url">mysql 历史sql查询</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T13:50:21+08:00">
+                2018-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/" itemprop="url" rel="index">
+                    <span itemprop="name">sql</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="开启操作记录日志"><a href="#开启操作记录日志" class="headerlink" title="开启操作记录日志"></a>开启操作记录日志</h2><p>首先进入mysql输入指令</p>
+<pre><code>show variables like &#39;gen%&#39;;
+</code></pre><p>可以看到输出</p>
+<pre><code>+------------------+-------------------------------------+
+| Variable_name    | Value                               |
++------------------+-------------------------------------+
+| general_log      | OFF                                 |
+| general_log_file | /usr/local/mysql/data/localhost.log |
++------------------+-------------------------------------+
+</code></pre><p>可以看到general_log是开启还是环比状态，以及这个帐号的general_log文件在哪，设置开启</p>
+<pre><code>set global general_log=ON;
+commit;//如果关闭了自动提交，记得commit一次结束事务
+</code></pre><p>然后就可以去general_log_file的路径查看操作记录了</p>
+<h2 id="采用数据库内部查看"><a href="#采用数据库内部查看" class="headerlink" title="采用数据库内部查看"></a>采用数据库内部查看</h2><p>除了可以用日志文件的形式查看数据库操作记录之外，也可以把日志存储在一个表，在数据库内部查看</p>
+<pre><code>show variables like &#39;%log_output%&#39;;
+</code></pre><p>可以看到输出，</p>
+<pre><code>+---------------+-------+
+| Variable_name | Value |
++---------------+-------+
+| log_output    | FILE  |
++---------------+-------+
+</code></pre><p>然后将其改为表单</p>
+<pre><code>set  global log_output=&#39;TABLE&#39;;
+</code></pre><p>之后就可以通过以下两句话查看数据库操作记录</p>
+<pre><code>select * from mysql.general_log; &lt;=====查看操作记录
+truncate table mysql.general_log; &lt;=====清空操作记录表单
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/sql/msyql/mysql中的文件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2827,6 +3176,8 @@ try {
 <li>修改远程仓库镜像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">&lt;id&gt;aliyun&lt;/id&gt;</span><br><span class="line">&lt;name&gt;aliyun Maven&lt;/name&gt;</span><br><span class="line">&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;!-- &lt;url&gt;http://maven.oschina.net/content/groups/public&lt;/url&gt; --&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h4 id="maven-问题"><a href="#maven-问题" class="headerlink" title="maven 问题"></a>maven 问题</h4><p>有时候使用 https 时会遇到如下错误：<code>sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code></p>
+<p>解决方法：加上 <code>-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true</code></p>
 
           
         
@@ -3889,350 +4240,6 @@ try {
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/15/java/jvm/java基础-经典的垃圾收集器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder_Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder_Wang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/15/java/jvm/java基础-经典的垃圾收集器/" itemprop="url">java基础-经典的垃圾收集器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-15T08:17:20+08:00">
-                2020-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/jvm/" itemprop="url" rel="index">
-                    <span itemprop="name">jvm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/pics/gc-collector.png" alt width="60%" height="60%"><br>图3-6展示了七种作用于不同分代的收集器，如果两个收集器之间存在连线，就说明它们可以搭配使用，图中收集器所处的区域，则表示它是属于新生代收集器抑或是老年代收集。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/01/java/jvm/java基础-类和对象的初始化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder_Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder_Wang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/01/java/jvm/java基础-类和对象的初始化/" itemprop="url">java基础-类和对象的初始化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-01T20:46:20+08:00">
-                2018-09-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/jvm/" itemprop="url" rel="index">
-                    <span itemprop="name">jvm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>主要转自：<a href="https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-clobj-init/index.html</a></p>
-<p>类是 Java 中的一等公民，一个 Java 类中可以有：成员方法、成员变量、初始化块。</p>
-<h2 id="类初始化"><a href="#类初始化" class="headerlink" title="类初始化"></a>类初始化</h2><h1 id="类的生命周期"><a href="#类的生命周期" class="headerlink" title="类的生命周期"></a>类的生命周期</h1><p><img src="/pics/class lifecycle.png" alt="类的生命周期"></p>
-<h1 id="类初始化-1"><a href="#类初始化-1" class="headerlink" title="类初始化"></a>类初始化</h1><p>类”初始化”阶段，它是一个类或接口被首次使用的前阶段中的最后一项工作，本阶段负责为类变量赋予正确的初始值。</p>
-<p>Java 编译器把所有的类变量初始化语句和类型的静态初始化器通通收集到 <code>&lt;clinit&gt;</code> 方法内，该方法只能被 Jvm 调用，专门承担初始化工作。初始化顺序和语句出现的先后顺序保持一致。</p>
-<p>除接口以外，初始化一个类之前必须保证其直接超类已被初始化，并且该初始化过程是由 Jvm 保证线程安全的。另外，并非所有的类都会拥有一个 <code>&lt;clinit&gt;()</code> 方法，在以下条件中该类不会拥有 <code>&lt;clinit&gt;()</code> 方法：</p>
-<ul>
-<li>该类既没有声明任何类变量，也没有静态初始化语句；</li>
-<li>该类声明了类变量，但没有明确使用类变量初始化语句或静态初始化语句初始化；</li>
-<li>该类仅包含静态 final 变量的类变量初始化语句，并且类变量初始化语句是编译时常量表达式。</li>
-</ul>
-<ol>
-<li>类加载的时候如果发现其有父类，则先加载父类。</li>
-<li>类加载时候，会先初始化类变量（如果定义类变量时初始化了的话）和静态初始化块中的初始化语句，两者的顺序以出现的先后次序为准。因为原因1，所以总是先执行父类的初始化（一直追溯到Object）然后才执行子类的初始化。类初始化只会在类加载过程中初始化一次，后续驻留在内存中，不再初始化。</li>
-</ol>
-<h1 id="对象初始化"><a href="#对象初始化" class="headerlink" title="对象初始化"></a>对象初始化</h1><p>在类被装载、连接和初始化，这个类就随时都可能使用了。对象实例化和初始化是就是对象生命的起始阶段的活动，在这里我们主要讨论对象的初始化工作的相关特点。</p>
-<ol>
-<li>实例化对象时，系统首先会为对象分配内存，然后初始化整块内存为0、null、false。</li>
-<li>然后，执行初始化代码和成员变量声明语句中的初始化，两者顺序以出现先后顺序为准。最后，调用相应的构造器执行初始化。</li>
-<li>第2步只是在没有父类情况下的初始化，如果有父类，则会从根类开始执行上述步骤直到执行初始化的类。</li>
-</ol>
-<p>Java 编译器在编译每个类时都会为该类至少生成一个实例初始化方法—即 <code>&lt;init&gt;()</code> 方法。此方法与源代码中的每个构造方法相对应，如果类没有明确地声明任何构造方法，编译器则为该类生成一个默认的无参构造方法，这个默认的构造器仅仅调用父类的无参构造器，与此同时也会生成一个与默认构造方法对应的 <code>&lt;init&gt;()</code> 方法.</p>
-<p>通常来说，<code>&lt;init&gt;()</code> 方法内包括的代码内容大概为：调用另一个 <code>&lt;init&gt;()</code> 方法；对实例变量初始化；与其对应的构造方法内的代码。</p>
-<p>如果构造方法是明确地从调用同一个类中的另一个构造方法开始，那它对应的 <code>&lt;init&gt;()</code> 方法体内包括的内容为：一个对本类的 <code>&lt;init&gt;()</code> 方法的调用；对应构造方法内的所有字节码。</p>
-<p>如果构造方法不是通过调用自身类的其它构造方法开始，并且该对象不是 Object 对象，那 <code>&lt;init&gt;()</code> 法内则包括的内容为：一个对父类 <code>&lt;init&gt;()</code> 方法的调用；对实例变量初始化方法的字节码；最后是对应构造方法的方法体字节码。</p>
-<p>如果这个类是 Object，那么它的 <code>&lt;init&gt;()</code> 方法则不包括对父类 <code>&lt;init&gt;()</code> 方法的调用。</p>
-<h1 id="类的初始化时机"><a href="#类的初始化时机" class="headerlink" title="类的初始化时机"></a>类的初始化时机</h1><p>本文到目前为止，我们已经大概有了解到了类生命周期中都经历了哪些阶段，但这个类的生命周期的开始阶段—类装载又是在什么时候被触发呢？类又是何时被初始化的呢？让我们带着这三个疑问继续去寻找答案。</p>
-<p>Java 虚拟机规范为类的初始化时机做了严格定义：”initialize on first active use”—“ 在首次主动使用时初始化”。这个规则直接影响着类装载、连接和初始化类的机制—因为在类型被初始化之前它必须已经被连接，然而在连接之前又必须保证它已经被装载了。</p>
-<p>在与初始化时机相关的类装载时机问题上，Java 虚拟机规范并没有对其做严格的定义，这就使得 JVM 在实现上可以根据自己的特点提供采用不同的装载策略。我们可以思考一下 Jboss AOP 框架的实现原理，它就是在对你的 class 文件装载环节做了手脚—插入了 AOP 的相关拦截字节码，这使得它可以对程序员做到完全透明化，哪怕你用 new 操作符创建出的对象实例也一样能被 AOP 框架拦截—与之相对应的 Spring AOP，你必须通过他的 BeanFactory 获得被 AOP 代理过的受管对象，当然 Jboss AOP 的缺点也很明显—他是和 JBOSS 服务器绑定很紧密的，你不能很轻松的移植到其它服务器上。嗯~……，说到这里有些跑题了，要知道 AOP 实现策略足可以写一本厚厚的书了，嘿嘿，就此打住。</p>
-<p>说了这么多，类的初始化时机就是在”在首次主动使用时”，那么，哪些情形下才符合首次主动使用的要求呢？</p>
-<p>首次主动使用的情形：</p>
-<ul>
-<li>创建某个类的新实例时—new、反射、克隆或反序列化；</li>
-<li>调用某个类的静态方法时；</li>
-<li>使用某个类或接口的静态字段或对该字段赋值时（final字段除外）；</li>
-<li>调用Java的某些反射方法时</li>
-<li>初始化某个类的子类时</li>
-<li>在虚拟机启动时某个含有main()方法的那个启动类。<br>除了以上几种情形以外，所有其它使用JAVA类型的方式都是被动使用的，他们不会导致类的初始化。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4285,7 +4292,7 @@ try {
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -243,6 +243,443 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/10/spring security/spring-security/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/10/spring security/spring-security/" itemprop="url">spring security</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-10T11:24:48+08:00">
+                2018-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring-security/" itemprop="url" rel="index">
+                    <span itemprop="name">spring-security</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="spring-security-整体架构"><a href="#spring-security-整体架构" class="headerlink" title="spring-security 整体架构"></a>spring-security 整体架构</h3><p><img src="/pics/spring-security.png" alt><br>上图中  Bean Filter 实际上是 FilterChainProxy 。</p>
+<p>Spring security 的配置由两个关键步骤组成：注册过滤器和创建安全规则。<br>Spring security 提供了 <code>AbstractSecurityWebApplicationInitializer</code> 类来注册过滤器，我们只要继承该类即可实现过滤器的注册。<br>使用 springboot 时，只要添加 <code>spring-boot-starter-security</code> 依赖，就会自动配置：</p>
+<ol>
+<li>一个名为 <code>springSecurityFilterChain</code> 的 Filter 类型的 bean，这个 bean 负责所有安全相关的功能</li>
+<li>生成一个名为 <code>UserDetailsService</code> 的 bean ,且会配置一个名为 user ，密码随机（会打印在控制台）的用户</li>
+<li>会把 <code>springSecurityFilterChain</code> 的 Filter 注册到 servlet 容器中以实现拦截功能</li>
+</ol>
+<p>注册过滤器后，需要对 Spring security 进行安全规则的配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">@EnableWebSecurity</span><br><span class="line">public class WebSecurityConfigure extends WebSecurityConfigurerAdapter &#123;</span><br><span class="line">    </span><br><span class="line">    @Override</span><br><span class="line">    protected void configure(HttpSecurity http) throws Exception &#123;</span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                .antMatchers(&quot;/admin/api/**&quot;).hasRole(&quot;admin&quot;)</span><br><span class="line">                .antMatchers(&quot;/user/api/**&quot;).hasRole(&quot;user&quot;)</span><br><span class="line">                .antMatchers(&quot;/app/api/**&quot;).permitAll()</span><br><span class="line">                .anyRequest()</span><br><span class="line">                .authenticated()</span><br><span class="line">                .and()</span><br><span class="line">                .formLogin(form -&gt; form</span><br><span class="line">                .loginPage(&quot;/login&quot;)  //自定义认证表单</span><br><span class="line">                .permitAll());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void configure(AuthenticationManagerBuilder auth) throws Exception &#123;</span><br><span class="line">        auth.userDetailsService(userDetailsService()).passwordEncoder(new BCryptPasswordEncoder());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserDetailsService userDetailsService()&#123;</span><br><span class="line">        InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager();</span><br><span class="line">        inMemoryUserDetailsManager.createUser(User.withUsername(&quot;user1&quot;).password(new BCryptPasswordEncoder().encode(&quot;test&quot;)).roles(&quot;suer&quot;).build());</span><br><span class="line">        inMemoryUserDetailsManager.createUser(User.withUsername(&quot;admin&quot;).password(new BCryptPasswordEncoder().encode(&quot;admin&quot;)).roles(&quot;admin&quot;).build());</span><br><span class="line">        return inMemoryUserDetailsManager;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>@EnableWebSecurity/@EnableWebMvcSecurity</code> 注解分别用来启用 Spring security web 和 spring mvc 的集成。使用这两个注解的类必须实现 <code>WebSecurityConfigurer</code>接口或者继承 <code>WebSecurityConfigurerAdapter</code> 类。</p>
+<h3 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h3><ol>
+<li><code>SecurityContextHolder</code><br>Spring security 用来存储认证过的用户的详细信息的地方。<br><img src="/pics/securitycontextholder.png" alt><br>Spring security 不关心 <code>SecurityContextHolder</code> 是如何生成的，如果其中有值，就会被当成当前认证过的用户。所以，我们可以直接对其进行赋值来生成一个认证过的用户。</li>
+<li><code>SecurityContext</code><br>从 <code>SecurityContextHolder</code> 获得的保存了当前认证过的用户的 <code>Authentication</code> </li>
+<li><code>Authentication</code><br>可以看做是 <code>AuthenticationManager</code> 的输入用来提供认证用的凭据信息，或者是当前 SecurityContext 中的认证过的用户。 <code>Authentication</code> 包含以下信息：<ol>
+<li><code>principal</code> : 用户标识（用户名/ID…）</li>
+<li><code>credentials</code>: 通常是密码</li>
+<li><code>authorities</code>: 授予的权限，比如角色/scope…</li>
+</ol>
+</li>
+<li><code>GrantedAuthority</code><br>代表<code>Authentication</code> 的授权信息,标识用户有哪些权限。可以使用 <code>Authentication.getAuthorities()</code>获取到。</li>
+<li><code>AuthenticationManager</code><br>定义了 Spring Security 的 Filters 如何来执行认证逻辑的 API，它会返回一个 <code>Authentication</code>对象，这个对象会设置到 <code>SecurityContextHolder</code> 中。</li>
+<li><code>ProviderManager</code><br><code>AuthenticationManager</code> 的最常见实现，里边有一个 <code>List&lt;AuthenticationProvider&gt;</code> 列表。它会遍历这个列表中的每个 <code>AuthenticationProvider</code> 来执行认证逻辑。直到找到一个能够执行认证的 <code>AuthenticationProvider</code>。<br><img src="/pics/provider_manager.png" alt></li>
+<li><code>AuthenticationProvider</code><br>被 <code>ProviderManager</code> 用来执行特定类型的认证的，比如 <code>DaoAuthenticationProvider</code> 支持基于 username/password 的认证，而 <code>JwtAuthenticationProvider</code> 支持 JWT token 的认证.</li>
+<li>Request Credentials with AuthenticationEntryPoint<br>请求客户端提供认证凭据的认证入口点，通常是返回一个 HTTP 相应给客户端，要求客户端提供认证凭据。</li>
+<li><code>AbstractAuthenticationProcessingFilter</code><br>一个用来做认证的 Filter 的基类。<br><img src="/pics/AbstractAuthenticationProcessingFilter.png" alt><ol>
+<li>当用户提交认证凭据后， <code>AbstractAuthenticationProcessingFilter</code> 会根据 <code>HttpRequest</code> 创建一个用来做认证的 <code>Authentication</code> 对象，具体的 <code>Authentication</code> 取决于 <code>AbstractAuthenticationProcessingFilter</code>的子类，比如 <code>UsernamePasswordAuthenticationFilter</code> 会创建一个 <code>UsernamePasswordAuthenticationToken</code>.</li>
+<li><code>Authentication</code>会被传递给 <code>AuthenticationManager</code> 来做认证</li>
+<li>如果认证失败<ul>
+<li>会清空 <code>SecurityContextHolder</code> </li>
+<li><code>RememberMeServices.loginFail</code> 会被调用，如果配置了 remember me 功能的话</li>
+<li><code>AuthenticationFailureHandler</code> 会被调用</li>
+</ul>
+</li>
+<li>如果认证成功<ul>
+<li><code>SessionAuthenticationStrategy</code> 会被通知一个新的登录</li>
+<li><code>Authentication</code>会被设置到 <code>SecurityContextHolder</code>，后边 <code>SecurityContextPersistenceFilter</code> 会把 <code>SecurityContext</code> 保存到 <code>HttpSession</code>中</li>
+<li><code>RememberMeServices.loginSuccess</code> 会被调用，如果配置了 remember me 功能的话</li>
+<li><code>ApplicationEventPublisher</code>会发布 <code>InteractiveAuthenticationSuccessEvent</code>事件</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h3><p>常用授权注解：</p>
+<ul>
+<li><code>@DeclareRoles</code>: 它不在 Spring Security 环境中使用，它提供类一种列出所有应用程序使用的角色的方式。</li>
+<li><code>@DenyAll</code>: 将禁止所有访问</li>
+<li><code>@PermitAll</code>: 与 @DenyAll 相反，表示所有人都可以执行该方法。</li>
+<li><code>@RolesAllowed</code>: 只有拥有指定角色中的一个，才能执行方法。可以标注在类或者方法上。</li>
+<li><code>@RunAs</code>: 指示容器使用一个不同的用户运行该方法。只在 Java EE 中支持，Spring Security 不支持。</li>
+<li><code>@PreAuthorize</code>: 注解中指定的安全表达式将在方法执行前执行。该表达式可以通过在参数名前添加#的方式引用任意的方法参数，并可以调用方法参数的方法和访问参数的属性。如果表达式的结果为真，则会执行方法，否则不执行并抛出 AccessDeniedException 异常。</li>
+<li><code>@PostAuthorize</code>: 注解中指定的安全表达式将在方法执行后执行，不能访问方法参数，但是可以用变量名returnObject 访问方法的返回值。</li>
+<li><code>@PostFilter</code>: 可以过滤方法的返回值 ，只有返回值是集合或者数组类型时才能使用。集合中的每个元素都会执行一次表达式，可以使用 filterObject 引用每个元素。表达式结果为假的元素会从集合中移除。</li>
+<li><code>@PretFilter</code>:  与@PostFilter类似，不过它作用于方法参数而不是返回值。</li>
+</ul>
+<h4 id="授权原理"><a href="#授权原理" class="headerlink" title="授权原理"></a>授权原理</h4><ol>
+<li><p>访问决策投票者<br>访问决策投票者是决策制定过程中的重要参与者。一个典型的 Spring Security 配置将包含几个投票者，他们都是 <code>AccessDecisionVoter</code> 的实现。当投票者发表自己的意见表示是否为访问授权时，它根据投票者得到的特定信息进行投票。如果它未得到足够的信息，无法做出合理的投票时，它将在它的 <code>vote</code> 方法中返回 <code>AccessDecisionVoter.ACCESS_ABSTAIN</code> ，从而放弃投票。如果它获得了足够的信息并相信应该为访问授权，那么它将返回 <code>AccessDecisionVoter.GRANTED</code> ，否则，如果不同意授权则返回 <code>AccessDecisionVoter.DENIED</code> 。<br>现在有几个可用的 <code>AccessDecisionVoter</code> 实现：</p>
+<ul>
+<li><code>org.springframework.security.acls.AclEntryVoter</code>：根据 Spring security 的访问控列表进行投票。如果被访问的资源没有使用 <code>hasPermission</code> 表达式函数进行保护，那么 AclEntryVoter 将放弃投票。该投票者不是自动配置的，实际上可能永远也不会使用它。</li>
+<li><code>org.springframework.security.access.vote.AuthenticatedVoter</code>：被用作一种特殊情况下的角色: <code>IS_AUTHENTICATED_ANONYMOUSLY</code> 、<code>IS_AUTHENTICATED_REMEMBERED</code> 、 <code>IS_AUTHENTICATED_FULLY</code>。如果资源并未使用这些角色进行保护，那么 AuthenticatedVoter 将会放弃投票</li>
+<li><code>org.springframework.security.access.annotation.Jsr250Voter</code>: 将为所有使用了 Common Annotations API(JSR 250)进行保护的方法进行投票。只有启用了对 JSR 250 注解的支持，该投票者才可用。只有方法上标注了 JSR 250注解时，它才会投票。</li>
+<li><code>org.springframework.security.access.prepost.PreInvocationAuthorizationAdviceVoter</code>: 将根据 <code>@PreAuthorize</code> 和<code>@PretFilter</code> 注解进行投票。只有启用执行前和执行后注解时才会启用它。对于非方法资源或者方法（或者它的类或接口）上不存在注解，它将会弃权。 <code>@PostAuthorize</code> 和 <code>@PostFilter</code> 没有投票者，因为投票者只在资源访问前使用， Spring security 将把这些注解当做特殊情况处理。</li>
+<li><code>org.springframework.security.access.vote.RoleHierarchyVoter</code>：使用角色层次系统做出决策，如果启用了角色层次吸引，就必须手动创建它。如果被保护的资源商不存在角色层次限制，那么它将弃权。</li>
+<li><code>org.springframework.security.access.vote.RoleVoter</code>：将为使用非表达式 URL 限制、方法切点限制或者 <code>@Secured</code> 注解保护的资源投票，其它情况它会弃权。只有一个或多个被列出的“角色”都是用了 ROLE—— 前缀时，它才会投票。</li>
+<li><code>org.springframework.security.web.access.expression.WebExpressionVoter</code>：将根据表达式保护 URL 资源做出它的决策。对于方法保护决策和不使用表达式保护的特定 URL，它会弃权。</li>
+</ul>
+</li>
+<li><p>访问决策管理器<br>正如前面所述，现在有几个可用的内建投票者，并且多个投票者可能同时被启用。多个投票者在特定的访问决策上可能都给出了非弃权的意见，那么如何解决这些差异呢？ Spring security 使用访问决策管理器协调这些投票者投出的选票，并将他们转换成访问请求的最终决策。</p>
+<p>Spring security 有3个标准的 <code>AccessDecisionManager</code> 实现。默认情况下，所有投票者都弃权时访问将被拒绝，但没个标准实现都提供一个设置，用于决定在这种场景下是否授权访问。</p>
+<ol>
+<li>由赞成结果决定<br><code>org.springframework.security.access.vote.AffirmativeBased</code>是默认的配置，也是最简单的决策管理器。只要有一个非弃权的投票者赞成，该决策管理者就授权访问。即使有其它投票者拒绝访问。</li>
+<li>由协商决定<br><code>org.springframework.security.access.vote.ConsensusBased</code>决策管理器基于简单的多数原则，如果51%的非弃权投票者赞成就授予访问权限。</li>
+<li>由全体决定<br><code>org.springframework.security.access.vote.UnanimousBased</code>，它要求所有的非弃权投票则都投赞成票，否则将拒绝访问请求。</li>
+</ol>
+<p>要配置一个 <code>AccessDecisionManager</code>，只需要声明一个标注了 <code>@Configuration</code> 的配置类，让该类扩展 <code>GlobalMethodSecurityConfiguration</code> 类，并且覆盖 <code>accessDecisionManager</code> 方法返回一个 <code>ConsensusBased</code>、<code>UnanimousBased</code>或者一些自定义的实现。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/spring/spring_mvc/spring mvc整体运行流程和架构/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/spring/spring_mvc/spring mvc整体运行流程和架构/" itemprop="url">spring mvc整体运行流程和架构</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/spring/MVC/" itemprop="url" rel="index">
+                    <span itemprop="name">MVC</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="整体运行流程"><a href="#整体运行流程" class="headerlink" title="整体运行流程"></a>整体运行流程</h1><p><img src="/pics/springmvc-framework.jpg" alt="springmvc整体运行流程"></p>
+<p>看 <code>DispatcherServlet</code> 的 <code>doDispatch</code> 方法：</p>
+<pre><code>protected void doDispatch(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    HandlerExecutionChain mappedHandler = null;
+    ModelAndView mv = null;
+    Exception dispatchException = null;
+
+    // 调用HandlerMapping获取HandlerExecutionChain
+    HandlerExecutionChain mappedHandler = getHandler(processedRequest);
+
+    // 为Handler找到合适的HandlerAdapter
+    HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
+
+    //调用HandlerExecutionChain中所有HandlerInterceptor的preHandle方法
+    if (!mappedHandler.applyPreHandle(processedRequest, response)) {
+        return;
+    }
+
+    // Actually invoke the handler.
+    mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
+
+    if (asyncManager.isConcurrentHandlingStarted()) {
+        return;
+    }
+    applyDefaultViewName(processedRequest, mv);
+
+    //调用HandlerExecutionChain中所有HandlerInterceptor的postHandle方法
+    mappedHandler.applyPostHandle(processedRequest, response, mv);        
+    processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
+}
+</code></pre><h1 id="组件分析"><a href="#组件分析" class="headerlink" title="组件分析"></a>组件分析</h1><p>上图中可以看出，Spring MVC主要包括： <code>HandlerMapping</code> 、 <code>HandlerExecutionChain</code> 、 <code>HandlerAdapter</code> 、 <code>ModelAndView</code> 、 <code>ViewResolver</code> 、 <code>HandlerExceptionResolver。</code> </p>
+<h2 id="HandlerMapping"><a href="#HandlerMapping" class="headerlink" title="HandlerMapping"></a>HandlerMapping</h2><p><code>HandlerMapping</code> 接口只有一个方法：</p>
+<pre><code>@Nullable
+HandlerExecutionChain getHandler(HttpServletRequest request) throws Exception;
+</code></pre><p>返回一个 <code>HandlerExecutionChain</code> 对象，所以 <code>HandlerMapping</code> 主要作用就是找到一个合适的 <code>HandlerExecutionChain</code>.</p>
+<h2 id="HandlerExecutionChain"><a href="#HandlerExecutionChain" class="headerlink" title="HandlerExecutionChain"></a>HandlerExecutionChain</h2><p><code>HandlerExecutionChain</code> 主要包含以下几个成员：</p>
+<pre><code>private final Object handler;
+private HandlerInterceptor[] interceptors;
+private List&lt;HandlerInterceptor&gt; interceptorList;
+</code></pre><p>一个处理请求的 <code>handler</code> 以及一些用来拦截请求的 <code>HandlerInterceptor</code> 对象。当 <code>DispatcherServlet</code> 对象处理请求时，首先会调用  <code>HandlerExecutionChain</code>的 <code>applyPreHandle</code> 方法，该方法会调用 <code>interceptors</code> 数组中的所有 <code>HandlerInterceptor</code> 的 <code>preHandle</code> 方法。<br><code>HandlerExecutionChain</code>的 <code>applyPostHandle</code> 方法，该方法会调用 <code>interceptors</code> 数组中的所有 <code>HandlerInterceptor</code> 的 <code>postHandle</code> 方法。</p>
+<h2 id="HandlerAdapter"><a href="#HandlerAdapter" class="headerlink" title="HandlerAdapter"></a>HandlerAdapter</h2><p><code>HandlerAdapter</code> 是为了适配所有不同种类的 <code>handler</code> ， <code>HandlerExecutionChain</code> 中的 <code>handler</code> 是 <code>Object</code> 类型的，处理请求的对象有很多种，比如有 <code>Controller</code> 、 <code>Servlet</code> 、 <code>POJO Bean</code> 等，处理方法是不同的，不可能再 <code>DispatcherServlet</code> 为所有类型做判断，调用相应的处理方法。因此使用一个适配器，将所有的方法都统一成一个方法：</p>
+<pre><code>ModelAndView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception;
+</code></pre><p>因此，在 <code>DispatcherServlet</code> 种就可以用一行代码：</p>
+<pre><code>mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
+</code></pre><p>应对所有处理器。</p>
+<p><code>HandlerAdapter</code> 还有一个方法：</p>
+<pre><code>boolean supports(Object handler);
+</code></pre><p>这个方法用来判断这个适配器是否支持某个处理器对象。</p>
+<h2 id="ModelAndView"><a href="#ModelAndView" class="headerlink" title="ModelAndView"></a>ModelAndView</h2><p><code>ModelAndView</code> 有两个主要成员：</p>
+<pre><code>private Object view; //view对象或者字符串
+private ModelMap model;  //view渲染要用的数据
+</code></pre><h2 id="ViewResolver"><a href="#ViewResolver" class="headerlink" title="ViewResolver"></a>ViewResolver</h2><p><code>ViewResolver</code> 用来解析 <code>View</code> 对象，当 <code>ModelAndView</code> 中的 <code>view</code> 成员不是直接的 <code>View</code> 对象，而是字符串时，需要根据这个字符串去解析出真正的 <code>View</code> 对象。</p>
+<h2 id="HandlerExceptionResolver"><a href="#HandlerExceptionResolver" class="headerlink" title="HandlerExceptionResolver"></a>HandlerExceptionResolver</h2><p>当 handler 处理抛出异常时， <code>DispatcherServlet</code> 在下面函数中使用 <code>HandlerExceptionResolver</code> 来处理异常：</p>
+<pre><code>protected ModelAndView processHandlerException(HttpServletRequest request, HttpServletResponse response,
+        @Nullable Object handler, Exception ex) throws Exception {
+    // Check registered HandlerExceptionResolvers...
+    ModelAndView exMv = null;
+    if (this.handlerExceptionResolvers != null) {
+        for (HandlerExceptionResolver handlerExceptionResolver : this.handlerExceptionResolvers) {
+            exMv = handlerExceptionResolver.resolveException(request, response, handler, ex);
+            if (exMv != null) {
+                break;
+            }
+        }
+    }
+        return exMv;
+}
+</code></pre><p>因此，我们可以实现 <code>HandlerExceptionResolver</code> 接口来统一处理业务代码抛出的异常。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/01/spring/spring_mvc/spring mvc请求参数校验/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -4142,317 +4579,6 @@ class Cat(Animal):
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-dict字典/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder_Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder_Wang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/11/python/python-dict字典/" itemprop="url">python字典</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
-                2018-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="dict字典"><a href="#dict字典" class="headerlink" title="dict字典"></a>dict字典</h1><hr>
-<p>Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。dict是无序的。</p>
-<h2 id="dict定义"><a href="#dict定义" class="headerlink" title="dict定义"></a>dict定义</h2><p>直接用{key1:value1,key2:value2…..}的形式可以定义一个字典：</p>
-<pre><code>d = {&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85}
-d[&#39;Michael&#39;] //95
-</code></pre><h2 id="dict加入新键值对"><a href="#dict加入新键值对" class="headerlink" title="dict加入新键值对"></a>dict加入新键值对</h2><pre><code>d[&#39;new&#39;]=&#39;new&#39; //d={&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85,&#39;new&#39;:&#39;new&#39;}
-</code></pre><h2 id="修改某个key的value"><a href="#修改某个key的value" class="headerlink" title="修改某个key的value"></a>修改某个key的value</h2><pre><code>d[&#39;new&#39;]=&#39;old&#39; //d={&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85,&#39;new&#39;:&#39;old&#39;}
-</code></pre><h2 id="判断key是否存在"><a href="#判断key是否存在" class="headerlink" title="判断key是否存在"></a>判断key是否存在</h2><p>通过in判断key是否存在：</p>
-<pre><code>&#39;new&#39; in d //true
-&#39;test&#39; in d //false
-</code></pre><p>访问不存在的key时，会报错。使用get()方法，可以返回None或指定值：</p>
-<pre><code>d[&#39;test&#39;] //KeyError
-d.get(&#39;test&#39;) //None
-d.get(&#39;test&#39;,-1) //-1
-</code></pre><h2 id="删除key"><a href="#删除key" class="headerlink" title="删除key"></a>删除key</h2><p>要删除一个key，用pop(key)方法，对应的value也会从dict中删除：</p>
-<pre><code>d.pop(&#39;new&#39;) //删除key new及对应的值
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-基本数据类型/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder_Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder_Wang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/11/python/python-基本数据类型/" itemprop="url">python基本数据类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
-                2018-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="python基本数据类型"><a href="#python基本数据类型" class="headerlink" title="python基本数据类型"></a>python基本数据类型</h1><hr>
-<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>Python可以处理任意大小的整数，当然包括负整数，在程序中的表示方法和数学上的写法一模一样，例如：1，100，-8080，0，等等。</p>
-<p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用0x前缀和0-9，a-f表示，例如：0xff00，0xa5b4c3d2，等等。</p>
-<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x109和12.3x108是完全相等的。浮点数可以用数学写法，如1.23，3.14，-9.01，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x109就是1.23e9，或者12.3e8，0.000012可以写成1.2e-5，等等。</p>
-<p>整数和浮点数(IEEE754)在计算机内部存储的方式是不同的，整数运算永远是精确的（除法难道也是精确的？是的），而浮点数运算则可能会有四舍五入的误差。</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串是以单引号’或双引号”括起来的任意文本。字符串本身有单引号时，可以用双引号括起来，反之可以用单引号括起来如果既有单引号又有双引号,则必须用转义字符<strong>\</strong>来标识。</p>
-<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>True或False。python是大小写敏感的，所以不能写成true、false。</p>
-<h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>None，代表一个特殊的空值，类似于java中的null。</p>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>所谓常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量:</p>
-<blockquote>
-<p>PI = 3.14159265359</p>
-</blockquote>
-<p>但事实上PI仍然是一个变量，Python根本没有任何机制保证PI不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量PI的值，也没人能拦住你。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4505,7 +4631,7 @@ d.get(&#39;test&#39;,-1) //-1
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

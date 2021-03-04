@@ -243,6 +243,317 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-dict字典/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-dict字典/" itemprop="url">python字典</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="dict字典"><a href="#dict字典" class="headerlink" title="dict字典"></a>dict字典</h1><hr>
+<p>Python内置了字典：dict的支持，dict全称dictionary，在其他语言中也称为map，使用键-值（key-value）存储，具有极快的查找速度。dict是无序的。</p>
+<h2 id="dict定义"><a href="#dict定义" class="headerlink" title="dict定义"></a>dict定义</h2><p>直接用{key1:value1,key2:value2…..}的形式可以定义一个字典：</p>
+<pre><code>d = {&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85}
+d[&#39;Michael&#39;] //95
+</code></pre><h2 id="dict加入新键值对"><a href="#dict加入新键值对" class="headerlink" title="dict加入新键值对"></a>dict加入新键值对</h2><pre><code>d[&#39;new&#39;]=&#39;new&#39; //d={&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85,&#39;new&#39;:&#39;new&#39;}
+</code></pre><h2 id="修改某个key的value"><a href="#修改某个key的value" class="headerlink" title="修改某个key的value"></a>修改某个key的value</h2><pre><code>d[&#39;new&#39;]=&#39;old&#39; //d={&#39;Michael&#39;: 95, &#39;Bob&#39;: 75, &#39;Tracy&#39;: 85,&#39;new&#39;:&#39;old&#39;}
+</code></pre><h2 id="判断key是否存在"><a href="#判断key是否存在" class="headerlink" title="判断key是否存在"></a>判断key是否存在</h2><p>通过in判断key是否存在：</p>
+<pre><code>&#39;new&#39; in d //true
+&#39;test&#39; in d //false
+</code></pre><p>访问不存在的key时，会报错。使用get()方法，可以返回None或指定值：</p>
+<pre><code>d[&#39;test&#39;] //KeyError
+d.get(&#39;test&#39;) //None
+d.get(&#39;test&#39;,-1) //-1
+</code></pre><h2 id="删除key"><a href="#删除key" class="headerlink" title="删除key"></a>删除key</h2><p>要删除一个key，用pop(key)方法，对应的value也会从dict中删除：</p>
+<pre><code>d.pop(&#39;new&#39;) //删除key new及对应的值
+</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-基本数据类型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coder_Wang">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coder_Wang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/11/python/python-基本数据类型/" itemprop="url">python基本数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-11T11:02:00+08:00">
+                2018-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="python基本数据类型"><a href="#python基本数据类型" class="headerlink" title="python基本数据类型"></a>python基本数据类型</h1><hr>
+<h2 id="整数"><a href="#整数" class="headerlink" title="整数"></a>整数</h2><p>Python可以处理任意大小的整数，当然包括负整数，在程序中的表示方法和数学上的写法一模一样，例如：1，100，-8080，0，等等。</p>
+<p>计算机由于使用二进制，所以，有时候用十六进制表示整数比较方便，十六进制用0x前缀和0-9，a-f表示，例如：0xff00，0xa5b4c3d2，等等。</p>
+<h2 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h2><p>浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，比如，1.23x109和12.3x108是完全相等的。浮点数可以用数学写法，如1.23，3.14，-9.01，等等。但是对于很大或很小的浮点数，就必须用科学计数法表示，把10用e替代，1.23x109就是1.23e9，或者12.3e8，0.000012可以写成1.2e-5，等等。</p>
+<p>整数和浮点数(IEEE754)在计算机内部存储的方式是不同的，整数运算永远是精确的（除法难道也是精确的？是的），而浮点数运算则可能会有四舍五入的误差。</p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>字符串是以单引号’或双引号”括起来的任意文本。字符串本身有单引号时，可以用双引号括起来，反之可以用单引号括起来如果既有单引号又有双引号,则必须用转义字符<strong>\</strong>来标识。</p>
+<h2 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h2><p>True或False。python是大小写敏感的，所以不能写成true、false。</p>
+<h2 id="空值"><a href="#空值" class="headerlink" title="空值"></a>空值</h2><p>None，代表一个特殊的空值，类似于java中的null。</p>
+<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><p>所谓常量就是不能变的变量，比如常用的数学常数π就是一个常量。在Python中，通常用全部大写的变量名表示常量:</p>
+<blockquote>
+<p>PI = 3.14159265359</p>
+</blockquote>
+<p>但事实上PI仍然是一个变量，Python根本没有任何机制保证PI不会被改变，所以，用全部大写的变量名表示常量只是一个习惯上的用法，如果你一定要改变变量PI的值，也没人能拦住你。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/python/python-列表生成器/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2695,7 +3006,414 @@ server {
       
         
           
-            <h1 id><a href="#" class="headerlink" title=" "></a> </h1>
+            <h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>所有的 Netty 服务器都需要以下两部分。</p>
+<ul>
+<li>至少一个 ChannelHandler—该组件实现了服务器对从客户端接收的数据的处理，即<br>它的业务逻辑。</li>
+<li>引导—这是配置服务器的启动代码。至少，它会将服务器绑定到它要监听连接请求的<br>端口上。</li>
+</ul>
+<p>在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 Channel-Handler相关联的ChannelHandlerContext对象中。前一种方式将会导致消息从ChannelPipeline 的尾端开始流动，而后者将导致消息从 ChannelPipeline 中的下一个 ChannelHandler 开始流动。</p>
+<ul>
+<li>一个 EventLoopGroup 包含一个或者多个 EventLoop；</li>
+<li>一个 EventLoop 在它的生命周期内只和一个 Thread 绑定；</li>
+<li>所有由 EventLoop 处理的 I/O 事件都将在它专有的 Thread 上被处理；</li>
+<li>一个 Channel 在它的生命周期内只注册于一个 EventLoop；</li>
+<li>一个 EventLoop 可能会被分配给一个或多个 Channel。</li>
+</ul>
+<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><p>一般分为 ServerChannel 和一般 Channel ， ServerChannel 用来监听客户端连接请求并创建一个新的 Channel 以处理该连接。 Channel 的生命周期状态:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ChannelUnregistered</td>
+<td style="text-align:center">Channel 已经被创建，但还未注册到 EventLoop</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelRegistered</td>
+<td style="text-align:center">Channel 已经被注册到了 EventLoop</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelActive</td>
+<td style="text-align:center">Channel 处于活动状态（已经连接到它的远程节点）。它现在可以接收和发送数据了</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelInactive</td>
+<td style="text-align:center">Channel 没有连接到远程节点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h3><p>ChannelHandler  的生命周期方法:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">handlerAdded</td>
+<td style="text-align:center">当把 ChannelHandler 添加到 ChannelPipeline 中时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">handlerRemoved</td>
+<td style="text-align:center">当从 ChannelPipeline 中移除 ChannelHandler 时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">exceptionCaught</td>
+<td style="text-align:center">当处理过程中在 ChannelPipeline 中有错误产生时被调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Netty 定义了下面两个重要的 ChannelHandler 子接口：</p>
+<ul>
+<li>ChannelInboundHandler——处理入站数据以及各种状态变化；</li>
+<li>ChannelOutboundHandler——处理出站数据并且允许拦截所有的操作</li>
+</ul>
+<p>ChannelInboundHandler 的方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">channelRegistered</td>
+<td style="text-align:center">当 Channel 已经注册到它的 EventLoop 并且能够处理 I/O 时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelUnregistered</td>
+<td style="text-align:center">当 Channel 从它的 EventLoop 注销并且无法处理任何 I/O 时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelActive</td>
+<td style="text-align:center">当 Channel 处于活动状态时被调用；Channel 已经连接/绑定并且已经就绪</td>
+</tr>
+<tr>
+<td style="text-align:center">channelInactive</td>
+<td style="text-align:center">当 Channel 离开活动状态并且不再连接它的远程节点时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelReadComplete</td>
+<td style="text-align:center">当Channel上的一个读操作完成时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelRead</td>
+<td style="text-align:center">当从 Channel 读取数据时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelWritabilityChanged</td>
+<td style="text-align:center">当 Channel 的可写状态发生改变时被调用。用户可以确保写操作不会完成得太快（以避免发生 OutOfMemoryError）或者可以在 Channel 变为再次可写时恢复写入。可以通过调用 Channel 的 isWritable()方法来检测Channel 的可写性。与可写性相关的阈值可以通过 Channel.config().setWriteHighWaterMark()和 Channel.config().setWriteLowWater￾Mark()方法来设置</td>
+</tr>
+<tr>
+<td style="text-align:center">userEventTriggered</td>
+<td style="text-align:center">当 ChannelnboundHandler.fireUserEventTriggered()方法被调用时被调用，因为一个 POJO 被传经了 ChannelPipeline</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li><p>InboundHandler是通过fire事件决定是否要执行下一个InboundHandler，如果哪个InboundHandler没有调用fire事件，那么往后的Pipeline就断掉了。</p>
+</li>
+<li><p>Handler执行顺序：For example, let us assume that we created the following pipeline:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ChannelPipeline p = ...;</span><br><span class="line">p.addLast(&quot;1&quot;, new InboundHandlerA());</span><br><span class="line">p.addLast(&quot;2&quot;, new InboundHandlerB());</span><br><span class="line">p.addLast(&quot;3&quot;, new OutboundHandlerA());</span><br><span class="line">p.addLast(&quot;4&quot;, new OutboundHandlerB());</span><br><span class="line">p.addLast(&quot;5&quot;, new InboundOutboundHandlerX());</span><br></pre></td></tr></table></figure>
+<p>In the example above, the class whose name starts with <code>Inbound</code> means it is an inbound handler. The class whose name starts with <code>Outbound</code> means it is a outbound handler.</p>
+<p>In the given example configuration, the handler evaluation order is 1, 2, 3, 4, 5 when an event goes inbound. When an event goes outbound, the order is 5, 4, 3, 2, 1. On top of this principle, <a href="https://netty.io/4.0/api/io/netty/channel/ChannelPipeline.html" target="_blank" rel="noopener"><code>ChannelPipeline</code></a> skips the evaluation of certain handlers to shorten the stack depth:</p>
+<ul>
+<li>3 and 4 don’t implement <a href="https://netty.io/4.0/api/io/netty/channel/ChannelInboundHandler.html" target="_blank" rel="noopener"><code>ChannelInboundHandler</code></a>, and therefore the actual evaluation order of an inbound event will be: 1, 2, and 5.</li>
+<li>1 and 2 don’t implement <a href="https://netty.io/4.0/api/io/netty/channel/ChannelOutboundHandler.html" target="_blank" rel="noopener"><code>ChannelOutboundHandler</code></a>, and therefore the actual evaluation order of a outbound event will be: 5, 4, and 3.</li>
+<li>If 5 implements both <a href="https://netty.io/4.0/api/io/netty/channel/ChannelInboundHandler.html" target="_blank" rel="noopener"><code>ChannelInboundHandler</code></a> and <a href="https://netty.io/4.0/api/io/netty/channel/ChannelOutboundHandler.html" target="_blank" rel="noopener"><code>ChannelOutboundHandler</code></a>, the evaluation order of an inbound and a outbound event could be 125 and 543 respectively.</li>
+</ul>
+</li>
+</ol>
+<p>ChannelOutboundHandler 的方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bind(ChannelHandlerContext,SocketAddress,ChannelPromise)</td>
+<td>当请求将 Channel 绑定到本地地址时被调用</td>
+</tr>
+<tr>
+<td>connect(ChannelHandlerContext,SocketAddress,SocketAddress,ChannelPromise)</td>
+<td>当请求将 Channel 连接到远程节点时被调用</td>
+</tr>
+<tr>
+<td>disconnect(ChannelHandlerContext,ChannelPromise)</td>
+<td>当请求将 Channel 从远程节点断开时被调用</td>
+</tr>
+<tr>
+<td>close(ChannelHandlerContext,ChannelPromise)</td>
+<td>当请求关闭 Channel 时被调用</td>
+</tr>
+<tr>
+<td>deregister(ChannelHandlerContext,ChannelPromise)</td>
+<td>当请求将 Channel 从它的 EventLoop 注销时被调用</td>
+</tr>
+<tr>
+<td>read(ChannelHandlerContext)</td>
+<td>当请求从 Channel 读取更多的数据时被调用</td>
+</tr>
+<tr>
+<td>flush(ChannelHandlerContext)</td>
+<td>当请求通过 Channel 将入队数据冲刷到远程节点时被调用</td>
+</tr>
+<tr>
+<td>write(ChannelHandlerContext,Object,ChannelPromise)</td>
+<td>当请求通过 Channel 将数据写到远程节点时被调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="ChannelPipeline"><a href="#ChannelPipeline" class="headerlink" title="ChannelPipeline"></a>ChannelPipeline</h3><ul>
+<li>ChannelPipeline 保存了与 Channel 相关联的 ChannelHandler；</li>
+<li>ChannelPipeline 可以根据需要，通过添加或者删除 ChannelHandler 来动态地修改；</li>
+<li>ChannelPipeline 有着丰富的 API 用以被调用，以响应入站和出站事件。</li>
+</ul>
+<p>ChannelHandlerContext 使得 ChannelHandler 能够和它的 ChannelPipeline 以及其他的 ChannelHandler 交互。 ChannelHandler 可以通知其所属的 ChannelPipeline 中的下一 个 ChannelHandler，甚至可以动态修改它所属的 ChannelPipeline .</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AddFirst/addBefore/addAfter/addLast</td>
+<td>将一个ChannelHandler 添加到ChannelPipeline 中</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>将一个ChannelHandler 从ChannelPipeline 中移除</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>将 ChannelPipeline 中的一个 ChannelHandler 替换为另一个 ChannelHandler</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ChannelPipeline 的入站操作:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fireChannelRegistered</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelRegistered(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelUnregistered</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelUnregistered(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelActive</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelActive(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelInactive</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelInactive(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireExceptionCaught</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的exceptionCaught(ChannelHandlerContext, Throwable)方法</td>
+</tr>
+<tr>
+<td>fireUserEventTriggered</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的userEventTriggered(ChannelHandlerContext, Object)方法</td>
+</tr>
+<tr>
+<td>fireChannelRead</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelRead(ChannelHandlerContext, Object msg)方法</td>
+</tr>
+<tr>
+<td>fireChannelReadComplete</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelReadComplete(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelWritabilityChanged</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelWritabilityChanged(ChannelHandlerContext)方法</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ChannelPipeline 的出站操作:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bind</td>
+<td>将 Channel 绑定到一个本地地址，这将调用 ChannelPipeline 中的下一个ChannelOutboundHandler 的 bind(ChannelHandlerContext, SocketAddress, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>connect</td>
+<td>将 Channel 连接到一个远程地址，这将调用 ChannelPipeline 中的下一个ChannelOutboundHandler 的 connect(ChannelHandlerContext, Socket￾Address, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>disconnect</td>
+<td>将Channel 断开连接。这将调用ChannelPipeline 中的下一个ChannelOutboundHandler 的disconnect(ChannelHandlerContext, Channel Promise)方法</td>
+</tr>
+<tr>
+<td>close</td>
+<td>将 Channel 关闭。这将调用 ChannelPipeline 中的下一个 ChannelOutboundHandler 的 close(ChannelHandlerContext, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>deregister</td>
+<td>将 Channel 从它先前所分配的 EventExecutor（即 EventLoop）中注销。这将调用 ChannelPipeline 中的下一个 ChannelOutboundHandler 的 deregister(ChannelHandlerContext, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>flush</td>
+<td>冲刷Channel所有挂起的写入。这将调用ChannelPipeline中的下一个Channel￾OutboundHandler 的flush(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>write</td>
+<td>将消息写入 Channel。这将调用 ChannelPipeline 中的下一个 Channel￾OutboundHandler的write(ChannelHandlerContext, Object msg, ChannelPromise)方法。注意：这并不会将消息写入底层的 Socket，而只会将它放入队列中。要将它写入 Socket，需要调用 flush()或者 writeAndFlush()方法</td>
+</tr>
+<tr>
+<td>writeAndFlush</td>
+<td>这是一个先调用 write()方法再接着调用 flush()方法的便利方法</td>
+</tr>
+<tr>
+<td>read</td>
+<td>请求从 Channel 中读取更多的数据。这将调用 ChannelPipeline 中的下一个ChannelOutboundHandler 的 read(ChannelHandlerContext)方法</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="ChannelHandlerContext-接口"><a href="#ChannelHandlerContext-接口" class="headerlink" title="ChannelHandlerContext 接口"></a>ChannelHandlerContext 接口</h3><p>ChannelHandlerContext 代表了 ChannelHandler 和 ChannelPipeline 之间的关联，每当有 ChannelHandler 添加到 ChannelPipeline 中时，都会创建ChannelHandlerContext。ChannelHandlerContext 的主要功能是管理它所关联的 ChannelHandler 和在同一个 ChannelPipeline 中的其他 ChannelHandler 之间的交互。</p>
+<p>ChannelHandlerContext 有很多的方法，其中一些方法也存在于 Channel 和 ChannelPipeline 本身上，但是有一点重要的不同。<strong>如果调用 Channel 或ChannelPipeline 上的这些方法，它们将沿着整个 ChannelPipeline 进行传播。而调用位于 ChannelHandlerContext上的相同方法，则将从当前所关联的 ChannelHandler 开始，并且只会传播给位于该ChannelPipeline 中的下一个能够处理该事件的 ChannelHandler。</strong></p>
+<p>ChannelHandlerContext 的 API：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alloc</td>
+<td>返回和这个实例相关联的Channel 所配置的 ByteBufAllocator</td>
+</tr>
+<tr>
+<td>bind</td>
+<td>绑定到给定的 SocketAddress，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>返回绑定到这个实例的 Channel</td>
+</tr>
+<tr>
+<td>close</td>
+<td>关闭 Channel，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>connect</td>
+<td>连接给定的 SocketAddress，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>deregister</td>
+<td>从之前分配的 EventExecutor 注销，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>disconnect</td>
+<td>从远程节点断开，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>executor</td>
+<td>返回调度事件的 EventExecutor</td>
+</tr>
+<tr>
+<td>fireChannelActive</td>
+<td>触发对下一个 ChannelInboundHandler 上的channelActive()方法（已连接）的调用</td>
+</tr>
+<tr>
+<td>fireChannelInactive</td>
+<td>触发对下一个 ChannelInboundHandler 上的channelInactive()方法（已关闭）的调用</td>
+</tr>
+<tr>
+<td>fireChannelRead</td>
+<td>触发对下一个 ChannelInboundHandler 上的channelRead()方法（已接收的消息）的调用</td>
+</tr>
+<tr>
+<td>fireChannelReadComplete</td>
+<td>触发对下一个ChannelInboundHandler上的channelReadComplete()方法的调用</td>
+</tr>
+<tr>
+<td>fireChannelRegistered</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireChannelRegistered()方法的调用</td>
+</tr>
+<tr>
+<td>fireChannelUnregistered</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireChannelUnregistered()方法的调用</td>
+</tr>
+<tr>
+<td>fireChannelWritabilityChanged</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireChannelWritabilityChanged()方法的调用</td>
+</tr>
+<tr>
+<td>fireExceptionCaught</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireExceptionCaught(Throwable)方法的调用</td>
+</tr>
+<tr>
+<td>fireUserEventTriggered</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireUserEventTriggered(Object evt)方法的调用handler返回绑定到这个实例的 ChannelHandler</td>
+</tr>
+<tr>
+<td>isRemo</td>
+<td>如果所关联的 ChannelHandler 已经被从 ChannelPipeline中移除则返回 true</td>
+</tr>
+<tr>
+<td>name</td>
+<td>返回这个实例的唯一名称pipeline 返回这个实例所关联的 ChannelPipeline</td>
+</tr>
+<tr>
+<td>read</td>
+<td>将数据从Channel读取到第一个入站缓冲区；如果读取成功则触发一个channelRead事件，并（在最后一个消息被读取完成后）通 知 ChannelInboundHandler 的 channelReadComplet(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>write</td>
+<td>通过这个实例写入消息并经过 ChannelPipeline</td>
+</tr>
+<tr>
+<td>writeAndFlush</td>
+<td>通过这个实例写入并冲刷消息并经过 ChannelPipeline</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h4>
           
         
       
@@ -3313,355 +4031,6 @@ shell&gt; cp support-files/mysql.server /etc/init.d/mysql.server
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/sql/msyql/mysql用户权限/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder_Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder_Wang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/21/sql/msyql/mysql用户权限/" itemprop="url">mysql 用户及权限管理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-21T09:20:28+08:00">
-                2019-09-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql/" itemprop="url" rel="index">
-                    <span itemprop="name">sql</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h3><p>mysql 用户信息存储在 mysql.user 表中。</p>
-<ol>
-<li>创建用户： <code>CREATE USER &#39;username&#39;@&#39;ip&#39; IDENTIFIED WITH mysql_native_password BY &#39;passowrd&#39;</code>;</li>
-<li>允许用户从任意IP登录：<code>update mysql.user set host=&#39;%&#39; where user=&#39;root&#39;;</code></li>
-<li>修改用户密码： <code>ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED WITH mysql_native_password BY &#39;你的密码&#39;;</code> mysql 8<br><code>update mysq.user set password=password(&#39;11111111&#39;) where xxx;</code> 8 以前的版本</li>
-<li>删除用户： <code>drop user testuser@&#39;localhost&#39;</code></li>
-<li>刷新用户权限：<code>flush privileges</code></li>
-</ol>
-<h3 id="授权与收回"><a href="#授权与收回" class="headerlink" title="授权与收回"></a>授权与收回</h3><p>SQL标准包括 select、insert、update、delete以及all权限。</p>
-<ol>
-<li>查看用户的权限：<code>show grants for &lt;user&gt;</code></li>
-<li><p>授权语句：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">grant &lt;权限列表&gt;</span><br><span class="line">on &lt;数据库/表/视图&gt;</span><br><span class="line">to &lt;用户/角色列表&gt;</span><br><span class="line"></span><br><span class="line">grant select on department to public,Amy,Simith;授予public,Amy,Simith 关于 department 的select 权限  </span><br><span class="line">grant all on *.* to admin; 授予admin所有权限  </span><br><span class="line">grant all on student.* to teacher;授予teacher所有student数据库相关的权限</span><br></pre></td></tr></table></figure>
-<p> public代表系统中所有的当前用户和将来的用户。</p>
-</li>
-<li><p>收回权限语句：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">revoke &lt;权限列表&gt;</span><br><span class="line">on &lt;关系名或视图名&gt;</span><br><span class="line">from &lt;用户/角色列表&gt;</span><br><span class="line"></span><br><span class="line">revoke select on department from Amy,Simith</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/23/sql/msyql/mysql查询历史sql记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coder_Wang">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder_Wang's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/23/sql/msyql/mysql查询历史sql记录/" itemprop="url">mysql 历史sql查询</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T13:50:21+08:00">
-                2018-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql/" itemprop="url" rel="index">
-                    <span itemprop="name">sql</span>
-                  </a>
-                </span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/sql/mysql/" itemprop="url" rel="index">
-                    <span itemprop="name">mysql</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="开启操作记录日志"><a href="#开启操作记录日志" class="headerlink" title="开启操作记录日志"></a>开启操作记录日志</h2><p>首先进入mysql输入指令</p>
-<pre><code>show variables like &#39;gen%&#39;;
-</code></pre><p>可以看到输出</p>
-<pre><code>+------------------+-------------------------------------+
-| Variable_name    | Value                               |
-+------------------+-------------------------------------+
-| general_log      | OFF                                 |
-| general_log_file | /usr/local/mysql/data/localhost.log |
-+------------------+-------------------------------------+
-</code></pre><p>可以看到general_log是开启还是环比状态，以及这个帐号的general_log文件在哪，设置开启</p>
-<pre><code>set global general_log=ON;
-commit;//如果关闭了自动提交，记得commit一次结束事务
-</code></pre><p>然后就可以去general_log_file的路径查看操作记录了</p>
-<h2 id="采用数据库内部查看"><a href="#采用数据库内部查看" class="headerlink" title="采用数据库内部查看"></a>采用数据库内部查看</h2><p>除了可以用日志文件的形式查看数据库操作记录之外，也可以把日志存储在一个表，在数据库内部查看</p>
-<pre><code>show variables like &#39;%log_output%&#39;;
-</code></pre><p>可以看到输出，</p>
-<pre><code>+---------------+-------+
-| Variable_name | Value |
-+---------------+-------+
-| log_output    | FILE  |
-+---------------+-------+
-</code></pre><p>然后将其改为表单</p>
-<pre><code>set  global log_output=&#39;TABLE&#39;;
-</code></pre><p>之后就可以通过以下两句话查看数据库操作记录</p>
-<pre><code>select * from mysql.general_log; &lt;=====查看操作记录
-truncate table mysql.general_log; &lt;=====清空操作记录表单
-</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3714,7 +4083,7 @@ truncate table mysql.general_log; &lt;=====清空操作记录表单
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

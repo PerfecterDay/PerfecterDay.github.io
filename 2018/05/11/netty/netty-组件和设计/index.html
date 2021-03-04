@@ -79,15 +79,18 @@
 
 
 
+<meta name="description" content="核心所有的 Netty 服务器都需要以下两部分。  至少一个 ChannelHandler—该组件实现了服务器对从客户端接收的数据的处理，即它的业务逻辑。 引导—这是配置服务器的启动代码。至少，它会将服务器绑定到它要监听连接请求的端口上。  在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 Channel-Handler相关联的ChannelHandler">
 <meta name="keywords" content="netty java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="netty的组件和设计">
 <meta property="og:url" content="http://yoursite.com/2018/05/11/netty/netty-组件和设计/index.html">
 <meta property="og:site_name" content="Coder_Wang&#39;s blog">
+<meta property="og:description" content="核心所有的 Netty 服务器都需要以下两部分。  至少一个 ChannelHandler—该组件实现了服务器对从客户端接收的数据的处理，即它的业务逻辑。 引导—这是配置服务器的启动代码。至少，它会将服务器绑定到它要监听连接请求的端口上。  在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 Channel-Handler相关联的ChannelHandler">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-12-19T03:37:25.192Z">
+<meta property="og:updated_time" content="2021-03-03T15:28:37.775Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="netty的组件和设计">
+<meta name="twitter:description" content="核心所有的 Netty 服务器都需要以下两部分。  至少一个 ChannelHandler—该组件实现了服务器对从客户端接收的数据的处理，即它的业务逻辑。 引导—这是配置服务器的启动代码。至少，它会将服务器绑定到它要监听连接请求的端口上。  在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 Channel-Handler相关联的ChannelHandler">
 
 
 
@@ -329,7 +332,414 @@
       
 
       
-        <h1 id><a href="#" class="headerlink" title=" "></a> </h1>
+        <h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>所有的 Netty 服务器都需要以下两部分。</p>
+<ul>
+<li>至少一个 ChannelHandler—该组件实现了服务器对从客户端接收的数据的处理，即<br>它的业务逻辑。</li>
+<li>引导—这是配置服务器的启动代码。至少，它会将服务器绑定到它要监听连接请求的<br>端口上。</li>
+</ul>
+<p>在 Netty 中，有两种发送消息的方式。你可以直接写到 Channel 中，也可以写到和 Channel-Handler相关联的ChannelHandlerContext对象中。前一种方式将会导致消息从ChannelPipeline 的尾端开始流动，而后者将导致消息从 ChannelPipeline 中的下一个 ChannelHandler 开始流动。</p>
+<ul>
+<li>一个 EventLoopGroup 包含一个或者多个 EventLoop；</li>
+<li>一个 EventLoop 在它的生命周期内只和一个 Thread 绑定；</li>
+<li>所有由 EventLoop 处理的 I/O 事件都将在它专有的 Thread 上被处理；</li>
+<li>一个 Channel 在它的生命周期内只注册于一个 EventLoop；</li>
+<li>一个 EventLoop 可能会被分配给一个或多个 Channel。</li>
+</ul>
+<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><p>一般分为 ServerChannel 和一般 Channel ， ServerChannel 用来监听客户端连接请求并创建一个新的 Channel 以处理该连接。 Channel 的生命周期状态:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ChannelUnregistered</td>
+<td style="text-align:center">Channel 已经被创建，但还未注册到 EventLoop</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelRegistered</td>
+<td style="text-align:center">Channel 已经被注册到了 EventLoop</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelActive</td>
+<td style="text-align:center">Channel 处于活动状态（已经连接到它的远程节点）。它现在可以接收和发送数据了</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelInactive</td>
+<td style="text-align:center">Channel 没有连接到远程节点</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="ChannelHandler"><a href="#ChannelHandler" class="headerlink" title="ChannelHandler"></a>ChannelHandler</h3><p>ChannelHandler  的生命周期方法:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">handlerAdded</td>
+<td style="text-align:center">当把 ChannelHandler 添加到 ChannelPipeline 中时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">handlerRemoved</td>
+<td style="text-align:center">当从 ChannelPipeline 中移除 ChannelHandler 时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">exceptionCaught</td>
+<td style="text-align:center">当处理过程中在 ChannelPipeline 中有错误产生时被调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Netty 定义了下面两个重要的 ChannelHandler 子接口：</p>
+<ul>
+<li>ChannelInboundHandler——处理入站数据以及各种状态变化；</li>
+<li>ChannelOutboundHandler——处理出站数据并且允许拦截所有的操作</li>
+</ul>
+<p>ChannelInboundHandler 的方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">channelRegistered</td>
+<td style="text-align:center">当 Channel 已经注册到它的 EventLoop 并且能够处理 I/O 时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelUnregistered</td>
+<td style="text-align:center">当 Channel 从它的 EventLoop 注销并且无法处理任何 I/O 时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelActive</td>
+<td style="text-align:center">当 Channel 处于活动状态时被调用；Channel 已经连接/绑定并且已经就绪</td>
+</tr>
+<tr>
+<td style="text-align:center">channelInactive</td>
+<td style="text-align:center">当 Channel 离开活动状态并且不再连接它的远程节点时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelReadComplete</td>
+<td style="text-align:center">当Channel上的一个读操作完成时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">channelRead</td>
+<td style="text-align:center">当从 Channel 读取数据时被调用</td>
+</tr>
+<tr>
+<td style="text-align:center">ChannelWritabilityChanged</td>
+<td style="text-align:center">当 Channel 的可写状态发生改变时被调用。用户可以确保写操作不会完成得太快（以避免发生 OutOfMemoryError）或者可以在 Channel 变为再次可写时恢复写入。可以通过调用 Channel 的 isWritable()方法来检测Channel 的可写性。与可写性相关的阈值可以通过 Channel.config().setWriteHighWaterMark()和 Channel.config().setWriteLowWater￾Mark()方法来设置</td>
+</tr>
+<tr>
+<td style="text-align:center">userEventTriggered</td>
+<td style="text-align:center">当 ChannelnboundHandler.fireUserEventTriggered()方法被调用时被调用，因为一个 POJO 被传经了 ChannelPipeline</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li><p>InboundHandler是通过fire事件决定是否要执行下一个InboundHandler，如果哪个InboundHandler没有调用fire事件，那么往后的Pipeline就断掉了。</p>
+</li>
+<li><p>Handler执行顺序：For example, let us assume that we created the following pipeline:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ChannelPipeline p = ...;</span><br><span class="line">p.addLast(&quot;1&quot;, new InboundHandlerA());</span><br><span class="line">p.addLast(&quot;2&quot;, new InboundHandlerB());</span><br><span class="line">p.addLast(&quot;3&quot;, new OutboundHandlerA());</span><br><span class="line">p.addLast(&quot;4&quot;, new OutboundHandlerB());</span><br><span class="line">p.addLast(&quot;5&quot;, new InboundOutboundHandlerX());</span><br></pre></td></tr></table></figure>
+<p>In the example above, the class whose name starts with <code>Inbound</code> means it is an inbound handler. The class whose name starts with <code>Outbound</code> means it is a outbound handler.</p>
+<p>In the given example configuration, the handler evaluation order is 1, 2, 3, 4, 5 when an event goes inbound. When an event goes outbound, the order is 5, 4, 3, 2, 1. On top of this principle, <a href="https://netty.io/4.0/api/io/netty/channel/ChannelPipeline.html" target="_blank" rel="noopener"><code>ChannelPipeline</code></a> skips the evaluation of certain handlers to shorten the stack depth:</p>
+<ul>
+<li>3 and 4 don’t implement <a href="https://netty.io/4.0/api/io/netty/channel/ChannelInboundHandler.html" target="_blank" rel="noopener"><code>ChannelInboundHandler</code></a>, and therefore the actual evaluation order of an inbound event will be: 1, 2, and 5.</li>
+<li>1 and 2 don’t implement <a href="https://netty.io/4.0/api/io/netty/channel/ChannelOutboundHandler.html" target="_blank" rel="noopener"><code>ChannelOutboundHandler</code></a>, and therefore the actual evaluation order of a outbound event will be: 5, 4, and 3.</li>
+<li>If 5 implements both <a href="https://netty.io/4.0/api/io/netty/channel/ChannelInboundHandler.html" target="_blank" rel="noopener"><code>ChannelInboundHandler</code></a> and <a href="https://netty.io/4.0/api/io/netty/channel/ChannelOutboundHandler.html" target="_blank" rel="noopener"><code>ChannelOutboundHandler</code></a>, the evaluation order of an inbound and a outbound event could be 125 and 543 respectively.</li>
+</ul>
+</li>
+</ol>
+<p>ChannelOutboundHandler 的方法：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bind(ChannelHandlerContext,SocketAddress,ChannelPromise)</td>
+<td>当请求将 Channel 绑定到本地地址时被调用</td>
+</tr>
+<tr>
+<td>connect(ChannelHandlerContext,SocketAddress,SocketAddress,ChannelPromise)</td>
+<td>当请求将 Channel 连接到远程节点时被调用</td>
+</tr>
+<tr>
+<td>disconnect(ChannelHandlerContext,ChannelPromise)</td>
+<td>当请求将 Channel 从远程节点断开时被调用</td>
+</tr>
+<tr>
+<td>close(ChannelHandlerContext,ChannelPromise)</td>
+<td>当请求关闭 Channel 时被调用</td>
+</tr>
+<tr>
+<td>deregister(ChannelHandlerContext,ChannelPromise)</td>
+<td>当请求将 Channel 从它的 EventLoop 注销时被调用</td>
+</tr>
+<tr>
+<td>read(ChannelHandlerContext)</td>
+<td>当请求从 Channel 读取更多的数据时被调用</td>
+</tr>
+<tr>
+<td>flush(ChannelHandlerContext)</td>
+<td>当请求通过 Channel 将入队数据冲刷到远程节点时被调用</td>
+</tr>
+<tr>
+<td>write(ChannelHandlerContext,Object,ChannelPromise)</td>
+<td>当请求通过 Channel 将数据写到远程节点时被调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="ChannelPipeline"><a href="#ChannelPipeline" class="headerlink" title="ChannelPipeline"></a>ChannelPipeline</h3><ul>
+<li>ChannelPipeline 保存了与 Channel 相关联的 ChannelHandler；</li>
+<li>ChannelPipeline 可以根据需要，通过添加或者删除 ChannelHandler 来动态地修改；</li>
+<li>ChannelPipeline 有着丰富的 API 用以被调用，以响应入站和出站事件。</li>
+</ul>
+<p>ChannelHandlerContext 使得 ChannelHandler 能够和它的 ChannelPipeline 以及其他的 ChannelHandler 交互。 ChannelHandler 可以通知其所属的 ChannelPipeline 中的下一 个 ChannelHandler，甚至可以动态修改它所属的 ChannelPipeline .</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AddFirst/addBefore/addAfter/addLast</td>
+<td>将一个ChannelHandler 添加到ChannelPipeline 中</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>将一个ChannelHandler 从ChannelPipeline 中移除</td>
+</tr>
+<tr>
+<td>replace</td>
+<td>将 ChannelPipeline 中的一个 ChannelHandler 替换为另一个 ChannelHandler</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ChannelPipeline 的入站操作:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fireChannelRegistered</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelRegistered(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelUnregistered</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelUnregistered(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelActive</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelActive(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelInactive</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelInactive(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireExceptionCaught</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的exceptionCaught(ChannelHandlerContext, Throwable)方法</td>
+</tr>
+<tr>
+<td>fireUserEventTriggered</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的userEventTriggered(ChannelHandlerContext, Object)方法</td>
+</tr>
+<tr>
+<td>fireChannelRead</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelRead(ChannelHandlerContext, Object msg)方法</td>
+</tr>
+<tr>
+<td>fireChannelReadComplete</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelReadComplete(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>fireChannelWritabilityChanged</td>
+<td>调用 ChannelPipeline 中下一个 ChannelInboundHandler 的channelWritabilityChanged(ChannelHandlerContext)方法</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>ChannelPipeline 的出站操作:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bind</td>
+<td>将 Channel 绑定到一个本地地址，这将调用 ChannelPipeline 中的下一个ChannelOutboundHandler 的 bind(ChannelHandlerContext, SocketAddress, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>connect</td>
+<td>将 Channel 连接到一个远程地址，这将调用 ChannelPipeline 中的下一个ChannelOutboundHandler 的 connect(ChannelHandlerContext, Socket￾Address, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>disconnect</td>
+<td>将Channel 断开连接。这将调用ChannelPipeline 中的下一个ChannelOutboundHandler 的disconnect(ChannelHandlerContext, Channel Promise)方法</td>
+</tr>
+<tr>
+<td>close</td>
+<td>将 Channel 关闭。这将调用 ChannelPipeline 中的下一个 ChannelOutboundHandler 的 close(ChannelHandlerContext, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>deregister</td>
+<td>将 Channel 从它先前所分配的 EventExecutor（即 EventLoop）中注销。这将调用 ChannelPipeline 中的下一个 ChannelOutboundHandler 的 deregister(ChannelHandlerContext, ChannelPromise)方法</td>
+</tr>
+<tr>
+<td>flush</td>
+<td>冲刷Channel所有挂起的写入。这将调用ChannelPipeline中的下一个Channel￾OutboundHandler 的flush(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>write</td>
+<td>将消息写入 Channel。这将调用 ChannelPipeline 中的下一个 Channel￾OutboundHandler的write(ChannelHandlerContext, Object msg, ChannelPromise)方法。注意：这并不会将消息写入底层的 Socket，而只会将它放入队列中。要将它写入 Socket，需要调用 flush()或者 writeAndFlush()方法</td>
+</tr>
+<tr>
+<td>writeAndFlush</td>
+<td>这是一个先调用 write()方法再接着调用 flush()方法的便利方法</td>
+</tr>
+<tr>
+<td>read</td>
+<td>请求从 Channel 中读取更多的数据。这将调用 ChannelPipeline 中的下一个ChannelOutboundHandler 的 read(ChannelHandlerContext)方法</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="ChannelHandlerContext-接口"><a href="#ChannelHandlerContext-接口" class="headerlink" title="ChannelHandlerContext 接口"></a>ChannelHandlerContext 接口</h3><p>ChannelHandlerContext 代表了 ChannelHandler 和 ChannelPipeline 之间的关联，每当有 ChannelHandler 添加到 ChannelPipeline 中时，都会创建ChannelHandlerContext。ChannelHandlerContext 的主要功能是管理它所关联的 ChannelHandler 和在同一个 ChannelPipeline 中的其他 ChannelHandler 之间的交互。</p>
+<p>ChannelHandlerContext 有很多的方法，其中一些方法也存在于 Channel 和 ChannelPipeline 本身上，但是有一点重要的不同。<strong>如果调用 Channel 或ChannelPipeline 上的这些方法，它们将沿着整个 ChannelPipeline 进行传播。而调用位于 ChannelHandlerContext上的相同方法，则将从当前所关联的 ChannelHandler 开始，并且只会传播给位于该ChannelPipeline 中的下一个能够处理该事件的 ChannelHandler。</strong></p>
+<p>ChannelHandlerContext 的 API：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>alloc</td>
+<td>返回和这个实例相关联的Channel 所配置的 ByteBufAllocator</td>
+</tr>
+<tr>
+<td>bind</td>
+<td>绑定到给定的 SocketAddress，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>channel</td>
+<td>返回绑定到这个实例的 Channel</td>
+</tr>
+<tr>
+<td>close</td>
+<td>关闭 Channel，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>connect</td>
+<td>连接给定的 SocketAddress，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>deregister</td>
+<td>从之前分配的 EventExecutor 注销，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>disconnect</td>
+<td>从远程节点断开，并返回 ChannelFuture</td>
+</tr>
+<tr>
+<td>executor</td>
+<td>返回调度事件的 EventExecutor</td>
+</tr>
+<tr>
+<td>fireChannelActive</td>
+<td>触发对下一个 ChannelInboundHandler 上的channelActive()方法（已连接）的调用</td>
+</tr>
+<tr>
+<td>fireChannelInactive</td>
+<td>触发对下一个 ChannelInboundHandler 上的channelInactive()方法（已关闭）的调用</td>
+</tr>
+<tr>
+<td>fireChannelRead</td>
+<td>触发对下一个 ChannelInboundHandler 上的channelRead()方法（已接收的消息）的调用</td>
+</tr>
+<tr>
+<td>fireChannelReadComplete</td>
+<td>触发对下一个ChannelInboundHandler上的channelReadComplete()方法的调用</td>
+</tr>
+<tr>
+<td>fireChannelRegistered</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireChannelRegistered()方法的调用</td>
+</tr>
+<tr>
+<td>fireChannelUnregistered</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireChannelUnregistered()方法的调用</td>
+</tr>
+<tr>
+<td>fireChannelWritabilityChanged</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireChannelWritabilityChanged()方法的调用</td>
+</tr>
+<tr>
+<td>fireExceptionCaught</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireExceptionCaught(Throwable)方法的调用</td>
+</tr>
+<tr>
+<td>fireUserEventTriggered</td>
+<td>触发对下一个 ChannelInboundHandler 上的fireUserEventTriggered(Object evt)方法的调用handler返回绑定到这个实例的 ChannelHandler</td>
+</tr>
+<tr>
+<td>isRemo</td>
+<td>如果所关联的 ChannelHandler 已经被从 ChannelPipeline中移除则返回 true</td>
+</tr>
+<tr>
+<td>name</td>
+<td>返回这个实例的唯一名称pipeline 返回这个实例所关联的 ChannelPipeline</td>
+</tr>
+<tr>
+<td>read</td>
+<td>将数据从Channel读取到第一个入站缓冲区；如果读取成功则触发一个channelRead事件，并（在最后一个消息被读取完成后）通 知 ChannelInboundHandler 的 channelReadComplet(ChannelHandlerContext)方法</td>
+</tr>
+<tr>
+<td>write</td>
+<td>通过这个实例写入消息并经过 ChannelPipeline</td>
+</tr>
+<tr>
+<td>writeAndFlush</td>
+<td>通过这个实例写入并冲刷消息并经过 ChannelPipeline</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h4>
       
     </div>
     
@@ -450,7 +860,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -505,7 +915,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text"> </span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#核心"><span class="nav-number">1.</span> <span class="nav-text">核心</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Channel"><span class="nav-number">2.</span> <span class="nav-text">Channel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChannelHandler"><span class="nav-number">3.</span> <span class="nav-text">ChannelHandler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChannelPipeline"><span class="nav-number">4.</span> <span class="nav-text">ChannelPipeline</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChannelHandlerContext-接口"><span class="nav-number">5.</span> <span class="nav-text">ChannelHandlerContext 接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引导"><span class="nav-number">5.1.</span> <span class="nav-text">引导</span></a></li></ol></li></ol></div>
             
 
           </div>

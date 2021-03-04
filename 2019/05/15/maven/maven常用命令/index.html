@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Coder_Wang&#39;s blog">
 <meta property="og:description" content="maven 常用命令 mvn -B archetype:generate  -DgroupId=com.my -DartifactId=simple-weather -DpackageName=com.baicy -Dversion=1.0: 以batch模式创建新项目，会选择 Archetype ，可能需要删除 settings配置文件中 archetypeRepository 和 archet">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-02-03T14:51:40.768Z">
+<meta property="og:updated_time" content="2021-02-28T14:33:21.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="maven 常用命令参数和配置">
 <meta name="twitter:description" content="maven 常用命令 mvn -B archetype:generate  -DgroupId=com.my -DartifactId=simple-weather -DpackageName=com.baicy -Dversion=1.0: 以batch模式创建新项目，会选择 Archetype ，可能需要删除 settings配置文件中 archetypeRepository 和 archet">
@@ -353,6 +353,8 @@
 <li>修改远程仓库镜像：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">&lt;id&gt;aliyun&lt;/id&gt;</span><br><span class="line">&lt;name&gt;aliyun Maven&lt;/name&gt;</span><br><span class="line">&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;!-- &lt;url&gt;http://maven.oschina.net/content/groups/public&lt;/url&gt; --&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h4 id="maven-问题"><a href="#maven-问题" class="headerlink" title="maven 问题"></a>maven 问题</h4><p>有时候使用 https 时会遇到如下错误：<code>sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target</code></p>
+<p>解决方法：加上 <code>-Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true</code></p>
 
       
     </div>
@@ -474,7 +476,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">167</span>
+                  <span class="site-state-item-count">170</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -529,7 +531,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven-常用命令"><span class="nav-number">1.</span> <span class="nav-text">maven 常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maven-常用配置"><span class="nav-number">2.</span> <span class="nav-text">maven 常用配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven-常用命令"><span class="nav-number">1.</span> <span class="nav-text">maven 常用命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maven-常用配置"><span class="nav-number">2.</span> <span class="nav-text">maven 常用配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#maven-问题"><span class="nav-number">3.</span> <span class="nav-text">maven 问题</span></a></li></ol></div>
             
 
           </div>
